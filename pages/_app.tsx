@@ -3,7 +3,7 @@ import {AppProps} from "next/app";
 import {RecoilRoot} from "recoil";
 import ApolloSetting from "../src/components/commons/apollo/apollo.index";
 import {globalStyles} from "../src/commons/styles/globalStyles";
-import Layout from "../src/components/layout/layout.index";
+import Layout from "../src/components/commons/layout/layout.index";
 
 export default function App({Component}: AppProps) {
   return (
