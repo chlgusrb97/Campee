@@ -4,6 +4,7 @@ interface IInputItemProps {
   width?: string;
   height?: string;
   padding?: string;
+  backgroundColor?: string;
   fontSize?: string;
   placeHolder?: string;
 }
@@ -14,6 +15,7 @@ export default function InputItem(props: IInputItemProps) {
       width={props.width ?? "auto"}
       height={props.height ?? "auto"}
       padding={props.padding ?? "0px"}
+      backgroundColor={props.backgroundColor ?? "#e9e9e9"}
       fontSize={props.fontSize ?? "14px"}
       placeholder={props.placeHolder ?? ""}
     />
