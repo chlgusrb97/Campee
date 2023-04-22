@@ -37,7 +37,14 @@ export default function ProductsListUI() {
               backgroundColor="#fff"
               fontSize="20px"
             />
-            <InputItem />
+            <S.Input>
+              <InputItem
+                width="100%"
+                padding="15px"
+                backgroundColor="transparent"
+              />
+              <S.Search />
+            </S.Input>
           </div>
           <S.Products>
             <li>
