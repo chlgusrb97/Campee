@@ -10,12 +10,14 @@ interface IButtonItemProps {
   backgroundColor: string;
   fontSize: string;
   fontFamilly?: string;
+  cursor?: string;
+  disabled?: boolean;
 }
 
 export default function ButtonItem(props: IButtonItemProps) {
   return (
     <Button
-      title={props.title}
+      title={props.title ?? ""}
       width={props.width ?? "auto"}
       height={props.height ?? "auto"}
       border={props.border ?? "0px"}
@@ -24,6 +26,8 @@ export default function ButtonItem(props: IButtonItemProps) {
       backgroundColor={props.backgroundColor}
       fontSize={props.fontSize}
       fontFamily={props.fontFamilly ?? "NanumRegular"}
+      cursor={props.cursor ?? "pointer"}
+      disabled={props.disabled ?? false}
     >
       {props.title}
     </Button>

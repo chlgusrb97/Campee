@@ -9,6 +9,7 @@ interface IStyleProps {
   backgroundColor: string;
   fontSize: string;
   fontFamily: string;
+  cursor: string;
 }
 
 export const Button = styled.button<IStyleProps>`
@@ -20,5 +21,5 @@ export const Button = styled.button<IStyleProps>`
   background-color: ${(props) => props.backgroundColor};
   font-size: ${(props) => props.fontSize};
   font-family: ${(props) => props.fontFamily};
-  cursor: pointer;
+  cursor: ${(props) => props.cursor};
 `;

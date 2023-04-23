@@ -3,12 +3,18 @@ import {
   JOIN_PATH,
   LOGIN_PATH,
   PRODUCTS_LIST_PATH,
+  PRODUCTS_REGISTRATION_PATH,
 } from "../../../commons/paths/paths";
 import LayoutBanner from "./banner/banner.index";
 import LayoutFooter from "./footer/footer.index";
 import LayoutHeader from "./header/header.index";
 
-const HIDDEN_BANNER = [PRODUCTS_LIST_PATH, LOGIN_PATH, JOIN_PATH];
+const HIDDEN_BANNER = [
+  PRODUCTS_LIST_PATH,
+  PRODUCTS_REGISTRATION_PATH,
+  LOGIN_PATH,
+  JOIN_PATH,
+];
 
 interface ILayoutProps {
   children: JSX.Element;
