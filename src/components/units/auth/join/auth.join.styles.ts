@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,13 +20,21 @@ export const InputContents = styled.ul`
   padding: 40px 60px;
   border-bottom: 2px solid #555;
 
-  li:not(:last-of-type) {
-    margin-bottom: 30px;
-  }
-
   span {
     display: inline-block;
     width: 170px;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  height: 14px;
+  margin-top: 8px;
+  margin-left: 188px;
+  color: #f65656;
+  font-size: 12px;
+
+  :not(:last-of-type) {
+    margin-bottom: 30px;
   }
 `;
 
