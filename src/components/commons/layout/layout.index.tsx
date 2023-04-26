@@ -2,6 +2,7 @@ import {useRouter} from "next/router";
 import {
   JOIN_PATH,
   LOGIN_PATH,
+  PRODUCTS_DETAIL_PATH,
   PRODUCTS_LIST_PATH,
   PRODUCTS_REGISTRATION_PATH,
 } from "../../../commons/paths/paths";
@@ -23,7 +24,9 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
+  const isHiddenBanner =
+    HIDDEN_BANNER.includes(router.asPath) ||
+    router.asPath.includes(PRODUCTS_DETAIL_PATH);
 
   return (
     <>
