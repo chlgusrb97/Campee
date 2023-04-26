@@ -1,3 +1,4 @@
+import {UseFormRegisterReturn} from "react-hook-form";
 import {Input} from "./input.styles";
 
 interface IInputItemProps {
@@ -7,6 +8,8 @@ interface IInputItemProps {
   backgroundColor?: string;
   fontSize?: string;
   placeHolder?: string;
+  type?: string;
+  register?: UseFormRegisterReturn;
 }
 
 export default function InputItem(props: IInputItemProps) {
@@ -18,6 +21,8 @@ export default function InputItem(props: IInputItemProps) {
       backgroundColor={props.backgroundColor ?? "#e9e9e9"}
       fontSize={props.fontSize ?? "14px"}
       placeholder={props.placeHolder ?? ""}
+      type={props.type ?? "text"}
+      {...props.register}
     />
   );
 }
