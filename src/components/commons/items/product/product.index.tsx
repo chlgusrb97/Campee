@@ -1,23 +1,30 @@
+import {IUseditem} from "../../../../commons/types/generated/types";
 import * as S from "./product.styles";
 
-export default function ProductItem() {
+interface IProductItemProps {
+  el: IUseditem;
+}
+
+export default function ProductItem(props: IProductItemProps) {
   return (
     <>
       <S.Wrapper>
-        <li>
+        <div>
+          {props.el.images && props.el.images[0] ? (
+            <img src={`https://storage.googleapis.com/${props.el.images[0]}`} />
+          ) : (
+            <div></div>
+          )}
           <S.Heart />
-          <img />
-        </li>
-        <li>
+        </div>
+        <div>
           <S.Price>
             <p>7%</p>
-            <p>27,500</p>
+            <p>{props.el.price}</p>
           </S.Price>
-          <S.Name>상품이름</S.Name>
-          <S.Info>
-            [당일출고/주문폭주] 노티드 캔버스 패브릭 가방4co노티드 캔버스
-          </S.Info>
-        </li>
+          <S.Name>{props.el.seller?.name}</S.Name>
+          <S.Info>{props.el.name}</S.Info>
+        </div>
       </S.Wrapper>
     </>
   );

@@ -1,24 +1,25 @@
 import {HeartOutlined} from "@ant-design/icons";
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.ul`
+export const Wrapper = styled.div`
   width: 100%;
   cursor: pointer;
 
-  > li:first-of-type {
+  > div:first-of-type {
     position: relative;
     width: 100%;
-    padding-top: 130%;
-    height: 0;
+    height: 30vw;
     background-color: #c4c4c4;
 
-    > img {
+    img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
-  > li:last-of-type {
+  > div:last-of-type {
     width: 100%;
     display: flex;
     flex-direction: column;
