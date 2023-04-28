@@ -9,9 +9,6 @@ import {
 import LayoutBanner from "./banner/banner.index";
 import LayoutFooter from "./footer/footer.index";
 import LayoutHeader from "./header/header.index";
-import {useQuery} from "@apollo/client";
-import {USER_LOGGED_IN} from "../queries/queries";
-import {IQuery} from "../../../commons/types/generated/types";
 
 const HIDDEN_BANNER = [
   PRODUCTS_LIST_PATH,
@@ -26,9 +23,6 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
-  const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
-
-  console.log(data);
 
   const isHiddenBanner =
     HIDDEN_BANNER.includes(router.asPath) ||

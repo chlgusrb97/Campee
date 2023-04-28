@@ -37,6 +37,11 @@ export const Tnb = styled.ul`
   > li {
     margin-left: 40px;
 
+    :first-of-type {
+      display: flex;
+      flex-direction: row;
+    }
+
     :last-of-type {
       display: flex;
       flex-direction: row;
@@ -100,5 +105,43 @@ export const Gnb = styled.div`
         margin-right: 100px;
       }
     }
+  }
+`;
+
+export const User = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+
+  > p {
+    font-family: NanumBold;
+  }
+`;
+
+export const Point = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 12px 0 5px;
+  font-size: 14px;
+
+  > p {
+    margin: 0 3px;
+    text-decoration: underline;
+  }
+`;
+
+export const TopUp = styled.span`
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
+export const Logout = styled.span`
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
   }
 `;
