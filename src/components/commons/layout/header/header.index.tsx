@@ -1,5 +1,11 @@
-import Link from "next/link";
 import * as S from "./header.styles";
+import LinkItem from "../../items/link/link.index";
+import {
+  JOIN_PATH,
+  LOGIN_PATH,
+  MAIN_PATH,
+  PRODUCTS_LIST_PATH,
+} from "../../../../commons/paths/paths";
 
 export default function LayoutHeader() {
   return (
@@ -7,25 +13,21 @@ export default function LayoutHeader() {
       <S.Wrapper>
         <div>
           <S.Logo>
-            <Link href="#">
-              <a>DINCO</a>
-            </Link>
+            <LinkItem
+              path={MAIN_PATH}
+              name="DINCO"
+              fontFamily="NanumExtraBold"
+            />
           </S.Logo>
           <S.Tnb>
             <li>
-              <Link href="#">
-                <a>로그인</a>
-              </Link>
+              <LinkItem path={LOGIN_PATH} name="로그인" />
             </li>
             <li>
-              <Link href="#">
-                <a>회원가입</a>
-              </Link>
+              <LinkItem path={JOIN_PATH} name="회원가입" />
             </li>
             <li>
-              <Link href="#">
-                <a>장바구니</a>
-              </Link>
+              <LinkItem path="#" name="장바구니" />
               <S.BasketCount>
                 <span>0</span>
               </S.BasketCount>
@@ -36,36 +38,54 @@ export default function LayoutHeader() {
           <S.Gnb>
             <ul>
               <li>
-                <Link href="#">
-                  <a>BRAND</a>
-                </Link>
+                <LinkItem
+                  path={PRODUCTS_LIST_PATH}
+                  name="BRAND"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
               <li>
-                <Link href="#">
-                  <a>CATEGORY</a>
-                </Link>
+                <LinkItem
+                  path="#"
+                  name="CATEGORY"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
               <li>
-                <Link href="#">
-                  <a>LIFE</a>
-                </Link>
+                <LinkItem
+                  path="#"
+                  name="LIFE"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
               <li>
-                <Link href="#">
-                  <a>BEAUTY</a>
-                </Link>
+                <LinkItem
+                  path="#"
+                  name="BEAUTY"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
             </ul>
             <ul>
               <li>
-                <Link href="#">
-                  <a>#STYLE</a>
-                </Link>
+                <LinkItem
+                  path="#"
+                  name="#STYLE"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
               <li>
-                <Link href="#">
-                  <a>EVENT</a>
-                </Link>
+                <LinkItem
+                  path="#"
+                  name="EVENT"
+                  fontFamily="NanumExtraBold"
+                  color="#fff"
+                />
               </li>
             </ul>
           </S.Gnb>
