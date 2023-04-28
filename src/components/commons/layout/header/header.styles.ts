@@ -26,11 +26,6 @@ export const Wrapper = styled.div`
 
 export const Logo = styled.h1`
   font-size: 36px;
-
-  > a {
-    font-family: NanumExtraBold;
-    color: #000;
-  }
 `;
 
 export const Tnb = styled.ul`
@@ -49,12 +44,8 @@ export const Tnb = styled.ul`
     }
   }
 
-  a {
-    color: #000;
-
-    :hover {
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -109,10 +100,5 @@ export const Gnb = styled.div`
         margin-right: 100px;
       }
     }
-  }
-
-  a {
-    font-family: NanumExtraBold;
-    color: #fff;
   }
 `;
