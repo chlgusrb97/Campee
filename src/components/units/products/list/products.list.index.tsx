@@ -1,10 +1,29 @@
+import {useQuery} from "@apollo/client";
+import {
+  IQuery,
+  IQueryFetchUseditemsArgs,
+} from "../../../../commons/types/generated/types";
 import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
 import ProductItem from "../../../commons/items/product/product.index";
 import TitleItem from "../../../commons/items/title/title.index";
+import {USED_ITEMS} from "../../../commons/queries/queries";
+import {v4 as uuidv4} from "uuid";
 import * as S from "./products.list.styles";
+import {useMovedDetail} from "../../../commons/customs/hooks/useMovedDetail";
+import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
+import InfiniteScroll from "react-infinite-scroller";
+import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 
 export default function ProductsListUI() {
+  const {data} = useQuery<
+    Pick<IQuery, "fetchUseditems">,
+    IQueryFetchUseditemsArgs
+  >(USED_ITEMS);
+
+  const {movedDetail} = useMovedDetail();
+  const {onLoadMore} = onLoadMoreUsedItems();
+
   return (
     <>
       <S.Wrapper>
@@ -46,29 +65,28 @@ export default function ProductsListUI() {
               <S.Search />
             </S.Input>
           </div>
-          <S.Products>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-            <li>
-              <ProductItem />
-            </li>
-          </S.Products>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={onLoadMore}
+            hasMore={true}
+            useWindow={true}
+          >
+            <S.Products>
+              {data?.fetchUseditems ? (
+                data.fetchUseditems.map((el) => (
+                  <li
+                    key={uuidv4()}
+                    id={uuidv4()}
+                    onClick={movedDetail(`${PRODUCTS_DETAIL_PATH}/${el._id}`)}
+                  >
+                    <ProductItem el={el} />
+                  </li>
+                ))
+              ) : (
+                <></>
+              )}
+            </S.Products>
+          </InfiniteScroll>
         </S.ProductsContents>
       </S.Wrapper>
     </>
