@@ -5,7 +5,7 @@ import {
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
 } from "../../../../commons/types/generated/types";
-import {CREATE_USER, LOGIN_USER} from "../../mutations/mutations";
+import {CREATE_USER, LOGIN_USER, LOGOUT_USER} from "../../mutations/mutations";
 
 export const useMutationCreateUser = () => {
   const [createUser] = useMutation<
@@ -23,4 +23,10 @@ export const useMutationLoginUser = () => {
   >(LOGIN_USER);
 
   return [loginUser];
+};
+
+export const useMutationLogoutUser = () => {
+  const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
+
+  return [logoutUser];
 };
