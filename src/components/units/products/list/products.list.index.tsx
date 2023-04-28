@@ -76,7 +76,6 @@ export default function ProductsListUI() {
                 data.fetchUseditems.map((el) => (
                   <li
                     key={uuidv4()}
-                    id={uuidv4()}
                     onClick={movedDetail(`${PRODUCTS_DETAIL_PATH}/${el._id}`)}
                   >
                     <ProductItem el={el} />
