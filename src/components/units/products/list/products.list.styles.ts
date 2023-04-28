@@ -64,7 +64,6 @@ export const Products = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 40px;
   gap: 4%;
 
   > li {
