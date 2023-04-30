@@ -58,6 +58,12 @@ export const Contents = styled.ul`
       width: 256px;
       display: inline-block;
     }
+
+    > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
 
