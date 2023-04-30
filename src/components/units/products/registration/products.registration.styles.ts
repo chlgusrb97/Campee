@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   padding: 104px 90px 112px;
 
   > span {

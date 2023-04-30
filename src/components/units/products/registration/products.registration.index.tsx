@@ -1,3 +1,4 @@
+import {useCreateUsedItem} from "../../../commons/customs/hooks/useCreateUsedItem";
 import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
@@ -16,9 +17,12 @@ export default function ProductsRegistrationUI() {
     handleSubmit,
     formState: {errors},
   } = useFormProductsRegistration();
+
+  const {createUsedItemSubmit} = useCreateUsedItem();
+
   return (
     <>
-      <S.Wrapper>
+      <S.Wrapper onSubmit={handleSubmit(createUsedItemSubmit)}>
         <span>
           <TitleItem title="상품 등록" />
         </span>
@@ -162,11 +166,12 @@ export default function ProductsRegistrationUI() {
               backgroundColor="#fff"
               fontSize="20px"
               fontFamilly="NanumBold"
+              type="button"
             />
           </li>
           <li>
             <ButtonItem
-              title="취소"
+              title="등록"
               width="195px"
               height="77px"
               color="#fff"

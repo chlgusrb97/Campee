@@ -12,6 +12,7 @@ interface IButtonItemProps {
   fontFamilly?: string;
   cursor?: string;
   disabled?: boolean;
+  type?: "button" | "submit";
 }
 
 export default function ButtonItem(props: IButtonItemProps) {
@@ -28,6 +29,7 @@ export default function ButtonItem(props: IButtonItemProps) {
       fontFamily={props.fontFamilly ?? "NanumRegular"}
       cursor={props.cursor ?? "pointer"}
       disabled={props.disabled ?? false}
+      type={props.type ?? "submit"}
     >
       {props.title}
     </Button>
