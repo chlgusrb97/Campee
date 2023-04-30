@@ -7,6 +7,7 @@ import {
 } from "../../../commons/libraries/validations/validations";
 import {ICreateUserData} from "../customs/hooks/useCreateUser";
 import {ILoginUserData} from "../customs/hooks/useLoginUser";
+import {ICreateUseditemInput} from "../../../commons/types/generated/types";
 
 export const useFormJoin = () => {
   const result = useForm<ICreateUserData>({
@@ -26,15 +27,8 @@ export const useFormLogin = () => {
   return result;
 };
 
-export interface IData {
-  name: string;
-  remarks: string;
-  contents: string;
-  price: number;
-}
-
 export const useFormProductsRegistration = () => {
-  const result = useForm<IData>({
+  const result = useForm<ICreateUseditemInput>({
     resolver: yupResolver(PRODUCTS_REGISTRATION_SCHEMA),
     mode: "onChange",
   });
