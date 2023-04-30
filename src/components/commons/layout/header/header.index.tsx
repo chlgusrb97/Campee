@@ -23,6 +23,7 @@ export default function LayoutHeader() {
             <LinkItem
               path={MAIN_PATH}
               name="DINCO"
+              fontSize="40px"
               fontFamily="NanumExtraBold"
             />
           </S.Logo>
