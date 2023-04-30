@@ -4,13 +4,13 @@ import {
   UseFormTrigger,
 } from "react-hook-form";
 import {WebEditor} from "./webEditor.styles";
-import {IData} from "../../useForm/useForm";
+import {ICreateUseditemInput} from "../../../../commons/types/generated/types";
 
 interface IWebEditorItemProps {
   placeHolder?: string;
-  register: UseFormRegister<IData>;
-  setValue: UseFormSetValue<IData>;
-  trigger: UseFormTrigger<IData>;
+  register: UseFormRegister<ICreateUseditemInput>;
+  setValue: UseFormSetValue<ICreateUseditemInput>;
+  trigger: UseFormTrigger<ICreateUseditemInput>;
 }
 
 export default function WebEditorItem(props: IWebEditorItemProps) {

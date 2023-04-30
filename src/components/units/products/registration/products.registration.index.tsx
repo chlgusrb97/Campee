@@ -94,6 +94,7 @@ export default function ProductsRegistrationUI() {
               width="100%"
               padding="20px 18px"
               placeHolder="#태그 #태그 #태그"
+              register={register("tags")}
             />
           </li>
           <li>
