@@ -3,6 +3,7 @@ import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
 import LabelItem from "../../../commons/items/label/label.index";
 import TitleItem from "../../../commons/items/title/title.index";
+import ValidationItem from "../../../commons/items/validation/validation.index";
 import {useFormJoin} from "../../../commons/useForm/useForm";
 import * as S from "./auth.join.styles";
 
@@ -33,7 +34,13 @@ export default function JoinUI() {
               register={register("email")}
             />
           </li>
-          <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
+          <ValidationItem
+            error={errors.email?.message}
+            height="14px"
+            marginTop="8px"
+            marginLeft="188px"
+            marginBottom="30px"
+          />
           <li>
             <span>
               <LabelItem label="비밀번호" />
@@ -46,7 +53,13 @@ export default function JoinUI() {
               register={register("password")}
             />
           </li>
-          <S.ErrorMessage>{errors.password?.message}</S.ErrorMessage>
+          <ValidationItem
+            error={errors.password?.message}
+            height="14px"
+            marginTop="8px"
+            marginLeft="188px"
+            marginBottom="30px"
+          />
           <li>
             <span>
               <LabelItem label="비밀번호 확인" />
@@ -59,7 +72,13 @@ export default function JoinUI() {
               register={register("passwordCheck")}
             />
           </li>
-          <S.ErrorMessage>{errors.passwordCheck?.message}</S.ErrorMessage>
+          <ValidationItem
+            error={errors.passwordCheck?.message}
+            height="14px"
+            marginTop="8px"
+            marginLeft="188px"
+            marginBottom="30px"
+          />
           <li>
             <span>
               <LabelItem label="이름" />
@@ -71,7 +90,12 @@ export default function JoinUI() {
               register={register("name")}
             />
           </li>
-          <S.ErrorMessage>{errors.name?.message}</S.ErrorMessage>
+          <ValidationItem
+            error={errors.name?.message}
+            height="14px"
+            marginTop="8px"
+            marginLeft="188px"
+          />
         </S.InputContents>
         <S.ButtonContents>
           <li>
