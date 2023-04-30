@@ -20,8 +20,8 @@ export default function ButtonItem(props: IButtonItemProps) {
       title={props.title ?? ""}
       width={props.width ?? "auto"}
       height={props.height ?? "auto"}
-      border={props.border ?? "0px"}
-      padding={props.padding ?? "0px"}
+      border={props.border ?? "none"}
+      padding={props.padding ?? "none"}
       color={props.color}
       backgroundColor={props.backgroundColor}
       fontSize={props.fontSize}

@@ -14,6 +14,8 @@ import {useMovedDetail} from "../../../commons/customs/hooks/useMovedDetail";
 import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import InfiniteScroll from "react-infinite-scroller";
 import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
+import LinkItem from "../../../commons/items/link/link.index";
+import {PRODUCTS_REGISTRATION_PATH} from "../../../../commons/paths/paths";
 
 export default function ProductsListUI() {
   const {data} = useQuery<
@@ -48,8 +50,9 @@ export default function ProductsListUI() {
         </S.BestContents>
         <S.ProductsContents>
           <div>
-            <ButtonItem
-              title="상품등록"
+            <LinkItem
+              path={PRODUCTS_REGISTRATION_PATH}
+              name="상품등록"
               border="1px solid #000"
               padding="26px 38px"
               color="#000"
