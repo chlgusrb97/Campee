@@ -3,13 +3,20 @@ import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import LabelItem from "../../../commons/items/label/label.index";
+import ModalItem from "../../../commons/items/modal/modal.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import ValidationItem from "../../../commons/items/validation/validation.index";
 import WebEditorItem from "../../../commons/items/webEditor/webEditor.index";
 import {useFormProductsRegistration} from "../../../commons/useForm/useForm";
+import DaumPostcodeEmbed from "react-daum-postcode";
 import * as S from "./products.registration.styles";
+import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
+import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
+import {useState} from "react";
 
 export default function ProductsRegistrationUI() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const {
     register,
     setValue,
@@ -19,6 +26,9 @@ export default function ProductsRegistrationUI() {
   } = useFormProductsRegistration();
 
   const {createUsedItemSubmit} = useCreateUsedItem();
+  const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
+  const {address, zoneCode, handleComplete} =
+    useAddressHandleComplete(setIsModalOpen);
 
   return (
     <>
@@ -108,7 +118,7 @@ export default function ProductsRegistrationUI() {
               <S.AddressContents>
                 <li>
                   <div>
-                    <input value="07250" disabled />
+                    <input value={zoneCode} disabled />
                   </div>
                   <div>
                     <ButtonItem
@@ -118,15 +128,30 @@ export default function ProductsRegistrationUI() {
                       color="#fff"
                       backgroundColor="#000"
                       fontSize="16px"
+                      type="button"
+                      onClick={showModal}
                     />
+                    {isModalOpen && (
+                      <ModalItem
+                        title="주소 검색"
+                        contents={
+                          <DaumPostcodeEmbed onComplete={handleComplete} />
+                        }
+                        isModalOpen={isModalOpen}
+                        handleOk={handleOk}
+                        handleCancel={handleCancel}
+                      />
+                    )}
                   </div>
                 </li>
                 <li>
                   <InputItem
+                    value={address}
                     width="100%"
                     height="56px"
                     padding="0 18px"
                     placeHolder="도로명 주소 또는 지번 주소"
+                    disabled={true}
                   />
                 </li>
                 <li>

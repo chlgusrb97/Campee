@@ -13,6 +13,7 @@ interface IButtonItemProps {
   cursor?: string;
   disabled?: boolean;
   type?: "button" | "submit";
+  onClick?: () => void;
 }
 
 export default function ButtonItem(props: IButtonItemProps) {
@@ -30,6 +31,7 @@ export default function ButtonItem(props: IButtonItemProps) {
       cursor={props.cursor ?? "pointer"}
       disabled={props.disabled ?? false}
       type={props.type ?? "submit"}
+      onClick={props.onClick}
     >
       {props.title}
     </Button>
