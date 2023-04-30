@@ -36,3 +36,13 @@ export const LOGIN_SCHEMA = yup.object({
       "영문+숫자 조합 8~16자리를 입력해주세요."
     ),
 });
+
+export const PRODUCTS_REGISTRATION_SCHEMA = yup.object({
+  name: yup.string().required("상품명을 작성해주세요."),
+  remarks: yup.string().required("상품요약을 작성해주세요."),
+  contents: yup.string().required("상품내용을 입력해주세요."),
+  price: yup
+    .number()
+    .required("판매가격을 입력해주세요.")
+    .typeError("숫자만 입력 가능합니다."),
+});

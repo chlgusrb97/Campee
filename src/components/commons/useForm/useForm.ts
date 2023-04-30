@@ -3,6 +3,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {
   JOIN_SCHEMA,
   LOGIN_SCHEMA,
+  PRODUCTS_REGISTRATION_SCHEMA,
 } from "../../../commons/libraries/validations/validations";
 import {ICreateUserData} from "../customs/hooks/useCreateUser";
 import {ILoginUserData} from "../customs/hooks/useLoginUser";
@@ -19,6 +20,22 @@ export const useFormJoin = () => {
 export const useFormLogin = () => {
   const result = useForm<ILoginUserData>({
     resolver: yupResolver(LOGIN_SCHEMA),
+    mode: "onChange",
+  });
+
+  return result;
+};
+
+export interface IData {
+  name: string;
+  remarks: string;
+  contents: string;
+  price: number;
+}
+
+export const useFormProductsRegistration = () => {
+  const result = useForm<IData>({
+    resolver: yupResolver(PRODUCTS_REGISTRATION_SCHEMA),
     mode: "onChange",
   });
 
