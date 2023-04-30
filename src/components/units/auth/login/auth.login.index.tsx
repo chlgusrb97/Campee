@@ -3,6 +3,7 @@ import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
 import LabelItem from "../../../commons/items/label/label.index";
 import TitleItem from "../../../commons/items/title/title.index";
+import ValidationItem from "../../../commons/items/validation/validation.index";
 import {useFormLogin} from "../../../commons/useForm/useForm";
 import * as S from "./auth.login.styles";
 
@@ -34,7 +35,13 @@ export default function LoginUI() {
                 register={register("email")}
               />
             </li>
-            <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
+            <ValidationItem
+              error={errors.email?.message}
+              height="14px"
+              marginTop="8px"
+              marginLeft="113px"
+              marginBottom="24px"
+            />
             <li>
               <span>
                 <LabelItem label="비밀번호" />
@@ -47,7 +54,12 @@ export default function LoginUI() {
                 register={register("password")}
               />
             </li>
-            <S.ErrorMessage>{errors.password?.message}</S.ErrorMessage>
+            <ValidationItem
+              error={errors.password?.message}
+              height="14px"
+              marginTop="8px"
+              marginLeft="113px"
+            />
           </S.InputContents>
           <ButtonItem
             title="로그인"

@@ -31,15 +31,3 @@ export const InputContents = styled.ul`
     width: 113px;
   }
 `;
-
-export const ErrorMessage = styled.p`
-  height: 14px;
-  margin-top: 8px;
-  margin-left: 113px;
-  color: #f65656;
-  font-size: 12px;
-
-  :not(:last-of-type) {
-    margin-bottom: 24px;
-  }
-`;

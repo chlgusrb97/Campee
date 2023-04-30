@@ -26,18 +26,6 @@ export const InputContents = styled.ul`
   }
 `;
 
-export const ErrorMessage = styled.p`
-  height: 14px;
-  margin-top: 8px;
-  margin-left: 188px;
-  color: #f65656;
-  font-size: 12px;
-
-  :not(:last-of-type) {
-    margin-bottom: 30px;
-  }
-`;
-
 export const ButtonContents = styled.ul`
   display: flex;
   flex-direction: row;

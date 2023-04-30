@@ -81,7 +81,6 @@ export default function ProductsRegistrationUI() {
                       color="#fff"
                       backgroundColor="#000"
                       fontSize="16px"
-                      cursor="auto"
                     />
                   </div>
                 </li>
