@@ -7,10 +7,7 @@ export const useCreateUsedItem = () => {
   const createUsedItemSubmit = async (
     data: ICreateUseditemInput
   ): Promise<void> => {
-    const tags = data.tags
-      ?.toString()
-      .split(/\s*#\s*/)
-      .filter(Boolean);
+    const tags = data.tags?.toString().split(" ").filter(Boolean);
 
     try {
       const result = await createUseditem({
