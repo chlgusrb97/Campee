@@ -16,6 +16,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 import LinkItem from "../../../commons/items/link/link.index";
 import {PRODUCTS_REGISTRATION_PATH} from "../../../../commons/paths/paths";
+import {routes} from "../../../../commons/routes/routes";
 
 export default function ProductsListUI() {
   const {data} = useQuery<
@@ -25,6 +26,7 @@ export default function ProductsListUI() {
 
   const {movedDetail} = useMovedDetail();
   const {onLoadMore} = onLoadMoreUsedItems();
+  const {pageRouting} = routes();
 
   return (
     <>
@@ -50,14 +52,14 @@ export default function ProductsListUI() {
         </S.BestContents>
         <S.ProductsContents>
           <div>
-            <LinkItem
-              path={PRODUCTS_REGISTRATION_PATH}
-              name="상품등록"
+            <ButtonItem
+              title="상품등록"
               border="1px solid #000"
               padding="26px 38px"
               color="#000"
               backgroundColor="#fff"
               fontSize="20px"
+              onClick={() => pageRouting(PRODUCTS_REGISTRATION_PATH)}
             />
             <S.Input>
               <InputItem
