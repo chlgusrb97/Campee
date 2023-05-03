@@ -52,6 +52,7 @@ export const Contents = styled.ul`
     :last-of-type {
       flex-direction: column;
       align-items: flex-start;
+      padding-bottom: 0;
     }
 
     > span {
@@ -104,27 +105,11 @@ export const AddressContents = styled.ul`
   }
 `;
 
-export const ImageContents = styled.ul`
+export const ImageContents = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 30px;
-
-  > li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 180px;
-    margin-right: 24px;
-    background-color: #bdbdbd;
-    cursor: pointer;
-
-    > span {
-      color: #4f4f4f;
-    }
-  }
 `;
 
 export const SubmitButtonBox = styled.ul`

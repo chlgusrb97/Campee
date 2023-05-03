@@ -13,6 +13,7 @@ import * as S from "./products.registration.styles";
 import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
 import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
 import {useState} from "react";
+import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 
 export default function ProductsRegistrationUI() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -170,14 +171,7 @@ export default function ProductsRegistrationUI() {
               <LabelItem label="사진 첨부" />
             </span>
             <S.ImageContents>
-              <li>
-                <span>+</span>
-                <span>Upload</span>
-              </li>
-              <li>
-                <span>+</span>
-                <span>Upload</span>
-              </li>
+              <ImageUploadItem />
             </S.ImageContents>
           </li>
         </S.Contents>
