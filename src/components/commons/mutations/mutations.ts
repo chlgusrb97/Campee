@@ -33,6 +33,15 @@ export const CREATE_USED_ITEM = gql`
       contents
       price
       tags
+      images
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
     }
   }
 `;

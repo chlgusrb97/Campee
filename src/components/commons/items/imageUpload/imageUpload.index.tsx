@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+import React, {Dispatch, SetStateAction, useState} from "react";
 import {PlusOutlined} from "@ant-design/icons";
 import {Modal} from "antd";
 import type {RcFile, UploadProps} from "antd/es/upload";
 import type {UploadFile} from "antd/es/upload/interface";
 import {UploadWrapper} from "./imageUpload.styles";
+
+interface IImageUploadItemProps {
+  fileList: UploadFile<any>[];
+  setFileList: Dispatch<SetStateAction<UploadFile<any>[]>>;
+}
 
 const getBase64 = (file: RcFile): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -13,18 +18,10 @@ const getBase64 = (file: RcFile): Promise<string> =>
     reader.onerror = (error) => reject(error);
   });
 
-export default function ImageUploadItem() {
+export default function ImageUploadItem(props: IImageUploadItemProps) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
-  const [fileList, setFileList] = useState<UploadFile[]>([
-    // {
-    //   uid: "-1",
-    //   name: "image.png",
-    //   status: "done",
-    //   url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    // },
-  ]);
 
   const handleCancel = () => setPreviewOpen(false);
 
@@ -41,7 +38,7 @@ export default function ImageUploadItem() {
   };
 
   const handleChange: UploadProps["onChange"] = ({fileList: newFileList}) =>
-    setFileList(newFileList);
+    props.setFileList(newFileList);
 
   const uploadButton = (
     <div>
@@ -50,17 +47,15 @@ export default function ImageUploadItem() {
     </div>
   );
 
-  console.log(fileList, "파일리스트");
-
   return (
     <>
       <UploadWrapper
         listType="picture-card"
-        fileList={fileList}
+        fileList={props.fileList}
         onPreview={handlePreview}
         onChange={handleChange}
       >
-        {fileList.length >= 4 ? null : uploadButton}
+        {props.fileList.length >= 8 ? null : uploadButton}
       </UploadWrapper>
       <Modal
         open={previewOpen}

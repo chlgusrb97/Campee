@@ -24,7 +24,3 @@ export const UploadWrapper = styled(Upload)`
     font-size: 24px;
   }
 `;
-
-// .ant-upload-list-item-uploading {
-//   justify-content: flex-start !important;
-// }
