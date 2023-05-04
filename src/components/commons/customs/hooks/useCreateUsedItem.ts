@@ -34,7 +34,7 @@ export const useCreateUsedItem = () => {
             contents: data.contents,
             price: data.price,
             tags,
-            images: images,
+            images,
           },
         },
       });
