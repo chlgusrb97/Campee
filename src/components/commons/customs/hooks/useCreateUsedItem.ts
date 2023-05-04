@@ -5,12 +5,15 @@ import {
   useMutationUploadFile,
 } from "../useMutations/useMutations";
 import {Modal, UploadFile} from "antd";
+import {routes} from "../../../../commons/routes/routes";
+import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 
 export const useCreateUsedItem = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const [createUseditem] = useMutationCreateUsedItem();
   const [uploadFile] = useMutationUploadFile();
+  const {pageRouting} = routes();
 
   const createUsedItemSubmit = async (
     data: ICreateUseditemInput
@@ -38,9 +41,17 @@ export const useCreateUsedItem = () => {
           },
         },
       });
-      console.log(result);
+      console.log(result, "상품등록!");
+      Modal.success({
+        content: "상품이 등록되었습니다.",
+        onOk: () =>
+          pageRouting(
+            `${PRODUCTS_DETAIL_PATH}/${result.data?.createUseditem._id}`
+          ),
+      });
     } catch (error) {
-      if (error instanceof Error) Modal.error({content: error.message});
+      if (error instanceof Error)
+        Modal.error({content: "상품 등록에 실패했습니다."});
     }
   };
 
