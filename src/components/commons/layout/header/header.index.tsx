@@ -10,6 +10,7 @@ import {useQuery} from "@apollo/client";
 import {USER_LOGGED_IN} from "../../queries/queries";
 import {IQuery} from "../../../../commons/types/generated/types";
 import {useLogoutUser} from "../../customs/hooks/useLogoutUser";
+import PaymentItem from "../../items/payment/payment.index";
 
 export default function LayoutHeader() {
   const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
@@ -113,6 +114,9 @@ export default function LayoutHeader() {
                   fontFamily="NanumExtraBold"
                   color="#fff"
                 />
+              </li>
+              <li>
+                <PaymentItem />
               </li>
             </ul>
           </S.Gnb>
