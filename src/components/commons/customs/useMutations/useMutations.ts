@@ -5,12 +5,14 @@ import {
   IMutationCreateUserArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
+  IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import {
   CREATE_USED_ITEM,
   CREATE_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  UPLOAD_FILE,
 } from "../../mutations/mutations";
 
 export const useMutationCreateUser = () => {
@@ -44,4 +46,13 @@ export const useMutationCreateUsedItem = () => {
   >(CREATE_USED_ITEM);
 
   return [createUseditem];
+};
+
+export const useMutationUploadFile = () => {
+  const [uploadFile] = useMutation<
+    Pick<IMutation, "uploadFile">,
+    IMutationUploadFileArgs
+  >(UPLOAD_FILE);
+
+  return [uploadFile];
 };

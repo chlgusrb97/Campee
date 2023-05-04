@@ -26,7 +26,7 @@ export default function ProductsRegistrationUI() {
     formState: {errors},
   } = useFormProductsRegistration();
 
-  const {createUsedItemSubmit} = useCreateUsedItem();
+  const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
   const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
   const {address, zoneCode, handleComplete} =
     useAddressHandleComplete(setIsModalOpen);
@@ -171,7 +171,7 @@ export default function ProductsRegistrationUI() {
               <LabelItem label="사진 첨부" />
             </span>
             <S.ImageContents>
-              <ImageUploadItem />
+              <ImageUploadItem fileList={fileList} setFileList={setFileList} />
             </S.ImageContents>
           </li>
         </S.Contents>
