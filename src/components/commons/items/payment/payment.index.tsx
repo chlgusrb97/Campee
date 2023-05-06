@@ -78,7 +78,7 @@ export default function PaymentItem() {
             </S.ArrowIconWrapper>
           </S.InputBox>
           {isShowPrice && (
-            <S.PriceList>
+            <S.PriceList isShowPrice={isShowPrice}>
               {priceList.map((list, index) => (
                 <li key={index} onClick={onClickPriceValue(list.price)}>
                   {list.title}
