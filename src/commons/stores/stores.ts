@@ -14,11 +14,6 @@ export const restoreAccessTokenLoadble = selector({
   },
 });
 
-export const addressState = atom({
-  key: "addressState",
-  default: "",
-});
-
 export const paymentModalState = atom({
   key: "paymentModalState",
   default: false,

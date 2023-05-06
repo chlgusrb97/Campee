@@ -1,12 +1,10 @@
 import {Dispatch, SetStateAction, useState} from "react";
 import type {Address} from "react-daum-postcode";
-import {addressState} from "../../../../commons/stores/stores";
-import {useRecoilState} from "recoil";
 
 export const useAddressHandleComplete = (
   setIsModalOpen: Dispatch<SetStateAction<boolean>>
 ) => {
-  const [address, setAddress] = useRecoilState(addressState);
+  const [address, setAddress] = useState("");
   const [zoneCode, setZoneCode] = useState("");
 
   const handleComplete = (data: Address) => {

@@ -114,7 +114,7 @@ export default function ProductsRegistrationUI() {
             </span>
             <div>
               <S.MapBox>
-                <KakaoMap />
+                <KakaoMap address={address} />
               </S.MapBox>
               <S.AddressContents>
                 <li>
@@ -153,6 +153,7 @@ export default function ProductsRegistrationUI() {
                     padding="0 18px"
                     placeHolder="도로명 주소 또는 지번 주소"
                     disabled={true}
+                    register={register("useditemAddress.address")}
                   />
                 </li>
                 <li>
@@ -161,6 +162,7 @@ export default function ProductsRegistrationUI() {
                     height="56px"
                     padding="0 18px"
                     placeHolder="상세 주소를 입력해주세요."
+                    register={register("useditemAddress.addressDetail")}
                   />
                 </li>
               </S.AddressContents>

@@ -1,26 +1,24 @@
 import ButtonItem from "../../../../commons/items/button/button.index";
 import * as S from "./products.detail.info.styles";
-import {useQueryUsedItem} from "../../../../commons/customs/useQueries.ts/useQueries";
+import {IDetailChildren} from "../products.detail.types";
 
-export default function ProductsDeTailInfo() {
-  const {usedItemData} = useQueryUsedItem();
-
-  const formattedPrice = usedItemData?.fetchUseditem.price?.toLocaleString();
+export default function ProductsDeTailInfo(props: IDetailChildren) {
+  const formattedPrice = props.usedItemData?.price?.toLocaleString();
 
   return (
     <>
       <S.Wrapper>
         <S.ImageBox>
-          {usedItemData?.fetchUseditem.images && (
+          {props.usedItemData?.images && (
             <img
-              src={`https://storage.googleapis.com/${usedItemData?.fetchUseditem.images[0]}`}
+              src={`https://storage.googleapis.com/${props.usedItemData.images[0]}`}
             />
           )}
         </S.ImageBox>
         <S.Contents>
           <S.ContentsHeader>
             <div>
-              <p>{usedItemData?.fetchUseditem.seller?.name}</p>
+              <p>{props.usedItemData?.seller?.name}</p>
               <S.IconBox>
                 <li>
                   <S.Edit />
@@ -30,7 +28,7 @@ export default function ProductsDeTailInfo() {
                 </li>
               </S.IconBox>
             </div>
-            <h2>{usedItemData?.fetchUseditem.name}</h2>
+            <h2>{props.usedItemData?.name}</h2>
           </S.ContentsHeader>
           <S.ContentsInfo>
             <div>
@@ -47,9 +45,9 @@ export default function ProductsDeTailInfo() {
               </S.Pick>
             </div>
             <div>
-              <S.Remarks>{usedItemData?.fetchUseditem.contents}</S.Remarks>
+              <S.Remarks>{props.usedItemData?.remarks}</S.Remarks>
               <S.Tag>
-                {usedItemData?.fetchUseditem.tags?.map((el, tagIndex) => (
+                {props.usedItemData?.tags?.map((el, tagIndex) => (
                   <li key={tagIndex}>{el}</li>
                 ))}
               </S.Tag>

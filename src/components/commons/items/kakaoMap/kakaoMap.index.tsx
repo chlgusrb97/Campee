@@ -1,16 +1,16 @@
-import {useRecoilState} from "recoil";
 import {Map} from "./kakaoMap.styles";
 import {useEffect} from "react";
-import {addressState} from "../../../../commons/stores/stores";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function KakaoMap() {
-  const [address] = useRecoilState(addressState);
+interface IKakaoMapProps {
+  address: string;
+}
 
-  console.log(address, "주소!");
+export default function KakaoMap(props: IKakaoMapProps) {
+  console.log(props.address, "주소!");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -55,33 +55,36 @@ export default function KakaoMap() {
           // 마커가 지도 위에 표시되도록 설정합니다.
           marker.setMap(map);
 
-          if (address === "") return;
+          if (props.address === "") return;
 
           const geocoder = new window.kakao.maps.services.Geocoder();
 
-          geocoder.addressSearch(address, function (result: any, status: any) {
-            // 정상적으로 검색이 완료됐으면
-            if (status === "OK") {
-              marker.setMap(null);
-              const coords = new window.kakao.maps.LatLng(
-                result[0].y,
-                result[0].x
-              );
+          geocoder.addressSearch(
+            props.address,
+            function (result: any, status: any) {
+              // 정상적으로 검색이 완료됐으면
+              if (status === "OK") {
+                marker.setMap(null);
+                const coords = new window.kakao.maps.LatLng(
+                  result[0].y,
+                  result[0].x
+                );
 
-              // 결과값으로 받은 위치를 마커로 표시합니다
-              new window.kakao.maps.Marker({
-                map: map,
-                position: coords,
-              });
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                new window.kakao.maps.Marker({
+                  map: map,
+                  position: coords,
+                });
 
-              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-              map.setCenter(coords);
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+              }
             }
-          });
+          );
         });
       };
     });
-  }, [address]);
+  }, [props.address]);
 
   return (
     <>
