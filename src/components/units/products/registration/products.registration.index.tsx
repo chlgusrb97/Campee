@@ -28,8 +28,10 @@ export default function ProductsRegistrationUI() {
 
   const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
   const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
-  const {address, zoneCode, handleComplete} =
-    useAddressHandleComplete(setIsModalOpen);
+  const {address, zoneCode, handleComplete} = useAddressHandleComplete(
+    setIsModalOpen,
+    setValue
+  );
 
   return (
     <>
@@ -120,6 +122,7 @@ export default function ProductsRegistrationUI() {
                 <li>
                   <div>
                     <input value={zoneCode} disabled />
+                    <input value={zoneCode} type="hidden" />
                   </div>
                   <div>
                     <ButtonItem
