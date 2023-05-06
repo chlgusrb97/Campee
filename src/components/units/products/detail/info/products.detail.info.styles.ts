@@ -149,6 +149,10 @@ export const Tag = styled.ul`
   > li {
     color: #f65656;
     font-size: 16px;
+
+    :not(:last-of-type) {
+      margin-right: 8px;
+    }
   }
 `;
 

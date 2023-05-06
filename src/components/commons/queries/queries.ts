@@ -28,3 +28,20 @@ export const USED_ITEMS = gql`
     }
   }
 `;
+
+export const USED_ITEM = gql`
+  query fetchUseditem($useditemId: ID!) {
+    fetchUseditem(useditemId: $useditemId) {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      seller {
+        name
+      }
+    }
+  }
+`;
