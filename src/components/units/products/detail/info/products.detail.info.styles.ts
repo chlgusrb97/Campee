@@ -63,14 +63,25 @@ export const IconBox = styled.ul`
 
 export const Edit = styled(FormOutlined)`
   color: #bdbdbd;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #000;
+  }
 `;
 
 export const Delete = styled(CloseOutlined)`
   color: #bdbdbd;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #000;
+  }
 `;
 
 export const ContentsInfo = styled.div`
