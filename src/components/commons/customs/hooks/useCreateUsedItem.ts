@@ -38,6 +38,11 @@ export const useCreateUsedItem = () => {
             price: data.price,
             tags,
             images,
+            useditemAddress: {
+              zipcode: data.useditemAddress?.zipcode,
+              address: data.useditemAddress?.address,
+              addressDetail: data.useditemAddress?.addressDetail,
+            },
           },
         },
       });
