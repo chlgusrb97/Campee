@@ -11,10 +11,12 @@ import {USER_LOGGED_IN} from "../../queries/queries";
 import {IQuery} from "../../../../commons/types/generated/types";
 import {useLogoutUser} from "../../customs/hooks/useLogoutUser";
 import PaymentItem from "../../items/payment/payment.index";
+import {usePayment} from "../../customs/hooks/usePayment";
 
 export default function LayoutHeader() {
   const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
   const {logoutUserSubmit} = useLogoutUser();
+  const {showPaymentModal, isPaymentModal} = usePayment();
 
   return (
     <>
@@ -31,6 +33,7 @@ export default function LayoutHeader() {
           <S.Tnb>
             {data?.fetchUserLoggedIn ? (
               <>
+                {isPaymentModal && <PaymentItem />}
                 <li>
                   <S.User>
                     <p>{data.fetchUserLoggedIn.name}</p>님
@@ -38,7 +41,7 @@ export default function LayoutHeader() {
                   <S.Point>
                     포인트 <p>{data.fetchUserLoggedIn.userPoint?.amount}</p>P
                   </S.Point>
-                  <S.TopUp>충전</S.TopUp>
+                  <S.TopUp onClick={showPaymentModal}>충전</S.TopUp>
                 </li>
                 <li>
                   <S.Logout onClick={logoutUserSubmit}>로그아웃</S.Logout>
@@ -114,9 +117,6 @@ export default function LayoutHeader() {
                   fontFamily="NanumExtraBold"
                   color="#fff"
                 />
-              </li>
-              <li>
-                <PaymentItem />
               </li>
             </ul>
           </S.Gnb>

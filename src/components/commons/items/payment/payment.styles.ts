@@ -1,8 +1,12 @@
-import {CaretDownOutlined} from "@ant-design/icons";
+import {css, keyframes} from "@emotion/react";
 import styled from "@emotion/styled";
 import {Modal} from "antd";
 
-interface IStyleProps {
+interface IArroStyleProps {
+  isShowPrice: boolean;
+}
+
+interface IPriceListStyleProps {
   isShowPrice: boolean;
 }
 
@@ -45,18 +49,36 @@ export const InputBox = styled.div`
   }
 `;
 
-export const ArrowIcon = styled(CaretDownOutlined)<IStyleProps>`
+export const ArrowIconWrapper = styled.div<IArroStyleProps>`
   font-size: 24px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   transform: ${(props) => (props.isShowPrice ? "rotate(180deg)" : "rotate(0)")};
 `;
 
-export const PriceList = styled.ul`
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const PriceList = styled.ul<IPriceListStyleProps>`
   border-radius: 10px;
   margin-top: 16px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  animation: ${({isShowPrice}) =>
+    isShowPrice
+      ? css`
+          ${fadeIn} 0.5s ease-in-out
+        `
+      : ""};
 
   > li {
     color: #e0e0e0;

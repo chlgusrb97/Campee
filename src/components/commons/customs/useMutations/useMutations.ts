@@ -1,6 +1,7 @@
 import {useMutation} from "@apollo/client";
 import {
   IMutation,
+  IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
   IMutationCreateUserArgs,
   IMutationLoginUserArgs,
@@ -8,6 +9,7 @@ import {
   IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import {
+  CREATE_POINT,
   CREATE_USED_ITEM,
   CREATE_USER,
   LOGIN_USER,
@@ -55,4 +57,13 @@ export const useMutationUploadFile = () => {
   >(UPLOAD_FILE);
 
   return [uploadFile];
+};
+
+export const useMutationCreatePoint = () => {
+  const [createPointTransactionOfLoading] = useMutation<
+    Pick<IMutation, "createPointTransactionOfLoading">,
+    IMutationCreatePointTransactionOfLoadingArgs
+  >(CREATE_POINT);
+
+  return [createPointTransactionOfLoading];
 };
