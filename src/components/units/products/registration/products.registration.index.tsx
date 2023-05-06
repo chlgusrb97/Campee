@@ -14,8 +14,11 @@ import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
 import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
 import {useState} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
+import {IProductsRegistrationUIProps} from "./products.registration.types";
 
-export default function ProductsRegistrationUI() {
+export default function ProductsRegistrationUI(
+  props: IProductsRegistrationUIProps
+) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
@@ -37,7 +40,7 @@ export default function ProductsRegistrationUI() {
     <>
       <S.Wrapper onSubmit={handleSubmit(createUsedItemSubmit)}>
         <span>
-          <TitleItem title="상품 등록" />
+          <TitleItem title={`상품 ${props.isEdit ? "수정" : "등록"}`} />
         </span>
         <S.Contents>
           <li>
@@ -196,7 +199,7 @@ export default function ProductsRegistrationUI() {
           </li>
           <li>
             <ButtonItem
-              title="등록"
+              title={props.isEdit ? "수정" : "등록"}
               width="195px"
               height="77px"
               color="#fff"

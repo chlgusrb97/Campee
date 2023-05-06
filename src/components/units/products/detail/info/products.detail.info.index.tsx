@@ -2,11 +2,21 @@ import ButtonItem from "../../../../commons/items/button/button.index";
 import * as S from "./products.detail.info.styles";
 import {IDetailChildren} from "../products.detail.types";
 import {useDeleteUsedItem} from "../../../../commons/customs/hooks/useDeleteUsedItem";
+import {routes} from "../../../../../commons/routes/routes";
+import {
+  PRODUCTS_DETAIL_PATH,
+  PRODUCTS_EDIT_PATH,
+} from "../../../../../commons/paths/paths";
+import {useRouter} from "next/router";
 
 export default function ProductsDeTailInfo(props: IDetailChildren) {
+  const router = useRouter();
   const formattedPrice = props.usedItemData?.price?.toLocaleString();
 
   const {onClickDeleteUsedItem} = useDeleteUsedItem();
+  const {pageRouting} = routes();
+
+  console.log(router.query.productsId, "아하하하");
 
   return (
     <>
@@ -25,7 +35,13 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
               <p>{props.usedItemData?.seller?.name}</p>
               <S.IconBox>
                 <li>
-                  <S.Edit />
+                  <S.Edit
+                    onClick={() => {
+                      pageRouting(
+                        `${PRODUCTS_DETAIL_PATH}/${router.query.productsId}${PRODUCTS_EDIT_PATH}`
+                      );
+                    }}
+                  />
                 </li>
                 <li>
                   <S.Delete onClick={onClickDeleteUsedItem} />
