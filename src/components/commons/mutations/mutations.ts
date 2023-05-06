@@ -59,3 +59,9 @@ export const CREATE_POINT = gql`
     }
   }
 `;
+
+export const DELETE_USED_ITEM = gql`
+  mutation useditemId($useditemId: ID!) {
+    deleteUseditem(useditemId: $useditemId)
+  }
+`;
