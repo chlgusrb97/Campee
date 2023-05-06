@@ -4,6 +4,7 @@ import {
   IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
   IMutationCreateUserArgs,
+  IMutationDeleteUseditemArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
   IMutationUploadFileArgs,
@@ -12,6 +13,7 @@ import {
   CREATE_POINT,
   CREATE_USED_ITEM,
   CREATE_USER,
+  DELETE_USED_ITEM,
   LOGIN_USER,
   LOGOUT_USER,
   UPLOAD_FILE,
@@ -48,6 +50,15 @@ export const useMutationCreateUsedItem = () => {
   >(CREATE_USED_ITEM);
 
   return [createUseditem];
+};
+
+export const useMutationDeleteUsedItem = () => {
+  const [deleteUseditem] = useMutation<
+    Pick<IMutation, "deleteUseditem">,
+    IMutationDeleteUseditemArgs
+  >(DELETE_USED_ITEM);
+
+  return [deleteUseditem];
 };
 
 export const useMutationUploadFile = () => {

@@ -1,9 +1,12 @@
 import ButtonItem from "../../../../commons/items/button/button.index";
 import * as S from "./products.detail.info.styles";
 import {IDetailChildren} from "../products.detail.types";
+import {useDeleteUsedItem} from "../../../../commons/customs/hooks/useDeleteUsedItem";
 
 export default function ProductsDeTailInfo(props: IDetailChildren) {
   const formattedPrice = props.usedItemData?.price?.toLocaleString();
+
+  const {onClickDeleteUsedItem} = useDeleteUsedItem();
 
   return (
     <>
@@ -25,7 +28,7 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
                   <S.Edit />
                 </li>
                 <li>
-                  <S.Delete />
+                  <S.Delete onClick={onClickDeleteUsedItem} />
                 </li>
               </S.IconBox>
             </div>
