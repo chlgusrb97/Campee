@@ -13,8 +13,12 @@ export default function ProductsDeTailContents(props: IDetailChildren) {
           <TitleItem title="DETAIL" fontSize="32px" />
         </span>
         <S.Contents>
+          <S.MapBox>
+            <KakaoMap
+              address={`${props.usedItemData?.useditemAddress?.address}`}
+            />
+          </S.MapBox>
           <p>{props.usedItemData?.contents}</p>
-          <S.MapBox>{/* <KakaoMap /> */}</S.MapBox>
         </S.Contents>
       </S.Wrapper>
     </>

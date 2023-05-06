@@ -14,12 +14,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+
   p {
+    margin-top: 30px;
     font-size: 24px;
   }
 `;
 
 export const MapBox = styled.div`
   width: 100%;
-  height: 500px;
+  height: 700px;
 `;
