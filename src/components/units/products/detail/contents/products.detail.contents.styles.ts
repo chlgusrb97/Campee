@@ -10,6 +10,16 @@ export const Wrapper = styled.div`
 
   > div {
     padding: 100px 50px;
-    background-color: antiquewhite;
   }
+`;
+
+export const Contents = styled.div`
+  p {
+    font-size: 24px;
+  }
+`;
+
+export const MapBox = styled.div`
+  width: 100%;
+  height: 500px;
 `;
