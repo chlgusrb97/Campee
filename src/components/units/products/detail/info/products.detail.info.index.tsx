@@ -9,11 +9,12 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
     <>
       <S.Wrapper>
         <S.ImageBox>
-          {props.usedItemData?.images && (
-            <img
-              src={`https://storage.googleapis.com/${props.usedItemData.images[0]}`}
-            />
-          )}
+          {props.usedItemData?.images &&
+            props.usedItemData?.images.length !== 0 && (
+              <img
+                src={`https://storage.googleapis.com/${props.usedItemData.images[0]}`}
+              />
+            )}
         </S.ImageBox>
         <S.Contents>
           <S.ContentsHeader>

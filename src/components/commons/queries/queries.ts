@@ -39,6 +39,12 @@ export const USED_ITEM = gql`
       price
       tags
       images
+      useditemAddress {
+        _id
+        zipcode
+        address
+        addressDetail
+      }
       seller {
         name
       }
