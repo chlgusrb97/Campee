@@ -1,4 +1,3 @@
-import {CaretDownOutlined} from "@ant-design/icons";
 import styled from "@emotion/styled";
 import {Modal} from "antd";
 
@@ -45,7 +44,7 @@ export const InputBox = styled.div`
   }
 `;
 
-export const ArrowIcon = styled(CaretDownOutlined)<IStyleProps>`
+export const ArrowIconWrapper = styled.div<IStyleProps>`
   font-size: 24px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;

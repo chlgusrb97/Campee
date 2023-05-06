@@ -1,6 +1,8 @@
-import {Button} from "antd";
 import * as S from "./payment.styles";
 import {useState} from "react";
+import {usePayment} from "../../customs/hooks/usePayment";
+import Script from "next/script";
+import {CaretDownOutlined} from "@ant-design/icons";
 
 const priceList = [
   {
@@ -22,23 +24,20 @@ const priceList = [
 ];
 
 export default function PaymentItem() {
-  const [coin, setCoin] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShowPrice, setIsShowPrice] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  const {onClickPayment, coin, setCoin, isPaymentModal, setIsPaymentModal} =
+    usePayment();
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    setIsPaymentModal(false);
   };
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setIsPaymentModal(false);
     setCoin(0);
-    setIsShowPrice(true);
+    setIsShowPrice(false);
     setIsActive(false);
   };
 
@@ -54,12 +53,15 @@ export default function PaymentItem() {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+      <Script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+      ></Script>
+      <Script src="https://cdn.iamport.kr/v1/iamport.js"></Script>
+
       <S.NewModal
         title="충전하실 금액을 선택해주세요."
-        open={isModalOpen}
+        open={isPaymentModal}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[null]}
@@ -71,16 +73,22 @@ export default function PaymentItem() {
               placeholder="포인트 선택"
               disabled
             />
-            <S.ArrowIcon onClick={onClickShowPrice} isShowPrice={isShowPrice} />
+            <S.ArrowIconWrapper isShowPrice={isShowPrice}>
+              <CaretDownOutlined onClick={onClickShowPrice} />
+            </S.ArrowIconWrapper>
           </S.InputBox>
           {isShowPrice && (
             <S.PriceList>
-              {priceList.map((list) => (
-                <li onClick={onClickPriceValue(list.price)}>{list.title}</li>
+              {priceList.map((list, index) => (
+                <li key={index} onClick={onClickPriceValue(list.price)}>
+                  {list.title}
+                </li>
               ))}
             </S.PriceList>
           )}
-          <S.Button disabled={isActive ? false : true}>충전하기</S.Button>
+          <S.Button onClick={onClickPayment} disabled={isActive ? false : true}>
+            충전하기
+          </S.Button>
         </S.PaymentContents>
       </S.NewModal>
     </>

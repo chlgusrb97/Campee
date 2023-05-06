@@ -1,6 +1,5 @@
-import {atom, selector, useRecoilState} from "recoil";
+import {atom, selector} from "recoil";
 import {getAccessToken} from "../libraries/getAccessToken";
-import {useEffect} from "react";
 
 export const accessTokenState = atom({
   key: "accessTokenState",
@@ -18,4 +17,9 @@ export const restoreAccessTokenLoadble = selector({
 export const addressState = atom({
   key: "addressState",
   default: "",
+});
+
+export const paymentModalState = atom({
+  key: "paymentModalState",
+  default: false,
 });
