@@ -53,6 +53,7 @@ export default function ProductsRegistrationUI(
                 padding="20px 18px"
                 placeHolder="상품명을 작성해주세요."
                 register={register("name")}
+                defaultValue={props.usedItemData?.fetchUseditem.name}
               />
               <ValidationItem error={errors.name?.message} marginTop="8px" />
             </div>
@@ -67,6 +68,7 @@ export default function ProductsRegistrationUI(
                 padding="20px 18px"
                 placeHolder="상품 요약을 작성해주세요."
                 register={register("remarks")}
+                defaultValue={props.usedItemData?.fetchUseditem.remarks}
               />
               <ValidationItem error={errors.remarks?.message} marginTop="8px" />
             </div>
@@ -78,9 +80,9 @@ export default function ProductsRegistrationUI(
             <div>
               <WebEditorItem
                 placeHolder="상품을 설명해주세요."
-                register={register}
                 setValue={setValue}
                 trigger={trigger}
+                usedItemData={props.usedItemData}
               />
               <ValidationItem
                 error={errors.contents?.message}
@@ -98,6 +100,7 @@ export default function ProductsRegistrationUI(
                 padding="20px 18px"
                 placeHolder="판매 가격을 입력해주세요."
                 register={register("price")}
+                defaultValue={props.usedItemData?.fetchUseditem.price}
               />
               <ValidationItem error={errors.price?.message} marginTop="8px" />
             </div>
@@ -111,6 +114,9 @@ export default function ProductsRegistrationUI(
               padding="20px 18px"
               placeHolder="#태그 #태그 #태그"
               register={register("tags")}
+              defaultValue={props.usedItemData?.fetchUseditem.tags
+                ?.map((tag) => `${tag} `)
+                .join("")}
             />
           </li>
           <li>
@@ -124,8 +130,18 @@ export default function ProductsRegistrationUI(
               <S.AddressContents>
                 <li>
                   <div>
-                    <input value={zoneCode} disabled />
-                    <input value={zoneCode} type="hidden" />
+                    <InputItem
+                      width="80px"
+                      height="52px"
+                      border="1px solid #bdbdbd"
+                      backgroundColor="#fff"
+                      textAlign="center"
+                      placeHolder="우편번호"
+                      defaultValue={
+                        props.usedItemData?.fetchUseditem.useditemAddress
+                          ?.zipcode
+                      }
+                    />
                   </div>
                   <div>
                     <ButtonItem
@@ -153,13 +169,15 @@ export default function ProductsRegistrationUI(
                 </li>
                 <li>
                   <InputItem
-                    value={address}
                     width="100%"
                     height="56px"
                     padding="0 18px"
                     placeHolder="도로명 주소 또는 지번 주소"
                     disabled={true}
                     register={register("useditemAddress.address")}
+                    defaultValue={
+                      props.usedItemData?.fetchUseditem.useditemAddress?.address
+                    }
                   />
                 </li>
                 <li>
@@ -169,6 +187,10 @@ export default function ProductsRegistrationUI(
                     padding="0 18px"
                     placeHolder="상세 주소를 입력해주세요."
                     register={register("useditemAddress.addressDetail")}
+                    defaultValue={
+                      props.usedItemData?.fetchUseditem.useditemAddress
+                        ?.addressDetail
+                    }
                   />
                 </li>
               </S.AddressContents>
