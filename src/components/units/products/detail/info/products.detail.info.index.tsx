@@ -16,8 +16,6 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
   const {onClickDeleteUsedItem} = useDeleteUsedItem();
   const {pageRouting} = routes();
 
-  console.log(router.query.productsId, "아하하하");
-
   return (
     <>
       <S.Wrapper>

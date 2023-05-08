@@ -4,7 +4,5 @@ import ProductsRegistrationUI from "../../../../../src/components/units/products
 export default function ProductsEditPage() {
   const {usedItemData} = useQueryUsedItem();
 
-  console.log(usedItemData, "데이터!");
-
   return <ProductsRegistrationUI isEdit={true} usedItemData={usedItemData} />;
 }

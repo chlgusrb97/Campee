@@ -21,7 +21,6 @@ export default function WebEditorItem(props: IWebEditorItemProps) {
     void props.trigger("contents");
     setContents(value);
   };
-  console.log(contents);
 
   return (
     <WebEditor

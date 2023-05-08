@@ -1,17 +1,16 @@
 import {Map} from "./kakaoMap.styles";
 import {useEffect} from "react";
+import {Maybe} from "yup";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
 interface IKakaoMapProps {
-  address: string;
+  address: string | Maybe<string>;
 }
 
 export default function KakaoMap(props: IKakaoMapProps) {
-  console.log(props.address, "주소!");
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const latitude = position.coords.latitude;

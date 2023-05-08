@@ -1,13 +1,15 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {PlusOutlined} from "@ant-design/icons";
 import {Modal} from "antd";
 import type {RcFile, UploadProps} from "antd/es/upload";
-import type {UploadFile} from "antd/es/upload/interface";
+import type {UploadFile, UploadFileStatus} from "antd/es/upload/interface";
 import {UploadWrapper} from "./imageUpload.styles";
+import {IQuery} from "../../../../commons/types/generated/types";
 
 interface IImageUploadItemProps {
   fileList: UploadFile<any>[];
   setFileList: Dispatch<SetStateAction<UploadFile<any>[]>>;
+  usedItemData?: Pick<IQuery, "fetchUseditem"> | undefined;
 }
 
 const getBase64 = (file: RcFile): Promise<string> =>
@@ -23,6 +25,22 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
 
+  console.log(props.usedItemData?.fetchUseditem.images);
+
+  useEffect(() => {
+    if (props.usedItemData?.fetchUseditem.images) {
+      const newFileList = props.usedItemData.fetchUseditem.images.map(
+        (image, index) => ({
+          uid: String(index),
+          name: image,
+          status: "done" as UploadFileStatus,
+          url: `https:storage.googleapis.com/${image}`,
+        })
+      );
+      props.setFileList(newFileList);
+    }
+  }, [props.usedItemData]);
+
   const handleCancel = () => setPreviewOpen(false);
 
   const handlePreview = async (file: UploadFile) => {
@@ -37,8 +55,9 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
     );
   };
 
-  const handleChange: UploadProps["onChange"] = ({fileList: newFileList}) =>
+  const handleChange: UploadProps["onChange"] = ({fileList: newFileList}) => {
     props.setFileList(newFileList);
+  };
 
   const uploadButton = (
     <div>
@@ -63,7 +82,10 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
         footer={null}
         onCancel={handleCancel}
       >
-        <img alt="example" style={{width: "100%"}} src={previewImage} />
+        <img
+          style={{width: "100%", backgroundColor: "red"}}
+          src={previewImage}
+        />
       </Modal>
     </>
   );

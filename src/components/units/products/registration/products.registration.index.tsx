@@ -31,7 +31,7 @@ export default function ProductsRegistrationUI(
 
   const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
   const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
-  const {address, zoneCode, handleComplete} = useAddressHandleComplete(
+  const {address, handleComplete} = useAddressHandleComplete(
     setIsModalOpen,
     setValue
   );
@@ -125,7 +125,13 @@ export default function ProductsRegistrationUI(
             </span>
             <div>
               <S.MapBox>
-                <KakaoMap address={address} />
+                <KakaoMap
+                  address={
+                    props.isEdit
+                      ? address
+                      : `${props.usedItemData?.fetchUseditem.useditemAddress?.address}`
+                  }
+                />
               </S.MapBox>
               <S.AddressContents>
                 <li>
@@ -137,6 +143,8 @@ export default function ProductsRegistrationUI(
                       backgroundColor="#fff"
                       textAlign="center"
                       placeHolder="우편번호"
+                      disabled={true}
+                      register={register("useditemAddress.zipcode")}
                       defaultValue={
                         props.usedItemData?.fetchUseditem.useditemAddress
                           ?.zipcode
@@ -201,7 +209,11 @@ export default function ProductsRegistrationUI(
               <LabelItem label="사진 첨부" />
             </span>
             <S.ImageContents>
-              <ImageUploadItem fileList={fileList} setFileList={setFileList} />
+              <ImageUploadItem
+                fileList={fileList}
+                setFileList={setFileList}
+                usedItemData={props.usedItemData}
+              />
             </S.ImageContents>
           </li>
         </S.Contents>
