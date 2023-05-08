@@ -15,6 +15,7 @@ import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddres
 import {useState} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 import {IProductsRegistrationUIProps} from "./products.registration.types";
+import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
 
 export default function ProductsRegistrationUI(
   props: IProductsRegistrationUIProps
@@ -30,15 +31,24 @@ export default function ProductsRegistrationUI(
   } = useFormProductsRegistration();
 
   const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
+  const {createUpdateItemSubmit} = useUpdateUsedItem();
   const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
   const {address, handleComplete} = useAddressHandleComplete(
     setIsModalOpen,
     setValue
   );
 
+  console.log(props.usedItemData);
+
   return (
     <>
-      <S.Wrapper onSubmit={handleSubmit(createUsedItemSubmit)}>
+      <S.Wrapper
+        onSubmit={
+          props.isEdit
+            ? handleSubmit(createUpdateItemSubmit(fileList))
+            : handleSubmit(createUsedItemSubmit)
+        }
+      >
         <span>
           <TitleItem title={`상품 ${props.isEdit ? "수정" : "등록"}`} />
         </span>
