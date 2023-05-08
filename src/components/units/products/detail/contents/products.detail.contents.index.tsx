@@ -4,8 +4,6 @@ import {IDetailChildren} from "../products.detail.types";
 import * as S from "./products.detail.contents.styles";
 
 export default function ProductsDeTailContents(props: IDetailChildren) {
-  console.log(props.usedItemData, "데이터~!!");
-
   return (
     <>
       <S.Wrapper>

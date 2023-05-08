@@ -23,7 +23,6 @@ export const useLoginUser = () => {
           password: data.password,
         },
       });
-      console.log(result);
 
       const accessToken = result.data?.loginUserExample.accessToken;
 
