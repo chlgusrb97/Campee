@@ -90,17 +90,6 @@ export const AddressContents = styled.ul`
 
     > div {
       margin-right: 16px;
-
-      > input {
-        width: 77px;
-        height: 52px;
-        border: 1px solid #bdbdbd;
-        color: #bdbdbd;
-        background-color: #fff;
-        text-align: center;
-        font-size: 16px;
-        outline: none;
-      }
     }
   }
 `;

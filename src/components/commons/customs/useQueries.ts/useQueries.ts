@@ -12,11 +12,7 @@ export const useQueryUsedItem = () => {
   const {data: usedItemData} = useQuery<
     Pick<IQuery, "fetchUseditem">,
     IQueryFetchUseditemArgs
-  >(USED_ITEM, {
-    variables: {
-      useditemId: String(router.query.productsId),
-    },
-  });
+  >(USED_ITEM, {variables: {useditemId: String(router.query.productsId)}});
 
   return {usedItemData};
 };
