@@ -43,6 +43,37 @@ export const CREATE_USED_ITEM = gql`
   }
 `;
 
+export const UPDATE_USED_ITEM = gql`
+  mutation updateUseditem(
+    $useditemId: ID!
+    $updateUseditemInput: UpdateUseditemInput!
+  ) {
+    updateUseditem(
+      useditemId: $useditemId
+      updateUseditemInput: $updateUseditemInput
+    ) {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
+    }
+  }
+`;
+
+export const DELETE_USED_ITEM = gql`
+  mutation useditemId($useditemId: ID!) {
+    deleteUseditem(useditemId: $useditemId)
+  }
+`;
+
 export const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
@@ -57,11 +88,5 @@ export const CREATE_POINT = gql`
       _id
       amount
     }
-  }
-`;
-
-export const DELETE_USED_ITEM = gql`
-  mutation useditemId($useditemId: ID!) {
-    deleteUseditem(useditemId: $useditemId)
   }
 `;

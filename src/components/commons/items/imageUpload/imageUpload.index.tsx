@@ -25,8 +25,6 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
 
-  console.log(props.usedItemData?.fetchUseditem.images);
-
   useEffect(() => {
     if (props.usedItemData?.fetchUseditem.images) {
       const newFileList = props.usedItemData.fetchUseditem.images.map(

@@ -7,7 +7,10 @@ import {
 } from "../../../commons/libraries/validations/validations";
 import {ICreateUserData} from "../customs/hooks/useCreateUser";
 import {ILoginUserData} from "../customs/hooks/useLoginUser";
-import {ICreateUseditemInput} from "../../../commons/types/generated/types";
+import {
+  ICreateUseditemInput,
+  IUseditem,
+} from "../../../commons/types/generated/types";
 
 export const useFormJoin = () => {
   const result = useForm<ICreateUserData>({
