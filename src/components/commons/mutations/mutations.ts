@@ -90,3 +90,11 @@ export const CREATE_POINT = gql`
     }
   }
 `;
+
+export const BUYING_PRODUCTS = gql`
+  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {
+    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {
+      _id
+    }
+  }
+`;

@@ -8,12 +8,14 @@ import {
   PRODUCTS_EDIT_PATH,
 } from "../../../../../commons/paths/paths";
 import {useRouter} from "next/router";
+import {useBuyingProducts} from "../../../../commons/customs/hooks/useBuyingProducts";
 
 export default function ProductsDeTailInfo(props: IDetailChildren) {
   const router = useRouter();
   const formattedPrice = props.usedItemData?.price?.toLocaleString();
 
   const {onClickDeleteUsedItem} = useDeleteUsedItem();
+  const {onClickBuyingProducts} = useBuyingProducts();
   const {pageRouting} = routes();
 
   return (
@@ -79,6 +81,7 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
                 color="#fff"
                 backgroundColor="#000"
                 fontSize="24px"
+                onClick={onClickBuyingProducts}
               />
             </li>
             <li>
