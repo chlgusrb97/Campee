@@ -11,7 +11,6 @@ import {ILoginUserData} from "../customs/hooks/useLoginUser";
 import {
   ICreateUseditemInput,
   ICreateUseditemQuestionInput,
-  IUseditem,
 } from "../../../commons/types/generated/types";
 
 export const useFormJoin = () => {

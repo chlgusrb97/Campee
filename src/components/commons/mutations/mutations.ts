@@ -119,3 +119,18 @@ export const DELETE_USED_ITEM_QUESTION = gql`
     deleteUseditemQuestion(useditemQuestionId: $useditemQuestionId)
   }
 `;
+
+export const UPDATE_USED_ITEM_QUESTION = gql`
+  mutation updateUseditemQuestion(
+    $useditemQuestionId: ID!
+    $updateUseditemQuestionInput: UpdateUseditemQuestionInput!
+  ) {
+    updateUseditemQuestion(
+      useditemQuestionId: $useditemQuestionId
+      updateUseditemQuestionInput: $updateUseditemQuestionInput
+    ) {
+      _id
+      contents
+    }
+  }
+`;

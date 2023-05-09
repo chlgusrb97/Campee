@@ -4,15 +4,18 @@ import {IUseditemQuestion} from "../../../../../../commons/types/generated/types
 import {useDeleteUsedItemQuestion} from "../../../../../commons/customs/hooks/useDeleteUsedItemQuestion";
 import ButtonItem from "../../../../../commons/items/button/button.index";
 import * as S from "./comment.list.styles";
+import {useFormProductsCommentWrite} from "../../../../../commons/useForm/useForm";
+import {useUpdateUsedItemQuestion} from "../../../../../commons/customs/hooks/useUpdateUsedItemQuestion";
 
 interface ICommentListItemUIProps {
   Question: IUseditemQuestion;
 }
 
 export default function CommentListItemUI(props: ICommentListItemUIProps) {
-  const [isEdit, setIsEdit] = useState(false);
+  const {register, handleSubmit} = useFormProductsCommentWrite();
 
   const {onClickDeleteQuestion} = useDeleteUsedItemQuestion();
+  const {updateQuestionSubmit, isEdit, setIsEdit} = useUpdateUsedItemQuestion();
 
   const onClickEdit = () => {
     setIsEdit(true);
@@ -28,10 +31,13 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
         <S.Name>{props.Question.user.name}</S.Name>
         <S.Contents>
           {isEdit ? (
-            <S.EditBox>
+            <S.EditBox
+              onSubmit={handleSubmit(updateQuestionSubmit(props.Question))}
+            >
               <textarea
                 maxLength={500}
                 defaultValue={props.Question.contents}
+                {...register("contents")}
               ></textarea>
               <ul>
                 <li>

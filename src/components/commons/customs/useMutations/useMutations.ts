@@ -11,6 +11,7 @@ import {
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
   IMutationUpdateUseditemArgs,
+  IMutationUpdateUseditemQuestionArgs,
   IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import {
@@ -24,6 +25,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USED_ITEM,
+  UPDATE_USED_ITEM_QUESTION,
   UPLOAD_FILE,
 } from "../../mutations/mutations";
 
@@ -121,4 +123,13 @@ export const useMutationDeleteUsedItemQuestion = () => {
   >(DELETE_USED_ITEM_QUESTION);
 
   return [deleteUseditemQuestion];
+};
+
+export const useMutationUpdateUsedItemQuestion = () => {
+  const [updateUseditemQuestion] = useMutation<
+    Pick<IMutation, "updateUseditemQuestion">,
+    IMutationUpdateUseditemQuestionArgs
+  >(UPDATE_USED_ITEM_QUESTION);
+
+  return [updateUseditemQuestion];
 };
