@@ -1,6 +1,7 @@
 import {useMutation} from "@apollo/client";
 import {
   IMutation,
+  IMutationCreatePointTransactionOfBuyingAndSellingArgs,
   IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
   IMutationCreateUserArgs,
@@ -11,6 +12,7 @@ import {
   IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import {
+  BUYING_PRODUCTS,
   CREATE_POINT,
   CREATE_USED_ITEM,
   CREATE_USER,
@@ -88,4 +90,13 @@ export const useMutationCreatePoint = () => {
   >(CREATE_POINT);
 
   return [createPointTransactionOfLoading];
+};
+
+export const useMutationBuyingProducts = () => {
+  const [createPointTransactionOfBuyingAndSelling] = useMutation<
+    Pick<IMutation, "createPointTransactionOfBuyingAndSelling">,
+    IMutationCreatePointTransactionOfBuyingAndSellingArgs
+  >(BUYING_PRODUCTS);
+
+  return [createPointTransactionOfBuyingAndSelling];
 };
