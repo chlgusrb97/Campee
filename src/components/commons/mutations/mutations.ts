@@ -98,3 +98,18 @@ export const BUYING_PRODUCTS = gql`
     }
   }
 `;
+
+export const CREATE_USED_ITEM_QUESTION = gql`
+  mutation createUseditemQuestion(
+    $useditemId: ID!
+    $createUseditemQuestionInput: CreateUseditemQuestionInput!
+  ) {
+    createUseditemQuestion(
+      useditemId: $useditemId
+      createUseditemQuestionInput: $createUseditemQuestionInput
+    ) {
+      _id
+      contents
+    }
+  }
+`;

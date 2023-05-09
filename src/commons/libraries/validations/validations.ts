@@ -46,3 +46,7 @@ export const PRODUCTS_REGISTRATION_SCHEMA = yup.object({
     .required("판매가격을 입력해주세요.")
     .typeError("숫자만 입력 가능합니다."),
 });
+
+export const PRODUCTS_COMMENT_WRITE_SCHEMA = yup.object({
+  contents: yup.string().required("내용을 입력해주세요."),
+});
