@@ -1,3 +1,4 @@
+import {getDate} from "../../../../../../commons/libraries/utils";
 import {useQueryUsedItemQuestions} from "../../../../../commons/customs/useQueries.ts/useQueries";
 import * as S from "./comment.list.styles";
 
@@ -13,7 +14,7 @@ export default function ProductsDeTailCommentListUI() {
             <S.Contents>
               <p>{el.contents}</p>
               <div>
-                <p>{el.createdAt}</p>
+                <p>{getDate(el.createdAt)}</p>
                 <S.Edit />
                 <S.Delete />
               </div>
