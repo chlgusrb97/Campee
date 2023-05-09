@@ -4,6 +4,7 @@ import {
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
   IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
+  IMutationCreateUseditemQuestionArgs,
   IMutationCreateUserArgs,
   IMutationDeleteUseditemArgs,
   IMutationLoginUserArgs,
@@ -15,6 +16,7 @@ import {
   BUYING_PRODUCTS,
   CREATE_POINT,
   CREATE_USED_ITEM,
+  CREATE_USED_ITEM_QUESTION,
   CREATE_USER,
   DELETE_USED_ITEM,
   LOGIN_USER,
@@ -99,4 +101,13 @@ export const useMutationBuyingProducts = () => {
   >(BUYING_PRODUCTS);
 
   return [createPointTransactionOfBuyingAndSelling];
+};
+
+export const useMutationCreateUsedItemQuestion = () => {
+  const [createUseditemQuestion] = useMutation<
+    Pick<IMutation, "createUseditemQuestion">,
+    IMutationCreateUseditemQuestionArgs
+  >(CREATE_USED_ITEM_QUESTION);
+
+  return [createUseditemQuestion];
 };
