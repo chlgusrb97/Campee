@@ -3,6 +3,7 @@ import {ICreateUseditemQuestionInput} from "../../../../commons/types/generated/
 import {useMutationCreateUsedItemQuestion} from "../useMutations/useMutations";
 import {UseFormSetValue} from "react-hook-form";
 import {useRouter} from "next/router";
+import {USED_ITEM_QUESTIONS} from "../../queries/queries";
 
 export const useCreateUsedItemQuestion = () => {
   const router = useRouter();
@@ -12,16 +13,23 @@ export const useCreateUsedItemQuestion = () => {
     (setValue: UseFormSetValue<ICreateUseditemQuestionInput>) =>
     async (data: ICreateUseditemQuestionInput): Promise<void> => {
       try {
-        const result = await createUseditemQuestion({
+        await createUseditemQuestion({
           variables: {
             useditemId: String(router.query.productsId),
             createUseditemQuestionInput: {
               contents: data.contents,
             },
           },
+          refetchQueries: [
+            {
+              query: USED_ITEM_QUESTIONS,
+              variables: {
+                useditemId: String(router.query.productsId),
+              },
+            },
+          ],
         });
         setValue("contents", "");
-        console.log(result, "댓글 등록!");
       } catch (error) {
         Modal.error({
           content: "댓글 등록에 실패하였습니다. 다시 시도해주세요.",
