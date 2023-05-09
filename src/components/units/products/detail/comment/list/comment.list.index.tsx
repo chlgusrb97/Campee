@@ -1,22 +1,24 @@
 import {getDate} from "../../../../../../commons/libraries/utils";
+import {useDeleteUsedItemQuestion} from "../../../../../commons/customs/hooks/useDeleteUsedItemQuestion";
 import {useQueryUsedItemQuestions} from "../../../../../commons/customs/useQueries.ts/useQueries";
 import * as S from "./comment.list.styles";
 
 export default function ProductsDeTailCommentListUI() {
   const {itemQuestionsData} = useQueryUsedItemQuestions();
+  const {onClickDeleteQuestion} = useDeleteUsedItemQuestion();
 
   return (
     <>
       <S.Wrapper>
-        {itemQuestionsData?.fetchUseditemQuestions.map((el) => (
-          <li>
-            <S.Name>{el.user.name}</S.Name>
+        {itemQuestionsData?.fetchUseditemQuestions.map((Question) => (
+          <li key={Question._id}>
+            <S.Name>{Question.user.name}</S.Name>
             <S.Contents>
-              <p>{el.contents}</p>
+              <p>{Question.contents}</p>
               <div>
-                <p>{getDate(el.createdAt)}</p>
+                <p>{getDate(Question.createdAt)}</p>
                 <S.Edit />
-                <S.Delete />
+                <S.Delete onClick={onClickDeleteQuestion(Question._id)} />
               </div>
             </S.Contents>
           </li>

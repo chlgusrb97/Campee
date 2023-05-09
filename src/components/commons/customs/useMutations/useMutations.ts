@@ -7,6 +7,7 @@ import {
   IMutationCreateUseditemQuestionArgs,
   IMutationCreateUserArgs,
   IMutationDeleteUseditemArgs,
+  IMutationDeleteUseditemQuestionArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
   IMutationUpdateUseditemArgs,
@@ -19,6 +20,7 @@ import {
   CREATE_USED_ITEM_QUESTION,
   CREATE_USER,
   DELETE_USED_ITEM,
+  DELETE_USED_ITEM_QUESTION,
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USED_ITEM,
@@ -110,4 +112,13 @@ export const useMutationCreateUsedItemQuestion = () => {
   >(CREATE_USED_ITEM_QUESTION);
 
   return [createUseditemQuestion];
+};
+
+export const useMutationDeleteUsedItemQuestion = () => {
+  const [deleteUseditemQuestion] = useMutation<
+    Pick<IMutation, "deleteUseditemQuestion">,
+    IMutationDeleteUseditemQuestionArgs
+  >(DELETE_USED_ITEM_QUESTION);
+
+  return [deleteUseditemQuestion];
 };
