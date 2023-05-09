@@ -1,4 +1,4 @@
-import {CloseOutlined, FormOutlined} from "@ant-design/icons";
+import {CloseOutlined, CommentOutlined, FormOutlined} from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -55,8 +55,8 @@ export const Date = styled.p`
   color: #888;
 `;
 
-export const Edit = styled(FormOutlined)`
-  margin: 0 20px 0 60px;
+export const EditIcon = styled(FormOutlined)`
+  margin: 0 20px;
   color: #bdbdbd;
   font-size: 20px;
   cursor: pointer;
@@ -67,7 +67,7 @@ export const Edit = styled(FormOutlined)`
   }
 `;
 
-export const Delete = styled(CloseOutlined)`
+export const DeleteIcon = styled(CloseOutlined)`
   color: #bdbdbd;
   font-size: 20px;
   cursor: pointer;
@@ -78,6 +78,20 @@ export const Delete = styled(CloseOutlined)`
     color: #000;
   }
 `;
+
+export const AnswerIcon = styled(CommentOutlined)`
+  margin-left: 60px;
+  color: #bdbdbd;
+  font-size: 20px;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #000;
+  }
+`;
+
 export const Answer = styled.div`
   display: flex;
   flex-direction: column;

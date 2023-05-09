@@ -6,6 +6,7 @@ import ButtonItem from "../../../../../commons/items/button/button.index";
 import * as S from "./comment.list.styles";
 import {useFormProductsCommentWrite} from "../../../../../commons/useForm/useForm";
 import {useUpdateUsedItemQuestion} from "../../../../../commons/customs/hooks/useUpdateUsedItemQuestion";
+import {useQueryUser} from "../../../../../commons/customs/useQueries.ts/useQueries";
 
 interface ICommentListItemUIProps {
   Question: IUseditemQuestion;
@@ -13,6 +14,7 @@ interface ICommentListItemUIProps {
 
 export default function CommentListItemUI(props: ICommentListItemUIProps) {
   const {register, handleSubmit} = useFormProductsCommentWrite();
+  const {data} = useQueryUser();
 
   const {onClickDeleteQuestion} = useDeleteUsedItemQuestion();
   const {updateQuestionSubmit, isEdit, setIsEdit} = useUpdateUsedItemQuestion();
@@ -72,8 +74,16 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
               <p>{props.Question.contents}</p>
               <div>
                 <S.Date>{getDate(props.Question.createdAt)}</S.Date>
-                <S.Edit onClick={onClickEdit} />
-                <S.Delete onClick={onClickDeleteQuestion(props.Question._id)} />
+                {props.Question.user._id === data?.fetchUserLoggedIn._id ? (
+                  <>
+                    <S.EditIcon onClick={onClickEdit} />
+                    <S.DeleteIcon
+                      onClick={onClickDeleteQuestion(props.Question._id)}
+                    />
+                  </>
+                ) : (
+                  <S.AnswerIcon />
+                )}
               </div>
             </S.Question>
           )}
