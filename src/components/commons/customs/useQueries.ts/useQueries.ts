@@ -1,11 +1,21 @@
 import {useQuery} from "@apollo/client";
-import {USED_ITEM, USED_ITEM_QUESTIONS} from "../../queries/queries";
+import {
+  USED_ITEM,
+  USED_ITEM_QUESTIONS,
+  USER_LOGGED_IN,
+} from "../../queries/queries";
 import {
   IQuery,
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemQuestionsArgs,
 } from "../../../../commons/types/generated/types";
 import {useRouter} from "next/router";
+
+export const useQueryUser = () => {
+  const result = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
+
+  return result;
+};
 
 export const useQueryUsedItem = () => {
   const router = useRouter();
