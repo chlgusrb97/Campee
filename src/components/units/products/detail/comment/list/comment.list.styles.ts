@@ -1,7 +1,7 @@
 import {CloseOutlined, FormOutlined} from "@ant-design/icons";
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.ul`
+export const Wrapper = styled.div`
   border-top: 1px solid #c0c0c0;
   border-bottom: 1px solid #c0c0c0;
   margin: 0 50px;
