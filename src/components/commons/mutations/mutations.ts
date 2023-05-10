@@ -134,3 +134,18 @@ export const UPDATE_USED_ITEM_QUESTION = gql`
     }
   }
 `;
+
+export const CREATE_USED_ITEM_ANSWER = gql`
+  mutation createUseditemQuestionAnswer(
+    $useditemQuestionId: ID!
+    $createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!
+  ) {
+    createUseditemQuestionAnswer(
+      useditemQuestionId: $useditemQuestionId
+      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
+    ) {
+      _id
+      contents
+    }
+  }
+`;

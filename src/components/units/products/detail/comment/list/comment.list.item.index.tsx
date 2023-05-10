@@ -100,6 +100,7 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
             </S.Question>
           )}
           <CommentAnswerUI
+            Question={props.Question}
             isAnswer={isAnswer}
             setIsAnswer={setIsAnswer}
             onClickAnswerCancel={onClickAnswerCancel}
