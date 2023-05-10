@@ -7,12 +7,15 @@ import * as S from "./comment.list.styles";
 import {useFormProductsCommentWrite} from "../../../../../commons/useForm/useForm";
 import {useUpdateUsedItemQuestion} from "../../../../../commons/customs/hooks/useUpdateUsedItemQuestion";
 import {useQueryUser} from "../../../../../commons/customs/useQueries.ts/useQueries";
+import CommentAnswerUI from "../answer/comment.answer.index";
 
 interface ICommentListItemUIProps {
   Question: IUseditemQuestion;
 }
 
 export default function CommentListItemUI(props: ICommentListItemUIProps) {
+  const [isAnswer, setIsAnswer] = useState(false);
+
   const {register, handleSubmit} = useFormProductsCommentWrite();
   const {data} = useQueryUser();
 
@@ -27,6 +30,14 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
     setIsEdit(false);
   };
 
+  const onClickAnswer = () => {
+    setIsAnswer(true);
+  };
+
+  const onClickAnswerCancel = () => {
+    setIsAnswer(false);
+  };
+
   return (
     <>
       <div>
@@ -37,6 +48,7 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
               onSubmit={handleSubmit(updateQuestionSubmit(props.Question))}
             >
               <textarea
+                placeholder="내용을 입력해주세요."
                 maxLength={500}
                 defaultValue={props.Question.contents}
                 {...register("contents")}
@@ -82,20 +94,16 @@ export default function CommentListItemUI(props: ICommentListItemUIProps) {
                     />
                   </>
                 ) : (
-                  <S.AnswerIcon />
+                  <S.AnswerIcon onClick={onClickAnswer} />
                 )}
               </div>
             </S.Question>
           )}
-          <S.Answer>
-            <span>답변</span>
-            <S.Date>2023. 5. 10</S.Date>
-            <S.AnswerContents>
-              안녕하세요, 고객님! 저희 제품에 관심 가져주셔서 감사드립니다.
-              <br /> 현재 더 큰 사이즈 상품은 없습니다. <br />
-              궁금하신 사항은 언제든지 문의 부탁드립니다. 감사합니다.
-            </S.AnswerContents>
-          </S.Answer>
+          <CommentAnswerUI
+            isAnswer={isAnswer}
+            setIsAnswer={setIsAnswer}
+            onClickAnswerCancel={onClickAnswerCancel}
+          />
         </S.Contents>
       </div>
     </>

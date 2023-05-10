@@ -120,6 +120,10 @@ export const EditBox = styled.form`
     background-color: #e9e9e9;
     outline: none;
     resize: none;
+
+    ::placeholder {
+      color: #a9a9a9;
+    }
   }
 
   > ul {
