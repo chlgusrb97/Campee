@@ -21,7 +21,7 @@ export const AnswerContents = styled.p`
   margin-top: 30px;
 `;
 
-export const AnswerSubmit = styled.div`
+export const AnswerSubmit = styled.form`
   border-top: 1px dotted #c0c0c0;
   padding-top: 30px;
   margin-top: 40px;

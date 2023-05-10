@@ -1,3 +1,4 @@
+import {useCreateUsedItemAnswer} from "../../../../../commons/customs/hooks/useCreateUsedItemAnswer";
 import ButtonItem from "../../../../../commons/items/button/button.index";
 import {useFormProductsCommentAnswer} from "../../../../../commons/useForm/useForm";
 import * as S from "./comment.answer.styles";
@@ -5,6 +6,8 @@ import {ICommentAnswerUIProps} from "./comment.answer.types";
 
 export default function CommentAnswerUI(props: ICommentAnswerUIProps) {
   const {register, setValue, handleSubmit} = useFormProductsCommentAnswer();
+
+  const {createAnswerSubmit} = useCreateUsedItemAnswer();
 
   return (
     <>
@@ -18,10 +21,15 @@ export default function CommentAnswerUI(props: ICommentAnswerUIProps) {
         </S.AnswerContents>
       </S.Answer>
       {props.isAnswer && (
-        <S.AnswerSubmit>
+        <S.AnswerSubmit
+          onSubmit={handleSubmit(
+            createAnswerSubmit(props.Question._id, setValue, props.setIsAnswer)
+          )}
+        >
           <textarea
             maxLength={500}
             placeholder="내용을 입력해주세요."
+            {...register("contents")}
           ></textarea>
           <ul>
             <li>
