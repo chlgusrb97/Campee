@@ -16,7 +16,11 @@ export default function ProductsDeTailContents(props: IDetailChildren) {
               address={`${props.usedItemData?.useditemAddress?.address}`}
             />
           </S.MapBox>
-          <p>{props.usedItemData?.contents}</p>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: String(props.usedItemData?.contents),
+            }}
+          />
         </S.Contents>
       </S.Wrapper>
     </>
