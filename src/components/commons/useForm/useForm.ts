@@ -10,6 +10,7 @@ import {ICreateUserData} from "../customs/hooks/useCreateUser";
 import {ILoginUserData} from "../customs/hooks/useLoginUser";
 import {
   ICreateUseditemInput,
+  ICreateUseditemQuestionAnswerInput,
   ICreateUseditemQuestionInput,
 } from "../../../commons/types/generated/types";
 
@@ -46,5 +47,12 @@ export const useFormProductsCommentWrite = () => {
     mode: "onChange",
   });
 
+  return result;
+};
+
+export const useFormProductsCommentAnswer = () => {
+  const result = useForm<ICreateUseditemQuestionAnswerInput>({
+    mode: "onChange",
+  });
   return result;
 };
