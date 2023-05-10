@@ -52,10 +52,10 @@ export const useUpdateUsedItem = () => {
         console.log(result, "상품 수정!");
         Modal.success({
           content: "상품이 수정되었습니다.",
-          // onOk: () =>
-          //   pageRouting(
-          //     `${PRODUCTS_DETAIL_PATH}/${result.data?.updateUseditem._id}`
-          //   ),
+          onOk: () =>
+            pageRouting(
+              `${PRODUCTS_DETAIL_PATH}/${result.data?.updateUseditem._id}`
+            ),
         });
       } catch (error) {
         Modal.error({content: "상품 수정에 실패했습니다."});
