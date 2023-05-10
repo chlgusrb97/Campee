@@ -17,7 +17,7 @@ export const Contents = styled.div`
   display: flex;
   flex-direction: column;
 
-  p {
+  > div:nth-of-type(2) {
     margin-top: 30px;
     font-size: 24px;
   }
