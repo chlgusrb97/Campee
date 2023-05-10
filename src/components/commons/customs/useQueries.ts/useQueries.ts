@@ -1,12 +1,14 @@
 import {useQuery} from "@apollo/client";
 import {
   USED_ITEM,
+  USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
   USER_LOGGED_IN,
 } from "../../queries/queries";
 import {
   IQuery,
   IQueryFetchUseditemArgs,
+  IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
 } from "../../../../commons/types/generated/types";
 import {useRouter} from "next/router";
@@ -37,6 +39,21 @@ export const useQueryUsedItemQuestions = () => {
   >(USED_ITEM_QUESTIONS, {
     variables: {
       useditemId: String(router.query.productsId),
+    },
+  });
+
+  return result;
+};
+
+export const useQueryUsedItemAnswers = (
+  useditemQuestionId?: string | undefined
+) => {
+  const result = useQuery<
+    Pick<IQuery, "fetchUseditemQuestionAnswers">,
+    IQueryFetchUseditemQuestionAnswersArgs
+  >(USED_ITEM_ANSWERS, {
+    variables: {
+      useditemQuestionId: String(useditemQuestionId),
     },
   });
 
