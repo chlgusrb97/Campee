@@ -11,6 +11,7 @@ import {routes} from "../../../../commons/routes/routes";
 import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import {useRouter} from "next/router";
 import {USED_ITEM} from "../../queries/queries";
+import {UploadFileStatus} from "antd/es/upload/interface";
 
 export const useUpdateUsedItem = () => {
   const router = useRouter();
@@ -24,7 +25,25 @@ export const useUpdateUsedItem = () => {
     async (data: IUpdateUseditemInput): Promise<void> => {
       const tags = data.tags?.toString().split(" ").filter(Boolean);
 
+      for (let i = 0; i < fileList.length; i++) {
+        if (fileList[i].originFileObj) {
+          const file = fileList[i].originFileObj;
+          const NewFileResult = await uploadFile({variables: {file}});
+
+          fileList[i] = {
+            uid: String(i),
+            name: String(NewFileResult.data?.uploadFile.url),
+            status: "done" as UploadFileStatus,
+            url: NewFileResult.data?.uploadFile.url,
+          };
+        }
+      }
+
       try {
+        const images = fileList
+          .map((file) => file.name)
+          .filter((url): url is string => Boolean(url));
+
         const result = await updateUseditem({
           variables: {
             useditemId: String(router.query.productsId),
@@ -34,7 +53,7 @@ export const useUpdateUsedItem = () => {
               contents: data.contents,
               price: data.price,
               tags,
-              // images,
+              images,
               useditemAddress: {
                 zipcode: data.useditemAddress?.zipcode,
                 address: data.useditemAddress?.address,
