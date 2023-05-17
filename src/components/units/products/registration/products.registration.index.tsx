@@ -12,7 +12,7 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import * as S from "./products.registration.styles";
 import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
 import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 import {IProductsRegistrationUIProps} from "./products.registration.types";
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
@@ -38,16 +38,23 @@ export default function ProductsRegistrationUI(
     setValue
   );
 
-  console.log(props.usedItemData);
+  useEffect(() => {
+    if (props.isEdit && props.usedItemData) {
+      setValue("name", props.usedItemData?.fetchUseditem.name);
+      setValue("remarks", props.usedItemData?.fetchUseditem.remarks);
+      setValue("contents", props.usedItemData?.fetchUseditem.contents);
+      setValue("price", Number(props.usedItemData?.fetchUseditem.price));
+    }
+  }, [props.isEdit, props.usedItemData, setValue]);
+
+  console.log(props.usedItemData, props.isEdit, "뱅밍정 바보");
 
   return (
     <>
       <S.Wrapper
-        onSubmit={
-          props.isEdit
-            ? handleSubmit(createUpdateItemSubmit(fileList))
-            : handleSubmit(createUsedItemSubmit)
-        }
+        onSubmit={handleSubmit(
+          props.isEdit ? createUpdateItemSubmit(fileList) : createUsedItemSubmit
+        )}
       >
         <span>
           <TitleItem title={`상품 ${props.isEdit ? "수정" : "등록"}`} />
