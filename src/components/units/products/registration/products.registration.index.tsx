@@ -17,7 +17,10 @@ import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.inde
 import {IProductsRegistrationUIProps} from "./products.registration.types";
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
 import {routes} from "../../../../commons/routes/routes";
-import {PRODUCTS_LIST_PATH} from "../../../../commons/paths/paths";
+import {
+  PRODUCTS_DETAIL_PATH,
+  PRODUCTS_LIST_PATH,
+} from "../../../../commons/paths/paths";
 
 export default function ProductsRegistrationUI(
   props: IProductsRegistrationUIProps
@@ -262,7 +265,13 @@ export default function ProductsRegistrationUI(
               fontSize="20px"
               fontFamilly="NanumBold"
               type="button"
-              onClick={() => pageRouting(PRODUCTS_LIST_PATH)}
+              onClick={() =>
+                pageRouting(
+                  props.isEdit
+                    ? `${PRODUCTS_DETAIL_PATH}/${props.usedItemData?.fetchUseditem._id}`
+                    : PRODUCTS_LIST_PATH
+                )
+              }
             />
           </li>
           <li>
