@@ -44,10 +44,23 @@ export default function ProductsRegistrationUI(
       setValue("remarks", props.usedItemData?.fetchUseditem.remarks);
       setValue("contents", props.usedItemData?.fetchUseditem.contents);
       setValue("price", Number(props.usedItemData?.fetchUseditem.price));
+      setValue("tags", props.usedItemData.fetchUseditem.tags);
+      setValue(
+        "useditemAddress.zipcode",
+        props.usedItemData.fetchUseditem.useditemAddress?.zipcode
+      );
+      setValue(
+        "useditemAddress.address",
+        props.usedItemData.fetchUseditem.useditemAddress?.address
+      );
+      setValue(
+        "useditemAddress.addressDetail",
+        props.usedItemData.fetchUseditem.useditemAddress?.addressDetail
+      );
     }
   }, [props.isEdit, props.usedItemData, setValue]);
 
-  console.log(props.usedItemData, props.isEdit, "뱅밍정 바보");
+  console.log(props.usedItemData, props.isEdit);
 
   return (
     <>
