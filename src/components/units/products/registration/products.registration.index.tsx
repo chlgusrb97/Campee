@@ -16,6 +16,8 @@ import {useEffect, useState} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 import {IProductsRegistrationUIProps} from "./products.registration.types";
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
+import {routes} from "../../../../commons/routes/routes";
+import {PRODUCTS_LIST_PATH} from "../../../../commons/paths/paths";
 
 export default function ProductsRegistrationUI(
   props: IProductsRegistrationUIProps
@@ -37,6 +39,7 @@ export default function ProductsRegistrationUI(
     setIsModalOpen,
     setValue
   );
+  const {pageRouting} = routes();
 
   useEffect(() => {
     if (props.isEdit && props.usedItemData) {
@@ -259,6 +262,7 @@ export default function ProductsRegistrationUI(
               fontSize="20px"
               fontFamilly="NanumBold"
               type="button"
+              onClick={() => pageRouting(PRODUCTS_LIST_PATH)}
             />
           </li>
           <li>
