@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import {
+  BOARDS_LIST_PATH,
   JOIN_PATH,
   LOGIN_PATH,
   PRODUCTS_DETAIL_PATH,
@@ -13,6 +14,7 @@ import LayoutHeader from "./header/header.index";
 const HIDDEN_BANNER = [
   PRODUCTS_LIST_PATH,
   PRODUCTS_REGISTRATION_PATH,
+  BOARDS_LIST_PATH,
   LOGIN_PATH,
   JOIN_PATH,
 ];
