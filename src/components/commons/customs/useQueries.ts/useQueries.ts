@@ -1,5 +1,7 @@
 import {useQuery} from "@apollo/client";
 import {
+  FETCH_BOARDS,
+  FETCH_BOARDS_COUNT,
   USED_ITEM,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
@@ -7,6 +9,8 @@ import {
 } from "../../queries/queries";
 import {
   IQuery,
+  IQueryFetchBoardsArgs,
+  IQueryFetchBoardsCountArgs,
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
@@ -56,6 +60,23 @@ export const useQueryUsedItemAnswers = (
       useditemQuestionId: String(useditemQuestionId),
     },
   });
+
+  return result;
+};
+
+export const useQueryBoards = () => {
+  const result = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
+    FETCH_BOARDS
+  );
+
+  return result;
+};
+
+export const useQueryBoardsCount = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchBoardsCount">,
+    IQueryFetchBoardsCountArgs
+  >(FETCH_BOARDS_COUNT);
 
   return result;
 };
