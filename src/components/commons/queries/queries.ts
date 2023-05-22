@@ -78,3 +78,22 @@ export const USED_ITEM_ANSWERS = gql`
     }
   }
 `;
+
+export const FETCH_BOARDS = gql`
+  query fetchBoards($page: Int, $search: String) {
+    fetchBoards(page: $page, search: $search) {
+      _id
+      writer
+      title
+      contents
+      likeCount
+      createdAt
+    }
+  }
+`;
+
+export const FETCH_BOARDS_COUNT = gql`
+  query {
+    fetchBoardsCount
+  }
+`;
