@@ -1,6 +1,7 @@
 import {useRouter} from "next/router";
 import {
   BOARDS_LIST_PATH,
+  BOARDS_REGISTRATION_PATH,
   JOIN_PATH,
   LOGIN_PATH,
   PRODUCTS_DETAIL_PATH,
@@ -15,6 +16,7 @@ const HIDDEN_BANNER = [
   PRODUCTS_LIST_PATH,
   PRODUCTS_REGISTRATION_PATH,
   BOARDS_LIST_PATH,
+  BOARDS_REGISTRATION_PATH,
   LOGIN_PATH,
   JOIN_PATH,
 ];
@@ -34,7 +36,15 @@ export default function Layout(props: ILayoutProps) {
     <>
       <LayoutHeader />
       {!isHiddenBanner && <LayoutBanner />}
-      <div>{props.children}</div>
+      <div
+        style={{
+          maxWidth: "1024px",
+          margin: "50px auto 160px",
+          backgroundColor: "#fff",
+        }}
+      >
+        {props.children}
+      </div>
       <LayoutFooter />
     </>
   );

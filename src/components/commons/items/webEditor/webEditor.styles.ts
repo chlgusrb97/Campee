@@ -10,7 +10,11 @@ export const WebEditor = styled(ReactQuill)`
   width: 100%;
 
   .ql-editor {
-    height: 430px;
+    height: 250px;
+  }
+
+  .ql-toolbar.ql-snow {
+    border: 1px solid #ddd;
   }
 
   .ql-editor.ql-blank::before {
