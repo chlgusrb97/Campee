@@ -3,7 +3,7 @@ import {CarouselWrapper} from "./carousel.styles";
 export default function CarouselItem() {
   const contentStyle: React.CSSProperties = {
     height: "440px",
-    borderRadius: "0.75rem",
+    borderRadius: "8px",
     color: "#fff",
     lineHeight: "440px",
     textAlign: "center",
