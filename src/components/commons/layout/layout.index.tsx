@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import {
+  BOARDS_DETAIL_PATH,
   BOARDS_LIST_PATH,
   BOARDS_REGISTRATION_PATH,
   JOIN_PATH,
@@ -17,6 +18,7 @@ const HIDDEN_BANNER = [
   PRODUCTS_REGISTRATION_PATH,
   BOARDS_LIST_PATH,
   BOARDS_REGISTRATION_PATH,
+  BOARDS_DETAIL_PATH,
   LOGIN_PATH,
   JOIN_PATH,
 ];
@@ -30,7 +32,8 @@ export default function Layout(props: ILayoutProps) {
 
   const isHiddenBanner =
     HIDDEN_BANNER.includes(router.asPath) ||
-    router.asPath.includes(PRODUCTS_DETAIL_PATH);
+    router.asPath.includes(PRODUCTS_DETAIL_PATH) ||
+    router.asPath.includes(BOARDS_DETAIL_PATH);
 
   return (
     <>
