@@ -88,12 +88,12 @@ export const LikeButton = styled.button`
   padding: 0 16px;
   margin-left: auto;
   border-radius: 8px;
-  background-color: #146c94;
+  background-color: #e76161;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   :hover {
-    background-color: #0d4f6d;
+    background-color: #c64343;
   }
 
   > p {
@@ -109,7 +109,7 @@ export const LikeIcon = styled(AiFillLike)`
 `;
 
 export const Contents = styled.div`
-  padding-top: 40px;
+  padding: 40px 0;
 `;
 
 export const Title = styled.h1`

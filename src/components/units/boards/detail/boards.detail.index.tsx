@@ -1,4 +1,5 @@
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
+import CommentItem from "../../../commons/items/comment/comment.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import * as S from "./boards.detail.styles";
@@ -49,6 +50,7 @@ export default function BoardsDetailUI() {
           <p>제주특별자치도 서귀포시 대정읍 영어도시로 26</p>
         </S.Address>
       </S.Contents>
+      <CommentItem />
     </S.Wrapper>
   );
 }
