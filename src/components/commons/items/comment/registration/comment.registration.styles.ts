@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import {FaUserCircle} from "react-icons/fa";
 
+interface WriteBoxProps {
+  text: string;
+}
+
 export const CommentRegistrationWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -39,18 +43,19 @@ export const InputBox = styled.ul`
   }
 `;
 
-export const CommentWriteBox = styled.div`
+export const CommentWriteBox = styled.div<WriteBoxProps>`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  border: 1px solid #ddd;
+  border: ${(props) =>
+    props.text === "" ? "1px solid #ddd" : "1px solid #f17373"};
   border-radius: 2px;
+  overflow: hidden;
 
   > textarea {
     width: 100%;
-    min-height: 100px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
     resize: none;
     outline: none;
 
@@ -61,6 +66,7 @@ export const CommentWriteBox = styled.div`
 
   > div {
     padding: 10px;
+    background-color: #fff;
     white-space: nowrap;
   }
 `;

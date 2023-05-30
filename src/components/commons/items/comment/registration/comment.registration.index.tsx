@@ -1,8 +1,17 @@
+import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
 import ButtonItem from "../../button/button.index";
 import InputItem from "../../input/input.index";
 import * as S from "./comment.registration.styles";
 
 export default function CommentRegistrationUI() {
+  const [text, setText] = useState("");
+  const [height, setHeight] = useState(38);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+    setHeight(event.target.scrollHeight);
+  };
+
   return (
     <S.CommentRegistrationWrapper>
       <div>
@@ -29,16 +38,19 @@ export default function CommentRegistrationUI() {
           </li>
         </S.InputBox>
       </div>
-      <S.CommentWriteBox>
-        <textarea placeholder="댓글을 입력해주세요."></textarea>
+      <S.CommentWriteBox text={text}>
+        <textarea
+          value={text}
+          placeholder="댓글을 입력해주세요."
+          onChange={handleChange}
+          style={{height: `${height}px`}}
+        ></textarea>
         <div>
           <ButtonItem
             title="등록"
-            color="#aaa"
-            hoverColor="#e76161"
+            color={text === "" ? "#aaa" : "#f17373"}
             fontSize="16px"
             fontFamilly="NanumBold"
-            transition="all 0.3s ease-in-out"
           />
         </div>
       </S.CommentWriteBox>
