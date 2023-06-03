@@ -8,6 +8,7 @@ interface WriteBoxProps {
 export const CommentRegistrationWrapper = styled.form`
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
 
   > div:first-of-type {
     display: flex;
