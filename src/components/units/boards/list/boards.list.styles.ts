@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 50px 50px 160px;
   background-color: #fff;
 
   > span {
@@ -9,6 +8,96 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     padding: 0 0 16px;
+    border-bottom: 2px solid #555;
+  }
+`;
+
+export const BestBoards = styled.ul`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px 0;
+
+  > li {
+    width: 22%;
+    cursor: pointer;
+
+    :not(:last-of-type) {
+      margin-right: 4%;
+    }
+  }
+`;
+
+export const BestBoardImgBox = styled.div`
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  background-color: #ddd;
+  overflow: hidden;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+`;
+
+export const BestBoardFooterBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-family: NanumBold;
+    margin-top: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+`;
+
+export const FooterUser = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 12px 0;
+`;
+
+export const FooterUserImgBox = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background-color: #ddd;
+  overflow: hidden;
+
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const FooterUserName = styled.p`
+  font-size: 14px;
+`;
+
+export const FooterEntry = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  > p {
+    color: #777;
+    font-size: 12px;
+
+    :first-of-type {
+      margin-right: 12px;
+    }
   }
 `;
 
@@ -90,16 +179,6 @@ export const BoardListContents = styled.ul`
         word-break: break-all;
       }
     }
-
-    /* p:not(:first-of-type),
-    p:not(:nth-of-type(2)) {
-      width: 150px;
-      text-align: center;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      word-break: break-all;
-    }*/
 
     :hover {
       background-color: #f7f7f7f7;
