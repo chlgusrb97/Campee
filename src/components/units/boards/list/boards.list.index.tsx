@@ -16,8 +16,82 @@ export default function BoardsListUI() {
   return (
     <S.Wrapper>
       <span>
-        <TitleItem title="SHOW YOUR LIFE" fontSize="24px" />
+        <TitleItem title="BEST LIFE" fontSize="24px" />
       </span>
+      <S.BestBoards>
+        <li>
+          <S.BestBoardImgBox>
+            <img />
+          </S.BestBoardImgBox>
+          <S.BestBoardFooterBox>
+            <h1>여러분께 제 캠핑정보를 공유합니다~!</h1>
+            <S.FooterUser>
+              <S.FooterUserImgBox>
+                <img />
+              </S.FooterUserImgBox>
+              <S.FooterUserName>홍길동</S.FooterUserName>
+            </S.FooterUser>
+            <S.FooterEntry>
+              <p>2023. 6. 5</p>
+              <p>추천 1,234</p>
+            </S.FooterEntry>
+          </S.BestBoardFooterBox>
+        </li>
+        <li>
+          <S.BestBoardImgBox>
+            <img />
+          </S.BestBoardImgBox>
+          <S.BestBoardFooterBox>
+            <h1>여러분께 제 캠핑정보를 공유합니다~!</h1>
+            <S.FooterUser>
+              <S.FooterUserImgBox>
+                <img />
+              </S.FooterUserImgBox>
+              <S.FooterUserName>홍길동</S.FooterUserName>
+            </S.FooterUser>
+            <S.FooterEntry>
+              <p>2023. 6. 5</p>
+              <p>추천 1,234</p>
+            </S.FooterEntry>
+          </S.BestBoardFooterBox>
+        </li>
+        <li>
+          <S.BestBoardImgBox>
+            <img />
+          </S.BestBoardImgBox>
+          <S.BestBoardFooterBox>
+            <h1>여러분께 제 캠핑정보를 공유합니다~!</h1>
+            <S.FooterUser>
+              <S.FooterUserImgBox>
+                <img />
+              </S.FooterUserImgBox>
+              <S.FooterUserName>홍길동</S.FooterUserName>
+            </S.FooterUser>
+            <S.FooterEntry>
+              <p>2023. 6. 5</p>
+              <p>추천 1,234</p>
+            </S.FooterEntry>
+          </S.BestBoardFooterBox>
+        </li>
+        <li>
+          <S.BestBoardImgBox>
+            <img />
+          </S.BestBoardImgBox>
+          <S.BestBoardFooterBox>
+            <h1>여러분께 제 캠핑정보를 공유합니다~!</h1>
+            <S.FooterUser>
+              <S.FooterUserImgBox>
+                <img />
+              </S.FooterUserImgBox>
+              <S.FooterUserName>홍길동</S.FooterUserName>
+            </S.FooterUser>
+            <S.FooterEntry>
+              <p>2023. 6. 5</p>
+              <p>추천 1,234</p>
+            </S.FooterEntry>
+          </S.BestBoardFooterBox>
+        </li>
+      </S.BestBoards>
       <S.BoardsList>
         <S.BoardListTitle>
           <span>제목</span>
