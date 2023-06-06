@@ -4,6 +4,7 @@ import {
   useQueryBoardsCount,
 } from "../../../commons/customs/useQueries.ts/useQueries";
 import ButtonItem from "../../../commons/items/button/button.index";
+import InputItem from "../../../commons/items/input/input.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import Pagination from "../../../commons/pagination/pagination.index";
 import * as S from "./boards.list.styles";
@@ -92,6 +93,16 @@ export default function BoardsListUI() {
           </S.BestBoardFooterBox>
         </li>
       </S.BestBoards>
+      <S.Search>
+        <InputItem
+          width="calc(100% - 40px)"
+          padding="10px 16px"
+          placeHolder="검색어를 입력해주세요."
+        />
+        <button>
+          <S.SearchIcon />
+        </button>
+      </S.Search>
       <S.BoardsList>
         <S.BoardListTitle>
           <span>제목</span>
