@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
+import {RiSearchLine} from "react-icons/ri";
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #fff;
 
   > span {
@@ -16,7 +20,7 @@ export const BestBoards = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 24px 0;
+  padding: 32px 0;
 
   > li {
     width: 22%;
@@ -99,6 +103,33 @@ export const FooterEntry = styled.div`
       margin-right: 12px;
     }
   }
+`;
+
+export const Search = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid #e76161;
+  border-radius: 2px;
+  margin: 40px 0;
+  overflow: hidden;
+
+  > button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #e76161;
+    cursor: pointer;
+  }
+`;
+
+export const SearchIcon = styled(RiSearchLine)`
+  color: #fff;
+  font-size: 24px;
 `;
 
 export const BoardsList = styled.div`
