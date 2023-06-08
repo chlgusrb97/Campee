@@ -82,6 +82,19 @@ export default function BoardsRegistrationUI() {
             </S.AddressBox>
           </div>
         </li>
+        <li>
+          <div>
+            <span>
+              <LabelItem label="유튜브" fontSize="18px" />
+            </span>
+            <InputItem
+              height="48px"
+              border="1px solid #ddd"
+              padding="16px"
+              placeHolder="링크 주소를 입력해주세요."
+            />
+          </div>
+        </li>
         <S.ButtonBox>
           <li>
             <ButtonItem
