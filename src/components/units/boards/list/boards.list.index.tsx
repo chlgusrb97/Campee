@@ -1,5 +1,11 @@
 import {getDate} from "../../../../commons/libraries/utils";
 import {
+  BOARDS_DETAIL_PATH,
+  BOARDS_REGISTRATION_PATH,
+} from "../../../../commons/paths/paths";
+import {routes} from "../../../../commons/routes/routes";
+import {useMovedDetail} from "../../../commons/customs/hooks/useMovedDetail";
+import {
   useQueryBoards,
   useQueryBoardsCount,
 } from "../../../commons/customs/useQueries.ts/useQueries";
@@ -11,8 +17,10 @@ import * as S from "./boards.list.styles";
 
 export default function BoardsListUI() {
   const {data, refetch} = useQueryBoards();
-
   const {data: countData, refetch: countRefetch} = useQueryBoardsCount();
+
+  const {movedDetail} = useMovedDetail();
+  const {pageRouting} = routes();
 
   return (
     <S.Wrapper>
@@ -113,7 +121,10 @@ export default function BoardsListUI() {
         </S.BoardListTitle>
         <S.BoardListContents>
           {data?.fetchBoards.map((board) => (
-            <li key={board._id}>
+            <li
+              key={board._id}
+              onClick={movedDetail(`${BOARDS_DETAIL_PATH}/${board._id}`)}
+            >
               <p>{board.title}</p>
               <p>{board.contents}</p>
               <p>{board.writer}</p>
@@ -132,10 +143,14 @@ export default function BoardsListUI() {
             title="등록"
             width="140px"
             height="50px"
-            border="1px solid #000"
-            color="#000"
-            backgroundColor="#fff"
+            color="#fff"
+            borderRadius="2px"
+            backgroundColor="#e76161"
             fontSize="18px"
+            fontFamilly="NanumBold"
+            transition="all 0.3s ease-in-out"
+            hoverBackgroundColor="#c64343"
+            onClick={() => pageRouting(BOARDS_REGISTRATION_PATH)}
           />
         </div>
       </S.FooterContents>
