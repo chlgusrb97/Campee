@@ -6,8 +6,6 @@ interface ICarouselItemProps {
 }
 
 export default function CarouselItem(props: ICarouselItemProps) {
-  console.log(props.images);
-
   const contentStyle: React.CSSProperties = {
     width: "100%",
     maxWidth: "100%",
