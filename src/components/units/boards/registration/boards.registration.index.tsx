@@ -101,10 +101,12 @@ export default function BoardsRegistrationUI() {
               <LabelItem label="주소" fontSize="18px" />
             </span>
             <S.AddressBox>
-              <S.MapBox>
-                <KakaoMap address="" />
-              </S.MapBox>
-              <AddressItem />
+              <AddressItem
+                setValue={setValue}
+                zipcode={register("boardAddress.zipcode")}
+                address={register("boardAddress.address")}
+                addressDetail={register("boardAddress.addressDetail")}
+              />
             </S.AddressBox>
           </div>
         </li>
@@ -118,6 +120,7 @@ export default function BoardsRegistrationUI() {
               border="1px solid #ddd"
               padding="16px"
               placeHolder="링크 주소를 입력해주세요."
+              register={register("youtubeUrl")}
             />
           </div>
         </li>

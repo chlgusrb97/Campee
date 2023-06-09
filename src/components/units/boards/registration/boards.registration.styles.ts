@@ -67,7 +67,6 @@ export const ImageContents = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 30px;
 `;
 
 export const ButtonBox = styled.ul`

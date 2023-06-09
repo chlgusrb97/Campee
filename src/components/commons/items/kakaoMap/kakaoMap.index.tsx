@@ -11,6 +11,8 @@ interface IKakaoMapProps {
 }
 
 export default function KakaoMap(props: IKakaoMapProps) {
+  console.log(props.address, "주소");
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const latitude = position.coords.latitude;
