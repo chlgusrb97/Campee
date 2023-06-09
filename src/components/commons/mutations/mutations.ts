@@ -149,3 +149,21 @@ export const CREATE_USED_ITEM_ANSWER = gql`
     }
   }
 `;
+
+export const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      boardAddress {
+        zipcode
+        address
+        addressDetail
+      }
+      images
+    }
+  }
+`;

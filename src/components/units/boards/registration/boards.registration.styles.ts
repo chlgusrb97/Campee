@@ -25,6 +25,10 @@ export const Contents = styled.ul`
       justify-content: space-between;
     }
 
+    :nth-of-type(2) {
+      align-items: stretch;
+    }
+
     > div {
       width: 100%;
       display: flex;
