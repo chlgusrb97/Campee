@@ -1,28 +1,29 @@
 import {Dispatch, SetStateAction, useState} from "react";
 import type {Address} from "react-daum-postcode";
-import {UseFormSetValue} from "react-hook-form";
-import {ICreateUseditemInput} from "../../../../commons/types/generated/types";
+import {UseFormRegisterReturn, UseFormSetValue} from "react-hook-form";
 
 export const useAddressHandleComplete = (
   setIsModalOpen: Dispatch<SetStateAction<boolean>>,
-  setValue: UseFormSetValue<ICreateUseditemInput>
+  setValue: UseFormSetValue<any>,
+  zipcode: UseFormRegisterReturn,
+  address: UseFormRegisterReturn
 ) => {
-  const [address, setAddress] = useState("");
-  const [zoneCode, setZoneCode] = useState("");
+  const [dataAddress, setDataAddress] = useState("");
+  const [dataZipCode, setDataZipCode] = useState("");
 
   const handleComplete = (data: Address) => {
     setIsModalOpen(false);
-    setZoneCode(data.zonecode);
+    setDataZipCode(data.zonecode);
 
     if (data.userSelectedType === "R") {
-      setAddress(data.roadAddress);
-      setValue("useditemAddress.address", data.roadAddress);
+      setDataAddress(data.roadAddress);
+      setValue(address.name, data.roadAddress);
     } else {
-      setAddress(data.jibunAddress);
-      setValue("useditemAddress.address", data.jibunAddress);
+      setDataAddress(data.jibunAddress);
+      setValue(address.name, data.jibunAddress);
     }
-    setValue("useditemAddress.zipcode", data.zonecode);
+    setValue(zipcode.name, data.zonecode);
   };
 
-  return {address, zoneCode, handleComplete};
+  return {dataAddress, dataZipCode, handleComplete};
 };

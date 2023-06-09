@@ -1,51 +1,90 @@
+import {useState} from "react";
 import ButtonItem from "../button/button.index";
 import InputItem from "../input/input.index";
 import * as S from "./address.styles";
+import {useModalOpen} from "../../customs/hooks/useModalOpen";
+import ModalItem from "../modal/modal.index";
+import DaumPostcodeEmbed from "react-daum-postcode";
+import {useAddressHandleComplete} from "../../customs/hooks/useAddressHandleComplete";
+import {UseFormRegisterReturn, UseFormSetValue} from "react-hook-form";
+import KakaoMap from "../kakaoMap/kakaoMap.index";
 
-export default function AddressItem() {
+interface IAddressItemProps {
+  setValue: UseFormSetValue<any>;
+  zipcode: UseFormRegisterReturn;
+  address: UseFormRegisterReturn;
+  addressDetail: UseFormRegisterReturn;
+}
+
+export default function AddressItem(props: IAddressItemProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
+  const {dataAddress, handleComplete} = useAddressHandleComplete(
+    setIsModalOpen,
+    props.setValue,
+    props.zipcode,
+    props.address
+  );
+
   return (
-    <S.AddressContents>
-      <li>
-        <InputItem
-          width="80px"
-          height="48px"
-          border="1px solid #ddd"
-          textAlign="center"
-          placeHolder="우편번호"
-          disabled={true}
-        />
-        <ButtonItem
-          title="우편번호 검색"
-          width="120px"
-          height="48px"
-          backgroundColor="#146C94"
-          margin="0 0 0 24px"
-          color="#fff"
-          hoverBackgroundColor="#0d4f6d"
-          transition="all 0.3s ease-in-out"
-          type="button"
-          // onClick={showModal}
-        />
-      </li>
-      <li>
-        <InputItem
-          width="100%"
-          height="48px"
-          border="1px solid #ddd"
-          padding="0 14px"
-          placeHolder="도로명 주소 또는 지번 주소"
-          disabled={true}
-        />
-      </li>
-      <li>
-        <InputItem
-          width="100%"
-          height="48px"
-          border="1px solid #ddd"
-          padding="0 14px"
-          placeHolder="상세 주소를 입력해주세요."
-        />
-      </li>
-    </S.AddressContents>
+    <>
+      <S.MapBox>
+        <KakaoMap address={dataAddress} />
+      </S.MapBox>
+      <S.AddressContents>
+        <li>
+          <InputItem
+            width="80px"
+            height="48px"
+            border="1px solid #ddd"
+            textAlign="center"
+            placeHolder="우편번호"
+            disabled={true}
+            register={props.zipcode}
+          />
+          <ButtonItem
+            title="우편번호 검색"
+            width="120px"
+            height="48px"
+            backgroundColor="#146C94"
+            margin="0 0 0 24px"
+            color="#fff"
+            hoverBackgroundColor="#0d4f6d"
+            transition="all 0.3s ease-in-out"
+            type="button"
+            onClick={showModal}
+          />
+          <ModalItem
+            title="주소 검색"
+            contents={<DaumPostcodeEmbed onComplete={handleComplete} />}
+            isModalOpen={isModalOpen}
+            handleOk={handleOk}
+            handleCancel={handleCancel}
+          />
+        </li>
+        <li>
+          <InputItem
+            width="100%"
+            height="48px"
+            border="1px solid #ddd"
+            padding="0 14px"
+            placeHolder="도로명 주소 또는 지번 주소"
+            disabled={true}
+            register={props.address}
+          />
+        </li>
+        <li>
+          <InputItem
+            width="100%"
+            height="48px"
+            border="1px solid #ddd"
+            padding="0 14px"
+            placeHolder="상세 주소를 입력해주세요."
+            register={props.addressDetail}
+          />
+        </li>
+      </S.AddressContents>
+    </>
   );
 }
