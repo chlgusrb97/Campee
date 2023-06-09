@@ -1,8 +1,12 @@
+import React from "react";
+import _ReactPlayer, {ReactPlayerProps} from "react-player";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
 import CommentItem from "../../../commons/items/comment/comment.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import * as S from "./boards.detail.styles";
+
+const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export default function BoardsDetailUI() {
   return (
@@ -49,6 +53,18 @@ export default function BoardsDetailUI() {
           </S.MapBox>
           <p>제주특별자치도 서귀포시 대정읍 영어도시로 26</p>
         </S.Address>
+        <S.Youtube>
+          <span>
+            <TitleItem title="유튜브" fontSize="20px" />
+          </span>
+          <div>
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+              controls={true}
+              width="100%"
+            />
+          </div>
+        </S.Youtube>
       </S.Contents>
       <CommentItem />
     </S.Wrapper>
