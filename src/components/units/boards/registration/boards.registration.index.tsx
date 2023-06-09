@@ -20,7 +20,7 @@ export default function BoardsRegistrationUI() {
     formState: {errors},
   } = useFormBoardsRegistration();
 
-  const {createBoardSubmit} = useCreateBoard();
+  const {createBoardSubmit, fileList, setFileList} = useCreateBoard();
 
   return (
     <S.Wrapper onSubmit={handleSubmit(createBoardSubmit)}>
@@ -33,7 +33,9 @@ export default function BoardsRegistrationUI() {
             <span>
               <LabelItem label="이미지" fontSize="18px" />
             </span>
-            <S.ImageContents>{/* <ImageUploadItem /> */}</S.ImageContents>
+            <S.ImageContents>
+              <ImageUploadItem fileList={fileList} setFileList={setFileList} />
+            </S.ImageContents>
           </div>
         </li>
         <li>

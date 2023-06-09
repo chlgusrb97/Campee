@@ -72,7 +72,7 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
         onPreview={handlePreview}
         onChange={handleChange}
       >
-        {props.fileList.length >= 8 ? null : uploadButton}
+        {props.fileList.length >= 4 ? null : uploadButton}
       </UploadWrapper>
       <Modal
         open={previewOpen}
