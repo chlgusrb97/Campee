@@ -125,6 +125,7 @@ export const Text = styled.p`
 export const Address = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 
   > span {
     padding-bottom: 24px;
@@ -145,7 +146,6 @@ export const Youtube = styled.div`
   > span {
     display: inline-block;
     padding-bottom: 24px;
-    margin-top: 100px;
   }
 
   > div {
