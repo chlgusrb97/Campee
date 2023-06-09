@@ -13,8 +13,6 @@ const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 export default function BoardsDetailUI() {
   const {data} = useQueryBoard();
 
-  console.log(data);
-
   return (
     <S.Wrapper>
       <CarouselItem images={data?.fetchBoard.images} />
