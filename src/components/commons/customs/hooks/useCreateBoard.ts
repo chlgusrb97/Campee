@@ -1,12 +1,27 @@
-import {Modal} from "antd";
+import {Modal, UploadFile} from "antd";
 import {ICreateBoardInput} from "../../../../commons/types/generated/types";
-import {useMutationCreateBoard} from "../useMutations/useMutations";
+import {
+  useMutationCreateBoard,
+  useMutationUploadFile,
+} from "../useMutations/useMutations";
+import {useState} from "react";
 
 export const useCreateBoard = () => {
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [createBoard] = useMutationCreateBoard();
+  const [uploadFile] = useMutationUploadFile();
 
-  const createBoardSubmit = async (data: ICreateBoardInput) => {
+  const createBoardSubmit = async (data: ICreateBoardInput): Promise<void> => {
+    const files = fileList.map((file) => file.originFileObj);
+
     try {
+      const fileResult = await Promise.all(
+        files.map((file) => uploadFile({variables: {file}}))
+      );
+      const images = fileResult
+        .map((file) => file.data?.uploadFile.url)
+        .filter((url): url is string => Boolean(url));
+
       const result = await createBoard({
         variables: {
           createBoardInput: {
@@ -20,7 +35,7 @@ export const useCreateBoard = () => {
               address: data.boardAddress?.address,
               addressDetail: data.boardAddress?.addressDetail,
             },
-            images: data.images,
+            images,
           },
         },
       });
@@ -30,5 +45,5 @@ export const useCreateBoard = () => {
     }
   };
 
-  return {createBoardSubmit};
+  return {createBoardSubmit, fileList, setFileList};
 };
