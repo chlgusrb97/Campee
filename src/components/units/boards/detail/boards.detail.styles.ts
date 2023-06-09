@@ -140,3 +140,17 @@ export const MapBox = styled.div`
   overflow: hidden;
   background-color: #bbb;
 `;
+
+export const Youtube = styled.div`
+  > span {
+    display: inline-block;
+    padding-bottom: 24px;
+    margin-top: 100px;
+  }
+
+  > div {
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+`;
