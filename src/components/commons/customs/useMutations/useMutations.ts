@@ -1,6 +1,7 @@
 import {useMutation} from "@apollo/client";
 import {
   IMutation,
+  IMutationCreateBoardArgs,
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
   IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
@@ -17,6 +18,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import {
   BUYING_PRODUCTS,
+  CREATE_BOARD,
   CREATE_POINT,
   CREATE_USED_ITEM,
   CREATE_USED_ITEM_ANSWER,
@@ -143,4 +145,13 @@ export const useMutationCreateUsedItemAnswer = () => {
   >(CREATE_USED_ITEM_ANSWER);
 
   return [createUseditemQuestionAnswer];
+};
+
+export const useMutationCreateBoard = () => {
+  const [createBoard] = useMutation<
+    Pick<IMutation, "createBoard">,
+    IMutationCreateBoardArgs
+  >(CREATE_BOARD);
+
+  return [createBoard];
 };

@@ -7,10 +7,23 @@ import * as S from "./boards.registration.styles";
 import ButtonItem from "../../../commons/items/button/button.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import AddressItem from "../../../commons/items/address/address.index";
+import {useFormBoardsRegistration} from "../../../commons/useForm/useForm";
+import ValidationItem from "../../../commons/items/validation/validation.index";
+import {useCreateBoard} from "../../../commons/customs/hooks/useCreateBoard";
 
 export default function BoardsRegistrationUI() {
+  const {
+    register,
+    setValue,
+    trigger,
+    handleSubmit,
+    formState: {errors},
+  } = useFormBoardsRegistration();
+
+  const {createBoardSubmit} = useCreateBoard();
+
   return (
-    <S.Wrapper>
+    <S.Wrapper onSubmit={handleSubmit(createBoardSubmit)}>
       <span>
         <TitleItem title="MY LIFE 등록" fontSize="24px" />
       </span>
@@ -33,7 +46,9 @@ export default function BoardsRegistrationUI() {
               border="1px solid #ddd"
               padding="16px"
               placeHolder="이름을 입력해주세요."
+              register={register("writer")}
             />
+            <ValidationItem error={errors.writer?.message} marginTop="8px" />
           </S.WriterBox>
           <S.PasswordBox>
             <span>
@@ -45,7 +60,9 @@ export default function BoardsRegistrationUI() {
               padding="16px"
               placeHolder="비밀번호를 입력해주세요."
               type="password"
+              register={register("password")}
             />
+            <ValidationItem error={errors.password?.message} marginTop="8px" />
           </S.PasswordBox>
         </li>
         <li>
@@ -58,7 +75,9 @@ export default function BoardsRegistrationUI() {
               border="1px solid #ddd"
               padding="16px"
               placeHolder="제목을 입력해주세요."
+              register={register("title")}
             />
+            <ValidationItem error={errors.title?.message} marginTop="8px" />
           </div>
         </li>
         <li>
@@ -66,7 +85,12 @@ export default function BoardsRegistrationUI() {
             <span>
               <LabelItem label="내용" fontSize="18px" />
             </span>
-            <WebEditorItem placeHolder="내용을 입력해주세요." />
+            <WebEditorItem
+              placeHolder="내용을 입력해주세요."
+              setValue={setValue}
+              trigger={trigger}
+            />
+            <ValidationItem error={errors.contents?.message} marginTop="8px" />
           </div>
         </li>
         <li>
