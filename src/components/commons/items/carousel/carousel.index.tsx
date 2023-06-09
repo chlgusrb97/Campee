@@ -1,29 +1,34 @@
+import {Maybe} from "yup";
 import {CarouselWrapper} from "./carousel.styles";
 
-export default function CarouselItem() {
+interface ICarouselItemProps {
+  images?: Maybe<string[]>;
+}
+
+export default function CarouselItem(props: ICarouselItemProps) {
+  console.log(props.images);
+
   const contentStyle: React.CSSProperties = {
+    width: "100%",
+    maxWidth: "100%",
     height: "440px",
     borderRadius: "8px",
     color: "#fff",
     lineHeight: "440px",
-    textAlign: "center",
-    background: "#364d79",
+    objectFit: "cover",
+    objectPosition: "center",
   };
 
   return (
     <CarouselWrapper draggable>
-      <div>
-        <h3 style={contentStyle}>1</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
-      </div>
+      {props.images?.map((image, index) => (
+        <div key={index}>
+          <img
+            src={`https://storage.googleapis.com/${image}`}
+            style={contentStyle}
+          />
+        </div>
+      ))}
     </CarouselWrapper>
   );
 }

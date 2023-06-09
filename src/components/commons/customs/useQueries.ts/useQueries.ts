@@ -1,5 +1,6 @@
 import {useQuery} from "@apollo/client";
 import {
+  FETCH_BOARD,
   FETCH_BOARDS,
   FETCH_BOARDS_COUNT,
   USED_ITEM,
@@ -9,6 +10,7 @@ import {
 } from "../../queries/queries";
 import {
   IQuery,
+  IQueryFetchBoardArgs,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
   IQueryFetchUseditemArgs,
@@ -67,6 +69,19 @@ export const useQueryUsedItemAnswers = (
 export const useQueryBoards = () => {
   const result = useQuery<Pick<IQuery, "fetchBoards">, IQueryFetchBoardsArgs>(
     FETCH_BOARDS
+  );
+
+  return result;
+};
+
+export const useQueryBoard = () => {
+  const router = useRouter();
+
+  const result = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
+    FETCH_BOARD,
+    {
+      variables: {boardId: String(router.query.boardsId)},
+    }
   );
 
   return result;
