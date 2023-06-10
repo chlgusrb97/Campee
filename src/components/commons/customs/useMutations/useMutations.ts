@@ -10,6 +10,7 @@ import {
   IMutationCreateUserArgs,
   IMutationDeleteUseditemArgs,
   IMutationDeleteUseditemQuestionArgs,
+  IMutationLikeBoardArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
   IMutationUpdateUseditemArgs,
@@ -26,6 +27,7 @@ import {
   CREATE_USER,
   DELETE_USED_ITEM,
   DELETE_USED_ITEM_QUESTION,
+  LIKE_BOARD,
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USED_ITEM,
@@ -154,4 +156,13 @@ export const useMutationCreateBoard = () => {
   >(CREATE_BOARD);
 
   return [createBoard];
+};
+
+export const useMutationLikeBoard = () => {
+  const [likeboard] = useMutation<
+    Pick<IMutation, "likeBoard">,
+    IMutationLikeBoardArgs
+  >(LIKE_BOARD);
+
+  return [likeboard];
 };

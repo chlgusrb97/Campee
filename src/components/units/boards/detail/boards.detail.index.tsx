@@ -7,11 +7,14 @@ import TitleItem from "../../../commons/items/title/title.index";
 import * as S from "./boards.detail.styles";
 import {useQueryBoard} from "../../../commons/customs/useQueries.ts/useQueries";
 import {getDate} from "../../../../commons/libraries/utils";
+import {useLikeBoard} from "../../../commons/customs/hooks/useLikeBoard";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export default function BoardsDetailUI() {
   const {data} = useQueryBoard();
+
+  const {onClickLikeButton} = useLikeBoard();
 
   return (
     <S.Wrapper>
@@ -37,7 +40,10 @@ export default function BoardsDetailUI() {
             </li>
           </ul>
         </S.Info>
-        <S.LikeButton type="button">
+        <S.LikeButton
+          type="button"
+          onClick={onClickLikeButton(String(data?.fetchBoard._id))}
+        >
           <S.LikeIcon />
           <p>추천</p>
         </S.LikeButton>
@@ -47,16 +53,11 @@ export default function BoardsDetailUI() {
         <S.Text>{data?.fetchBoard.contents}</S.Text>
         {data?.fetchBoard.youtubeUrl && (
           <S.Youtube>
-            <span>
-              <TitleItem title="유튜브" fontSize="20px" />
-            </span>
-            <div>
-              <ReactPlayer
-                url={String(data?.fetchBoard.youtubeUrl)}
-                controls={true}
-                width="100%"
-              />
-            </div>
+            <ReactPlayer
+              url={String(data?.fetchBoard.youtubeUrl)}
+              controls={true}
+              width="100%"
+            />
           </S.Youtube>
         )}
         {data?.fetchBoard.boardAddress && (
