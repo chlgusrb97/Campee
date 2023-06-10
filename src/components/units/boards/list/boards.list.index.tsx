@@ -113,9 +113,8 @@ export default function BoardsListUI() {
       </S.Search>
       <S.BoardsList>
         <S.BoardListTitle>
-          <span>제목</span>
-          <span>내용</span>
           <span>작성자</span>
+          <span>제목</span>
           <span>등록일</span>
           <span>추천수</span>
         </S.BoardListTitle>
@@ -126,7 +125,6 @@ export default function BoardsListUI() {
               onClick={movedDetail(`${BOARDS_DETAIL_PATH}/${board._id}`)}
             >
               <p>{board.title}</p>
-              <p>{board.contents}</p>
               <p>{board.writer}</p>
               <p>{getDate(board.createdAt)}</p>
               <p>{board.likeCount}</p>

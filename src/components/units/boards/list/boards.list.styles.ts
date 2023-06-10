@@ -150,7 +150,10 @@ export const BoardListTitle = styled.div`
     font-size: 14px;
 
     :first-of-type {
-      width: 30%;
+      width: 15%;
+      text-align: center;
+      white-space: nowrap;
+      padding: 0 30px;
     }
 
     :nth-of-type(2) {
@@ -182,7 +185,8 @@ export const BoardListContents = styled.ul`
 
       :first-of-type {
         padding: 0 30px;
-        width: 30%;
+        width: 15%;
+        text-align: center;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
