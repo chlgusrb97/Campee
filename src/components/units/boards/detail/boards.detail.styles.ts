@@ -143,14 +143,7 @@ export const MapBox = styled.div`
 `;
 
 export const Youtube = styled.div`
-  > span {
-    display: inline-block;
-    padding-bottom: 24px;
-  }
-
-  > div {
-    background-color: #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-  }
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
 `;
