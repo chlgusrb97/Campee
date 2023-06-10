@@ -105,33 +105,6 @@ export const FooterEntry = styled.div`
   }
 `;
 
-export const Search = styled.div`
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: 2px solid #e76161;
-  border-radius: 2px;
-  margin: 40px 0;
-  overflow: hidden;
-
-  > button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: #e76161;
-    cursor: pointer;
-  }
-`;
-
-export const SearchIcon = styled(RiSearchLine)`
-  color: #fff;
-  font-size: 24px;
-`;
-
 export const BoardsList = styled.div`
   width: 100%;
   border-top: 2px solid #555;

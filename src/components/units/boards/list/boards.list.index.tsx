@@ -1,3 +1,5 @@
+import {useState} from "react";
+import {v4 as uuidv4} from "uuid";
 import {getDate} from "../../../../commons/libraries/utils";
 import {
   BOARDS_DETAIL_PATH,
@@ -10,14 +12,18 @@ import {
   useQueryBoardsCount,
 } from "../../../commons/customs/useQueries.ts/useQueries";
 import ButtonItem from "../../../commons/items/button/button.index";
-import InputItem from "../../../commons/items/input/input.index";
+import SearchItem from "../../../commons/items/search/search.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import Pagination from "../../../commons/pagination/pagination.index";
 import * as S from "./boards.list.styles";
 
+const SECRETCODE = "!*(^&";
+
 export default function BoardsListUI() {
+  const [keyWord, setKeyWord] = useState("");
+
   const {data, refetch} = useQueryBoards();
-  const {data: countData, refetch: countRefetch} = useQueryBoardsCount();
+  const {data: countData} = useQueryBoardsCount();
 
   const {movedDetail} = useMovedDetail();
   const {pageRouting} = routes();
@@ -101,16 +107,7 @@ export default function BoardsListUI() {
           </S.BestBoardFooterBox>
         </li>
       </S.BestBoards>
-      <S.Search>
-        <InputItem
-          width="calc(100% - 40px)"
-          padding="10px 16px"
-          placeHolder="검색어를 입력해주세요."
-        />
-        <button>
-          <S.SearchIcon />
-        </button>
-      </S.Search>
+      <SearchItem refetch={refetch} setKeyWord={setKeyWord} />
       <S.BoardsList>
         <S.BoardListTitle>
           <span>작성자</span>
@@ -124,8 +121,22 @@ export default function BoardsListUI() {
               key={board._id}
               onClick={movedDetail(`${BOARDS_DETAIL_PATH}/${board._id}`)}
             >
-              <p>{board.title}</p>
               <p>{board.writer}</p>
+              <p>
+                {board.title
+                  .replaceAll(keyWord, `${SECRETCODE}${keyWord}${SECRETCODE}`)
+                  .split(`${SECRETCODE}`)
+                  .map((searchBoard) => (
+                    <span
+                      key={uuidv4()}
+                      style={{
+                        color: searchBoard === keyWord ? "#e76161" : "black",
+                      }}
+                    >
+                      {searchBoard}
+                    </span>
+                  ))}
+              </p>
               <p>{getDate(board.createdAt)}</p>
               <p>{board.likeCount}</p>
             </li>
