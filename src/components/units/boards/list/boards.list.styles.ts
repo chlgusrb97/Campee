@@ -16,18 +16,16 @@ export const Wrapper = styled.div`
 `;
 
 export const BestBoards = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 32px 0;
 
   > li {
     width: 22%;
     cursor: pointer;
-
-    :not(:last-of-type) {
-      margin-right: 4%;
-    }
   }
 `;
 
@@ -43,6 +41,9 @@ export const BestBoardImgBox = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  > div {
   }
 `;
 

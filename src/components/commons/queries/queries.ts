@@ -121,3 +121,21 @@ export const FETCH_BOARDS_COUNT = gql`
     fetchBoardsCount
   }
 `;
+
+export const FETCH_BOARDS_BEST = gql`
+  query {
+    fetchBoardsOfTheBest {
+      _id
+      writer
+      title
+      likeCount
+      createdAt
+      images
+      user {
+        _id
+        name
+        picture
+      }
+    }
+  }
+`;
