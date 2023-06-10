@@ -31,7 +31,7 @@ export default function SearchItem(props: ISearchItemProps) {
         placeholder="검색어를 입력해주세요."
         onChange={onChangeSearchEvent}
       />
-      <button>
+      <button type="button">
         <SearchIcon />
       </button>
     </Search>

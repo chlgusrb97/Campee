@@ -28,6 +28,8 @@ export default function BoardsListUI() {
   const {movedDetail} = useMovedDetail();
   const {pageRouting} = routes();
 
+  const formattedBoardsCount = countData?.fetchBoardsCount.toLocaleString();
+
   return (
     <S.Wrapper>
       <span>
@@ -108,6 +110,7 @@ export default function BoardsListUI() {
         </li>
       </S.BestBoards>
       <SearchItem refetch={refetch} setKeyWord={setKeyWord} />
+      <S.BoardsCount>총 {formattedBoardsCount}건</S.BoardsCount>
       <S.BoardsList>
         <S.BoardListTitle>
           <span>작성자</span>
