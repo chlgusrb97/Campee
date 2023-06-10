@@ -5,11 +5,15 @@ import {
   useMutationUploadFile,
 } from "../useMutations/useMutations";
 import {useState} from "react";
+import {routes} from "../../../../commons/routes/routes";
+import {BOARDS_DETAIL_PATH} from "../../../../commons/paths/paths";
 
 export const useCreateBoard = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+
   const [createBoard] = useMutationCreateBoard();
   const [uploadFile] = useMutationUploadFile();
+  const {pageRouting} = routes();
 
   const createBoardSubmit = async (data: ICreateBoardInput): Promise<void> => {
     const files = fileList.map((file) => file.originFileObj);
@@ -40,6 +44,11 @@ export const useCreateBoard = () => {
         },
       });
       console.log(result, "게시글 등록!");
+      Modal.success({
+        content: "상품이 등록되었습니다.",
+        onOk: () =>
+          pageRouting(`${BOARDS_DETAIL_PATH}/${result.data?.createBoard._id}`),
+      });
     } catch (error) {
       Modal.error({content: "게시글 등록에 실패했습니다."});
     }

@@ -5,7 +5,6 @@ import WebEditorItem from "../../../commons/items/webEditor/webEditor.index";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 import * as S from "./boards.registration.styles";
 import ButtonItem from "../../../commons/items/button/button.index";
-import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import AddressItem from "../../../commons/items/address/address.index";
 import {useFormBoardsRegistration} from "../../../commons/useForm/useForm";
 import ValidationItem from "../../../commons/items/validation/validation.index";
@@ -130,9 +129,9 @@ export default function BoardsRegistrationUI() {
               title="취소"
               width="160px"
               height="56px"
-              border="1px solid #146C94"
+              border="1px solid #e76161"
               borderRadius="2px"
-              color="#146C94"
+              color="#e76161"
               backgroundColor="#fff"
               fontSize="20px"
               fontFamilly="NanumBold"
@@ -146,10 +145,10 @@ export default function BoardsRegistrationUI() {
               height="56px"
               borderRadius="2px"
               color="#fff"
-              backgroundColor="#146C94"
+              backgroundColor="#e76161"
               fontSize="20px"
               fontFamilly="NanumBold"
-              hoverBackgroundColor="#0d4f6d"
+              hoverBackgroundColor="#c64343"
               transition="all 0.3s ease-in-out"
             />
           </li>

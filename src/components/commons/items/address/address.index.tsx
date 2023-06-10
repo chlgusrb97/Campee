@@ -47,10 +47,10 @@ export default function AddressItem(props: IAddressItemProps) {
             title="우편번호 검색"
             width="120px"
             height="48px"
-            backgroundColor="#146C94"
+            backgroundColor="#e76161"
             margin="0 0 0 24px"
             color="#fff"
-            hoverBackgroundColor="#0d4f6d"
+            hoverBackgroundColor="#c64343"
             transition="all 0.3s ease-in-out"
             type="button"
             onClick={showModal}
