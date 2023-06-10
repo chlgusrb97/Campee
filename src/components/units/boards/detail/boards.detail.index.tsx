@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import _ReactPlayer, {ReactPlayerProps} from "react-player";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
 import CommentItem from "../../../commons/items/comment/comment.index";
@@ -8,13 +8,21 @@ import * as S from "./boards.detail.styles";
 import {useQueryBoard} from "../../../commons/customs/useQueries.ts/useQueries";
 import {getDate} from "../../../../commons/libraries/utils";
 import {useLikeBoard} from "../../../commons/customs/hooks/useLikeBoard";
+import DOMPurify from "dompurify";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export default function BoardsDetailUI() {
-  const {data} = useQueryBoard();
+  const [safeHtml, setSafeHtml] = useState("");
 
+  const {data} = useQueryBoard();
   const {onClickLikeButton} = useLikeBoard();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSafeHtml(DOMPurify.sanitize(String(data?.fetchBoard.contents)));
+    }
+  }, [data?.fetchBoard.contents]);
 
   return (
     <S.Wrapper>
@@ -50,7 +58,11 @@ export default function BoardsDetailUI() {
       </S.User>
       <S.Contents>
         <S.Title>{data?.fetchBoard.title}</S.Title>
-        <S.Text>{data?.fetchBoard.contents}</S.Text>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: safeHtml,
+          }}
+        />
         {data?.fetchBoard.youtubeUrl && (
           <S.Youtube>
             <ReactPlayer

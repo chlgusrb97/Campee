@@ -110,6 +110,11 @@ export const LikeIcon = styled(AiFillLike)`
 
 export const Contents = styled.div`
   padding: 40px 0;
+
+  > div:first-of-type {
+    font-size: 16px;
+    margin: 70px 0 100px;
+  }
 `;
 
 export const Title = styled.h1`
