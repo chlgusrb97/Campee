@@ -2,6 +2,7 @@ import {useQuery} from "@apollo/client";
 import {
   FETCH_BOARD,
   FETCH_BOARDS,
+  FETCH_BOARDS_BEST,
   FETCH_BOARDS_COUNT,
   USED_ITEM,
   USED_ITEM_ANSWERS,
@@ -92,6 +93,13 @@ export const useQueryBoardsCount = () => {
     Pick<IQuery, "fetchBoardsCount">,
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
+
+  return result;
+};
+
+export const useQueryBoardsBest = () => {
+  const result =
+    useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(FETCH_BOARDS_BEST);
 
   return result;
 };
