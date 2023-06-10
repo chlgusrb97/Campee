@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import {RiSearchLine} from "react-icons/ri";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -103,6 +102,14 @@ export const FooterEntry = styled.div`
       margin-right: 12px;
     }
   }
+`;
+
+export const BoardsCount = styled.h3`
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 6px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
 `;
 
 export const BoardsList = styled.div`

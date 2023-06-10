@@ -14,6 +14,7 @@ export const Search = styled.div`
   > input {
     width: calc(100% - 40px);
     padding: 10px 16px;
+    outline: none;
   }
 
   > button {
