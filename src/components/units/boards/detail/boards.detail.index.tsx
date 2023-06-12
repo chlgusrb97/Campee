@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import _ReactPlayer, {ReactPlayerProps} from "react-player";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
-import CommentItem from "../../../commons/items/comment/comment.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import * as S from "./boards.detail.styles";
@@ -9,6 +8,7 @@ import {useQueryBoard} from "../../../commons/customs/useQueries.ts/useQueries";
 import {getDate} from "../../../../commons/libraries/utils";
 import {useLikeBoard} from "../../../commons/customs/hooks/useLikeBoard";
 import DOMPurify from "dompurify";
+import BoardsCommentUI from "../comment/boards.comment.index";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
@@ -42,6 +42,7 @@ export default function BoardsDetailUI() {
               <S.CreationDate>
                 {getDate(data?.fetchBoard.createdAt)}
               </S.CreationDate>
+              <S.Dotted />
             </li>
             <li>
               <S.Like>추천 {data?.fetchBoard.likeCount}</S.Like>
@@ -82,7 +83,7 @@ export default function BoardsDetailUI() {
           </S.Address>
         )}
       </S.Contents>
-      <CommentItem />
+      <BoardsCommentUI />
     </S.Wrapper>
   );
 }
