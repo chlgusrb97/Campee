@@ -48,15 +48,6 @@ export const Info = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-
-      :first-of-type ::after {
-        display: inline-block;
-        content: "";
-        width: 1px;
-        height: 12px;
-        margin: 0 10px;
-        background-color: #ddd;
-      }
     }
   }
 `;
@@ -77,7 +68,23 @@ export const CreationDate = styled.p`
 `;
 
 export const Like = styled.p`
+  display: inline-block;
+  font-size: 16px;
   color: #777;
+`;
+
+export const Dotted = styled.i`
+  display: inline-block;
+  margin: 0px 4px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(194, 200, 204);
+
+  ::before {
+    content: "·";
+  }
 `;
 
 export const LikeButton = styled.button`
