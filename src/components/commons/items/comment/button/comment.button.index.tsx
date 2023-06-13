@@ -5,5 +5,5 @@ interface ICommentButtonItemProps {
 }
 
 export default function CommentButtonItem(props: ICommentButtonItemProps) {
-  return <CommentButton>{props.name}</CommentButton>;
+  return <CommentButton type="button">{props.name}</CommentButton>;
 }
