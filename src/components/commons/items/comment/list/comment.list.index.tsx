@@ -1,8 +1,6 @@
 import InfiniteScroll from "react-infinite-scroller";
 import CommentListInfoUI from "./comment.list.info.index";
 import {useQueryBoardComments} from "../../../customs/useQueries.ts/useQueries";
-// import {useQueryBoardComments} from "../../../customs/useQueries.ts/useQueries";
-// import {onLoadMore} from "../../../customs/onLoadMore/onLoadMoreUsedItems";
 
 export default function CommentListUI() {
   const {data, fetchMore} = useQueryBoardComments();

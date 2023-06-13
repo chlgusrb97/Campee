@@ -5,12 +5,7 @@ import * as S from "./boards.comment.write.styles";
 import {useCreateBoardComment} from "../../../../commons/customs/hooks/useCreateBoardComment";
 
 export default function BoardsCommentWriteUI() {
-  const {
-    register,
-    setValue,
-    handleSubmit,
-    formState: {errors},
-  } = useFormBoardsCommentAnswer();
+  const {register, setValue, handleSubmit} = useFormBoardsCommentAnswer();
   const {createCommentSubmit} = useCreateBoardComment();
 
   return (

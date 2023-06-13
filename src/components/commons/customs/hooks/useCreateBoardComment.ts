@@ -3,6 +3,7 @@ import {useMutationCreateBoardComment} from "../useMutations/useMutations";
 import {ICreateBoardCommentInput} from "../../../../commons/types/generated/types";
 import {Modal} from "antd";
 import {UseFormSetValue} from "react-hook-form";
+import {FETCH_BOARD_COMMENTS} from "../../queries/queries";
 
 export const useCreateBoardComment = () => {
   const router = useRouter();
@@ -22,6 +23,14 @@ export const useCreateBoardComment = () => {
               rating: 0,
             },
           },
+          refetchQueries: [
+            {
+              query: FETCH_BOARD_COMMENTS,
+              variables: {
+                boardId: router.query.boardsId,
+              },
+            },
+          ],
         });
         setValue("writer", "");
         setValue("password", "");
