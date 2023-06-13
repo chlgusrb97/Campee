@@ -4,6 +4,7 @@ import {
   FETCH_BOARDS,
   FETCH_BOARDS_BEST,
   FETCH_BOARDS_COUNT,
+  FETCH_BOARD_COMMENTS,
   USED_ITEM,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
@@ -12,6 +13,7 @@ import {
 import {
   IQuery,
   IQueryFetchBoardArgs,
+  IQueryFetchBoardCommentsArgs,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
   IQueryFetchUseditemArgs,
@@ -100,6 +102,21 @@ export const useQueryBoardsCount = () => {
 export const useQueryBoardsBest = () => {
   const result =
     useQuery<Pick<IQuery, "fetchBoardsOfTheBest">>(FETCH_BOARDS_BEST);
+
+  return result;
+};
+
+export const useQueryBoardComments = () => {
+  const router = useRouter();
+
+  const result = useQuery<
+    Pick<IQuery, "fetchBoardComments">,
+    IQueryFetchBoardCommentsArgs
+  >(FETCH_BOARD_COMMENTS, {
+    variables: {
+      boardId: String(router.query.boardsId),
+    },
+  });
 
   return result;
 };
