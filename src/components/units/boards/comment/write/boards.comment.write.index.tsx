@@ -7,13 +7,16 @@ import {useCreateBoardComment} from "../../../../commons/customs/hooks/useCreate
 export default function BoardsCommentWriteUI() {
   const {
     register,
+    setValue,
     handleSubmit,
     formState: {errors},
   } = useFormBoardsCommentAnswer();
   const {createCommentSubmit} = useCreateBoardComment();
 
   return (
-    <S.CommentWriteWrapper onSubmit={handleSubmit(createCommentSubmit)}>
+    <S.CommentWriteWrapper
+      onSubmit={handleSubmit(createCommentSubmit(setValue))}
+    >
       <S.UserIconBox>
         <S.UserIcon />
       </S.UserIconBox>
@@ -37,9 +40,6 @@ export default function BoardsCommentWriteUI() {
           placeHolder="댓글을 입력해주세요."
           register={register("contents")}
         />
-        <p>{errors.writer?.message}</p>
-        <p>{errors.password?.message}</p>
-        <p>{errors.contents?.message}</p>
       </S.TextBox>
     </S.CommentWriteWrapper>
   );
