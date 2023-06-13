@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {
+  BOARDS_COMMENT_WRITE_SCHEMA,
   BOARDS_REGISTRATION_SCHEMA,
   JOIN_SCHEMA,
   LOGIN_SCHEMA,
@@ -10,6 +11,7 @@ import {
 import {ICreateUserData} from "../customs/hooks/useCreateUser";
 import {ILoginUserData} from "../customs/hooks/useLoginUser";
 import {
+  ICreateBoardCommentInput,
   ICreateBoardInput,
   ICreateUseditemInput,
   ICreateUseditemQuestionAnswerInput,
@@ -63,6 +65,15 @@ export const useFormBoardsRegistration = () => {
   const result = useForm<ICreateBoardInput>({
     resolver: yupResolver(BOARDS_REGISTRATION_SCHEMA),
     mode: "onChange",
+  });
+
+  return result;
+};
+
+export const useFormBoardsCommentAnswer = () => {
+  const result = useForm<ICreateBoardCommentInput>({
+    resolver: yupResolver(BOARDS_COMMENT_WRITE_SCHEMA),
+    mode: "onSubmit",
   });
 
   return result;

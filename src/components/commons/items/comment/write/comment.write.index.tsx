@@ -1,33 +1,26 @@
 import {useCallback, useRef, useState} from "react";
 import {CommentWriteBox} from "./comment.write.styles";
+import {UseFormRegisterReturn} from "react-hook-form";
+import {useHandle} from "../../../customs/useHandle";
 
 interface ICommentWriteProps {
   placeHolder: string;
+  register: UseFormRegisterReturn;
 }
 
 export default function CommentWrite(props: ICommentWriteProps) {
-  const [isFocused, setIsFocused] = useState(false);
-  const textRef = useRef<HTMLTextAreaElement | null>(null);
-
-  const handleResize = useCallback(() => {
-    if (textRef.current) {
-      textRef.current.style.height = "40px";
-      textRef.current.style.height = textRef.current.scrollHeight + "px";
-    }
-  }, []);
-
-  const handleFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
-
-  const handleBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
+  const {ref, ...rest} = props.register;
+  const {isFocused, textRef, handleResize, handleFocus, handleBlur} =
+    useHandle();
 
   return (
     <CommentWriteBox isFocused={isFocused}>
       <textarea
-        ref={textRef}
+        {...rest}
+        ref={(e) => {
+          ref(e);
+          textRef.current = e;
+        }}
         placeholder={props.placeHolder}
         onChange={handleResize}
         onFocus={handleFocus}
