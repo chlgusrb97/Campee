@@ -139,3 +139,14 @@ export const FETCH_BOARDS_BEST = gql`
     }
   }
 `;
+
+export const FETCH_BOARD_COMMENTS = gql`
+  query fetchBoardComments($boardId: ID!, $page: Int) {
+    fetchBoardComments(boardId: $boardId, page: $page) {
+      _id
+      writer
+      contents
+      createdAt
+    }
+  }
+`;

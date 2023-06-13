@@ -1,33 +1,48 @@
-import CommentButtonItem from "../button/comment.button.index";
-import * as S from "./comment.list.styles";
+import InfiniteScroll from "react-infinite-scroller";
+import CommentListInfoUI from "./comment.list.info.index";
+import {useQueryBoardComments} from "../../../customs/useQueries.ts/useQueries";
+// import {useQueryBoardComments} from "../../../customs/useQueries.ts/useQueries";
+// import {onLoadMore} from "../../../customs/onLoadMore/onLoadMoreUsedItems";
 
 export default function CommentListUI() {
+  const {data, fetchMore} = useQueryBoardComments();
+
+  const onLoadMore = (): void => {
+    if (data === undefined) return;
+    void fetchMore({
+      variables: {
+        page: Math.ceil((data?.fetchBoardComments.length ?? 10) / 10) + 1,
+      },
+      updateQuery: (prev, {fetchMoreResult}) => {
+        if (fetchMoreResult.fetchBoardComments === undefined) {
+          return {
+            fetchBoardComments: [...prev.fetchBoardComments],
+          };
+        }
+        return {
+          fetchBoardComments: [
+            ...prev.fetchBoardComments,
+            ...fetchMoreResult.fetchBoardComments,
+          ],
+        };
+      },
+    });
+  };
+
   return (
-    <S.CommentListWrapper>
-      <S.UserIconBox>
-        <S.UserIcon />
-      </S.UserIconBox>
-      <S.CommentInfo>
-        <h1>홍길동</h1>
-        <p>댓글내용</p>
-        <ul>
-          <li>
-            <S.CreationDate>2023. 6. 3</S.CreationDate>
-            <S.Dotted />
-          </li>
-          <li>
-            <CommentButtonItem name="답글 달기" />
-            <S.Dotted></S.Dotted>
-          </li>
-          <li>
-            <CommentButtonItem name="수정" />
-            <S.Dotted></S.Dotted>
-          </li>
-          <li>
-            <CommentButtonItem name="삭제" />
-          </li>
-        </ul>
-      </S.CommentInfo>
-    </S.CommentListWrapper>
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={onLoadMore}
+      hasMore={true}
+      useWindow={true}
+    >
+      {data?.fetchBoardComments ? (
+        data?.fetchBoardComments.map((CommentList) => (
+          <CommentListInfoUI key={CommentList._id} CommentList={CommentList} />
+        ))
+      ) : (
+        <></>
+      )}
+    </InfiniteScroll>
   );
 }
