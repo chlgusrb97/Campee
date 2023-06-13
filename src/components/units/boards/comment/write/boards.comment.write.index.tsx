@@ -5,9 +5,6 @@ import {useFormBoardsCommentAnswer} from "../../../../commons/useForm/useForm";
 import * as S from "./boards.comment.write.styles";
 
 export default function BoardsCommentWriteUI() {
-  const [isFocused, setIsFocused] = useState(false);
-  const textRef = useRef<HTMLInputElement | null>(null);
-
   const {register, handleSubmit} = useFormBoardsCommentAnswer();
 
   return (
@@ -19,16 +16,12 @@ export default function BoardsCommentWriteUI() {
         <ul>
           <li>
             <CommentInputItem
-              isFocused={isFocused}
-              textRef={textRef}
               placeHolder="이름"
               register={register("writer")}
             />
           </li>
           <li>
             <CommentInputItem
-              isFocused={isFocused}
-              textRef={textRef}
               placeHolder="비밀번호"
               type="password"
               register={register("password")}

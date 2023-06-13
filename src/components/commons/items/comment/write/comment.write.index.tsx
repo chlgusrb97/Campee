@@ -1,4 +1,3 @@
-import {useCallback, useRef, useState} from "react";
 import {CommentWriteBox} from "./comment.write.styles";
 import {UseFormRegisterReturn} from "react-hook-form";
 import {useHandle} from "../../../customs/useHandle";
