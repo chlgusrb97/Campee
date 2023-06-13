@@ -2,6 +2,7 @@ import {useMutation} from "@apollo/client";
 import {
   IMutation,
   IMutationCreateBoardArgs,
+  IMutationCreateBoardCommentArgs,
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
   IMutationCreatePointTransactionOfLoadingArgs,
   IMutationCreateUseditemArgs,
@@ -20,6 +21,7 @@ import {
 import {
   BUYING_PRODUCTS,
   CREATE_BOARD,
+  CREATE_BOARD_COMMENT,
   CREATE_POINT,
   CREATE_USED_ITEM,
   CREATE_USED_ITEM_ANSWER,
@@ -165,4 +167,13 @@ export const useMutationLikeBoard = () => {
   >(LIKE_BOARD);
 
   return [likeboard];
+};
+
+export const useMutationCreateBoardComment = () => {
+  const [createBoardComment] = useMutation<
+    Pick<IMutation, "createBoardComment">,
+    IMutationCreateBoardCommentArgs
+  >(CREATE_BOARD_COMMENT);
+
+  return [createBoardComment];
 };

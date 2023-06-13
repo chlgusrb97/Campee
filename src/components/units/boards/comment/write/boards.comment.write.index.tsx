@@ -1,14 +1,19 @@
-import {useRef, useState} from "react";
 import CommentInputItem from "../../../../commons/items/comment/input/comment.input.index";
 import CommentWrite from "../../../../commons/items/comment/write/comment.write.index";
 import {useFormBoardsCommentAnswer} from "../../../../commons/useForm/useForm";
 import * as S from "./boards.comment.write.styles";
+import {useCreateBoardComment} from "../../../../commons/customs/hooks/useCreateBoardComment";
 
 export default function BoardsCommentWriteUI() {
-  const {register, handleSubmit} = useFormBoardsCommentAnswer();
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useFormBoardsCommentAnswer();
+  const {createCommentSubmit} = useCreateBoardComment();
 
   return (
-    <S.CommentWriteWrapper>
+    <S.CommentWriteWrapper onSubmit={handleSubmit(createCommentSubmit)}>
       <S.UserIconBox>
         <S.UserIcon />
       </S.UserIconBox>
@@ -32,6 +37,9 @@ export default function BoardsCommentWriteUI() {
           placeHolder="댓글을 입력해주세요."
           register={register("contents")}
         />
+        <p>{errors.writer?.message}</p>
+        <p>{errors.password?.message}</p>
+        <p>{errors.contents?.message}</p>
       </S.TextBox>
     </S.CommentWriteWrapper>
   );

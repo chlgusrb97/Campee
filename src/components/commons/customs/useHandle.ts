@@ -5,11 +5,12 @@ export const useHandle = () => {
   const textRef = useRef<HTMLTextAreaElement | HTMLInputElement | null>(null);
 
   const handleResize = useCallback(() => {
-    if (textRef.current) {
-      textRef.current.style.height = "40px";
-      textRef.current.style.height = textRef.current.scrollHeight + "px";
+    if (!textRef.current) {
+      return;
     }
-  }, [textRef]);
+    textRef.current.style.height = "40px";
+    textRef.current.style.height = textRef.current.scrollHeight + "px";
+  }, []);
 
   const handleFocus = useCallback(() => {
     setIsFocused(true);
