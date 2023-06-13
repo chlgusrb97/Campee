@@ -173,3 +173,21 @@ export const LIKE_BOARD = gql`
     likeBoard(boardId: $boardId)
   }
 `;
+
+export const CREATE_BOARD_COMMENT = gql`
+  mutation createBoardComment(
+    $createBoardCommentInput: CreateBoardCommentInput!
+    $boardId: ID!
+  ) {
+    createBoardComment(
+      createBoardCommentInput: $createBoardCommentInput
+      boardId: $boardId
+    ) {
+      _id
+      writer
+      contents
+      createdAt
+      rating
+    }
+  }
+`;

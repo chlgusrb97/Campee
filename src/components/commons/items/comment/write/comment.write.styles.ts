@@ -38,3 +38,5 @@ export const CommentWriteBox = styled.div<IStyleProps>`
     cursor: pointer;
   }
 `;
+
+export const TextareaBox = styled.div``;

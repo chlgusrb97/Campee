@@ -15,15 +15,15 @@ export default function CommentWrite(props: ICommentWriteProps) {
   return (
     <CommentWriteBox isFocused={isFocused}>
       <textarea
+        onInput={handleResize}
         {...rest}
         ref={(e) => {
           ref(e);
           textRef.current = e;
         }}
-        placeholder={props.placeHolder}
-        onChange={handleResize}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        placeholder={props.placeHolder}
       ></textarea>
       <button>등록</button>
     </CommentWriteBox>
