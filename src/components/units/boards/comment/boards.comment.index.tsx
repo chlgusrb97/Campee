@@ -1,4 +1,4 @@
-import CommentListUI from "../../../commons/items/comment/list/comment.list.index";
+import CommentListUI from "./list/comment.list.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import {CommentWrapper} from "./boards.comment.styles";
 import BoardsCommentWriteUI from "./write/boards.comment.write.index";

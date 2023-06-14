@@ -36,7 +36,6 @@ export const useCreateBoardComment = () => {
         setValue("password", "");
         setValue("contents", "");
       } catch (error) {
-        alert(error);
         Modal.error({
           content: "댓글 등록에 실패하였습니다. 다시 시도해주세요.",
         });

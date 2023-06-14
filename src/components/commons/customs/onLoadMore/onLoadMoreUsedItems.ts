@@ -4,7 +4,10 @@ import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
-import {useQueryUsedItemQuestions} from "../useQueries.ts/useQueries";
+import {
+  useQueryBoardComments,
+  useQueryUsedItemQuestions,
+} from "../useQueries.ts/useQueries";
 
 export const onLoadMoreUsedItems = () => {
   const {data, fetchMore} = useQuery<
