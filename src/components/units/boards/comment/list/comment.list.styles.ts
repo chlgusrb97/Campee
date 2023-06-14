@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {Modal} from "antd";
 import {FaUserCircle} from "react-icons/fa";
 
 export const CommentListWrapper = styled.div`
@@ -68,4 +69,20 @@ export const CreationDate = styled.p`
   display: inline-block;
   font-size: 12px;
   color: #777;
+`;
+
+export const CommentDeleteModal = styled(Modal)`
+  .ant-modal-title {
+    font-family: NanumBold;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 0 10px;
+    margin: 20px 0 10px;
+    outline: none;
+  }
 `;

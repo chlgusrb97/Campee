@@ -191,3 +191,9 @@ export const CREATE_BOARD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_BOARD_COMMENT = gql`
+  mutation deleteBoardComment($boardCommentId: ID!, $password: String) {
+    deleteBoardComment(boardCommentId: $boardCommentId, password: $password)
+  }
+`;
