@@ -9,6 +9,8 @@ import {getDate} from "../../../../commons/libraries/utils";
 import {useLikeBoard} from "../../../commons/customs/hooks/useLikeBoard";
 import DOMPurify from "dompurify";
 import BoardsCommentUI from "../comment/boards.comment.index";
+import ButtonItem from "../../../commons/items/button/button.index";
+import {useDeleteBoard} from "../../../commons/customs/hooks/useDeleteBoard";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
@@ -17,6 +19,7 @@ export default function BoardsDetailUI() {
 
   const {data} = useQueryBoard();
   const {onClickLikeButton} = useLikeBoard();
+  const {onClickDeleteBoard} = useDeleteBoard();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -83,6 +86,38 @@ export default function BoardsDetailUI() {
           </S.Address>
         )}
       </S.Contents>
+      <S.ButtonBox>
+        <li>
+          <ButtonItem
+            title="삭제"
+            width="140px"
+            height="50px"
+            border="1px solid #e76161"
+            borderRadius="2px"
+            color="#e76161"
+            backgroundColor="#fff"
+            fontSize="20px"
+            fontFamilly="NanumBold"
+            type="button"
+            onClick={onClickDeleteBoard}
+          />
+        </li>
+        <li>
+          <ButtonItem
+            title="수정"
+            width="140px"
+            height="50px"
+            borderRadius="2px"
+            color="#fff"
+            backgroundColor="#e76161"
+            fontSize="20px"
+            fontFamilly="NanumBold"
+            hoverBackgroundColor="#c64343"
+            transition="all 0.3s ease-in-out"
+            type="button"
+          />
+        </li>
+      </S.ButtonBox>
       <BoardsCommentUI />
     </S.Wrapper>
   );
