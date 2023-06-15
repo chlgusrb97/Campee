@@ -36,7 +36,7 @@ export const Info = styled.div`
   flex-direction: column;
 
   p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   > ul {
@@ -88,13 +88,12 @@ export const Dotted = styled.i`
 `;
 
 export const LikeButton = styled.button`
-  height: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 16px;
+  padding: 10px 20px;
   margin-left: auto;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #e76161;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -105,14 +104,14 @@ export const LikeButton = styled.button`
 
   > p {
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
 export const LikeIcon = styled(AiFillLike)`
   margin-right: 6px;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 export const Contents = styled.div`
@@ -158,4 +157,15 @@ export const Youtube = styled.div`
   background-color: #ddd;
   border-radius: 8px;
   overflow: hidden;
+`;
+
+export const ButtonBox = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 40px;
+
+  > li:last-of-type {
+    margin-left: 20px;
+  }
 `;

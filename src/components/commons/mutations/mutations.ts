@@ -216,3 +216,9 @@ export const UPDATE_BOARD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_BOARD = gql`
+  mutation deleteBoard($boardId: ID!) {
+    deleteBoard(boardId: $boardId)
+  }
+`;
