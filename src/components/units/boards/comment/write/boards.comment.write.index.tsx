@@ -1,16 +1,32 @@
 import CommentInputItem from "../../../../commons/items/comment/input/comment.input.index";
 import CommentWrite from "../../../../commons/items/comment/write/comment.write.index";
-import {useFormBoardsCommentAnswer} from "../../../../commons/useForm/useForm";
+import {useFormBoardsCommentWrite} from "../../../../commons/useForm/useForm";
 import * as S from "./boards.comment.write.styles";
 import {useCreateBoardComment} from "../../../../commons/customs/hooks/useCreateBoardComment";
+import {IBoardComment} from "../../../../../commons/types/generated/types";
+import {Dispatch, SetStateAction, useState} from "react";
+import {useUpdateBoardComment} from "../../../../commons/customs/hooks/useUpdateBoardComment";
 
-export default function BoardsCommentWriteUI() {
-  const {register, setValue, handleSubmit} = useFormBoardsCommentAnswer();
+interface IBoardsCommentWriteUIProps {
+  isCommentEdit: boolean;
+  setIsCommentEdit: Dispatch<SetStateAction<boolean>>;
+  CommentList: IBoardComment;
+}
+
+export default function BoardsCommentWriteUI(
+  props: IBoardsCommentWriteUIProps
+) {
+  const {register, setValue, handleSubmit} = useFormBoardsCommentWrite();
   const {createCommentSubmit} = useCreateBoardComment();
+  const {updateCommentSubmit} = useUpdateBoardComment();
 
   return (
     <S.CommentWriteWrapper
-      onSubmit={handleSubmit(createCommentSubmit(setValue))}
+      onSubmit={handleSubmit(
+        props.isCommentEdit
+          ? updateCommentSubmit(props.CommentList._id, props.setIsCommentEdit)
+          : createCommentSubmit(setValue)
+      )}
     >
       <S.UserIconBox>
         <S.UserIcon />
@@ -19,6 +35,9 @@ export default function BoardsCommentWriteUI() {
         <ul>
           <li>
             <CommentInputItem
+              defaultValue={
+                props.isCommentEdit ? String(props.CommentList.writer) : ""
+              }
               placeHolder="이름"
               register={register("writer")}
             />
@@ -32,7 +51,9 @@ export default function BoardsCommentWriteUI() {
           </li>
         </ul>
         <CommentWrite
+          defaultValue={props.CommentList?.contents}
           placeHolder="댓글을 입력해주세요."
+          isCommentEdit={props.isCommentEdit}
           register={register("contents")}
         />
       </S.TextBox>

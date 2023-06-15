@@ -3,6 +3,7 @@ import {UseFormRegisterReturn} from "react-hook-form";
 import {useHandle} from "../../../customs/useHandle";
 
 interface ICommentInputItemProps {
+  defaultValue?: string;
   placeHolder: string;
   type?: string;
   register: UseFormRegisterReturn;
@@ -14,6 +15,7 @@ export default function CommentInputItem(props: ICommentInputItemProps) {
 
   return (
     <CommentInput
+      defaultValue={props.defaultValue ?? ""}
       isFocused={isFocused}
       {...rest}
       ref={(e) => {

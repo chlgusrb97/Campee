@@ -15,7 +15,7 @@ export const useDeleteBoardComment = () => {
   const handleOkDeleteComment =
     (setIsDeleteModalOpen: Dispatch<SetStateAction<boolean>>) => async () => {
       try {
-        const result = await deleteBoardComment({
+        await deleteBoardComment({
           variables: {
             boardCommentId,
             password: deletePassword,
@@ -27,6 +27,7 @@ export const useDeleteBoardComment = () => {
             },
           ],
         });
+        Modal.success({content: "댓글이 삭제되었습니다."});
         setIsDeleteModalOpen(false);
       } catch (error) {
         Modal.error({

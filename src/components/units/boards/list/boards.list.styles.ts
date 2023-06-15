@@ -141,9 +141,9 @@ export const BoardListTitle = styled.div`
       width: 70%;
     }
 
-    :nth-child(3),
-    :nth-child(4),
-    :nth-child(5) {
+    :nth-of-child(3),
+    :nth-of-child(4),
+    :nth-of-child(5) {
       width: 150px;
     }
   }

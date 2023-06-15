@@ -5,7 +5,10 @@ import {FaUserCircle} from "react-icons/fa";
 export const CommentListWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 30px;
+
+  :not(:last-of-type) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const UserIconBox = styled.div`
