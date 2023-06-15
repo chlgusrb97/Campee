@@ -3,7 +3,9 @@ import {UseFormRegisterReturn} from "react-hook-form";
 import {useHandle} from "../../../customs/useHandle";
 
 interface ICommentWriteProps {
+  defaultValue: string;
   placeHolder: string;
+  isCommentEdit: boolean;
   register: UseFormRegisterReturn;
 }
 
@@ -15,6 +17,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
   return (
     <CommentWriteBox isFocused={isFocused}>
       <textarea
+        defaultValue={props.defaultValue}
         onInput={handleResize}
         {...rest}
         ref={(e) => {
@@ -25,7 +28,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
         onBlur={handleBlur}
         placeholder={props.placeHolder}
       ></textarea>
-      <button>등록</button>
+      <button>{props.isCommentEdit ? "수정" : "등록"}</button>
     </CommentWriteBox>
   );
 }

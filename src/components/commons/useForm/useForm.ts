@@ -70,7 +70,7 @@ export const useFormBoardsRegistration = () => {
   return result;
 };
 
-export const useFormBoardsCommentAnswer = () => {
+export const useFormBoardsCommentWrite = () => {
   const result = useForm<ICreateBoardCommentInput>({
     resolver: yupResolver(BOARDS_COMMENT_WRITE_SCHEMA),
     mode: "onSubmit",
