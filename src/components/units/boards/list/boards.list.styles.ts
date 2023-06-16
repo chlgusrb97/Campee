@@ -183,9 +183,9 @@ export const BoardListContents = styled.ul`
         word-break: break-all;
       }
 
-      :nth-child(3),
-      :nth-child(4),
-      :nth-child(5) {
+      :nth-of-child(3),
+      :nth-of-child(4),
+      :nth-of-child(5) {
         width: 150px;
         padding: 0 10px;
         text-align: center;

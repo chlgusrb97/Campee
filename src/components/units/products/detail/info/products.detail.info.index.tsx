@@ -4,8 +4,8 @@ import {IDetailChildren} from "../products.detail.types";
 import {useDeleteUsedItem} from "../../../../commons/customs/hooks/useDeleteUsedItem";
 import {routes} from "../../../../../commons/routes/routes";
 import {
+  EDIT_PATH,
   PRODUCTS_DETAIL_PATH,
-  PRODUCTS_EDIT_PATH,
 } from "../../../../../commons/paths/paths";
 import {useRouter} from "next/router";
 import {useBuyingProducts} from "../../../../commons/customs/hooks/useBuyingProducts";
@@ -38,7 +38,7 @@ export default function ProductsDeTailInfo(props: IDetailChildren) {
                   <S.Edit
                     onClick={() => {
                       pageRouting(
-                        `${PRODUCTS_DETAIL_PATH}/${router.query.productsId}${PRODUCTS_EDIT_PATH}`
+                        `${PRODUCTS_DETAIL_PATH}/${router.query.productsId}${EDIT_PATH}`
                       );
                     }}
                   />

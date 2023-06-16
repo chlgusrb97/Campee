@@ -11,15 +11,20 @@ import DOMPurify from "dompurify";
 import BoardsCommentUI from "../comment/boards.comment.index";
 import ButtonItem from "../../../commons/items/button/button.index";
 import {useDeleteBoard} from "../../../commons/customs/hooks/useDeleteBoard";
+import {BOARDS_DETAIL_PATH, EDIT_PATH} from "../../../../commons/paths/paths";
+import {useRouter} from "next/router";
+import {routes} from "../../../../commons/routes/routes";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export default function BoardsDetailUI() {
+  const router = useRouter();
   const [safeHtml, setSafeHtml] = useState("");
 
   const {data} = useQueryBoard();
   const {onClickLikeButton} = useLikeBoard();
   const {onClickDeleteBoard} = useDeleteBoard();
+  const {pageRouting} = routes();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -115,6 +120,11 @@ export default function BoardsDetailUI() {
             hoverBackgroundColor="#c64343"
             transition="all 0.3s ease-in-out"
             type="button"
+            onClick={() => {
+              pageRouting(
+                `${BOARDS_DETAIL_PATH}/${router.query.boardsId}${EDIT_PATH}`
+              );
+            }}
           />
         </li>
       </S.ButtonBox>

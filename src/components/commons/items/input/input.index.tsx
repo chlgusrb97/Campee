@@ -17,6 +17,7 @@ interface IInputItemProps {
   type?: string;
   register?: UseFormRegisterReturn;
   disabled?: boolean;
+  readOnly?: boolean;
 }
 
 export default function InputItem(props: IInputItemProps) {
@@ -35,6 +36,7 @@ export default function InputItem(props: IInputItemProps) {
       placeholder={props.placeHolder ?? ""}
       type={props.type ?? "text"}
       disabled={props.disabled ?? false}
+      readOnly={props.readOnly ?? false}
       {...props.register}
     />
   );
