@@ -9,8 +9,18 @@ import AddressItem from "../../../commons/items/address/address.index";
 import {useFormBoardsRegistration} from "../../../commons/useForm/useForm";
 import ValidationItem from "../../../commons/items/validation/validation.index";
 import {useCreateBoard} from "../../../commons/customs/hooks/useCreateBoard";
+import {IQuery} from "../../../../commons/types/generated/types";
+import {useEffect} from "react";
+import {useUpdateBoard} from "../../../commons/customs/hooks/useUpdateBoard";
 
-export default function BoardsRegistrationUI() {
+interface IBoardsRegistrationUIProps {
+  isEdit: boolean;
+  data?: Pick<IQuery, "fetchBoard"> | undefined;
+}
+
+export default function BoardsRegistrationUI(
+  props: IBoardsRegistrationUIProps
+) {
   const {
     register,
     setValue,
@@ -20,9 +30,35 @@ export default function BoardsRegistrationUI() {
   } = useFormBoardsRegistration();
 
   const {createBoardSubmit, fileList, setFileList} = useCreateBoard();
+  const {updateBoardSubmit} = useUpdateBoard();
+
+  useEffect(() => {
+    if (props.isEdit && props.data) {
+      setValue("writer", props.data?.fetchBoard.writer);
+      setValue("title", props.data?.fetchBoard.title);
+      setValue("contents", props.data?.fetchBoard.contents);
+      setValue(
+        "boardAddress.zipcode",
+        props.data.fetchBoard.boardAddress?.zipcode
+      );
+      setValue(
+        "boardAddress.address",
+        props.data.fetchBoard.boardAddress?.address
+      );
+      setValue(
+        "boardAddress.addressDetail",
+        props.data.fetchBoard.boardAddress?.addressDetail
+      );
+      setValue("youtubeUrl", props.data.fetchBoard.youtubeUrl);
+    }
+  }, [props.isEdit, props.data, setValue]);
 
   return (
-    <S.Wrapper onSubmit={handleSubmit(createBoardSubmit)}>
+    <S.Wrapper
+      onSubmit={handleSubmit(
+        props.isEdit ? updateBoardSubmit(fileList) : createBoardSubmit
+      )}
+    >
       <span>
         <TitleItem title="MY LIFE 등록" fontSize="24px" />
       </span>
@@ -33,7 +69,11 @@ export default function BoardsRegistrationUI() {
               <LabelItem label="이미지" fontSize="18px" />
             </span>
             <S.ImageContents>
-              <ImageUploadItem fileList={fileList} setFileList={setFileList} />
+              <ImageUploadItem
+                fileList={fileList}
+                setFileList={setFileList}
+                dataImages={props.data?.fetchBoard.images}
+              />
             </S.ImageContents>
           </div>
         </li>
@@ -48,6 +88,8 @@ export default function BoardsRegistrationUI() {
               padding="16px"
               placeHolder="이름을 입력해주세요."
               register={register("writer")}
+              defaultValue={props.data?.fetchBoard.writer}
+              readOnly={!!props.data?.fetchBoard.writer}
             />
             <ValidationItem error={errors.writer?.message} marginTop="8px" />
           </S.WriterBox>
@@ -77,6 +119,7 @@ export default function BoardsRegistrationUI() {
               padding="16px"
               placeHolder="제목을 입력해주세요."
               register={register("title")}
+              defaultValue={props.data?.fetchBoard.title}
             />
             <ValidationItem error={errors.title?.message} marginTop="8px" />
           </div>
@@ -90,6 +133,7 @@ export default function BoardsRegistrationUI() {
               placeHolder="내용을 입력해주세요."
               setValue={setValue}
               trigger={trigger}
+              contents={props.data?.fetchBoard.contents}
             />
             <ValidationItem error={errors.contents?.message} marginTop="8px" />
           </div>
@@ -105,6 +149,7 @@ export default function BoardsRegistrationUI() {
                 zipcode={register("boardAddress.zipcode")}
                 address={register("boardAddress.address")}
                 addressDetail={register("boardAddress.addressDetail")}
+                dataAddress={props.data?.fetchBoard.boardAddress}
               />
             </S.AddressBox>
           </div>
@@ -120,6 +165,7 @@ export default function BoardsRegistrationUI() {
               padding="16px"
               placeHolder="링크 주소를 입력해주세요."
               register={register("youtubeUrl")}
+              defaultValue={props.data?.fetchBoard.youtubeUrl}
             />
           </div>
         </li>

@@ -222,3 +222,29 @@ export const DELETE_BOARD = gql`
     deleteBoard(boardId: $boardId)
   }
 `;
+
+export const UPDATE_BOARD = gql`
+  mutation updateBoard(
+    $boardId: ID!
+    $password: String
+    $updateBoardInput: UpdateBoardInput!
+  ) {
+    updateBoard(
+      boardId: $boardId
+      password: $password
+      updateBoardInput: $updateBoardInput
+    ) {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      images
+      boardAddress {
+        zipcode
+        address
+        addressDetail
+      }
+    }
+  }
+`;

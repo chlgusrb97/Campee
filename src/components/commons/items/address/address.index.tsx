@@ -8,15 +8,23 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import {useAddressHandleComplete} from "../../customs/hooks/useAddressHandleComplete";
 import {UseFormRegisterReturn, UseFormSetValue} from "react-hook-form";
 import KakaoMap from "../kakaoMap/kakaoMap.index";
+import {Maybe} from "yup";
+import {
+  IBoardAddress,
+  IUseditemAddress,
+} from "../../../../commons/types/generated/types";
 
-interface IAddressItemProps {
+interface IAddressItemProps<T> {
   setValue: UseFormSetValue<any>;
   zipcode: UseFormRegisterReturn;
   address: UseFormRegisterReturn;
   addressDetail: UseFormRegisterReturn;
+  dataAddress: Maybe<T> | undefined;
 }
 
-export default function AddressItem(props: IAddressItemProps) {
+export default function AddressItem<T extends IBoardAddress | IUseditemAddress>(
+  props: IAddressItemProps<T>
+) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
@@ -42,6 +50,7 @@ export default function AddressItem(props: IAddressItemProps) {
             placeHolder="우편번호"
             disabled={true}
             register={props.zipcode}
+            defaultValue={props.dataAddress?.zipcode}
           />
           <ButtonItem
             title="우편번호 검색"
@@ -72,6 +81,7 @@ export default function AddressItem(props: IAddressItemProps) {
             placeHolder="도로명 주소 또는 지번 주소"
             disabled={true}
             register={props.address}
+            defaultValue={props.dataAddress?.address}
           />
         </li>
         <li>
@@ -82,6 +92,7 @@ export default function AddressItem(props: IAddressItemProps) {
             padding="0 14px"
             placeHolder="상세 주소를 입력해주세요."
             register={props.addressDetail}
+            defaultValue={props.dataAddress?.addressDetail}
           />
         </li>
       </S.AddressContents>

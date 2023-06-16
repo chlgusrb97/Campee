@@ -1,5 +1,5 @@
 import BoardsRegistrationUI from "../../../src/components/units/boards/registration/boards.registration.index";
 
 export default function BoardsRegistrationPage() {
-  return <BoardsRegistrationUI />;
+  return <BoardsRegistrationUI isEdit={false} />;
 }

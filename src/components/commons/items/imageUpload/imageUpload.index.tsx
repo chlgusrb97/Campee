@@ -5,11 +5,12 @@ import type {RcFile, UploadProps} from "antd/es/upload";
 import type {UploadFile, UploadFileStatus} from "antd/es/upload/interface";
 import {UploadWrapper} from "./imageUpload.styles";
 import {IQuery} from "../../../../commons/types/generated/types";
+import {Maybe} from "yup";
 
 interface IImageUploadItemProps {
   fileList: UploadFile<any>[];
   setFileList: Dispatch<SetStateAction<UploadFile<any>[]>>;
-  usedItemData?: Pick<IQuery, "fetchUseditem"> | undefined;
+  dataImages?: Maybe<string[]> | undefined;
 }
 
 const getBase64 = (file: RcFile): Promise<string> =>
@@ -26,18 +27,16 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
   const [previewTitle, setPreviewTitle] = useState("");
 
   useEffect(() => {
-    if (props.usedItemData?.fetchUseditem.images) {
-      const newFileList = props.usedItemData.fetchUseditem.images.map(
-        (image, index) => ({
-          uid: String(index),
-          name: image,
-          status: "done" as UploadFileStatus,
-          url: `https:storage.googleapis.com/${image}`,
-        })
-      );
+    if (props.dataImages) {
+      const newFileList = props.dataImages.map((image, index) => ({
+        uid: String(index),
+        name: image,
+        status: "done" as UploadFileStatus,
+        url: `https:storage.googleapis.com/${image}`,
+      }));
       props.setFileList(newFileList);
     }
-  }, [props.usedItemData]);
+  }, [props.dataImages]);
 
   const handleCancel = () => setPreviewOpen(false);
 
