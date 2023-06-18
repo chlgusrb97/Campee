@@ -14,7 +14,6 @@ import {useMovedDetail} from "../../../commons/customs/hooks/useMovedDetail";
 import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import InfiniteScroll from "react-infinite-scroller";
 import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
-import LinkItem from "../../../commons/items/link/link.index";
 import {PRODUCTS_REGISTRATION_PATH} from "../../../../commons/paths/paths";
 import {routes} from "../../../../commons/routes/routes";
 
@@ -31,7 +30,18 @@ export default function ProductsListUI() {
   return (
     <>
       <S.Wrapper>
-        <S.BestContents>
+        <span>
+          <TitleItem title="BEST PRODUCTS" fontSize="24px" />
+        </span>
+        <S.BestProducts>
+          <li>
+            <S.BestProductImgBox>
+              <img />
+            </S.BestProductImgBox>
+          </li>
+        </S.BestProducts>
+
+        {/* <S.BestContents>
           <span>
             <TitleItem title="BEST" fontSize="22px" />
           </span>
@@ -91,7 +101,7 @@ export default function ProductsListUI() {
               )}
             </S.Products>
           </InfiniteScroll>
-        </S.ProductsContents>
+        </S.ProductsContents> */}
       </S.Wrapper>
     </>
   );
