@@ -1,11 +1,13 @@
 import {useQuery} from "@apollo/client";
 import {
+  FETCH_BEST_USED_ITEMS,
   FETCH_BOARD,
   FETCH_BOARDS,
   FETCH_BOARDS_BEST,
   FETCH_BOARDS_COUNT,
   FETCH_BOARD_COMMENTS,
   USED_ITEM,
+  USED_ITEMS,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
   USER_LOGGED_IN,
@@ -19,11 +21,21 @@ import {
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
+  IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import {useRouter} from "next/router";
 
 export const useQueryUser = () => {
   const result = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
+
+  return result;
+};
+
+export const useQueryUsedItems = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchUseditems">,
+    IQueryFetchUseditemsArgs
+  >(USED_ITEMS);
 
   return result;
 };
@@ -117,6 +129,14 @@ export const useQueryBoardComments = () => {
       boardId: String(router.query.boardsId),
     },
   });
+
+  return result;
+};
+
+export const useQueryBestUsedItems = () => {
+  const result = useQuery<Pick<IQuery, "fetchUseditemsOfTheBest">>(
+    FETCH_BEST_USED_ITEMS
+  );
 
   return result;
 };

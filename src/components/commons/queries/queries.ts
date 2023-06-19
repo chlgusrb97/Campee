@@ -151,3 +151,15 @@ export const FETCH_BOARD_COMMENTS = gql`
     }
   }
 `;
+
+export const FETCH_BEST_USED_ITEMS = gql`
+  query fetchUseditemsOfTheBest {
+    fetchUseditemsOfTheBest {
+      _id
+      name
+      price
+      createdAt
+      images
+    }
+  }
+`;
