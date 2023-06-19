@@ -91,7 +91,11 @@ export default function BoardsRegistrationUI(
               defaultValue={props.data?.fetchBoard.writer}
               readOnly={!!props.data?.fetchBoard.writer}
             />
-            <ValidationItem error={errors.writer?.message} marginTop="8px" />
+            <ValidationItem
+              error={errors.writer?.message}
+              marginTop="8px"
+              marginLeft="16px"
+            />
           </S.WriterBox>
           <S.PasswordBox>
             <span>
@@ -105,7 +109,11 @@ export default function BoardsRegistrationUI(
               type="password"
               register={register("password")}
             />
-            <ValidationItem error={errors.password?.message} marginTop="8px" />
+            <ValidationItem
+              error={errors.password?.message}
+              marginTop="8px"
+              marginLeft="16px"
+            />
           </S.PasswordBox>
         </li>
         <li>
@@ -121,7 +129,11 @@ export default function BoardsRegistrationUI(
               register={register("title")}
               defaultValue={props.data?.fetchBoard.title}
             />
-            <ValidationItem error={errors.title?.message} marginTop="8px" />
+            <ValidationItem
+              error={errors.title?.message}
+              marginTop="8px"
+              marginLeft="16px"
+            />
           </div>
         </li>
         <li>
@@ -135,7 +147,11 @@ export default function BoardsRegistrationUI(
               trigger={trigger}
               contents={props.data?.fetchBoard.contents}
             />
-            <ValidationItem error={errors.contents?.message} marginTop="8px" />
+            <ValidationItem
+              error={errors.contents?.message}
+              marginTop="8px"
+              marginLeft="16px"
+            />
           </div>
         </li>
         <li>
