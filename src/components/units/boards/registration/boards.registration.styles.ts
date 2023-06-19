@@ -21,10 +21,6 @@ export const Contents = styled.ul`
     border-bottom: 1px solid #ddd;
     padding: 40px 0;
 
-    :first-of-type {
-      justify-content: space-between;
-    }
-
     :nth-of-type(2) {
       align-items: stretch;
     }

@@ -79,10 +79,7 @@ export default function ImageUploadItem(props: IImageUploadItemProps) {
         footer={null}
         onCancel={handleCancel}
       >
-        <img
-          style={{width: "100%", backgroundColor: "red"}}
-          src={previewImage}
-        />
+        <img style={{width: "100%"}} src={previewImage} />
       </Modal>
     </>
   );

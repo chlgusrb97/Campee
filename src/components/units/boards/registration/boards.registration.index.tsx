@@ -60,7 +60,7 @@ export default function BoardsRegistrationUI(
       )}
     >
       <span>
-        <TitleItem title="MY LIFE 등록" fontSize="24px" />
+        <TitleItem title="LIFE 등록" fontSize="24px" />
       </span>
       <S.Contents>
         <li>
