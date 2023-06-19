@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const MapBox = styled.div`
   width: 300px;
   height: 250px;
+  border: 1px solid #ddd;
   margin-right: 26px;
   background-color: #f7f7f7;
 `;

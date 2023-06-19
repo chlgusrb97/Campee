@@ -11,7 +11,7 @@ export default function TitleItem(props: ITitleItemProps) {
   return (
     <Title
       color={props.color ?? "#000"}
-      fontSize={props.fontSize ?? "40px"}
+      fontSize={props.fontSize ?? "24px"}
       fontFamily={props.fontFamily ?? "NanumBold"}
     >
       {props.title}

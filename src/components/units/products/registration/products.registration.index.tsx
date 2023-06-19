@@ -12,21 +12,15 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 import * as S from "./products.registration.styles";
 import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
 import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
 import {IProductsRegistrationUIProps} from "./products.registration.types";
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
-import {routes} from "../../../../commons/routes/routes";
-import {
-  PRODUCTS_DETAIL_PATH,
-  PRODUCTS_LIST_PATH,
-} from "../../../../commons/paths/paths";
+import AddressItem from "../../../commons/items/address/address.index";
 
 export default function ProductsRegistrationUI(
   props: IProductsRegistrationUIProps
 ) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const {
     register,
     setValue,
@@ -37,36 +31,30 @@ export default function ProductsRegistrationUI(
 
   const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
   const {createUpdateItemSubmit} = useUpdateUsedItem();
-  const {showModal, handleOk, handleCancel} = useModalOpen(setIsModalOpen);
-  const {address, handleComplete} = useAddressHandleComplete(
-    setIsModalOpen,
-    setValue
-  );
-  const {pageRouting} = routes();
 
   useEffect(() => {
-    if (props.isEdit && props.usedItemData) {
-      setValue("name", props.usedItemData?.fetchUseditem.name);
-      setValue("remarks", props.usedItemData?.fetchUseditem.remarks);
-      setValue("contents", props.usedItemData?.fetchUseditem.contents);
-      setValue("price", Number(props.usedItemData?.fetchUseditem.price));
-      setValue("tags", props.usedItemData.fetchUseditem.tags);
+    if (props.isEdit && props.data) {
+      setValue("name", props.data?.fetchUseditem.name);
+      setValue("remarks", props.data?.fetchUseditem.remarks);
+      setValue("contents", props.data?.fetchUseditem.contents);
+      setValue("price", Number(props.data?.fetchUseditem.price));
+      setValue("tags", props.data.fetchUseditem.tags);
       setValue(
         "useditemAddress.zipcode",
-        props.usedItemData.fetchUseditem.useditemAddress?.zipcode
+        props.data.fetchUseditem.useditemAddress?.zipcode
       );
       setValue(
         "useditemAddress.address",
-        props.usedItemData.fetchUseditem.useditemAddress?.address
+        props.data.fetchUseditem.useditemAddress?.address
       );
       setValue(
         "useditemAddress.addressDetail",
-        props.usedItemData.fetchUseditem.useditemAddress?.addressDetail
+        props.data.fetchUseditem.useditemAddress?.addressDetail
       );
     }
-  }, [props.isEdit, props.usedItemData, setValue]);
+  }, [props.isEdit, props.data, setValue]);
 
-  console.log(props.usedItemData, props.isEdit);
+  console.log(props.data, props.isEdit);
 
   return (
     <>
@@ -80,45 +68,61 @@ export default function ProductsRegistrationUI(
         </span>
         <S.Contents>
           <li>
-            <span>
-              <LabelItem label="상품명" />
-            </span>
             <div>
+              <span>
+                <LabelItem label="이미지" fontSize="18px" />
+              </span>
+              <S.ImageContents>
+                <ImageUploadItem
+                  fileList={fileList}
+                  setFileList={setFileList}
+                  dataImages={props.data?.fetchUseditem.images}
+                />
+              </S.ImageContents>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span>
+                <LabelItem label="상품 이름" fontSize="18px" />
+              </span>
               <InputItem
-                width="100%"
-                padding="20px 18px"
-                placeHolder="상품명을 작성해주세요."
+                height="48px"
+                border="1px solid #ddd"
+                padding="16px"
+                placeHolder="상품 이름을 입력해주세요."
                 register={register("name")}
-                defaultValue={props.usedItemData?.fetchUseditem.name}
+                defaultValue={props.data?.fetchUseditem.name}
               />
               <ValidationItem error={errors.name?.message} marginTop="8px" />
             </div>
           </li>
           <li>
-            <span>
-              <LabelItem label="상품 요약" />
-            </span>
             <div>
+              <span>
+                <LabelItem label="상품 소개" fontSize="18px" />
+              </span>
               <InputItem
-                width="100%"
-                padding="20px 18px"
-                placeHolder="상품 요약을 작성해주세요."
+                height="48px"
+                border="1px solid #ddd"
+                padding="16px"
+                placeHolder="간단하게 상품 소개를 입력해주세요."
                 register={register("remarks")}
-                defaultValue={props.usedItemData?.fetchUseditem.remarks}
+                defaultValue={props.data?.fetchUseditem.name}
               />
               <ValidationItem error={errors.remarks?.message} marginTop="8px" />
             </div>
           </li>
           <li>
-            <span>
-              <LabelItem label="상품 내용" />
-            </span>
             <div>
+              <span>
+                <LabelItem label="상품 내용" fontSize="18px" />
+              </span>
               <WebEditorItem
-                placeHolder="상품을 설명해주세요."
+                placeHolder="내용을 입력해주세요."
                 setValue={setValue}
                 trigger={trigger}
-                usedItemData={props.usedItemData}
+                contents={props.data?.fetchUseditem.contents}
               />
               <ValidationItem
                 error={errors.contents?.message}
@@ -127,165 +131,86 @@ export default function ProductsRegistrationUI(
             </div>
           </li>
           <li>
-            <span>
-              <LabelItem label="판매 가격" />
-            </span>
             <div>
+              <span>
+                <LabelItem label="판매 가격" fontSize="18px" />
+              </span>
               <InputItem
-                width="100%"
-                padding="20px 18px"
+                height="48px"
+                border="1px solid #ddd"
+                padding="16px"
                 placeHolder="판매 가격을 입력해주세요."
                 register={register("price")}
-                defaultValue={props.usedItemData?.fetchUseditem.price}
+                defaultValue={props.data?.fetchUseditem.price}
               />
               <ValidationItem error={errors.price?.message} marginTop="8px" />
             </div>
           </li>
           <li>
-            <span>
-              <LabelItem label="태그 입력" />
-            </span>
-            <InputItem
-              width="100%"
-              padding="20px 18px"
-              placeHolder="#태그 #태그 #태그"
-              register={register("tags")}
-              defaultValue={props.usedItemData?.fetchUseditem.tags
-                ?.map((tag) => `${tag} `)
-                .join("")}
-            />
-          </li>
-          <li>
-            <span>
-              <LabelItem label="브랜드 위치" />
-            </span>
             <div>
-              <S.MapBox>
-                <KakaoMap
-                  address={
-                    props.isEdit
-                      ? address
-                      : `${props.usedItemData?.fetchUseditem.useditemAddress?.address}`
-                  }
-                />
-              </S.MapBox>
-              <S.AddressContents>
-                <li>
-                  <div>
-                    <InputItem
-                      width="80px"
-                      height="52px"
-                      border="1px solid #bdbdbd"
-                      backgroundColor="#fff"
-                      textAlign="center"
-                      placeHolder="우편번호"
-                      disabled={true}
-                      register={register("useditemAddress.zipcode")}
-                      defaultValue={
-                        props.usedItemData?.fetchUseditem.useditemAddress
-                          ?.zipcode
-                      }
-                    />
-                  </div>
-                  <div>
-                    <ButtonItem
-                      title="우편번호 검색"
-                      width="124px"
-                      height="52px"
-                      color="#fff"
-                      backgroundColor="#000"
-                      fontSize="16px"
-                      type="button"
-                      onClick={showModal}
-                    />
-                    {isModalOpen && (
-                      <ModalItem
-                        title="주소 검색"
-                        contents={
-                          <DaumPostcodeEmbed onComplete={handleComplete} />
-                        }
-                        isModalOpen={isModalOpen}
-                        handleOk={handleOk}
-                        handleCancel={handleCancel}
-                      />
-                    )}
-                  </div>
-                </li>
-                <li>
-                  <InputItem
-                    width="100%"
-                    height="56px"
-                    padding="0 18px"
-                    placeHolder="도로명 주소 또는 지번 주소"
-                    disabled={true}
-                    register={register("useditemAddress.address")}
-                    defaultValue={
-                      props.usedItemData?.fetchUseditem.useditemAddress?.address
-                    }
-                  />
-                </li>
-                <li>
-                  <InputItem
-                    width="100%"
-                    height="56px"
-                    padding="0 18px"
-                    placeHolder="상세 주소를 입력해주세요."
-                    register={register("useditemAddress.addressDetail")}
-                    defaultValue={
-                      props.usedItemData?.fetchUseditem.useditemAddress
-                        ?.addressDetail
-                    }
-                  />
-                </li>
-              </S.AddressContents>
+              <span>
+                <LabelItem label="태그" fontSize="18px" />
+              </span>
+              <InputItem
+                height="48px"
+                border="1px solid #ddd"
+                padding="16px"
+                placeHolder="태그를 입력주세요. (ex: #태그 #태그 #태그) "
+                register={register("tags")}
+                defaultValue={props.data?.fetchUseditem.tags
+                  ?.map((tag) => `${tag} `)
+                  .join("")}
+              />
+              <ValidationItem error={errors.tags?.message} marginTop="8px" />
             </div>
           </li>
           <li>
-            <span>
-              <LabelItem label="사진 첨부" />
-            </span>
-            <S.ImageContents>
-              <ImageUploadItem
-                fileList={fileList}
-                setFileList={setFileList}
-                usedItemData={props.usedItemData}
-              />
-            </S.ImageContents>
+            <div>
+              <span>
+                <LabelItem label="주소" fontSize="18px" />
+              </span>
+              <S.AddressBox>
+                <AddressItem
+                  setValue={setValue}
+                  zipcode={register("useditemAddress.zipcode")}
+                  address={register("useditemAddress.address")}
+                  addressDetail={register("useditemAddress.addressDetail")}
+                  dataAddress={props.data?.fetchUseditem.useditemAddress}
+                />
+              </S.AddressBox>
+            </div>
           </li>
         </S.Contents>
-        <S.SubmitButtonBox>
+        <S.ButtonBox>
           <li>
             <ButtonItem
               title="취소"
-              width="195px"
-              height="77px"
-              border="1px solid #000"
-              color="#000"
+              width="160px"
+              height="56px"
+              border="1px solid #e76161"
+              borderRadius="2px"
+              color="#e76161"
               backgroundColor="#fff"
               fontSize="20px"
               fontFamilly="NanumBold"
               type="button"
-              onClick={() =>
-                pageRouting(
-                  props.isEdit
-                    ? `${PRODUCTS_DETAIL_PATH}/${props.usedItemData?.fetchUseditem._id}`
-                    : PRODUCTS_LIST_PATH
-                )
-              }
             />
           </li>
           <li>
             <ButtonItem
-              title={props.isEdit ? "수정" : "등록"}
-              width="195px"
-              height="77px"
+              title="등록"
+              width="160px"
+              height="56px"
+              borderRadius="2px"
               color="#fff"
-              backgroundColor="#000"
+              backgroundColor="#e76161"
               fontSize="20px"
               fontFamilly="NanumBold"
+              hoverBackgroundColor="#c64343"
+              transition="all 0.3s ease-in-out"
             />
           </li>
-        </S.SubmitButtonBox>
+        </S.ButtonBox>
       </S.Wrapper>
     </>
   );

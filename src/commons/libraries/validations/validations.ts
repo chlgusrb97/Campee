@@ -38,9 +38,9 @@ export const LOGIN_SCHEMA = yup.object({
 });
 
 export const PRODUCTS_REGISTRATION_SCHEMA = yup.object({
-  name: yup.string().required("상품명을 작성해주세요."),
-  remarks: yup.string().required("상품요약을 작성해주세요."),
-  contents: yup.string().required("상품내용을 입력해주세요."),
+  name: yup.string().required("상품 이름을 작성해주세요."),
+  remarks: yup.string().required("상품 소개을 작성해주세요."),
+  contents: yup.string().required("상품 내용을 입력해주세요."),
   price: yup
     .number()
     .required("판매가격을 입력해주세요.")
