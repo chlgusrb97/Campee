@@ -1,12 +1,6 @@
-import {useQuery} from "@apollo/client";
-import {
-  IQuery,
-  IQueryFetchUseditemsArgs,
-} from "../../../../commons/types/generated/types";
 import ButtonItem from "../../../commons/items/button/button.index";
 import ProductItem from "../../../commons/items/product/product.index";
 import TitleItem from "../../../commons/items/title/title.index";
-import {USED_ITEMS} from "../../../commons/queries/queries";
 import {v4 as uuidv4} from "uuid";
 import * as S from "./products.list.styles";
 import InfiniteScroll from "react-infinite-scroller";
@@ -14,12 +8,14 @@ import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMor
 import {routes} from "../../../../commons/routes/routes";
 import SearchItem from "../../../commons/items/search/search.index";
 import {PRODUCTS_REGISTRATION_PATH} from "../../../../commons/paths/paths";
+import {
+  useQueryBestUsedItems,
+  useQueryUsedItems,
+} from "../../../commons/customs/useQueries.ts/useQueries";
 
 export default function ProductsListUI() {
-  const {data, refetch} = useQuery<
-    Pick<IQuery, "fetchUseditems">,
-    IQueryFetchUseditemsArgs
-  >(USED_ITEMS);
+  const {data, refetch} = useQueryUsedItems();
+  const {data: BestItemsData} = useQueryBestUsedItems();
   const {onLoadMore} = onLoadMoreUsedItems();
   const {pageRouting} = routes();
 
@@ -30,18 +26,11 @@ export default function ProductsListUI() {
           <TitleItem title="BEST PICK" fontSize="20px" />
         </span>
         <S.BestProducts>
-          <li>
-            <ProductItem />
-          </li>
-          <li>
-            <ProductItem />
-          </li>
-          <li>
-            <ProductItem />
-          </li>
-          <li>
-            <ProductItem />
-          </li>
+          {BestItemsData?.fetchUseditemsOfTheBest.map((BestProducts) => (
+            <li>
+              <ProductItem product={BestProducts} />
+            </li>
+          ))}
         </S.BestProducts>
         <S.ItemBox>
           <SearchItem refetch={refetch} placeHolder="상품을 검색하세요." />
