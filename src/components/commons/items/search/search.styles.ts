@@ -8,7 +8,7 @@ export const Search = styled.div`
   align-items: center;
   border: 2px solid #e76161;
   border-radius: 2px;
-  margin: 40px 0;
+
   overflow: hidden;
 
   > input {

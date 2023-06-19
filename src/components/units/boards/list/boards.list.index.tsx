@@ -66,7 +66,11 @@ export default function BoardsListUI() {
           </li>
         ))}
       </S.BestBoards>
-      <SearchItem refetch={refetch} setKeyWord={setKeyWord} />
+      <SearchItem
+        refetch={refetch}
+        setKeyWord={setKeyWord}
+        placeHolder="게시글을 검색하세요."
+      />
       <S.BoardsCount>총 {formattedBoardsCount}건</S.BoardsCount>
       <S.BoardsList>
         <S.BoardListTitle>
