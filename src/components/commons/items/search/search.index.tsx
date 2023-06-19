@@ -3,22 +3,35 @@ import _ from "lodash";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
+  IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import {Search, SearchIcon} from "./search.styles";
 import {ChangeEvent, Dispatch, SetStateAction} from "react";
 
-interface ISearchItemProps {
-  refetch: (
-    variables?: Partial<IQueryFetchBoardsArgs> | undefined
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
+type FetchBoardsArgs = Partial<IQueryFetchBoardsArgs>;
+type FetchUseditemsArgs = Partial<IQueryFetchUseditemsArgs>;
 
-  setKeyWord: Dispatch<SetStateAction<string>>;
+type RefetchFunction =
+  | ((
+      variables?: FetchBoardsArgs
+    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>)
+  | ((
+      variables?: FetchUseditemsArgs
+    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditems">>>);
+
+interface ISearchItemProps {
+  refetch: RefetchFunction;
+  setKeyWord?: Dispatch<SetStateAction<string>>;
+  placeHolder: string;
 }
 
 export default function SearchItem(props: ISearchItemProps) {
   const getDebounce = _.debounce((value: string) => {
     void props.refetch({search: value, page: 1});
-    props.setKeyWord(value);
+
+    if (props.setKeyWord) {
+      props.setKeyWord(value);
+    }
   }, 500);
 
   const onChangeSearchEvent = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,10 +40,7 @@ export default function SearchItem(props: ISearchItemProps) {
 
   return (
     <Search>
-      <input
-        placeholder="검색어를 입력해주세요."
-        onChange={onChangeSearchEvent}
-      />
+      <input placeholder={props.placeHolder} onChange={onChangeSearchEvent} />
       <button type="button">
         <SearchIcon />
       </button>

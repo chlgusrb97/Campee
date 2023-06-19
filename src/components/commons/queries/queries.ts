@@ -14,8 +14,8 @@ export const USER_LOGGED_IN = gql`
 `;
 
 export const USED_ITEMS = gql`
-  query fetchUseditems($search: String, $page: Int) {
-    fetchUseditems(search: $search, page: $page) {
+  query fetchUseditems($isSoldout: Boolean, $search: String, $page: Int) {
+    fetchUseditems(isSoldout: $isSoldout, search: $search, page: $page) {
       _id
       name
       contents
@@ -25,6 +25,7 @@ export const USED_ITEMS = gql`
         name
       }
       createdAt
+      pickedCount
     }
   }
 `;

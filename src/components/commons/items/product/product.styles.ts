@@ -1,65 +1,109 @@
-import {HeartOutlined} from "@ant-design/icons";
 import styled from "@emotion/styled";
+import {AiOutlineHeart, AiFillHeart} from "react-icons/ai";
 
 export const Wrapper = styled.div`
+  position: relative;
+`;
+
+export const Product = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ProductImgBox = styled.div`
   width: 100%;
-  cursor: pointer;
+  height: 200px;
+  background-color: #eee;
+  overflow: hidden;
 
-  > div:first-of-type {
-    position: relative;
+  > img {
     width: 100%;
-    height: 30vw;
-    background-color: #c4c4c4;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
+    height: 100%;
+    border: none;
+    object-fit: cover;
+    object-position: center;
   }
+`;
 
-  > div:last-of-type {
+export const ImgNoneBox = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #777;
+`;
+
+export const ProductFooterBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 9px;
+
+  > h1 {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 18px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
   }
+`;
+
+export const ProductFooterEntry = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const Price = styled.span`
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 12px;
+  font-family: NanumBold;
 
   > p {
-    margin-right: 23px;
+    font-size: 16px;
+    margin-right: 3px;
+    margin-bottom: 2px;
     font-family: NanumBold;
-
-    :first-of-type {
-      color: #f65656;
-    }
   }
 `;
 
-export const Name = styled.p`
-  margin: 13px 0;
-  color: #555;
+export const CreationDate = styled.p`
+  font-size: 12px;
+  color: #777;
 `;
 
-export const Info = styled.p`
-  color: #555;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-export const Heart = styled(HeartOutlined)`
+export const HeartButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 22px;
-  color: #555;
+  top: 12px;
+  right: 12px;
+  background-color: transparent;
   z-index: 1;
   cursor: pointer;
+`;
+
+export const lineHeart = styled(AiOutlineHeart)`
+  color: #fff;
+  font-size: 30px;
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #f84a4a;
+  }
+`;
+
+export const FillHeart = styled(AiFillHeart)`
+  color: #e76161;
+  font-size: 30px;
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #f84a4a;
+  }
 `;
