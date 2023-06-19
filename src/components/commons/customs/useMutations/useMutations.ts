@@ -16,6 +16,7 @@ import {
   IMutationLikeBoardArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
+  IMutationToggleUseditemPickArgs,
   IMutationUpdateBoardArgs,
   IMutationUpdateBoardCommentArgs,
   IMutationUpdateUseditemArgs,
@@ -43,6 +44,7 @@ import {
   UPDATE_USED_ITEM,
   UPDATE_USED_ITEM_QUESTION,
   UPLOAD_FILE,
+  USED_ITEM_PICK,
 } from "../../mutations/mutations";
 
 export const useMutationCreateUser = () => {
@@ -220,4 +222,13 @@ export const useMutationUpdateBoard = () => {
   >(UPDATE_BOARD);
 
   return [updateBoard];
+};
+
+export const useMutationUsedItemPick = () => {
+  const [toggleUseditemPick] = useMutation<
+    Pick<IMutation, "toggleUseditemPick">,
+    IMutationToggleUseditemPickArgs
+  >(USED_ITEM_PICK);
+
+  return [toggleUseditemPick];
 };

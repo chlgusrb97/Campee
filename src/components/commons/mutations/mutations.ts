@@ -248,3 +248,9 @@ export const UPDATE_BOARD = gql`
     }
   }
 `;
+
+export const USED_ITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;

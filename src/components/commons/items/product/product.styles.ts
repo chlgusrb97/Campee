@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 import {AiOutlineHeart, AiFillHeart} from "react-icons/ai";
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
+export const Wrapper = styled.div``;
 
 export const Product = styled.div`
   display: flex;
@@ -77,33 +75,4 @@ export const Price = styled.span`
 export const CreationDate = styled.p`
   font-size: 12px;
   color: #777;
-`;
-
-export const HeartButton = styled.button`
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: transparent;
-  z-index: 1;
-  cursor: pointer;
-`;
-
-export const lineHeart = styled(AiOutlineHeart)`
-  color: #fff;
-  font-size: 30px;
-  transition: all 0.3s ease-in-out;
-
-  :hover {
-    color: #f84a4a;
-  }
-`;
-
-export const FillHeart = styled(AiFillHeart)`
-  color: #e76161;
-  font-size: 30px;
-  transition: all 0.3s ease-in-out;
-
-  :hover {
-    color: #f84a4a;
-  }
 `;

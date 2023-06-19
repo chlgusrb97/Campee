@@ -27,7 +27,7 @@ export default function ProductsListUI() {
         </span>
         <S.BestProducts>
           {BestItemsData?.fetchUseditemsOfTheBest.map((BestProducts) => (
-            <li>
+            <li key={BestProducts._id}>
               <ProductItem product={BestProducts} />
             </li>
           ))}
@@ -38,7 +38,7 @@ export default function ProductsListUI() {
             <ButtonItem
               title="등록"
               width="140px"
-              height="50px"
+              height="44px"
               color="#fff"
               borderRadius="2px"
               backgroundColor="#e76161"
