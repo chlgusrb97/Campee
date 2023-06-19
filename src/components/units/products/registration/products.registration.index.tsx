@@ -94,7 +94,11 @@ export default function ProductsRegistrationUI(
                 register={register("name")}
                 defaultValue={props.data?.fetchUseditem.name}
               />
-              <ValidationItem error={errors.name?.message} marginTop="8px" />
+              <ValidationItem
+                error={errors.name?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
             </div>
           </li>
           <li>
@@ -110,7 +114,11 @@ export default function ProductsRegistrationUI(
                 register={register("remarks")}
                 defaultValue={props.data?.fetchUseditem.name}
               />
-              <ValidationItem error={errors.remarks?.message} marginTop="8px" />
+              <ValidationItem
+                error={errors.remarks?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
             </div>
           </li>
           <li>
@@ -127,6 +135,7 @@ export default function ProductsRegistrationUI(
               <ValidationItem
                 error={errors.contents?.message}
                 marginTop="8px"
+                marginLeft="16px"
               />
             </div>
           </li>
@@ -143,7 +152,11 @@ export default function ProductsRegistrationUI(
                 register={register("price")}
                 defaultValue={props.data?.fetchUseditem.price}
               />
-              <ValidationItem error={errors.price?.message} marginTop="8px" />
+              <ValidationItem
+                error={errors.price?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
             </div>
           </li>
           <li>
@@ -161,7 +174,11 @@ export default function ProductsRegistrationUI(
                   ?.map((tag) => `${tag} `)
                   .join("")}
               />
-              <ValidationItem error={errors.tags?.message} marginTop="8px" />
+              <ValidationItem
+                error={errors.tags?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
             </div>
           </li>
           <li>

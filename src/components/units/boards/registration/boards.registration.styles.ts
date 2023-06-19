@@ -18,11 +18,14 @@ export const Contents = styled.ul`
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid #ddd;
     padding: 40px 0;
 
     :nth-of-type(2) {
       align-items: stretch;
+    }
+
+    :not(:last-of-type) {
+      border-bottom: 1px solid #ddd;
     }
 
     > div {
