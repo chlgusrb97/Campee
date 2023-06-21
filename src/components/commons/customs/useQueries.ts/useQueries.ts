@@ -43,12 +43,12 @@ export const useQueryUsedItems = () => {
 export const useQueryUsedItem = () => {
   const router = useRouter();
 
-  const {data: usedItemData} = useQuery<
+  const result = useQuery<
     Pick<IQuery, "fetchUseditem">,
     IQueryFetchUseditemArgs
   >(USED_ITEM, {variables: {useditemId: String(router.query.productsId)}});
 
-  return {usedItemData};
+  return result;
 };
 
 export const useQueryUsedItemQuestions = () => {
