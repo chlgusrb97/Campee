@@ -21,7 +21,7 @@ export const BestBoards = styled.ul`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 0;
+  padding-top: 32px;
 
   > li {
     width: 22%;
@@ -141,10 +141,9 @@ export const BoardListTitle = styled.div`
       width: 70%;
     }
 
-    :nth-of-child(3),
-    :nth-of-child(4),
-    :nth-of-child(5) {
-      width: 150px;
+    :nth-of-type(3),
+    :nth-of-type(4) {
+      width: 15%;
     }
   }
 `;
@@ -183,10 +182,9 @@ export const BoardListContents = styled.ul`
         word-break: break-all;
       }
 
-      :nth-of-child(3),
-      :nth-of-child(4),
-      :nth-of-child(5) {
-        width: 150px;
+      :nth-of-type(3),
+      :nth-of-type(4) {
+        width: 15%;
         padding: 0 10px;
         text-align: center;
         overflow: hidden;
@@ -200,6 +198,10 @@ export const BoardListContents = styled.ul`
       background-color: #f7f7f7f7;
     }
   }
+`;
+
+export const SearchBox = styled.div`
+  margin: 70px 0 40px;
 `;
 
 export const FooterContents = styled.div`
