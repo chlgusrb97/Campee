@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
-import {useQueryUsedItem} from "../../../commons/customs/useQueries.ts/useQueries";
+import {
+  useQueryUsedItem,
+  useQueryUser,
+} from "../../../commons/customs/useQueries.ts/useQueries";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
 import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
@@ -18,6 +21,7 @@ export default function ProductsDetailUI() {
   const [safeHtml, setSafeHtml] = useState("");
 
   const {data} = useQueryUsedItem();
+  const {data: userData} = useQueryUser();
   const {onClickDeleteUsedItem} = useDeleteUsedItem();
   const {onClickBuyingProducts} = useBuyingProducts();
   const {pageRouting} = routes();
@@ -43,22 +47,25 @@ export default function ProductsDetailUI() {
                 </S.UserImageBox>
                 <S.UserName>{data?.fetchUseditem.seller?.name}</S.UserName>
               </S.User>
-              <S.EditDeleteButtons>
-                <button
-                  onClick={() => {
-                    pageRouting(
-                      `${PRODUCTS_DETAIL_PATH}/${router.query.productsId}${EDIT_PATH}`
-                    );
-                  }}
-                >
-                  <S.EditIcon />
-                  <p>수정</p>
-                </button>
-                <button onClick={onClickDeleteUsedItem}>
-                  <S.DeleteIcon />
-                  <p>삭제</p>
-                </button>
-              </S.EditDeleteButtons>
+              {data?.fetchUseditem.seller?._id ===
+                userData?.fetchUserLoggedIn._id && (
+                <S.EditDeleteButtons>
+                  <button
+                    onClick={() => {
+                      pageRouting(
+                        `${PRODUCTS_DETAIL_PATH}/${router.query.productsId}${EDIT_PATH}`
+                      );
+                    }}
+                  >
+                    <S.EditIcon />
+                    <p>수정</p>
+                  </button>
+                  <button onClick={onClickDeleteUsedItem}>
+                    <S.DeleteIcon />
+                    <p>삭제</p>
+                  </button>
+                </S.EditDeleteButtons>
+              )}
             </div>
             <div>
               <S.ProductName>{data?.fetchUseditem.name}</S.ProductName>
