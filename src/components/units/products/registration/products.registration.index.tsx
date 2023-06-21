@@ -168,7 +168,7 @@ export default function ProductsRegistrationUI(
                 height="48px"
                 border="1px solid #ddd"
                 padding="16px"
-                placeHolder="태그를 입력주세요. (ex: #태그 #태그 #태그) "
+                placeHolder="태그를 입력주세요. (ex: #태그 #태그 #태그)"
                 register={register("tags")}
                 defaultValue={props.data?.fetchUseditem.tags
                   ?.map((tag) => `${tag} `)
