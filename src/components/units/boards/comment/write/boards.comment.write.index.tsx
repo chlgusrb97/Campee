@@ -4,13 +4,13 @@ import {useFormBoardsCommentWrite} from "../../../../commons/useForm/useForm";
 import * as S from "./boards.comment.write.styles";
 import {useCreateBoardComment} from "../../../../commons/customs/hooks/useCreateBoardComment";
 import {IBoardComment} from "../../../../../commons/types/generated/types";
-import {Dispatch, SetStateAction, useState} from "react";
+import {Dispatch, SetStateAction} from "react";
 import {useUpdateBoardComment} from "../../../../commons/customs/hooks/useUpdateBoardComment";
 
 interface IBoardsCommentWriteUIProps {
-  isCommentEdit: boolean;
-  setIsCommentEdit: Dispatch<SetStateAction<boolean>>;
-  CommentList: IBoardComment;
+  isCommentEdit?: boolean;
+  setIsCommentEdit?: Dispatch<SetStateAction<boolean>>;
+  CommentList?: IBoardComment;
 }
 
 export default function BoardsCommentWriteUI(
@@ -24,7 +24,10 @@ export default function BoardsCommentWriteUI(
     <S.CommentWriteWrapper
       onSubmit={handleSubmit(
         props.isCommentEdit
-          ? updateCommentSubmit(props.CommentList._id, props.setIsCommentEdit)
+          ? updateCommentSubmit({
+              boardCommentId: props.CommentList?._id,
+              setIsCommentEdit: props.setIsCommentEdit,
+            })
           : createCommentSubmit(setValue)
       )}
     >
@@ -36,7 +39,7 @@ export default function BoardsCommentWriteUI(
           <li>
             <CommentInputItem
               defaultValue={
-                props.isCommentEdit ? String(props.CommentList.writer) : ""
+                props.isCommentEdit ? String(props.CommentList?.writer) : ""
               }
               placeHolder="이름"
               register={register("writer")}
@@ -51,9 +54,9 @@ export default function BoardsCommentWriteUI(
           </li>
         </ul>
         <CommentWrite
-          defaultValue={props.CommentList?.contents}
+          defaultValue={props.CommentList?.contents ?? ""}
           placeHolder="댓글을 입력해주세요."
-          isCommentEdit={props.isCommentEdit}
+          isCommentEdit={props.isCommentEdit ?? false}
           register={register("contents")}
         />
       </S.TextBox>

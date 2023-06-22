@@ -18,3 +18,8 @@ export const paymentModalState = atom({
   key: "paymentModalState",
   default: false,
 });
+
+export const keyWordState = atom({
+  key: "keyWordState",
+  default: "",
+});

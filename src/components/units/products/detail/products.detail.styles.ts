@@ -262,8 +262,8 @@ export const BuyButton = styled.button`
 
 export const ProductContentns = styled.div`
   margin-top: 100px;
-  padding-top: 40px;
-  border-top: 1px solid #000;
+  padding: 40px 0;
+  border-top: 1px solid #ddd;
 `;
 
 export const ProductContentsAddress = styled.div`

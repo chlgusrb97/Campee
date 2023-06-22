@@ -18,6 +18,8 @@ import TitleItem from "../../../commons/items/title/title.index";
 import Pagination from "../../../commons/pagination/pagination.index";
 import * as S from "./boards.list.styles";
 import {useSearch} from "../../../commons/customs/useSearch";
+import {keyWordState} from "../../../../commons/stores/stores";
+import {useRecoilState} from "recoil";
 
 const SECRETCODE = "!*(^&";
 
@@ -25,7 +27,7 @@ export default function BoardsListUI() {
   const {data, refetch} = useQueryBoards();
   const {data: countData} = useQueryBoardsCount();
   const {data: BestData} = useQueryBoardsBest();
-  const {keyWord} = useSearch({});
+  const [keyWord] = useRecoilState(keyWordState);
 
   const {movedDetail} = useMovedDetail();
   const {pageRouting} = routes();

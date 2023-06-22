@@ -6,7 +6,6 @@ import {
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import {Search, SearchIcon} from "./search.styles";
-import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
 import {useSearch} from "../../customs/useSearch";
 
 type FetchBoardsArgs = Partial<IQueryFetchBoardsArgs>;
