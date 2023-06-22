@@ -17,15 +17,15 @@ import SearchItem from "../../../commons/items/search/search.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import Pagination from "../../../commons/pagination/pagination.index";
 import * as S from "./boards.list.styles";
+import {useSearch} from "../../../commons/customs/useSearch";
 
 const SECRETCODE = "!*(^&";
 
 export default function BoardsListUI() {
-  const [keyWord, setKeyWord] = useState("");
-
   const {data, refetch} = useQueryBoards();
   const {data: countData} = useQueryBoardsCount();
   const {data: BestData} = useQueryBoardsBest();
+  const {keyWord} = useSearch({});
 
   const {movedDetail} = useMovedDetail();
   const {pageRouting} = routes();
@@ -67,11 +67,7 @@ export default function BoardsListUI() {
         ))}
       </S.BestBoards>
       <S.SearchBox>
-        <SearchItem
-          refetch={refetch}
-          setKeyWord={setKeyWord}
-          placeHolder="게시글을 검색하세요."
-        />
+        <SearchItem refetch={refetch} placeHolder="게시글을 검색하세요." />
       </S.SearchBox>
       <S.BoardsCount>총 {formattedBoardsCount}건</S.BoardsCount>
       <S.BoardsList>

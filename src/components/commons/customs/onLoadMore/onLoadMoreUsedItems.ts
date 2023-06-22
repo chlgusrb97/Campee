@@ -9,19 +9,19 @@ import {
   useQueryUsedItemQuestions,
 } from "../useQueries.ts/useQueries";
 
-export const onLoadMoreUsedItems = () => {
-  const {data, fetchMore} = useQuery<
-    Pick<IQuery, "fetchUseditems">,
-    IQueryFetchUseditemsArgs
-  >(USED_ITEMS);
+interface IOnLoadMoreProps {
+  data: Pick<IQuery, "fetchUseditems"> | undefined;
+  fetchMore: any;
+}
 
+export const onLoadMoreFunc = (props: IOnLoadMoreProps) => {
   const onLoadMore = () => {
-    if (data === undefined) return;
-    void fetchMore({
+    if (props.data === undefined) return;
+    void props.fetchMore({
       variables: {
-        page: Math.ceil((data.fetchUseditems.length ?? 10) / 10) + 1,
+        page: Math.ceil((props.data.fetchUseditems.length ?? 10) / 10) + 1,
       },
-      updateQuery: (prev, {fetchMoreResult}) => {
+      updateQuery: (prev: any, {fetchMoreResult}: any) => {
         if (fetchMoreResult.fetchUseditems === undefined) {
           return {
             fetchUseditems: [...prev.fetchUseditems],
