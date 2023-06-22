@@ -6,7 +6,8 @@ import {
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import {Search, SearchIcon} from "./search.styles";
-import {ChangeEvent, Dispatch, SetStateAction} from "react";
+import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
+import {useSearch} from "../../customs/useSearch";
 
 type FetchBoardsArgs = Partial<IQueryFetchBoardsArgs>;
 type FetchUseditemsArgs = Partial<IQueryFetchUseditemsArgs>;
@@ -21,22 +22,13 @@ type RefetchFunction =
 
 interface ISearchItemProps {
   refetch: RefetchFunction;
-  setKeyWord?: Dispatch<SetStateAction<string>>;
   placeHolder: string;
 }
 
 export default function SearchItem(props: ISearchItemProps) {
-  const getDebounce = _.debounce((value: string) => {
-    void props.refetch({search: value, page: 1});
-
-    if (props.setKeyWord) {
-      props.setKeyWord(value);
-    }
-  }, 500);
-
-  const onChangeSearchEvent = (event: ChangeEvent<HTMLInputElement>) => {
-    getDebounce(event.currentTarget.value);
-  };
+  const {onChangeSearchEvent} = useSearch({
+    refetch: props.refetch,
+  });
 
   return (
     <Search>

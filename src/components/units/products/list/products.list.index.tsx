@@ -4,7 +4,6 @@ import TitleItem from "../../../commons/items/title/title.index";
 import {v4 as uuidv4} from "uuid";
 import * as S from "./products.list.styles";
 import InfiniteScroll from "react-infinite-scroller";
-import {onLoadMoreUsedItems} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 import {routes} from "../../../../commons/routes/routes";
 import SearchItem from "../../../commons/items/search/search.index";
 import {PRODUCTS_REGISTRATION_PATH} from "../../../../commons/paths/paths";
@@ -12,11 +11,12 @@ import {
   useQueryBestUsedItems,
   useQueryUsedItems,
 } from "../../../commons/customs/useQueries.ts/useQueries";
+import {onLoadMoreFunc} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 
 export default function ProductsListUI() {
-  const {data, refetch} = useQueryUsedItems();
+  const {data, refetch, fetchMore} = useQueryUsedItems();
   const {data: BestItemsData} = useQueryBestUsedItems();
-  const {onLoadMore} = onLoadMoreUsedItems();
+  const {onLoadMore} = onLoadMoreFunc({data, fetchMore});
   const {pageRouting} = routes();
 
   return (
