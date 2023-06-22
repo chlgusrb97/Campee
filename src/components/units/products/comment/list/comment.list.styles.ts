@@ -4,7 +4,16 @@ import {FaUserCircle} from "react-icons/fa";
 
 export const CommentListWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+
+    :last-of-type {
+      flex-direction: column;
+    }
+  }
 
   :not(:last-of-type) {
     margin-bottom: 30px;
@@ -77,5 +86,15 @@ export const CreationDate = styled.p`
 export const CommentDeleteModal = styled(Modal)`
   .ant-modal-title {
     font-family: NanumBold;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 0 10px;
+    margin: 20px 0 10px;
+    outline: none;
   }
 `;

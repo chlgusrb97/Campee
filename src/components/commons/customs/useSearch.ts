@@ -6,6 +6,8 @@ import {
   IQueryFetchUseditemsArgs,
 } from "../../../commons/types/generated/types";
 import {ApolloQueryResult} from "@apollo/client";
+import {useRecoilState} from "recoil";
+import {keyWordState} from "../../../commons/stores/stores";
 
 type FetchBoardsArgs = Partial<IQueryFetchBoardsArgs>;
 type FetchUseditemsArgs = Partial<IQueryFetchUseditemsArgs>;
@@ -23,7 +25,7 @@ interface IUseSearchProps {
 }
 
 export const useSearch = (props: IUseSearchProps) => {
-  const [keyWord, setKeyWord] = useState("");
+  const [keyWord, setKeyWord] = useRecoilState(keyWordState);
 
   const getDebounce = _.debounce((value: string) => {
     if (props.refetch) void props.refetch({search: value, page: 1});

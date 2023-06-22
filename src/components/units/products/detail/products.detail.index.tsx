@@ -8,13 +8,12 @@ import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import DOMPurify from "dompurify";
 import * as S from "./products.detail.styles";
-import ProductsDeTailCommentListUI from "./comment/list/comment.list.index";
-import ProductsDeTailCommentWriteUI from "./comment/write/comment.write.index";
 import {useRouter} from "next/router";
 import {useDeleteUsedItem} from "../../../commons/customs/hooks/useDeleteUsedItem";
 import {useBuyingProducts} from "../../../commons/customs/hooks/useBuyingProducts";
 import {routes} from "../../../../commons/routes/routes";
 import {EDIT_PATH, PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
+import ProductsCommentUI from "../comment/products.comment.index";
 
 export default function ProductsDetailUI() {
   const router = useRouter();
@@ -114,8 +113,7 @@ export default function ProductsDetailUI() {
             <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
           </S.ProductContentsAddress>
         </S.ProductContentns>
-        <ProductsDeTailCommentWriteUI />
-        <ProductsDeTailCommentListUI />
+        <ProductsCommentUI />
       </S.Wrapper>
     </>
   );
