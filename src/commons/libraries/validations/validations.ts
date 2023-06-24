@@ -51,6 +51,10 @@ export const PRODUCTS_COMMENT_WRITE_SCHEMA = yup.object({
   contents: yup.string().required("내용을 입력해주세요."),
 });
 
+export const PRODUCTS_COMMENT_ANSWER_SCHEMA = yup.object({
+  contents: yup.string().required("내용을 입력해주세요."),
+});
+
 export const BOARDS_REGISTRATION_SCHEMA = yup.object({
   writer: yup.string().required("이름을 작성해주세요."),
   password: yup.string().required("비밀번호를 입력해주세요."),

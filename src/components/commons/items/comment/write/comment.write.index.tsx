@@ -5,7 +5,7 @@ import {useHandle} from "../../../customs/useHandle";
 interface ICommentWriteProps {
   defaultValue: string;
   placeHolder: string;
-  isCommentEdit: boolean;
+  isCommentEdit?: boolean;
   register: UseFormRegisterReturn;
 }
 

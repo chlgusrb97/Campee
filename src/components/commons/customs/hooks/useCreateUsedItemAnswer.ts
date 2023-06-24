@@ -5,20 +5,22 @@ import {Dispatch, SetStateAction} from "react";
 import {Modal} from "antd";
 import {USED_ITEM_ANSWERS} from "../../queries/queries";
 
+interface ICrateAnswerSubmitProps {
+  useditemQuestionId: string;
+  setValue: UseFormSetValue<ICreateUseditemQuestionAnswerInput>;
+  setIsAnswer: Dispatch<SetStateAction<boolean>>;
+}
+
 export const useCreateUsedItemAnswer = () => {
   const [createUseditemQuestionAnswer] = useMutationCreateUsedItemAnswer();
 
   const createAnswerSubmit =
-    (
-      useditemQuestionId: string,
-      setValue: UseFormSetValue<ICreateUseditemQuestionAnswerInput>,
-      setIsAnswer: Dispatch<SetStateAction<boolean>>
-    ) =>
+    (props: ICrateAnswerSubmitProps) =>
     async (data: ICreateUseditemQuestionAnswerInput): Promise<void> => {
       try {
-        const result = await createUseditemQuestionAnswer({
+        await createUseditemQuestionAnswer({
           variables: {
-            useditemQuestionId,
+            useditemQuestionId: props.useditemQuestionId,
             createUseditemQuestionAnswerInput: {
               contents: data.contents,
             },
@@ -27,13 +29,13 @@ export const useCreateUsedItemAnswer = () => {
             {
               query: USED_ITEM_ANSWERS,
               variables: {
-                useditemQuestionId,
+                useditemQuestionId: props.useditemQuestionId,
               },
             },
           ],
         });
-        setIsAnswer(false);
-        setValue("contents", "");
+        props.setIsAnswer(false);
+        props.setValue("contents", "");
       } catch (error) {
         Modal.error({
           content: "댓글 답변 등록에 실패하였습니다. 다시 시도해주세요.",

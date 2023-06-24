@@ -72,7 +72,15 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
                   </S.CreationDate>
                   <S.Dotted />
                 </li>
-                {props.question.user._id === data?.fetchUserLoggedIn._id ? (
+                <li>
+                  <CommentButtonItem
+                    name={isAnswer ? "답글 취소" : "답글 달기"}
+                    id={props.question._id}
+                    onClick={onClickAnswer}
+                  />
+                  <S.Dotted />
+                </li>
+                {props.question.user._id === data?.fetchUserLoggedIn._id && (
                   <>
                     <li>
                       <CommentButtonItem
@@ -90,21 +98,12 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
                       />
                     </li>
                   </>
-                ) : (
-                  <li>
-                    <CommentButtonItem
-                      name={isAnswer ? "답글취소" : "답글달기"}
-                      id={props.question._id}
-                      onClick={onClickAnswer}
-                    />
-                  </li>
                 )}
               </ul>
             </S.CommentInfo>
           </div>
           <CommentAnswerUI
             question={props.question}
-            loginUserData={data}
             isAnswer={isAnswer}
             setIsAnswer={setIsAnswer}
             onClickAnswerCancel={onClickAnswerCancel}

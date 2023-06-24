@@ -12,6 +12,7 @@ import {
   IMutationDeleteBoardArgs,
   IMutationDeleteBoardCommentArgs,
   IMutationDeleteUseditemArgs,
+  IMutationDeleteUseditemQuestionAnswerArgs,
   IMutationDeleteUseditemQuestionArgs,
   IMutationLikeBoardArgs,
   IMutationLoginUserArgs,
@@ -35,6 +36,7 @@ import {
   DELETE_BOARD,
   DELETE_BOARD_COMMENT,
   DELETE_USED_ITEM,
+  DELETE_USED_ITEM_ANSWER,
   DELETE_USED_ITEM_QUESTION,
   LIKE_BOARD,
   LOGIN_USER,
@@ -159,6 +161,15 @@ export const useMutationCreateUsedItemAnswer = () => {
   >(CREATE_USED_ITEM_ANSWER);
 
   return [createUseditemQuestionAnswer];
+};
+
+export const useMutationDeleteUsedItemAnswer = () => {
+  const [deleteUseditemQuestionAnswer] = useMutation<
+    Pick<IMutation, "deleteUseditemQuestionAnswer">,
+    IMutationDeleteUseditemQuestionAnswerArgs
+  >(DELETE_USED_ITEM_ANSWER);
+
+  return [deleteUseditemQuestionAnswer];
 };
 
 export const useMutationCreateBoard = () => {

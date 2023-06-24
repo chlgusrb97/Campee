@@ -5,6 +5,7 @@ import {
   BOARDS_REGISTRATION_SCHEMA,
   JOIN_SCHEMA,
   LOGIN_SCHEMA,
+  PRODUCTS_COMMENT_ANSWER_SCHEMA,
   PRODUCTS_COMMENT_WRITE_SCHEMA,
   PRODUCTS_REGISTRATION_SCHEMA,
 } from "../../../commons/libraries/validations/validations";
@@ -56,6 +57,7 @@ export const useFormProductsCommentWrite = () => {
 
 export const useFormProductsCommentAnswer = () => {
   const result = useForm<ICreateUseditemQuestionAnswerInput>({
+    resolver: yupResolver(PRODUCTS_COMMENT_ANSWER_SCHEMA),
     mode: "onChange",
   });
   return result;
