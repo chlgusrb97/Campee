@@ -2,19 +2,13 @@ import styled from "@emotion/styled";
 import {Modal} from "antd";
 import {FaUserCircle} from "react-icons/fa";
 
-export const CommentListWrapper = styled.div`
+export const AnswerBox = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-
-  > div {
-    display: flex;
-    flex-direction: row;
-
-    :last-of-type {
-      flex-direction: column;
-    }
-  }
+  flex-direction: row;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #fbf8f8;
+  margin-top: 20px;
 `;
 
 export const UserIconBox = styled.div`
@@ -28,6 +22,8 @@ export const UserIconBox = styled.div`
 `;
 
 export const UserIcon = styled(FaUserCircle)`
+  width: 100%;
+  height: 100%;
   font-size: 30px;
   color: #ddd;
 `;

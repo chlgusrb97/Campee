@@ -77,6 +77,10 @@ export const USED_ITEM_ANSWERS = gql`
       _id
       contents
       createdAt
+      user {
+        _id
+        name
+      }
     }
   }
 `;
