@@ -53,48 +53,60 @@ export default function CommentAnswerListUI(props: ICommentAnswerListUIProps) {
           onCancel={handleCancel}
         ></S.CommentDeleteModal>
       )}
-      <S.AnswerBox>
-        <S.UserIconBox>
-          <S.UserIcon />
-        </S.UserIconBox>
-        <S.CommentInfo>
-          <h1>{props.answer.user.name}</h1>
-          <p>{props.answer.contents}</p>
-          <ul>
-            <li>
-              <S.CreationDate>{getDate(props.answer.createdAt)}</S.CreationDate>
-              <S.Dotted />
-            </li>
-            <li>
-              <CommentButtonItem
-                name={isAnswer ? "답글 취소" : "답글 달기"}
-                id={props.answer._id}
-                onClick={onClickAnswer}
-              />
-              <S.Dotted />
-            </li>
-            {props.answer.user._id === loginUserData?.fetchUserLoggedIn._id && (
-              <>
-                <li>
-                  <CommentButtonItem
-                    name="수정"
-                    id={props.answer._id}
-                    onClick={onClickEdit}
-                  />
-                  <S.Dotted />
-                </li>
-                <li>
-                  <CommentButtonItem
-                    name="삭제"
-                    id={props.answer._id}
-                    onClick={showModal}
-                  />
-                </li>
-              </>
-            )}
-          </ul>
-        </S.CommentInfo>
-      </S.AnswerBox>
+      {isAnwerEdit ? (
+        <CommentAnswerWriteUI
+          question={props.question}
+          answer={props.answer}
+          setIsAnswer={setIsAnswerEdit}
+          isAnwerEdit={isAnwerEdit}
+        />
+      ) : (
+        <S.AnswerBox>
+          <S.UserIconBox>
+            <S.UserIcon />
+          </S.UserIconBox>
+          <S.CommentInfo>
+            <h1>{props.answer.user.name}</h1>
+            <p>{props.answer.contents}</p>
+            <ul>
+              <li>
+                <S.CreationDate>
+                  {getDate(props.answer.createdAt)}
+                </S.CreationDate>
+                <S.Dotted />
+              </li>
+              <li>
+                <CommentButtonItem
+                  name={isAnswer ? "답글 취소" : "답글 달기"}
+                  id={props.answer._id}
+                  onClick={onClickAnswer}
+                />
+                <S.Dotted />
+              </li>
+              {props.answer.user._id ===
+                loginUserData?.fetchUserLoggedIn._id && (
+                <>
+                  <li>
+                    <CommentButtonItem
+                      name="수정"
+                      id={props.answer._id}
+                      onClick={onClickEdit}
+                    />
+                    <S.Dotted />
+                  </li>
+                  <li>
+                    <CommentButtonItem
+                      name="삭제"
+                      id={props.answer._id}
+                      onClick={showModal}
+                    />
+                  </li>
+                </>
+              )}
+            </ul>
+          </S.CommentInfo>
+        </S.AnswerBox>
+      )}
       {isAnswer && (
         <CommentAnswerWriteUI
           question={props.question}

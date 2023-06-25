@@ -21,6 +21,7 @@ import {
   IMutationUpdateBoardArgs,
   IMutationUpdateBoardCommentArgs,
   IMutationUpdateUseditemArgs,
+  IMutationUpdateUseditemQuestionAnswerArgs,
   IMutationUpdateUseditemQuestionArgs,
   IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
@@ -44,6 +45,7 @@ import {
   UPDATE_BOARD,
   UPDATE_BOARD_COMMENT,
   UPDATE_USED_ITEM,
+  UPDATE_USED_ITEM_ANSWER,
   UPDATE_USED_ITEM_QUESTION,
   UPLOAD_FILE,
   USED_ITEM_PICK,
@@ -170,6 +172,15 @@ export const useMutationDeleteUsedItemAnswer = () => {
   >(DELETE_USED_ITEM_ANSWER);
 
   return [deleteUseditemQuestionAnswer];
+};
+
+export const useMutationUpdateUsedItemAnswer = () => {
+  const [updateUseditemQuestionAnswer] = useMutation<
+    Pick<IMutation, "updateUseditemQuestionAnswer">,
+    IMutationUpdateUseditemQuestionAnswerArgs
+  >(UPDATE_USED_ITEM_ANSWER);
+
+  return [updateUseditemQuestionAnswer];
 };
 
 export const useMutationCreateBoard = () => {

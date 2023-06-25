@@ -28,7 +28,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
         onBlur={handleBlur}
         placeholder={props.placeHolder}
       ></textarea>
-      <button>{props.isCommentEdit ? "수정" : "등록"}</button>
+      <button>{props.isCommentEdit ? "댓글 수정" : "댓글 등록"}</button>
     </CommentWriteBox>
   );
 }

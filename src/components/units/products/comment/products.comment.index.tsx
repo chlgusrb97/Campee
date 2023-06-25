@@ -6,9 +6,7 @@ import ProductsCommentWriteUI from "./write/comment.write.index";
 export default function ProductsCommentUI() {
   return (
     <CommentWrapper>
-      <span>
-        <TitleItem title="댓글" fontSize="20px" />
-      </span>
+      <TitleItem title="댓글" fontSize="20px" />
       <ProductsCommentWriteUI />
       <ProductsCommentListUI />
     </CommentWrapper>
