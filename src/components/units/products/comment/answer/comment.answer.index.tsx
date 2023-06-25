@@ -27,13 +27,14 @@ export default function CommentAnswerUI(props: ICommentAnswerUIProps) {
           setIsAnswer={props.setIsAnswer}
         />
       )}
-      {data?.fetchUseditemQuestionAnswers.map((answer) => (
-        <CommentAnswerListUI
-          question={props.question}
-          answer={answer}
-          key={answer._id}
-        />
-      ))}
+      {data?.fetchUseditemQuestionAnswers.length !== 0 &&
+        data?.fetchUseditemQuestionAnswers.map((answer) => (
+          <CommentAnswerListUI
+            question={props.question}
+            answer={answer}
+            key={answer._id}
+          />
+        ))}
     </AnswerWrapper>
   );
 }
