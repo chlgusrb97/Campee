@@ -5,9 +5,4 @@ export const CommentWrapper = styled.div`
   padding: 40px 0;
   margin-top: 40px;
   background-color: #fff;
-
-  > span {
-    display: inline-block;
-    padding-bottom: 20px;
-  }
 `;

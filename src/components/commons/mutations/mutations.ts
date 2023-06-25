@@ -158,6 +158,21 @@ export const DELETE_USED_ITEM_ANSWER = gql`
   }
 `;
 
+export const UPDATE_USED_ITEM_ANSWER = gql`
+  mutation updateUseditemQuestionAnswer(
+    $useditemQuestionAnswerId: ID!
+    $updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!
+  ) {
+    updateUseditemQuestionAnswer(
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+      updateUseditemQuestionAnswerInput: $updateUseditemQuestionAnswerInput
+    ) {
+      _id
+      contents
+    }
+  }
+`;
+
 export const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {
     createBoard(createBoardInput: $createBoardInput) {

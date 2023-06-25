@@ -1,4 +1,3 @@
-import {useRouter} from "next/router";
 import {useMutationDeleteUsedItemAnswer} from "../useMutations/useMutations";
 import {USED_ITEM_ANSWERS} from "../../queries/queries";
 import {Dispatch, SetStateAction} from "react";
