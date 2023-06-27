@@ -14,6 +14,7 @@ import {useBuyingProducts} from "../../../commons/customs/hooks/useBuyingProduct
 import {routes} from "../../../../commons/routes/routes";
 import {EDIT_PATH, PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import ProductsCommentUI from "../comment/products.comment.index";
+import {useUsedItemPick} from "../../../commons/customs/hooks/useUsedItemPick";
 
 export default function ProductsDetailUI() {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function ProductsDetailUI() {
   const {data: userData} = useQueryUser();
   const {onClickDeleteUsedItem} = useDeleteUsedItem();
   const {onClickBuyingProducts} = useBuyingProducts();
+  const {itemPick} = useUsedItemPick();
   const {pageRouting} = routes();
 
   useEffect(() => {
@@ -87,7 +89,7 @@ export default function ProductsDetailUI() {
             </div>
             <div>
               <S.PickBasketButtons>
-                <S.PickButton>
+                <S.PickButton onClick={itemPick(data?.fetchUseditem._id)}>
                   <S.LineHeartIcon />
                   <p>찜하기</p>
                 </S.PickButton>

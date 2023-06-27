@@ -4,11 +4,11 @@ import {Modal} from "antd";
 export const useUsedItemPick = () => {
   const [toggleUseditemPick] = useMutationUsedItemPick();
 
-  const usedItemPick = (useditemId: string) => async () => {
+  const itemPick = (useditemId: string | undefined) => async () => {
     try {
       await toggleUseditemPick({
         variables: {
-          useditemId,
+          useditemId: String(useditemId),
         },
       });
     } catch (error) {
@@ -16,5 +16,5 @@ export const useUsedItemPick = () => {
     }
   };
 
-  return {usedItemPick};
+  return {itemPick};
 };
