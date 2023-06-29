@@ -37,7 +37,7 @@ export default function BoardsListUI() {
   return (
     <S.Wrapper>
       <span>
-        <TitleItem title="BEST LIFE" fontSize="24px" />
+        <TitleItem title="BEST LIFE" fontSize="20px" />
       </span>
       <S.BestBoards>
         {BestData?.fetchBoardsOfTheBest.map((BestBoard) => (
@@ -115,7 +115,7 @@ export default function BoardsListUI() {
           <ButtonItem
             title="등록"
             width="140px"
-            height="50px"
+            height="44px"
             color="#fff"
             borderRadius="2px"
             backgroundColor="#e76161"

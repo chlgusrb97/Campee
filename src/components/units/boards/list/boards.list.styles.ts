@@ -10,8 +10,6 @@ export const Wrapper = styled.div`
     display: inline-block;
     width: 100%;
     height: 100%;
-    padding: 0 0 16px;
-    border-bottom: 2px solid #555;
   }
 `;
 
@@ -21,7 +19,7 @@ export const BestBoards = styled.ul`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 32px;
+  padding-top: 20px;
 
   > li {
     width: 22%;
@@ -211,7 +209,7 @@ export const FooterContents = styled.div`
 
   > div:first-of-type {
     width: 100%;
-    padding-top: 10px;
+    padding-top: 7px;
   }
 
   > div:not(:first-of-type) {
