@@ -96,7 +96,7 @@ export default function ProductsDetailUI() {
               </S.PickBasketButtons>
               <S.PickButton onClick={itemPick(data?.fetchUseditem._id)}>
                 <S.LineHeartIcon />
-                <p>찜하기 432</p>
+                <p>찜하기 {data?.fetchUseditem.pickedCount}</p>
               </S.PickButton>
             </div>
           </S.ProductInfoRightContents>
