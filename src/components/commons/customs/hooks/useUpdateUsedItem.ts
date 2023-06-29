@@ -1,8 +1,5 @@
 import {Modal, UploadFile} from "antd";
-import {
-  ICreateUseditemInput,
-  IUpdateUseditemInput,
-} from "../../../../commons/types/generated/types";
+import {IUpdateUseditemInput} from "../../../../commons/types/generated/types";
 import {
   useMutationUpdateUsedItem,
   useMutationUploadFile,
