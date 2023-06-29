@@ -1,22 +1,22 @@
 import {useCreateUsedItem} from "../../../commons/customs/hooks/useCreateUsedItem";
 import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
-import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import LabelItem from "../../../commons/items/label/label.index";
-import ModalItem from "../../../commons/items/modal/modal.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import ValidationItem from "../../../commons/items/validation/validation.index";
 import WebEditorItem from "../../../commons/items/webEditor/webEditor.index";
 import {useFormProductsRegistration} from "../../../commons/useForm/useForm";
-import DaumPostcodeEmbed from "react-daum-postcode";
 import * as S from "./products.registration.styles";
-import {useModalOpen} from "../../../commons/customs/hooks/useModalOpen";
-import {useAddressHandleComplete} from "../../../commons/customs/hooks/useAddressHandleComplete";
 import {useEffect} from "react";
 import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.index";
-import {IProductsRegistrationUIProps} from "./products.registration.types";
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
 import AddressItem from "../../../commons/items/address/address.index";
+import {IQuery} from "../../../../commons/types/generated/types";
+
+interface IProductsRegistrationUIProps {
+  isEdit: boolean;
+  data?: Pick<IQuery, "fetchUseditem"> | undefined;
+}
 
 export default function ProductsRegistrationUI(
   props: IProductsRegistrationUIProps
@@ -38,7 +38,12 @@ export default function ProductsRegistrationUI(
       setValue("remarks", props.data?.fetchUseditem.remarks);
       setValue("contents", props.data?.fetchUseditem.contents);
       setValue("price", Number(props.data?.fetchUseditem.price));
-      setValue("tags", props.data.fetchUseditem.tags);
+      setValue(
+        "tags",
+        props.data.fetchUseditem.tags?.reduce((acc, tag, index) => {
+          return acc + (index === 0 ? tag : " " + tag);
+        }, "")
+      );
       setValue(
         "useditemAddress.zipcode",
         props.data.fetchUseditem.useditemAddress?.zipcode
@@ -53,8 +58,6 @@ export default function ProductsRegistrationUI(
       );
     }
   }, [props.isEdit, props.data, setValue]);
-
-  console.log(props.data, props.isEdit);
 
   return (
     <>

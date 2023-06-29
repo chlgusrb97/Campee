@@ -3,8 +3,8 @@ import {useQueryUsedItem} from "../../../../../src/components/commons/customs/us
 import ProductsRegistrationUI from "../../../../../src/components/units/products/registration/products.registration.index";
 
 export default function ProductsEditPage() {
-  const {usedItemData} = useQueryUsedItem();
+  const {data} = useQueryUsedItem();
   useAuth();
 
-  return <ProductsRegistrationUI isEdit={true} usedItemData={usedItemData} />;
+  return <ProductsRegistrationUI isEdit={true} data={data} />;
 }
