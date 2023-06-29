@@ -1,5 +1,8 @@
 import {Modal, UploadFile} from "antd";
-import {IUpdateUseditemInput} from "../../../../commons/types/generated/types";
+import {
+  ICreateUseditemInput,
+  IUpdateUseditemInput,
+} from "../../../../commons/types/generated/types";
 import {
   useMutationUpdateUsedItem,
   useMutationUploadFile,
@@ -9,6 +12,12 @@ import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import {useRouter} from "next/router";
 import {USED_ITEM} from "../../queries/queries";
 import {UploadFileStatus} from "antd/es/upload/interface";
+import {UseFormSetValue} from "react-hook-form";
+
+interface ICreateUpdateItemSubmitProps {
+  fileList: UploadFile<any>[];
+  setValue: UseFormSetValue<ICreateUseditemInput>;
+}
 
 export const useUpdateUsedItem = () => {
   const router = useRouter();
@@ -18,16 +27,16 @@ export const useUpdateUsedItem = () => {
   const {pageRouting} = routes();
 
   const createUpdateItemSubmit =
-    (fileList: UploadFile<any>[]) =>
+    (props: ICreateUpdateItemSubmitProps) =>
     async (data: IUpdateUseditemInput): Promise<void> => {
       const tags = data.tags?.toString().split(" ").filter(Boolean);
 
-      for (let i = 0; i < fileList.length; i++) {
-        if (fileList[i].originFileObj) {
-          const file = fileList[i].originFileObj;
+      for (let i = 0; i < props.fileList.length; i++) {
+        if (props.fileList[i].originFileObj) {
+          const file = props.fileList[i].originFileObj;
           const NewFileResult = await uploadFile({variables: {file}});
 
-          fileList[i] = {
+          props.fileList[i] = {
             uid: String(i),
             name: String(NewFileResult.data?.uploadFile.url),
             status: "done" as UploadFileStatus,
@@ -37,7 +46,7 @@ export const useUpdateUsedItem = () => {
       }
 
       try {
-        const images = fileList
+        const images = props.fileList
           .map((file) => file.name)
           .filter((url): url is string => Boolean(url));
 
@@ -65,7 +74,7 @@ export const useUpdateUsedItem = () => {
             },
           ],
         });
-        console.log(result, "상품 수정!");
+        props.setValue("tags", data.tags);
         Modal.success({
           content: "상품이 수정되었습니다.",
           onOk: () =>

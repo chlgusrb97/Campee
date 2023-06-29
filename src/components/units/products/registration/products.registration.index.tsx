@@ -39,12 +39,6 @@ export default function ProductsRegistrationUI(
       setValue("contents", props.data?.fetchUseditem.contents);
       setValue("price", Number(props.data?.fetchUseditem.price));
       setValue(
-        "tags",
-        props.data.fetchUseditem.tags?.reduce((acc, tag, index) => {
-          return acc + (index === 0 ? tag : " " + tag);
-        }, "")
-      );
-      setValue(
         "useditemAddress.zipcode",
         props.data.fetchUseditem.useditemAddress?.zipcode
       );
@@ -59,11 +53,18 @@ export default function ProductsRegistrationUI(
     }
   }, [props.isEdit, props.data, setValue]);
 
+  console.log(props.data);
+
   return (
     <>
       <S.Wrapper
         onSubmit={handleSubmit(
-          props.isEdit ? createUpdateItemSubmit(fileList) : createUsedItemSubmit
+          props.isEdit
+            ? createUpdateItemSubmit({
+                fileList,
+                setValue,
+              })
+            : createUsedItemSubmit
         )}
       >
         <span>
