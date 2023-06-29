@@ -200,12 +200,11 @@ export const PickButton = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   height: 55px;
-  border: 1px solid #e76161;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  margin-right: 6px;
-  color: #e76161;
+  color: #888;
   background-color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -224,7 +223,7 @@ export const BasketButton = styled.button`
   height: 55px;
   border: 1px solid #e76161;
   border-radius: 4px;
-  margin-left: 6px;
+  margin-right: 6px;
   color: #e76161;
   background-color: #fff;
   font-size: 16px;
@@ -246,10 +245,11 @@ export const LineHeartIcon = styled(AiOutlineHeart)`
 `;
 
 export const BuyButton = styled.button`
-  width: 100%;
+  width: 50%;
   height: 55px;
   color: #fff;
   border-radius: 4px;
+  margin-left: 6px;
   background-color: #e76161;
   font-size: 16px;
   font-family: NanumBold;
