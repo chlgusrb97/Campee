@@ -9,7 +9,7 @@ export default function CarouselItem(props: ICarouselItemProps) {
   const contentStyle: React.CSSProperties = {
     width: "100%",
     maxWidth: "100%",
-    height: "438px",
+    height: "440px",
     borderRadius: "8px",
     color: "#fff",
     lineHeight: "440px",

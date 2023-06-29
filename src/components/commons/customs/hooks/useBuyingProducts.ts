@@ -10,7 +10,7 @@ export const useBuyingProducts = () => {
 
   const onClickBuyingProducts = async (): Promise<void> => {
     try {
-      const result = await createPointTransactionOfBuyingAndSelling({
+      await createPointTransactionOfBuyingAndSelling({
         variables: {
           useritemId: String(router.query.productsId),
         },
@@ -22,7 +22,7 @@ export const useBuyingProducts = () => {
       });
       Modal.success({content: "상품이 구매되었습니다."});
     } catch (error) {
-      Modal.error({content: "상품 구매에 실패하였습니다."});
+      Modal.error({content: "이미 판매된 상품입니다."});
     }
   };
 
