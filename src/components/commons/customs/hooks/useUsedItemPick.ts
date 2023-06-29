@@ -1,17 +1,26 @@
+import {useRouter} from "next/router";
+import {USED_ITEM} from "../../queries/queries";
 import {useMutationUsedItemPick} from "../useMutations/useMutations";
 import {Modal} from "antd";
 
 export const useUsedItemPick = () => {
+  const router = useRouter();
+
   const [toggleUseditemPick] = useMutationUsedItemPick();
 
   const itemPick = (useditemId: string | undefined) => async () => {
     try {
-      const result = await toggleUseditemPick({
+      await toggleUseditemPick({
         variables: {
           useditemId: String(useditemId),
         },
+        refetchQueries: [
+          {
+            query: USED_ITEM,
+            variables: {useditemId: String(router.query.productsId)},
+          },
+        ],
       });
-      console.log(result);
     } catch (error) {
       Modal.error({content: "다시 시도해주세요."});
     }

@@ -50,6 +50,7 @@ export const USED_ITEM = gql`
         _id
         name
       }
+      pickedCount
     }
   }
 `;
