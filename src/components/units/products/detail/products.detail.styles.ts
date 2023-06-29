@@ -17,7 +17,6 @@ export const ProductInfo = styled.div`
 
 export const ProductInfoLeftContents = styled.div`
   width: 440px;
-  border: 1px solid #ddd;
   margin-right: 40px;
 `;
 
@@ -192,7 +191,6 @@ export const PickBasketButtons = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 12px;
 `;
 
 export const PickButton = styled.button`
@@ -200,11 +198,11 @@ export const PickButton = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
   height: 55px;
-  border: 1px solid #ddd;
+  border: 1px solid #e76161;
   border-radius: 4px;
-  color: #888;
+  color: #e76161;
   background-color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -212,23 +210,6 @@ export const PickButton = styled.button`
   > p {
     font-family: NanumBold;
   }
-
-  :hover {
-    background-color: #fafafa;
-  }
-`;
-
-export const BasketButton = styled.button`
-  width: 50%;
-  height: 55px;
-  border: 1px solid #e76161;
-  border-radius: 4px;
-  margin-right: 6px;
-  color: #e76161;
-  background-color: #fff;
-  font-size: 16px;
-  font-family: NanumBold;
-  cursor: pointer;
 
   :hover {
     background-color: #fafafa;

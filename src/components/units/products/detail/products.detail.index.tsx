@@ -89,15 +89,14 @@ export default function ProductsDetailUI() {
             </div>
             <div>
               <S.PickBasketButtons>
-                <S.BasketButton>장바구니</S.BasketButton>
+                <S.PickButton onClick={itemPick(data?.fetchUseditem._id)}>
+                  <S.LineHeartIcon />
+                  <p>관심상품 {data?.fetchUseditem.pickedCount}</p>
+                </S.PickButton>
                 <S.BuyButton onClick={onClickBuyingProducts}>
                   구매하기
                 </S.BuyButton>
               </S.PickBasketButtons>
-              <S.PickButton onClick={itemPick(data?.fetchUseditem._id)}>
-                <S.LineHeartIcon />
-                <p>찜하기 {data?.fetchUseditem.pickedCount}</p>
-              </S.PickButton>
             </div>
           </S.ProductInfoRightContents>
         </S.ProductInfo>
