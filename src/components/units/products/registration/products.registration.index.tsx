@@ -53,8 +53,6 @@ export default function ProductsRegistrationUI(
     }
   }, [props.isEdit, props.data, setValue]);
 
-  console.log(props.data);
-
   return (
     <>
       <S.Wrapper
@@ -197,6 +195,7 @@ export default function ProductsRegistrationUI(
                   address={register("useditemAddress.address")}
                   addressDetail={register("useditemAddress.addressDetail")}
                   dataAddress={props.data?.fetchUseditem.useditemAddress}
+                  isEdit={props.isEdit}
                 />
               </S.AddressBox>
             </div>

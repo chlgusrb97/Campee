@@ -7,12 +7,13 @@ import ModalItem from "../modal/modal.index";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import {useAddressHandleComplete} from "../../customs/hooks/useAddressHandleComplete";
 import {UseFormRegisterReturn, UseFormSetValue} from "react-hook-form";
-import KakaoMap from "../kakaoMap/kakaoMap.index";
 import {Maybe} from "yup";
 import {
   IBoardAddress,
   IUseditemAddress,
 } from "../../../../commons/types/generated/types";
+import KakaoMapRegistration from "../kakaoMap/registration/kakaoMap.registration.index";
+import KakaoMapEdit from "../kakaoMap/edit/kakaoMap.edit.index";
 
 interface IAddressItemProps<T> {
   setValue: UseFormSetValue<any>;
@@ -20,6 +21,7 @@ interface IAddressItemProps<T> {
   address: UseFormRegisterReturn;
   addressDetail: UseFormRegisterReturn;
   dataAddress: Maybe<T> | undefined;
+  isEdit: boolean;
 }
 
 export default function AddressItem<T extends IBoardAddress | IUseditemAddress>(
@@ -38,7 +40,14 @@ export default function AddressItem<T extends IBoardAddress | IUseditemAddress>(
   return (
     <>
       <S.MapBox>
-        <KakaoMap address={dataAddress} />
+        {props.isEdit ? (
+          <KakaoMapEdit
+            address={props.dataAddress?.address}
+            searchAddress={dataAddress}
+          />
+        ) : (
+          <KakaoMapRegistration address={dataAddress} />
+        )}
       </S.MapBox>
       <S.AddressContents>
         <li>

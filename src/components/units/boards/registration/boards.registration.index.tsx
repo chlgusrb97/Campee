@@ -166,6 +166,7 @@ export default function BoardsRegistrationUI(
                 address={register("boardAddress.address")}
                 addressDetail={register("boardAddress.addressDetail")}
                 dataAddress={props.data?.fetchBoard.boardAddress}
+                isEdit={props.isEdit}
               />
             </S.AddressBox>
           </div>

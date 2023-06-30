@@ -4,7 +4,6 @@ import {
   useQueryUser,
 } from "../../../commons/customs/useQueries.ts/useQueries";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
-import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import DOMPurify from "dompurify";
 import * as S from "./products.detail.styles";
@@ -15,6 +14,7 @@ import {routes} from "../../../../commons/routes/routes";
 import {EDIT_PATH, PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
 import ProductsCommentUI from "../comment/products.comment.index";
 import {useUsedItemPick} from "../../../commons/customs/hooks/useUsedItemPick";
+import KakaoMapFetch from "../../../commons/items/kakaoMap/fetch/kakaoMap.fetch.index";
 
 export default function ProductsDetailUI() {
   const router = useRouter();
@@ -109,7 +109,9 @@ export default function ProductsDetailUI() {
           <S.ProductContentsAddress>
             <TitleItem title="거래지역" fontSize="20px" />
             <S.MapBox>
-              <KakaoMap address="" />
+              <KakaoMapFetch
+                address={data?.fetchUseditem.useditemAddress?.address}
+              />
             </S.MapBox>
             <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
           </S.ProductContentsAddress>

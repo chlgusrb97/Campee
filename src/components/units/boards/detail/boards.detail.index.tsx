@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import _ReactPlayer, {ReactPlayerProps} from "react-player";
 import CarouselItem from "../../../commons/items/carousel/carousel.index";
-import KakaoMap from "../../../commons/items/kakaoMap/kakaoMap.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import * as S from "./boards.detail.styles";
 import {useQueryBoard} from "../../../commons/customs/useQueries.ts/useQueries";
@@ -14,6 +13,7 @@ import {useDeleteBoard} from "../../../commons/customs/hooks/useDeleteBoard";
 import {BOARDS_DETAIL_PATH, EDIT_PATH} from "../../../../commons/paths/paths";
 import {useRouter} from "next/router";
 import {routes} from "../../../../commons/routes/routes";
+import KakaoMapFetch from "../../../commons/items/kakaoMap/fetch/kakaoMap.fetch.index";
 
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
@@ -85,7 +85,7 @@ export default function BoardsDetailUI() {
           <S.Address>
             <TitleItem title="주소" fontSize="20px" />
             <S.MapBox>
-              <KakaoMap address="" />
+              <KakaoMapFetch address={data.fetchBoard.boardAddress.address} />
             </S.MapBox>
             <p>{`${data.fetchBoard.boardAddress.address} ${data.fetchBoard.boardAddress.addressDetail}`}</p>
           </S.Address>
