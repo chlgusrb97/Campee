@@ -78,4 +78,13 @@ export const CommentDeleteModal = styled(Modal)`
   .ant-modal-title {
     font-family: NanumBold;
   }
+
+  input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 10px;
+    outline: none;
+  }
 `;
