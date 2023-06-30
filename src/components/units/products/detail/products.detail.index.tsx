@@ -101,13 +101,16 @@ export default function ProductsDetailUI() {
           </S.ProductInfoRightContents>
         </S.ProductInfo>
         <S.ProductContentns>
+          <span>
+            <TitleItem title="상품 내용" fontSize="20px" />
+          </span>
           <div
             dangerouslySetInnerHTML={{
               __html: safeHtml,
             }}
           />
           <S.ProductContentsAddress>
-            <TitleItem title="거래지역" fontSize="20px" />
+            <TitleItem title="거래 지역" fontSize="20px" />
             <S.MapBox>
               <KakaoMapFetch
                 address={data?.fetchUseditem.useditemAddress?.address}

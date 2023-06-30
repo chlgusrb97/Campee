@@ -245,6 +245,13 @@ export const ProductContentns = styled.div`
   margin-top: 100px;
   padding: 40px 0;
   border-top: 1px solid #ddd;
+
+  > span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 24px;
+  }
 `;
 
 export const ProductContentsAddress = styled.div`
