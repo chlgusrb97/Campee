@@ -23,3 +23,8 @@ export const keyWordState = atom({
   key: "keyWordState",
   default: "",
 });
+
+export const recentlyVisitedProducts = atom({
+  key: "recentlyVisitedProducts",
+  default: [],
+});
