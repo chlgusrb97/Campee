@@ -1,110 +1,63 @@
 import styled from "@emotion/styled";
+import {FaUserCircle} from "react-icons/fa";
 
 export const Wrapper = styled.div`
+  position: sticky;
+  top: 0px;
   width: 100%;
-  height: 200px;
-
-  > div {
-    width: 100%;
-    height: 100px;
-
-    :first-of-type {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-      padding: 0 50px;
-    }
-
-    :last-of-type {
-      background-color: #000;
-      padding: 0 50px;
-    }
-  }
+  background-color: #fff;
+  z-index: 1;
 `;
 
-export const Logo = styled.h1`
-  font-size: 36px;
-`;
-
-export const Tnb = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 14px;
-
-  > li {
-    margin-left: 40px;
-
-    :first-of-type {
-      display: flex;
-      flex-direction: row;
-    }
-
-    :last-of-type {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-`;
-
-export const BasketCount = styled.div`
-  width: 20px;
-  height: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-left: 5px;
-  border-radius: 20px;
-  background-color: #f65656;
-  user-select: none;
-
-  > span {
-    color: #fff;
-    font-size: 12px;
-  }
-`;
-
-export const Gnb = styled.div`
+export const HeaderSection01 = styled.div`
   width: 100%;
+  height: 36px;
+  border-bottom: 1px solid #eee;
+`;
+
+export const Section01Contents = styled.ul`
+  max-width: 1024px;
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  font-size: 22px;
+  margin: 0 auto;
 
-  > ul {
+  > li:not(:last-of-type) {
+    margin-right: 16px;
+  }
+`;
+
+export const HeaderSection02 = styled.div`
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #eee;
+`;
+
+export const Section02Contents = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+
+  > div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+  }
+`;
 
-    :first-of-type {
-      > li:not(:last-of-type) {
-        margin-right: 100px;
-      }
+export const Gnb = styled.ul`
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
 
-      ::after {
-        content: "";
-        height: 19px;
-        border: 1px solid #fff;
-        margin: 0 136px;
-      }
-    }
-
-    :last-of-type {
-      > li {
-        margin-right: 100px;
-      }
-    }
+  > li:not(:last-of-type) {
+    margin-right: 24px;
   }
 `;
 
@@ -113,10 +66,11 @@ export const User = styled.span`
   flex-direction: row;
   align-items: center;
   font-size: 14px;
+`;
 
-  > p {
-    font-family: NanumBold;
-  }
+export const UserIcon = styled(FaUserCircle)`
+  font-size: 30px;
+  color: #ddd;
 `;
 
 export const Point = styled.span`
