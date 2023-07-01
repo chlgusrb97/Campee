@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {GiForestCamp} from "react-icons/gi";
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -33,7 +34,8 @@ export const ProductsList = styled.ul`
   > li {
     width: 68px;
     height: 68px;
-    background-color: #ddd;
+    border: 1px solid #ddd;
+    background-color: #fff;
     cursor: pointer;
 
     :not(:last-of-type) {
@@ -47,4 +49,23 @@ export const ProductsImg = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center;
+`;
+
+export const NoneProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0 50px;
+
+  > p {
+    line-height: 20px;
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+`;
+
+export const NoneIcon = styled(GiForestCamp)`
+  font-size: 30px;
+  color: #ddd;
 `;
