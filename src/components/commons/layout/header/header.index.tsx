@@ -104,7 +104,8 @@ export default function LayoutHeader() {
               <li>
                 <S.MoneyIcon />
                 <S.MoneyNumber>
-                  {data?.fetchUserLoggedIn.userPoint?.amount} 원
+                  {data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()}{" "}
+                  원
                 </S.MoneyNumber>
               </li>
               <li>

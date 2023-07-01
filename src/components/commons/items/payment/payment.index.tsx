@@ -69,7 +69,7 @@ export default function PaymentItem() {
         <S.PaymentContents>
           <S.InputBox>
             <input
-              value={coin === 0 ? "" : coin}
+              value={coin === 0 ? "" : coin.toLocaleString()}
               placeholder="포인트 선택"
               disabled
             />
