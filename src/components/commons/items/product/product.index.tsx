@@ -1,20 +1,40 @@
 import {getDate} from "../../../../commons/libraries/utils";
 import {PRODUCTS_DETAIL_PATH} from "../../../../commons/paths/paths";
+import {routes} from "../../../../commons/routes/routes";
 import {IUseditem} from "../../../../commons/types/generated/types";
-import {useMovedDetail} from "../../customs/hooks/useMovedDetail";
 import * as S from "./product.styles";
 
 interface IProductItemProps {
-  product?: IUseditem;
+  product: IUseditem;
 }
 
 export default function ProductItem(props: IProductItemProps) {
-  const {movedDetail} = useMovedDetail();
+  const {pageRouting} = routes();
+
+  const onClickProduct = (product: IUseditem) => () => {
+    const recentlyVisitedProducts: IUseditem[] = JSON.parse(
+      sessionStorage.getItem("recentlyVisitedProducts") ?? "[]"
+    );
+
+    const temp = recentlyVisitedProducts.filter(
+      (visitedProduct) => visitedProduct._id === product._id
+    );
+
+    if (temp.length === 1) return;
+
+    const {__typename, ...newRecentlyVisitedProduct} = product;
+    recentlyVisitedProducts.push(newRecentlyVisitedProduct);
+
+    sessionStorage.setItem(
+      "recentlyVisitedProducts",
+      JSON.stringify(recentlyVisitedProducts)
+    );
+
+    pageRouting(`${PRODUCTS_DETAIL_PATH}/${props.product?._id}`);
+  };
 
   return (
-    <S.Product
-      onClick={movedDetail(`${PRODUCTS_DETAIL_PATH}/${props.product?._id}`)}
-    >
+    <S.Product onClick={onClickProduct(props.product)}>
       <S.ProductImgBox>
         {props.product?.images && props.product?.images[0] ? (
           <img

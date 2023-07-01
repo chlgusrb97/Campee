@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {getDate} from "../../../../commons/libraries/utils";
 import {
@@ -6,7 +5,6 @@ import {
   BOARDS_REGISTRATION_PATH,
 } from "../../../../commons/paths/paths";
 import {routes} from "../../../../commons/routes/routes";
-import {useMovedDetail} from "../../../commons/customs/hooks/useMovedDetail";
 import {
   useQueryBoards,
   useQueryBoardsBest,
@@ -28,8 +26,6 @@ export default function BoardsListUI() {
   const {data: countData} = useQueryBoardsCount();
   const {data: BestData} = useQueryBoardsBest();
   const [keyWord] = useRecoilState(keyWordState);
-
-  const {movedDetail} = useMovedDetail();
   const {pageRouting} = routes();
 
   const formattedBoardsCount = countData?.fetchBoardsCount.toLocaleString();
@@ -43,7 +39,9 @@ export default function BoardsListUI() {
         {BestData?.fetchBoardsOfTheBest.map((BestBoard) => (
           <li
             key={BestBoard._id}
-            onClick={movedDetail(`${BOARDS_DETAIL_PATH}/${BestBoard._id}`)}
+            onClick={() =>
+              pageRouting(`${BOARDS_DETAIL_PATH}/${BestBoard._id}`)
+            }
           >
             <S.BestBoardImgBox>
               {BestBoard.images && (
@@ -83,7 +81,7 @@ export default function BoardsListUI() {
           {data?.fetchBoards.map((board) => (
             <li
               key={board._id}
-              onClick={movedDetail(`${BOARDS_DETAIL_PATH}/${board._id}`)}
+              onClick={() => pageRouting(`${BOARDS_DETAIL_PATH}/${board._id}`)}
             >
               <p>{board.writer}</p>
               <p>

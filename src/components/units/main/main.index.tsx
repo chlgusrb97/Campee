@@ -8,8 +8,8 @@ import {
   IQueryFetchUseditemsArgs,
 } from "../../../commons/types/generated/types";
 import {v4 as uuidv4} from "uuid";
-import {useMovedDetail} from "../../commons/customs/hooks/useMovedDetail";
 import {PRODUCTS_DETAIL_PATH} from "../../../commons/paths/paths";
+import {routes} from "../../../commons/routes/routes";
 
 export default function MainUI() {
   const {data} = useQuery<
@@ -17,7 +17,7 @@ export default function MainUI() {
     IQueryFetchUseditemsArgs
   >(USED_ITEMS);
 
-  const {movedDetail} = useMovedDetail();
+  const {pageRouting} = routes();
 
   const fetchUseditems = data?.fetchUseditems.slice(0, 8);
 
@@ -28,12 +28,14 @@ export default function MainUI() {
           <TitleItem title="New Arrival" fontSize="22px" />
         </span>
         <S.Products>
-          {fetchUseditems?.map((el) => (
+          {fetchUseditems?.map((product) => (
             <li
               key={uuidv4()}
-              onClick={movedDetail(`${PRODUCTS_DETAIL_PATH}/${el._id}`)}
+              onClick={() =>
+                pageRouting(`${PRODUCTS_DETAIL_PATH}/${product._id}`)
+              }
             >
-              <ProductItem el={el} />
+              <ProductItem product={product} />
             </li>
           ))}
         </S.Products>
