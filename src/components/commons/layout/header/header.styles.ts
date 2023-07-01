@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {FaUserCircle} from "react-icons/fa";
+import {TbCoins} from "react-icons/tb";
 
 export const Wrapper = styled.div`
   position: sticky;
@@ -61,41 +62,70 @@ export const Gnb = styled.ul`
   }
 `;
 
-export const User = styled.span`
+export const Tnb = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 14px;
-`;
 
-export const UserIcon = styled(FaUserCircle)`
-  font-size: 30px;
-  color: #ddd;
-`;
+  > li {
+    display: flex;
+    align-items: center;
 
-export const Point = styled.span`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0 12px 0 5px;
-  font-size: 14px;
-
-  > p {
-    margin: 0 3px;
-    text-decoration: underline;
+    :not(:last-of-type) {
+      margin-right: 20px;
+    }
   }
 `;
 
-export const TopUp = styled.span`
-  font-size: 14px;
-  text-decoration: underline;
-  cursor: pointer;
+export const MoneyIcon = styled(TbCoins)`
+  font-size: 24px;
+  color: #666;
+  margin-right: 4px;
 `;
 
-export const Logout = styled.span`
+export const MoneyNumber = styled.p`
+  color: #666;
+  font-size: 14px;
+  font-family: NanumBold;
+`;
+
+export const User = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const UserIcon = styled(FaUserCircle)`
+  width: 30px;
+  height: 30px;
+  margin: 6px;
+  color: #ddd;
+`;
+
+export const UserImg = styled.img``;
+
+export const UserName = styled.p`
+  color: #666;
+  font-size: 14px;
+  font-family: NanumBold;
+`;
+
+export const TopUp = styled.span`
+  font-size: 12px;
+  color: #666;
   cursor: pointer;
 
   :hover {
-    text-decoration: underline;
+    color: #222;
+  }
+`;
+
+export const Logout = styled.span`
+  color: #666;
+  font-size: 12px;
+  cursor: pointer;
+
+  :hover {
+    color: #222;
   }
 `;

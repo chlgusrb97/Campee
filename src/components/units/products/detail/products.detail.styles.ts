@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {AiFillHeart, AiOutlineHeart} from "react-icons/ai";
+import {AiOutlineHeart} from "react-icons/ai";
 import {FaUserCircle} from "react-icons/fa";
 import {RiChatDeleteLine, RiEditBoxLine} from "react-icons/ri";
 
@@ -214,10 +214,6 @@ export const PickButton = styled.button`
   :hover {
     background-color: #fafafa;
   }
-`;
-
-export const FillHeartIcon = styled(AiFillHeart)`
-  font-size: 24px;
 `;
 
 export const LineHeartIcon = styled(AiOutlineHeart)`

@@ -6,20 +6,20 @@ import {CaretDownOutlined} from "@ant-design/icons";
 
 const priceList = [
   {
-    title: "100",
-    price: 100,
-  },
-  {
-    title: "500",
-    price: 500,
-  },
-  {
-    title: "2,000",
-    price: 2000,
-  },
-  {
-    title: "5,000",
+    title: "5,000 원",
     price: 5000,
+  },
+  {
+    title: "10,000 원",
+    price: 10000,
+  },
+  {
+    title: "50,000 원",
+    price: 50000,
+  },
+  {
+    title: "100,000 원",
+    price: 100000,
   },
 ];
 

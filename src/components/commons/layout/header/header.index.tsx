@@ -13,6 +13,7 @@ import {IQuery} from "../../../../commons/types/generated/types";
 import {useLogoutUser} from "../../customs/hooks/useLogoutUser";
 import PaymentItem from "../../items/payment/payment.index";
 import {usePayment} from "../../customs/hooks/usePayment";
+import {routes} from "../../../../commons/routes/routes";
 
 export default function LayoutHeader() {
   const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
@@ -21,25 +22,48 @@ export default function LayoutHeader() {
 
   return (
     <>
+      {isPaymentModal && <PaymentItem />}
       <S.Wrapper>
         <S.HeaderSection01>
           <S.Section01Contents>
-            <li>
-              <LinkItem
-                path={LOGIN_PATH}
-                name="로그인"
-                color="#666"
-                fontSize="12px"
-              />
-            </li>
-            <li>
-              <LinkItem
-                path={JOIN_PATH}
-                name="회원가입"
-                color="#666"
-                fontSize="12px"
-              />
-            </li>
+            {data?.fetchUserLoggedIn._id ? (
+              <>
+                <li>
+                  <S.TopUp onClick={showPaymentModal}>충전하기</S.TopUp>
+                </li>
+                <li>
+                  <LinkItem
+                    path={LOGIN_PATH}
+                    name="마이페이지"
+                    color="#666"
+                    fontSize="12px"
+                    hoverColor="#222"
+                  />
+                </li>
+                <li>
+                  <S.Logout onClick={logoutUserSubmit}>로그아웃</S.Logout>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <LinkItem
+                    path={LOGIN_PATH}
+                    name="로그인"
+                    color="#666"
+                    fontSize="12px"
+                  />
+                </li>
+                <li>
+                  <LinkItem
+                    path={JOIN_PATH}
+                    name="회원가입"
+                    color="#666"
+                    fontSize="12px"
+                  />
+                </li>
+              </>
+            )}
           </S.Section01Contents>
         </S.HeaderSection01>
         <S.HeaderSection02>
@@ -56,7 +80,7 @@ export default function LayoutHeader() {
                 <li>
                   <LinkItem
                     path={PRODUCTS_LIST_PATH}
-                    name="PRODUCT"
+                    name="CAMPEE SHOP"
                     color="#666"
                     fontSize="18px"
                     fontFamily="NanumBold"
@@ -75,45 +99,35 @@ export default function LayoutHeader() {
                 </li>
               </S.Gnb>
             </div>
-            <S.User>
-              <S.UserIcon />
-            </S.User>
+            <S.Tnb>
+              <li>
+                <S.MoneyIcon />
+                <S.MoneyNumber>
+                  {data?.fetchUserLoggedIn.userPoint?.amount} 원
+                </S.MoneyNumber>
+              </li>
+              <li>
+                <S.User>
+                  {data?.fetchUserLoggedIn._id ? (
+                    <>
+                      {data.fetchUserLoggedIn.picture ? (
+                        <S.UserImg />
+                      ) : (
+                        <S.UserIcon />
+                      )}
+                      <S.UserName>{data.fetchUserLoggedIn.name} 님</S.UserName>
+                    </>
+                  ) : (
+                    <>
+                      <S.UserIcon />
+                      <S.UserName>비회원</S.UserName>
+                    </>
+                  )}
+                </S.User>
+              </li>
+            </S.Tnb>
           </S.Section02Contents>
         </S.HeaderSection02>
-        {/* <S.Tnb>
-            {data?.fetchUserLoggedIn ? (
-              <>
-                {isPaymentModal && <PaymentItem />}
-                <li>
-                  <S.User>
-                    <p>{data.fetchUserLoggedIn.name}</p>님
-                  </S.User>
-                  <S.Point>
-                    포인트 <p>{data.fetchUserLoggedIn.userPoint?.amount}</p>P
-                  </S.Point>
-                  <S.TopUp onClick={showPaymentModal}>충전</S.TopUp>
-                </li>
-                <li>
-                  <S.Logout onClick={logoutUserSubmit}>로그아웃</S.Logout>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <LinkItem path={LOGIN_PATH} name="로그인" />
-                </li>
-                <li>
-                  <LinkItem path={JOIN_PATH} name="회원가입" />
-                </li>
-              </>
-            )}
-            <li>
-              <LinkItem path="#" name="장바구니" />
-              <S.BasketCount>
-                <span>0</span>
-              </S.BasketCount>
-            </li>
-          </S.Tnb> */}
       </S.Wrapper>
     </>
   );
