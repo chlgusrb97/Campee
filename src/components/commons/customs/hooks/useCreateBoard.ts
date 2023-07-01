@@ -43,7 +43,6 @@ export const useCreateBoard = () => {
           },
         },
       });
-      console.log(result, "게시글 등록!");
       Modal.success({
         content: "상품이 등록되었습니다.",
         onOk: () =>
