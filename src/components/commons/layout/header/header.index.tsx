@@ -14,6 +14,7 @@ import {useLogoutUser} from "../../customs/hooks/useLogoutUser";
 import PaymentItem from "../../items/payment/payment.index";
 import {usePayment} from "../../customs/hooks/usePayment";
 import {routes} from "../../../../commons/routes/routes";
+import LayoutAside from "../aside/aside.index";
 
 export default function LayoutHeader() {
   const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
@@ -128,6 +129,7 @@ export default function LayoutHeader() {
             </S.Tnb>
           </S.Section02Contents>
         </S.HeaderSection02>
+        <LayoutAside />
       </S.Wrapper>
     </>
   );
