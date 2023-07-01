@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {LinkWrapper} from "./link.styles";
+import {HyperLink} from "./link.styles";
 
 interface ILinkItemProps {
   path: string;
@@ -10,21 +10,25 @@ interface ILinkItemProps {
   backgroundColor?: string;
   fontSize?: string;
   fontFamily?: string;
+  hoverColor?: string;
+  hoverBackgroundColor?: string;
 }
 
 export default function LinkItem(props: ILinkItemProps) {
   return (
-    <LinkWrapper
-      border={props.border ?? "none"}
-      padding={props.padding ?? "none"}
-      color={props.color ?? "#000"}
-      backgroundColor={props.backgroundColor ?? "transparent"}
-      fontSize={props.fontSize ?? "16px"}
-      fontFamily={props.fontFamily ?? "NanumRegular"}
-    >
-      <Link href={props.path}>
-        <a>{props.name}</a>
-      </Link>
-    </LinkWrapper>
+    <Link href={props.path}>
+      <HyperLink
+        border={props.border ?? "none"}
+        padding={props.padding ?? "none"}
+        color={props.color ?? "#000"}
+        backgroundColor={props.backgroundColor ?? "transparent"}
+        fontSize={props.fontSize ?? "16px"}
+        fontFamily={props.fontFamily ?? "NanumRegular"}
+        hoverColor={props.hoverColor}
+        hoverBackgroundColor={props.hoverBackgroundColor}
+      >
+        {props.name}
+      </HyperLink>
+    </Link>
   );
 }
