@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {FaUserCircle} from "react-icons/fa";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -75,13 +76,13 @@ export const FooterUserImgBox = styled.div`
   height: 30px;
   border-radius: 50%;
   margin-right: 6px;
-  background-color: #ddd;
+  background-color: #fff;
   overflow: hidden;
+`;
 
-  > img {
-    width: 100%;
-    height: 100%;
-  }
+export const UserIcon = styled(FaUserCircle)`
+  font-size: 30px;
+  color: #ddd;
 `;
 
 export const FooterUserName = styled.p`

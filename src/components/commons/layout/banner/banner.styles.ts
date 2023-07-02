@@ -1,23 +1,21 @@
 import styled from "@emotion/styled";
-import {Carousel} from "antd";
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 750px;
-  background-color: #c4c4c4;
+  height: 500px;
+  background: url("images/banner.jpg") center/cover no-repeat;
 
-  .ant-carousel .slick-slide {
-    text-align: center;
-    height: 100%;
-    line-height: 750px;
-    background: #364d79;
-    overflow: hidden;
-  }
-  .ant-carousel .slick-slide h3 {
+  > h2 {
     color: #fff;
+    font-size: 48px;
+    letter-spacing: 0.1rem;
+    font-family: NanumBold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
-`;
-
-export const CarouselItem = styled(Carousel)`
-  height: 100%;
 `;
