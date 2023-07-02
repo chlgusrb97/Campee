@@ -1,42 +1,56 @@
 import styled from "@emotion/styled";
+import {AiFillGithub} from "react-icons/ai";
+import {FcGoogle} from "react-icons/fc";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  padding: 50px;
-  border-top: 1px solid #555;
-  background-color: #f1f1f1;
+  border-top: 1px solid #eee;
+  background-color: #fff;
 `;
 
-export const Logo = styled.h1`
-  font-size: 36px;
-  margin-bottom: 20px;
-
-  a {
-    font-family: NanumExtraBold;
-    color: #000;
-  }
+export const FooterContents = styled.div`
+  max-width: 1024px;
+  padding: 20px 0;
+  margin: 0 auto;
 `;
 
-export const FooterInfo = styled.ul`
+export const MyInfo = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+
   > li {
     display: flex;
-    flex-direction: row;
     align-items: center;
+    margin-bottom: 10px;
 
-    :first-of-type {
-      > p {
-        margin-right: 88px;
-      }
-    }
-
-    :nth-of-type(5) {
-      > p {
-        margin-right: 36px;
-      }
+    :hover a {
+      color: #e76161;
     }
 
     :not(:last-of-type) {
-      margin-bottom: 12px;
+      margin-right: 16px;
+    }
+
+    > a {
+      display: flex;
+      align-items: center;
+      color: #000;
     }
   }
+
+  p {
+    font-size: 14px;
+    font-family: NanumBold;
+  }
+`;
+
+export const GitHub = styled(AiFillGithub)`
+  font-size: 32px;
+  margin-right: 5px;
+`;
+
+export const Google = styled(FcGoogle)`
+  font-size: 32px;
+  margin-right: 5px;
 `;
