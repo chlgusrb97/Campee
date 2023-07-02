@@ -5,6 +5,7 @@ import {
   BOARDS_REGISTRATION_PATH,
   JOIN_PATH,
   LOGIN_PATH,
+  MYPAGE_PATH,
   PRODUCTS_DETAIL_PATH,
   PRODUCTS_LIST_PATH,
   PRODUCTS_REGISTRATION_PATH,
@@ -33,7 +34,8 @@ export default function Layout(props: ILayoutProps) {
   const isHiddenBanner =
     HIDDEN_BANNER.includes(router.asPath) ||
     router.asPath.includes(PRODUCTS_DETAIL_PATH) ||
-    router.asPath.includes(BOARDS_DETAIL_PATH);
+    router.asPath.includes(BOARDS_DETAIL_PATH) ||
+    router.asPath.includes(MYPAGE_PATH);
 
   return (
     <>
