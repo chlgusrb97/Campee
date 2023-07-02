@@ -15,7 +15,6 @@ import SearchItem from "../../../commons/items/search/search.index";
 import TitleItem from "../../../commons/items/title/title.index";
 import Pagination from "../../../commons/pagination/pagination.index";
 import * as S from "./boards.list.styles";
-import {useSearch} from "../../../commons/customs/useSearch";
 import {keyWordState} from "../../../../commons/stores/stores";
 import {useRecoilState} from "recoil";
 
@@ -24,7 +23,7 @@ const SECRETCODE = "!*(^&";
 export default function BoardsListUI() {
   const {data, refetch} = useQueryBoards();
   const {data: countData} = useQueryBoardsCount();
-  const {data: BestData} = useQueryBoardsBest();
+  const {data: bestData} = useQueryBoardsBest();
   const [keyWord] = useRecoilState(keyWordState);
   const {pageRouting} = routes();
 
@@ -36,31 +35,31 @@ export default function BoardsListUI() {
         <TitleItem title="BEST LIFE" fontSize="20px" />
       </span>
       <S.BestBoards>
-        {BestData?.fetchBoardsOfTheBest.map((BestBoard) => (
+        {bestData?.fetchBoardsOfTheBest.map((bestBoard) => (
           <li
-            key={BestBoard._id}
+            key={bestBoard._id}
             onClick={() =>
-              pageRouting(`${BOARDS_DETAIL_PATH}/${BestBoard._id}`)
+              pageRouting(`${BOARDS_DETAIL_PATH}/${bestBoard._id}`)
             }
           >
             <S.BestBoardImgBox>
-              {BestBoard.images && (
+              {bestBoard.images && (
                 <img
-                  src={`https://storage.googleapis.com/${BestBoard.images[0]}`}
+                  src={`https://storage.googleapis.com/${bestBoard.images[0]}`}
                 />
               )}
             </S.BestBoardImgBox>
             <S.BestBoardFooterBox>
-              <h1>{BestBoard.title}</h1>
+              <h1>{bestBoard.title}</h1>
               <S.FooterUser>
                 <S.FooterUserImgBox>
-                  <img />
+                  <S.UserIcon />
                 </S.FooterUserImgBox>
                 <S.FooterUserName>홍길동</S.FooterUserName>
               </S.FooterUser>
               <S.FooterEntry>
-                <p>{getDate(BestBoard.createdAt)}</p>
-                <p>추천 {BestBoard.likeCount.toLocaleString()}</p>
+                <p>{getDate(bestBoard.createdAt)}</p>
+                <p>추천 {bestBoard.likeCount.toLocaleString()}</p>
               </S.FooterEntry>
             </S.BestBoardFooterBox>
           </li>
