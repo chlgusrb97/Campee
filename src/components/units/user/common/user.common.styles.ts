@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
 import {FaUserCircle} from "react-icons/fa";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const MyPageHeader = styled.ul`
+  width: 100%;
   display: flex;
   align-items: center;
   padding-bottom: 40px;

@@ -6,18 +6,17 @@ import {
   LOGIN_PATH,
   MAIN_PATH,
   MYPAGE_PATH,
+  MYPAGE_SHOP_PATH,
   PRODUCTS_LIST_PATH,
 } from "../../../../commons/paths/paths";
-import {useQuery} from "@apollo/client";
-import {USER_LOGGED_IN} from "../../queries/queries";
-import {IQuery} from "../../../../commons/types/generated/types";
 import {useLogoutUser} from "../../customs/hooks/useLogoutUser";
 import PaymentItem from "../../items/payment/payment.index";
 import {usePayment} from "../../customs/hooks/usePayment";
 import LayoutAside from "../aside/aside.index";
+import {useQueryUser} from "../../customs/useQueries.ts/useQueries";
 
 export default function LayoutHeader() {
-  const {data} = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(USER_LOGGED_IN);
+  const {data} = useQueryUser();
   const {logoutUserSubmit} = useLogoutUser();
   const {showPaymentModal, isPaymentModal} = usePayment();
 
@@ -34,7 +33,7 @@ export default function LayoutHeader() {
                 </li>
                 <li>
                   <LinkItem
-                    path={`${MYPAGE_PATH}/${data.fetchUserLoggedIn._id}`}
+                    path={`${MYPAGE_PATH}/${data.fetchUserLoggedIn._id}${MYPAGE_SHOP_PATH}`}
                     name="마이페이지"
                     color="#666"
                     fontSize="12px"
