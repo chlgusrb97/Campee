@@ -10,5 +10,7 @@ export const BOARDS_DETAIL_PATH = "/boards/detail";
 
 export const EDIT_PATH = "/edit";
 
+export const MYPAGE_PATH = "/user";
+
 export const LOGIN_PATH = "/login";
 export const JOIN_PATH = "/join";

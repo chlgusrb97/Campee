@@ -5,6 +5,7 @@ import {
   JOIN_PATH,
   LOGIN_PATH,
   MAIN_PATH,
+  MYPAGE_PATH,
   PRODUCTS_LIST_PATH,
 } from "../../../../commons/paths/paths";
 import {useQuery} from "@apollo/client";
@@ -33,7 +34,7 @@ export default function LayoutHeader() {
                 </li>
                 <li>
                   <LinkItem
-                    path={LOGIN_PATH}
+                    path={`${MYPAGE_PATH}/${data.fetchUserLoggedIn._id}`}
                     name="마이페이지"
                     color="#666"
                     fontSize="12px"
