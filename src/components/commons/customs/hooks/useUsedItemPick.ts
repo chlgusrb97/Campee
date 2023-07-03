@@ -26,7 +26,6 @@ export const useUsedItemPick = () => {
           search: "",
         },
       });
-      console.log("찜상품");
     }
 
     try {
