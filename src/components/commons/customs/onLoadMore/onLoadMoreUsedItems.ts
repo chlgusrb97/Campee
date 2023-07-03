@@ -1,19 +1,11 @@
-import {useQuery} from "@apollo/client";
-import {USED_ITEMS} from "../../queries/queries";
-import {
-  IQuery,
-  IQueryFetchUseditemsArgs,
-  IUseditem,
-} from "../../../../commons/types/generated/types";
-import {
-  useQueryBoardComments,
-  useQueryUsedItemQuestions,
-} from "../useQueries.ts/useQueries";
+import {IQuery, IUseditem} from "../../../../commons/types/generated/types";
+import {useQueryUsedItemQuestions} from "../useQueries.ts/useQueries";
 
 interface IOnLoadMoreProps {
   data:
     | Pick<IQuery, "fetchUseditems">
     | Pick<IQuery, "fetchUseditemsISold">
+    | Pick<IQuery, "fetchUseditemsIPicked">
     | undefined;
   dataArr: IUseditem[] | undefined;
   fetchMore: any;
@@ -45,6 +37,13 @@ export const onLoadMoreFunc = (props: IOnLoadMoreProps) => {
           updatedData.fetchUseditemsISold = [
             ...prev.fetchUseditemsISold,
             ...fetchMoreResult.fetchUseditemsISold,
+          ];
+        }
+
+        if (fetchMoreResult.fetchUseditemsIPicked) {
+          updatedData.fetchUseditemsIPicked = [
+            ...prev.fetchUseditemsIPicked,
+            ...fetchMoreResult.fetchUseditemsIPicked,
           ];
         }
 

@@ -1,5 +1,9 @@
 import {useRouter} from "next/router";
-import {MYPAGE_PATH, MYPAGE_SHOP_PATH} from "../../../../commons/paths/paths";
+import {
+  MYPAGE_PATH,
+  MYPAGE_SHOP_PATH,
+  MYPAGE_WISHLIST_PATH,
+} from "../../../../commons/paths/paths";
 import {useQueryUser} from "../../../commons/customs/useQueries.ts/useQueries";
 import LinkItem from "../../../commons/items/link/link.index";
 import * as S from "./user.common.styles";
@@ -24,9 +28,13 @@ export default function UserCommonUI() {
         </li>
         <li>
           <LinkItem
-            path=""
+            path={`${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_WISHLIST_PATH}`}
             name="위시리스트"
-            color="#a9a9a9"
+            color={
+              router.asPath.includes(MYPAGE_WISHLIST_PATH)
+                ? "#e76161"
+                : "#a9a9a9"
+            }
             fontFamily="NanumBold"
             hoverColor="#e76161"
           />

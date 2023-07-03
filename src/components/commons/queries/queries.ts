@@ -73,6 +73,19 @@ export const USED_ITEMS_MY_SOLD = gql`
   }
 `;
 
+export const USED_ITEMS_MY_PICK = gql`
+  query fetchUseditemsIPicked($search: String, $page: Int) {
+    fetchUseditemsIPicked(search: $search, page: $page) {
+      _id
+      name
+      price
+      images
+      createdAt
+      soldAt
+    }
+  }
+`;
+
 export const USED_ITEM_QUESTIONS = gql`
   query fetchUseditemQuestions($page: Int, $useditemId: ID!) {
     fetchUseditemQuestions(page: $page, useditemId: $useditemId) {

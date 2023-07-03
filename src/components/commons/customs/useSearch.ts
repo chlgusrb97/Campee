@@ -4,6 +4,7 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
   IQueryFetchUseditemsArgs,
+  IQueryFetchUseditemsIPickedArgs,
   IQueryFetchUseditemsISoldArgs,
 } from "../../../commons/types/generated/types";
 import {ApolloQueryResult} from "@apollo/client";
@@ -22,7 +23,10 @@ type RefetchFunction =
     ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditems">>>)
   | ((
       variables?: Partial<IQueryFetchUseditemsISoldArgs> | undefined
-    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditemsISold">>>);
+    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditemsISold">>>)
+  | ((
+      variables?: Partial<IQueryFetchUseditemsIPickedArgs> | undefined
+    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditemsIPicked">>>);
 
 interface IUseSearchProps {
   refetch?: RefetchFunction;

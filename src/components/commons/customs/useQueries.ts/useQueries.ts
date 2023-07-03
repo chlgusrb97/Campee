@@ -8,6 +8,7 @@ import {
   FETCH_BOARD_COMMENTS,
   USED_ITEM,
   USED_ITEMS,
+  USED_ITEMS_MY_PICK,
   USED_ITEMS_MY_SOLD,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
@@ -23,6 +24,7 @@ import {
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
   IQueryFetchUseditemsArgs,
+  IQueryFetchUseditemsIPickedArgs,
   IQueryFetchUseditemsISoldArgs,
 } from "../../../../commons/types/generated/types";
 import {useRouter} from "next/router";
@@ -53,11 +55,24 @@ export const useQueryUsedItem = () => {
   return result;
 };
 
-export const useQueryUsedItemSold = () => {
+export const useQueryUsedItemMySold = () => {
   const result = useQuery<
     Pick<IQuery, "fetchUseditemsISold">,
     IQueryFetchUseditemsISoldArgs
   >(USED_ITEMS_MY_SOLD);
+
+  return result;
+};
+
+export const useQueryUsedItemMyPick = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchUseditemsIPicked">,
+    IQueryFetchUseditemsIPickedArgs
+  >(USED_ITEMS_MY_PICK, {
+    variables: {
+      search: "",
+    },
+  });
 
   return result;
 };
