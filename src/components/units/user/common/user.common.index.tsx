@@ -1,9 +1,11 @@
+import {useRouter} from "next/router";
 import {MYPAGE_PATH, MYPAGE_SHOP_PATH} from "../../../../commons/paths/paths";
 import {useQueryUser} from "../../../commons/customs/useQueries.ts/useQueries";
 import LinkItem from "../../../commons/items/link/link.index";
 import * as S from "./user.common.styles";
 
 export default function UserCommonUI() {
+  const router = useRouter();
   const {data} = useQueryUser();
 
   return (
@@ -13,7 +15,9 @@ export default function UserCommonUI() {
           <LinkItem
             path={`${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_SHOP_PATH}`}
             name="나의 상점"
-            color="#a9a9a9"
+            color={
+              router.asPath.includes(MYPAGE_SHOP_PATH) ? "#e76161" : "#a9a9a9"
+            }
             fontFamily="NanumBold"
             hoverColor="#e76161"
           />

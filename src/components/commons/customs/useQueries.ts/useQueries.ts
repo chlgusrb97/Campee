@@ -8,6 +8,7 @@ import {
   FETCH_BOARD_COMMENTS,
   USED_ITEM,
   USED_ITEMS,
+  USED_ITEMS_MY_SOLD,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
   USER_LOGGED_IN,
@@ -22,6 +23,7 @@ import {
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
   IQueryFetchUseditemsArgs,
+  IQueryFetchUseditemsISoldArgs,
 } from "../../../../commons/types/generated/types";
 import {useRouter} from "next/router";
 
@@ -47,6 +49,15 @@ export const useQueryUsedItem = () => {
     Pick<IQuery, "fetchUseditem">,
     IQueryFetchUseditemArgs
   >(USED_ITEM, {variables: {useditemId: String(router.query.productsId)}});
+
+  return result;
+};
+
+export const useQueryUsedItemSold = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchUseditemsISold">,
+    IQueryFetchUseditemsISoldArgs
+  >(USED_ITEMS_MY_SOLD);
 
   return result;
 };

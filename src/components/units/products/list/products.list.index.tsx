@@ -16,7 +16,11 @@ import {onLoadMoreFunc} from "../../../commons/customs/onLoadMore/onLoadMoreUsed
 export default function ProductsListUI() {
   const {data, refetch, fetchMore} = useQueryUsedItems();
   const {data: BestItemsData} = useQueryBestUsedItems();
-  const {onLoadMore} = onLoadMoreFunc({data, fetchMore});
+  const {onLoadMore} = onLoadMoreFunc({
+    data,
+    dataArr: data?.fetchUseditems,
+    fetchMore,
+  });
   const {pageRouting} = routes();
 
   return (

@@ -3,6 +3,7 @@ import {USED_ITEMS} from "../../queries/queries";
 import {
   IQuery,
   IQueryFetchUseditemsArgs,
+  IUseditem,
 } from "../../../../commons/types/generated/types";
 import {
   useQueryBoardComments,
@@ -10,7 +11,11 @@ import {
 } from "../useQueries.ts/useQueries";
 
 interface IOnLoadMoreProps {
-  data: Pick<IQuery, "fetchUseditems"> | undefined;
+  data:
+    | Pick<IQuery, "fetchUseditems">
+    | Pick<IQuery, "fetchUseditemsISold">
+    | undefined;
+  dataArr: IUseditem[] | undefined;
   fetchMore: any;
 }
 
@@ -19,20 +24,31 @@ export const onLoadMoreFunc = (props: IOnLoadMoreProps) => {
     if (props.data === undefined) return;
     void props.fetchMore({
       variables: {
-        page: Math.ceil((props.data.fetchUseditems.length ?? 10) / 10) + 1,
+        page: Math.ceil((props.dataArr?.length ?? 10) / 10) + 1,
       },
       updateQuery: (prev: any, {fetchMoreResult}: any) => {
-        if (fetchMoreResult.fetchUseditems === undefined) {
-          return {
-            fetchUseditems: [...prev.fetchUseditems],
-          };
-        }
-        return {
-          fetchUseditems: [
+        if (!fetchMoreResult) return prev;
+
+        const updatedData = {
+          ...prev,
+          ...fetchMoreResult,
+        };
+
+        if (fetchMoreResult.fetchUseditems) {
+          updatedData.fetchUseditems = [
             ...prev.fetchUseditems,
             ...fetchMoreResult.fetchUseditems,
-          ],
-        };
+          ];
+        }
+
+        if (fetchMoreResult.fetchUseditemsISold) {
+          updatedData.fetchUseditemsISold = [
+            ...prev.fetchUseditemsISold,
+            ...fetchMoreResult.fetchUseditemsISold,
+          ];
+        }
+
+        return updatedData;
       },
     });
   };
