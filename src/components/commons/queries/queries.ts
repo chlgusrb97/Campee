@@ -22,6 +22,7 @@ export const USED_ITEMS = gql`
       price
       images
       seller {
+        _id
         name
       }
       createdAt
@@ -51,6 +52,23 @@ export const USED_ITEM = gql`
         name
       }
       pickedCount
+    }
+  }
+`;
+
+export const USED_ITEMS_MY_SOLD = gql`
+  query fetchUseditemsISold($search: String, $page: Int) {
+    fetchUseditemsISold(search: $search, page: $page) {
+      _id
+      name
+      price
+      images
+      seller {
+        _id
+        name
+      }
+      createdAt
+      soldAt
     }
   }
 `;

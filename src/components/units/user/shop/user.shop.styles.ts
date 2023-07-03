@@ -105,7 +105,6 @@ export const UserProductRightContents = styled.div`
   font-size: 16px;
 
   > p {
-    color: #e76161;
     font-family: NanumBold;
   }
 `;
