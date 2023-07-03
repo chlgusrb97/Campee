@@ -1,8 +1,6 @@
-import {useEffect, useState} from "react";
 import {getDate} from "../../../../commons/libraries/utils";
 import {
-  useQueryUsedItemSold,
-  useQueryUsedItems,
+  useQueryUsedItemMySold,
   useQueryUser,
 } from "../../../commons/customs/useQueries.ts/useQueries";
 import SearchItem from "../../../commons/items/search/search.index";
@@ -12,9 +10,8 @@ import InfiniteScroll from "react-infinite-scroller";
 import {onLoadMoreFunc} from "../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 
 export default function UserShopUI() {
-  const {data: productData} = useQueryUsedItems();
   const {data: userData} = useQueryUser();
-  const {data: mySoldData, refetch, fetchMore} = useQueryUsedItemSold();
+  const {data: mySoldData, refetch, fetchMore} = useQueryUsedItemMySold();
   const {onLoadMore} = onLoadMoreFunc({
     data: mySoldData,
     dataArr: mySoldData?.fetchUseditemsISold,
