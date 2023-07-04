@@ -3,6 +3,7 @@ import UserCommonUI from "../common/user.common.index";
 import * as S from "./user.transaction.styles";
 import UserTransactionBuyUI from "./buy/user.transaction.buy.index";
 import UserTransactionSellUI from "./sell/user.transaction.sell.index";
+import UserTransactionTopupUI from "./topup/user.transaction.topup.index";
 
 export default function UserTransactionUI() {
   const [activeButton, setActiveButton] = useState(1);
@@ -46,6 +47,7 @@ export default function UserTransactionUI() {
         </S.TitleButtonBox>
         {activeButton === 1 && <UserTransactionBuyUI />}
         {activeButton === 2 && <UserTransactionSellUI />}
+        {activeButton === 3 && <UserTransactionTopupUI />}
       </S.Wrapper>
     </>
   );

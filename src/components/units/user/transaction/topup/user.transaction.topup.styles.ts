@@ -50,7 +50,7 @@ export const Creation = styled.p`
   white-space: nowrap;
 `;
 
-export const ProductName = styled.p`
+export const TopupId = styled.p`
   color: #666;
   white-space: nowrap;
 `;

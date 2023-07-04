@@ -3,6 +3,7 @@ import {
   IQuery,
   IQueryFetchBoardsArgs,
   IQueryFetchPointTransactionsOfBuyingArgs,
+  IQueryFetchPointTransactionsOfLoadingArgs,
   IQueryFetchPointTransactionsOfSellingArgs,
 } from "../../../commons/types/generated/types";
 
@@ -19,6 +20,11 @@ type RefetchFunction =
       variables?: Partial<IQueryFetchPointTransactionsOfSellingArgs> | undefined
     ) => Promise<
       ApolloQueryResult<Pick<IQuery, "fetchPointTransactionsOfSelling">>
+    >)
+  | ((
+      variables?: Partial<IQueryFetchPointTransactionsOfLoadingArgs> | undefined
+    ) => Promise<
+      ApolloQueryResult<Pick<IQuery, "fetchPointTransactionsOfLoading">>
     >);
 
 export interface IPaginationProps {
