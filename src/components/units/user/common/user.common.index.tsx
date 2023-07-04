@@ -9,10 +9,12 @@ import {
 import {useQueryUser} from "../../../commons/customs/useQueries.ts/useQueries";
 import LinkItem from "../../../commons/items/link/link.index";
 import * as S from "./user.common.styles";
+import {routes} from "../../../../commons/routes/routes";
 
 export default function UserCommonUI() {
   const router = useRouter();
   const {data} = useQueryUser();
+  const {pageRouting} = routes();
 
   return (
     <S.Wrapper>
@@ -72,21 +74,36 @@ export default function UserCommonUI() {
         <S.Profile>
           <S.ProfileLeftContents>
             <S.UserImgBox>
-              {/* <img /> */}
-              <S.UserIcon />
+              {data?.fetchUserLoggedIn.picture ? (
+                <img
+                  src={`https://storage.googleapis.com/${data?.fetchUserLoggedIn.picture}`}
+                />
+              ) : (
+                <S.UserIcon />
+              )}
             </S.UserImgBox>
             <S.UserInfo>
-              <S.UserName>홍길동</S.UserName>
-              <S.UserEmail>gmail@gmail.com</S.UserEmail>
+              <S.UserName>{data?.fetchUserLoggedIn.name}</S.UserName>
+              <S.UserEmail>{data?.fetchUserLoggedIn.email}</S.UserEmail>
               <S.ProfileButton>
-                <button type="button">프로필 관리</button>
-                <button type="button">비밀번호 변경</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    pageRouting(
+                      `${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_SETTING_PATH}`
+                    )
+                  }
+                >
+                  프로필 관리
+                </button>
               </S.ProfileButton>
             </S.UserInfo>
           </S.ProfileLeftContents>
           <S.ProfileRightContents>
             <S.PointTitle>보유 금액</S.PointTitle>
-            <S.Point>123,123 원</S.Point>
+            <S.Point>
+              {data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()} 원
+            </S.Point>
           </S.ProfileRightContents>
         </S.Profile>
       )}

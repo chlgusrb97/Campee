@@ -18,24 +18,28 @@ export default function UserTransactionTopupUI() {
         <div>충전금액</div>
         <div>잔액</div>
       </S.HeaderContents>
-      <S.ListContents>
-        {data?.fetchPointTransactionsOfLoading.map((topup) => (
-          <li key={topup._id}>
-            <div>
-              <S.Creation>{getDate(topup.createdAt)}</S.Creation>
-            </div>
-            <div>
-              <S.TopupId>{topup.impUid}</S.TopupId>
-            </div>
-            <div>
-              <S.PlusPoint>{topup.amount.toLocaleString()}원</S.PlusPoint>
-            </div>
-            <div>
-              <S.MyPoint>{topup.balance.toLocaleString()}원</S.MyPoint>
-            </div>
-          </li>
-        ))}
-      </S.ListContents>
+      {data?.fetchPointTransactionsOfLoading.length !== 0 ? (
+        <S.ListContents>
+          {data?.fetchPointTransactionsOfLoading.map((topup) => (
+            <li key={topup._id}>
+              <div>
+                <S.Creation>{getDate(topup.createdAt)}</S.Creation>
+              </div>
+              <div>
+                <S.TopupId>{topup.impUid}</S.TopupId>
+              </div>
+              <div>
+                <S.PlusPoint>{topup.amount.toLocaleString()}원</S.PlusPoint>
+              </div>
+              <div>
+                <S.MyPoint>{topup.balance.toLocaleString()}원</S.MyPoint>
+              </div>
+            </li>
+          ))}
+        </S.ListContents>
+      ) : (
+        <S.ProductNoneBox>거래한 내역이 없습니다.</S.ProductNoneBox>
+      )}
       <S.PageBox>
         <Pagination
           refetch={refetch}

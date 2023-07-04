@@ -108,3 +108,11 @@ export const UserProductRightContents = styled.div`
     font-family: NanumBold;
   }
 `;
+
+export const ProductNoneBox = styled.div`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+`;

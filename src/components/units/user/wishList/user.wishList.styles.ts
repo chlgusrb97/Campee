@@ -108,3 +108,11 @@ export const CancelButton = styled.button`
   text-decoration: underline;
   cursor: pointer;
 `;
+
+export const ProductNoneBox = styled.div`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+`;

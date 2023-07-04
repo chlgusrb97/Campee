@@ -73,3 +73,11 @@ export const MyPoint = styled.p`
 export const PageBox = styled.div`
   padding: 28px 0;
 `;
+
+export const ProductNoneBox = styled.div`
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+`;
