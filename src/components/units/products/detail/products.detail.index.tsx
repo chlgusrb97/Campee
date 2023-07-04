@@ -78,14 +78,18 @@ export default function ProductsDetailUI() {
                 <h4>상품소개</h4>
                 <p>{data?.fetchUseditem.remarks}</p>
               </S.ProductRemarks>
-              <S.ProductTags>
-                <h4>관련태그</h4>
-                <p>{data?.fetchUseditem.tags?.map((tag) => `${tag} `)}</p>
-              </S.ProductTags>
-              <S.ProductAddress>
-                <h4>거래지역</h4>
-                <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
-              </S.ProductAddress>
+              {data?.fetchUseditem.tags?.length !== 0 && (
+                <S.ProductTags>
+                  <h4>관련태그</h4>
+                  <p>{data?.fetchUseditem.tags?.map((tag) => `${tag} `)}</p>
+                </S.ProductTags>
+              )}
+              {data?.fetchUseditem.useditemAddress?.address && (
+                <S.ProductAddress>
+                  <h4>거래지역</h4>
+                  <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
+                </S.ProductAddress>
+              )}
             </div>
             <div>
               <S.PickBasketButtons>
