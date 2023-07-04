@@ -5,6 +5,7 @@ import {
   BOARDS_REGISTRATION_SCHEMA,
   JOIN_SCHEMA,
   LOGIN_SCHEMA,
+  MYPAGE_PROFILE_EDIT_SCHEMA,
   PRODUCTS_COMMENT_ANSWER_SCHEMA,
   PRODUCTS_COMMENT_WRITE_SCHEMA,
   PRODUCTS_REGISTRATION_SCHEMA,
@@ -17,6 +18,7 @@ import {
   ICreateUseditemInput,
   ICreateUseditemQuestionAnswerInput,
   ICreateUseditemQuestionInput,
+  IUpdateUserInput,
 } from "../../../commons/types/generated/types";
 
 export const useFormJoin = () => {
@@ -76,6 +78,15 @@ export const useFormBoardsCommentWrite = () => {
   const result = useForm<ICreateBoardCommentInput>({
     resolver: yupResolver(BOARDS_COMMENT_WRITE_SCHEMA),
     mode: "onSubmit",
+  });
+
+  return result;
+};
+
+export const useFormMypageProfileEdit = () => {
+  const result = useForm<IUpdateUserInput>({
+    resolver: yupResolver(MYPAGE_PROFILE_EDIT_SCHEMA),
+    mode: "onChange",
   });
 
   return result;

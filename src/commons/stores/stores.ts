@@ -28,3 +28,8 @@ export const recentlyVisitedProducts = atom({
   key: "recentlyVisitedProducts",
   default: [],
 });
+
+export const userPicture = atom({
+  key: "userPicture",
+  default: "",
+});

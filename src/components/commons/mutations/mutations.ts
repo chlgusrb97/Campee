@@ -24,6 +24,17 @@ export const LOGOUT_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($updateUserInput: UpdateUserInput!) {
+    updateUser(updateUserInput: $updateUserInput) {
+      _id
+      email
+      name
+      picture
+    }
+  }
+`;
+
 export const CREATE_USED_ITEM = gql`
   mutation createUseditem($createUseditemInput: CreateUseditemInput!) {
     createUseditem(createUseditemInput: $createUseditemInput) {

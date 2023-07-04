@@ -1,13 +1,19 @@
-import {ChangeEvent, useRef, useState} from "react";
+import {ChangeEvent, Dispatch, SetStateAction, useRef, useState} from "react";
 import * as S from "./user.imageUpload.styles";
 import {useMutationUploadFile} from "../../../customs/useMutations/useMutations";
 import {Modal} from "antd";
+import {useQueryUser} from "../../../customs/useQueries.ts/useQueries";
+
+interface IUserImageUploadProps {
+  imageUrl: string;
+  setImageUrl: Dispatch<SetStateAction<string>>;
+}
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-export default function UserImageUpload() {
+export default function UserImageUpload(props: IUserImageUploadProps) {
+  const {data} = useQueryUser();
   const fileRef = useRef<HTMLInputElement>(null);
-  const [imageUrl, setImageUrl] = useState("");
   const [uploadFile] = useMutationUploadFile();
 
   const onClickUploadImage = (): void => {
@@ -15,7 +21,7 @@ export default function UserImageUpload() {
   };
 
   const onChangeImageUrl = (imageUrl: string | undefined) => {
-    setImageUrl(String(imageUrl));
+    props.setImageUrl(String(imageUrl));
   };
 
   const imageUploadCheck = (file: File | undefined) => {
@@ -46,23 +52,27 @@ export default function UserImageUpload() {
   };
 
   const onClickCancel = () => {
-    setImageUrl("");
+    props.setImageUrl("");
   };
 
   return (
     <S.Wrapper>
       <S.ImageBox>
-        {imageUrl !== "" ? (
-          <img src={`https://storage.googleapis.com/${imageUrl}`} />
+        {props.imageUrl !== "" ? (
+          <img src={`https://storage.googleapis.com/${props.imageUrl}`} />
         ) : (
           <S.UserIcon />
         )}
       </S.ImageBox>
       <S.RightContents>
-        <S.Name>홍길동</S.Name>
+        <S.Name>{data?.fetchUserLoggedIn.name}</S.Name>
         <S.ImageButtons>
-          <button onClick={onClickUploadImage}>이미지 변경</button>
-          <button onClick={onClickCancel}>삭제</button>
+          <button type="button" onClick={onClickUploadImage}>
+            이미지 변경
+          </button>
+          <button type="button" onClick={onClickCancel}>
+            삭제
+          </button>
         </S.ImageButtons>
       </S.RightContents>
       <S.UploadFileHidden

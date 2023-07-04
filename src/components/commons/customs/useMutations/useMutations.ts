@@ -23,6 +23,7 @@ import {
   IMutationUpdateUseditemArgs,
   IMutationUpdateUseditemQuestionAnswerArgs,
   IMutationUpdateUseditemQuestionArgs,
+  IMutationUpdateUserArgs,
   IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import {
@@ -47,6 +48,7 @@ import {
   UPDATE_USED_ITEM,
   UPDATE_USED_ITEM_ANSWER,
   UPDATE_USED_ITEM_QUESTION,
+  UPDATE_USER,
   UPLOAD_FILE,
   USED_ITEM_PICK,
 } from "../../mutations/mutations";
@@ -73,6 +75,15 @@ export const useMutationLogoutUser = () => {
   const [logoutUser] = useMutation<Pick<IMutation, "logoutUser">>(LOGOUT_USER);
 
   return [logoutUser];
+};
+
+export const useMutationUpdateUser = () => {
+  const [updateUser] = useMutation<
+    Pick<IMutation, "updateUser">,
+    IMutationUpdateUserArgs
+  >(UPDATE_USER);
+
+  return [updateUser];
 };
 
 export const useMutationCreateUsedItem = () => {
