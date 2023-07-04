@@ -12,6 +12,8 @@ import {
   USED_ITEMS_MY_SOLD,
   USED_ITEM_ANSWERS,
   USED_ITEM_QUESTIONS,
+  USED_TRANSACTIONS_BUYING,
+  USED_TRANSACTIONS_COUNT_BUYING,
   USER_LOGGED_IN,
 } from "../../queries/queries";
 import {
@@ -20,6 +22,7 @@ import {
   IQueryFetchBoardCommentsArgs,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
+  IQueryFetchPointTransactionsOfBuyingArgs,
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
@@ -73,6 +76,23 @@ export const useQueryUsedItemMyPick = () => {
       search: "",
     },
   });
+
+  return result;
+};
+
+export const useQueryUsedTransActionsBuying = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchPointTransactionsOfBuying">,
+    IQueryFetchPointTransactionsOfBuyingArgs
+  >(USED_TRANSACTIONS_BUYING);
+
+  return result;
+};
+
+export const useQueryUsedTransActionsCountBuying = () => {
+  const result = useQuery<Pick<IQuery, "fetchPointTransactionsCountOfBuying">>(
+    USED_TRANSACTIONS_COUNT_BUYING
+  );
 
   return result;
 };

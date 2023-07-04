@@ -6,18 +6,6 @@ export const Wrapper = styled.div`
   padding-top: 50px;
 `;
 
-export const MyPageHeaderButton = styled.button`
-  color: #a9a9a9;
-  background-color: transparent;
-  font-size: 16px;
-  font-family: NanumBold;
-  cursor: pointer;
-
-  :hover {
-    color: #e76161;
-  }
-`;
-
 export const Title = styled.h1`
   width: 100%;
   font-size: 18px;

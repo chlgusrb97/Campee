@@ -16,8 +16,6 @@ export default function UserWishListUI() {
     fetchMore,
   });
 
-  console.log(myPickData);
-
   return (
     <>
       <UserCommonUI />

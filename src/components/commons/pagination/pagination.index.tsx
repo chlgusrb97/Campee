@@ -1,17 +1,6 @@
-import {ApolloQueryResult} from "@apollo/client";
-import {
-  IQuery,
-  IQueryFetchBoardsArgs,
-} from "../../../commons/types/generated/types";
 import * as S from "./pagination.styles";
 import {MouseEvent, useState} from "react";
-
-interface IPaginationProps {
-  count?: number;
-  refetch: (
-    variables: Partial<IQueryFetchBoardsArgs>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
-}
+import {IPaginationProps} from "./pagination.types";
 
 export default function Pagination(props: IPaginationProps) {
   const [startPage, setStartPage] = useState(1);
@@ -83,13 +72,13 @@ export default function Pagination(props: IPaginationProps) {
       <S.RightArrow isDisabled={startPage === lastPage}>
         <button
           onClick={onClickNextPage}
-          disabled={startPage + 10 <= lastPage ? false : true}
+          disabled={startPage + 1 <= lastPage ? false : true}
         >
           <S.RightIcon />
         </button>
         <button
           onClick={onClickLastPage}
-          disabled={startPage + 10 <= lastPage ? false : true}
+          disabled={startPage + 1 <= lastPage ? false : true}
         >
           <S.DoubleRightIcon />
         </button>
