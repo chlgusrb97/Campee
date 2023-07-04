@@ -6,6 +6,7 @@ export const USER_LOGGED_IN = gql`
       _id
       email
       name
+      picture
       userPoint {
         amount
       }

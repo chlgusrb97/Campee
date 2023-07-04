@@ -6,8 +6,8 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageBox = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 88px;
+  height: 88px;
   background-color: #fff;
   border-radius: 50px;
   overflow: hidden;
@@ -31,7 +31,7 @@ export const RightContents = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 10px 0;
   margin-left: 12px;
 `;
 

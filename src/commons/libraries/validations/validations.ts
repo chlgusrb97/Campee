@@ -67,3 +67,7 @@ export const BOARDS_COMMENT_WRITE_SCHEMA = yup.object({
   password: yup.string().required("비밀번호를 입력해주세요."),
   contents: yup.string().required("내용을 입력해주세요."),
 });
+
+export const MYPAGE_PROFILE_EDIT_SCHEMA = yup.object({
+  name: yup.string().required("이름을 작성해주세요."),
+});
