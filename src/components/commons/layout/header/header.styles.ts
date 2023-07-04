@@ -102,7 +102,14 @@ export const UserIcon = styled(FaUserCircle)`
   color: #ddd;
 `;
 
-export const UserImg = styled.img``;
+export const UserImg = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin: 6px;
+  object-fit: cover;
+  object-position: center;
+`;
 
 export const UserName = styled.p`
   color: #666;

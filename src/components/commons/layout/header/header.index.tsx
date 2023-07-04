@@ -100,19 +100,23 @@ export default function LayoutHeader() {
               </S.Gnb>
             </div>
             <S.Tnb>
-              <li>
-                <S.MoneyIcon />
-                <S.MoneyNumber>
-                  {data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()}{" "}
-                  원
-                </S.MoneyNumber>
-              </li>
+              {data?.fetchUserLoggedIn && (
+                <li>
+                  <S.MoneyIcon />
+                  <S.MoneyNumber>
+                    {data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()}{" "}
+                    원
+                  </S.MoneyNumber>
+                </li>
+              )}
               <li>
                 <S.User>
                   {data?.fetchUserLoggedIn._id ? (
                     <>
                       {data.fetchUserLoggedIn.picture ? (
-                        <S.UserImg />
+                        <S.UserImg
+                          src={`https://storage.googleapis.com/${data.fetchUserLoggedIn.picture}`}
+                        />
                       ) : (
                         <S.UserIcon />
                       )}
