@@ -2,6 +2,7 @@ import {useRouter} from "next/router";
 import {
   MYPAGE_PATH,
   MYPAGE_SHOP_PATH,
+  MYPAGE_TRANSACTION_PATH,
   MYPAGE_WISHLIST_PATH,
 } from "../../../../commons/paths/paths";
 import {useQueryUser} from "../../../commons/customs/useQueries.ts/useQueries";
@@ -41,9 +42,13 @@ export default function UserCommonUI() {
         </li>
         <li>
           <LinkItem
-            path=""
+            path={`${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_TRANSACTION_PATH}`}
             name="거래내역"
-            color="#a9a9a9"
+            color={
+              router.asPath.includes(MYPAGE_TRANSACTION_PATH)
+                ? "#e76161"
+                : "#a9a9a9"
+            }
             fontFamily="NanumBold"
             hoverColor="#e76161"
           />
