@@ -2,6 +2,7 @@ import {ApolloQueryResult} from "@apollo/client";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
+  IQueryFetchPointTransactionsArgs,
   IQueryFetchPointTransactionsOfBuyingArgs,
   IQueryFetchPointTransactionsOfLoadingArgs,
   IQueryFetchPointTransactionsOfSellingArgs,
@@ -25,7 +26,10 @@ type RefetchFunction =
       variables?: Partial<IQueryFetchPointTransactionsOfLoadingArgs> | undefined
     ) => Promise<
       ApolloQueryResult<Pick<IQuery, "fetchPointTransactionsOfLoading">>
-    >);
+    >)
+  | ((
+      variables?: Partial<IQueryFetchPointTransactionsArgs> | undefined
+    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchPointTransactions">>>);
 
 export interface IPaginationProps {
   count?: number;

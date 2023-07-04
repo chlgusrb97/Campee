@@ -27,6 +27,9 @@ export const HeaderContents = styled.div`
 `;
 
 export const ListContents = styled.ul`
+  display: flex;
+  flex-direction: column;
+
   > li {
     display: flex;
     align-items: center;

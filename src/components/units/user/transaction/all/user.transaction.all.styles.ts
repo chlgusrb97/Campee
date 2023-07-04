@@ -14,15 +14,11 @@ export const HeaderContents = styled.div`
   background-color: #f7f7f7;
 
   > div {
-    width: 100%;
+    width: 25%;
     text-align: center;
     font-size: 14px;
     font-family: NanumBold;
-
-    :not(:nth-of-type(2)) {
-      width: 20%;
-      white-space: nowrap;
-    }
+    white-space: nowrap;
   }
 `;
 
@@ -31,6 +27,7 @@ export const ListContents = styled.ul`
   flex-direction: column;
 
   > li {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -38,13 +35,8 @@ export const ListContents = styled.ul`
   }
 
   div {
-    width: 100%;
+    width: 25%;
     text-align: center;
-
-    :not(:nth-of-type(2)) {
-      width: 20%;
-      white-space: nowrap;
-    }
   }
 `;
 
@@ -53,12 +45,12 @@ export const Creation = styled.p`
   white-space: nowrap;
 `;
 
-export const TopupId = styled.p`
+export const Status = styled.p`
   color: #666;
   white-space: nowrap;
 `;
 
-export const PlusPoint = styled.p`
+export const Point = styled.p`
   color: #e76161;
   font-family: NanumBold;
   white-space: nowrap;
