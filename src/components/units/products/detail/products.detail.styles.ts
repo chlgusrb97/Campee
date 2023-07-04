@@ -171,7 +171,6 @@ export const ProductTags = styled.div`
 export const ProductAddress = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-bottom: 14px;
 
   > h4 {
@@ -179,6 +178,7 @@ export const ProductAddress = styled.div`
     font-size: 14px;
     margin-right: 20px;
     font-family: NanumRegular;
+    white-space: nowrap;
   }
 
   > p {
