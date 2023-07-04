@@ -6,6 +6,7 @@ import {
   FETCH_BOARDS_BEST,
   FETCH_BOARDS_COUNT,
   FETCH_BOARD_COMMENTS,
+  POINT_TRANSACTIONS,
   USED_ITEM,
   USED_ITEMS,
   USED_ITEMS_MY_PICK,
@@ -26,6 +27,7 @@ import {
   IQueryFetchBoardCommentsArgs,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
+  IQueryFetchPointTransactionsArgs,
   IQueryFetchPointTransactionsOfBuyingArgs,
   IQueryFetchPointTransactionsOfLoadingArgs,
   IQueryFetchPointTransactionsOfSellingArgs,
@@ -82,6 +84,15 @@ export const useQueryUsedItemMyPick = () => {
       search: "",
     },
   });
+
+  return result;
+};
+
+export const useQueryPointTransactions = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchPointTransactions">,
+    IQueryFetchPointTransactionsArgs
+  >(POINT_TRANSACTIONS);
 
   return result;
 };

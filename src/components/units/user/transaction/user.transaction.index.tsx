@@ -4,6 +4,7 @@ import * as S from "./user.transaction.styles";
 import UserTransactionBuyUI from "./buy/user.transaction.buy.index";
 import UserTransactionSellUI from "./sell/user.transaction.sell.index";
 import UserTransactionTopupUI from "./topup/user.transaction.topup.index";
+import UserTransactionAllUI from "./all/user.transaction.all.index";
 
 export default function UserTransactionUI() {
   const [activeButton, setActiveButton] = useState(1);
@@ -23,7 +24,7 @@ export default function UserTransactionUI() {
               type="button"
               onClick={() => onClickActive(1)}
             >
-              구매내역
+              전체내역
             </S.TitleButton>
           </li>
           <li>
@@ -32,7 +33,7 @@ export default function UserTransactionUI() {
               type="button"
               onClick={() => onClickActive(2)}
             >
-              판매내역
+              구매내역
             </S.TitleButton>
           </li>
           <li>
@@ -41,13 +42,23 @@ export default function UserTransactionUI() {
               type="button"
               onClick={() => onClickActive(3)}
             >
+              판매내역
+            </S.TitleButton>
+          </li>
+          <li>
+            <S.TitleButton
+              active={activeButton === 4}
+              type="button"
+              onClick={() => onClickActive(4)}
+            >
               충전내역
             </S.TitleButton>
           </li>
         </S.TitleButtonBox>
-        {activeButton === 1 && <UserTransactionBuyUI />}
-        {activeButton === 2 && <UserTransactionSellUI />}
-        {activeButton === 3 && <UserTransactionTopupUI />}
+        {activeButton === 1 && <UserTransactionAllUI />}
+        {activeButton === 2 && <UserTransactionBuyUI />}
+        {activeButton === 3 && <UserTransactionSellUI />}
+        {activeButton === 4 && <UserTransactionTopupUI />}
       </S.Wrapper>
     </>
   );
