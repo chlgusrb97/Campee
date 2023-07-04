@@ -12,6 +12,8 @@ export default function ProductItem(props: IProductItemProps) {
   const {pageRouting} = routes();
 
   const onClickProduct = (product: IUseditem) => () => {
+    pageRouting(`${PRODUCTS_DETAIL_PATH}/${props.product?._id}`);
+
     const recentlyVisitedProducts: IUseditem[] = JSON.parse(
       sessionStorage.getItem("recentlyVisitedProducts") ?? "[]"
     );
@@ -29,8 +31,6 @@ export default function ProductItem(props: IProductItemProps) {
       "recentlyVisitedProducts",
       JSON.stringify(recentlyVisitedProducts)
     );
-
-    pageRouting(`${PRODUCTS_DETAIL_PATH}/${props.product?._id}`);
   };
 
   return (
