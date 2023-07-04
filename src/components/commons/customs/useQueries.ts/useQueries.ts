@@ -14,7 +14,9 @@ import {
   USED_ITEM_QUESTIONS,
   USED_TRANSACTIONS_BUYING,
   USED_TRANSACTIONS_COUNT_BUYING,
+  USED_TRANSACTIONS_COUNT_SELLING,
   USER_LOGGED_IN,
+  USER_TRANSACTIONS_SELLING,
 } from "../../queries/queries";
 import {
   IQuery,
@@ -23,6 +25,7 @@ import {
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
   IQueryFetchPointTransactionsOfBuyingArgs,
+  IQueryFetchPointTransactionsOfSellingArgs,
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemQuestionAnswersArgs,
   IQueryFetchUseditemQuestionsArgs,
@@ -92,6 +95,23 @@ export const useQueryUsedTransActionsBuying = () => {
 export const useQueryUsedTransActionsCountBuying = () => {
   const result = useQuery<Pick<IQuery, "fetchPointTransactionsCountOfBuying">>(
     USED_TRANSACTIONS_COUNT_BUYING
+  );
+
+  return result;
+};
+
+export const useQueryUsedTransActionsSelling = () => {
+  const result = useQuery<
+    Pick<IQuery, "fetchPointTransactionsOfSelling">,
+    IQueryFetchPointTransactionsOfSellingArgs
+  >(USER_TRANSACTIONS_SELLING);
+
+  return result;
+};
+
+export const useQueryUsedTransActionsCountSelling = () => {
+  const result = useQuery<Pick<IQuery, "fetchPointTransactionsCountOfSelling">>(
+    USED_TRANSACTIONS_COUNT_SELLING
   );
 
   return result;
