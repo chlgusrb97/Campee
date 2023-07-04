@@ -35,6 +35,12 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const RESET_USER_PASSWORD = gql`
+  mutation resetUserPassword($password: String!) {
+    resetUserPassword(password: $password)
+  }
+`;
+
 export const CREATE_USED_ITEM = gql`
   mutation createUseditem($createUseditemInput: CreateUseditemInput!) {
     createUseditem(createUseditemInput: $createUseditemInput) {

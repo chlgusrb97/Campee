@@ -50,7 +50,7 @@ export const SubmitButton = styled.button`
   margin-top: 40px;
   color: #fff;
   background-color: #e76161;
-  font-size: 18px;
+  font-size: 16px;
   font-family: NanumBold;
   cursor: pointer;
 
