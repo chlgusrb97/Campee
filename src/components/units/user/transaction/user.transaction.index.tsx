@@ -2,6 +2,7 @@ import {useState} from "react";
 import UserCommonUI from "../common/user.common.index";
 import * as S from "./user.transaction.styles";
 import UserTransactionBuyUI from "./buy/user.transaction.buy.index";
+import UserTransactionSellUI from "./sell/user.transaction.sell.index";
 
 export default function UserTransactionUI() {
   const [activeButton, setActiveButton] = useState(1);
@@ -43,7 +44,8 @@ export default function UserTransactionUI() {
             </S.TitleButton>
           </li>
         </S.TitleButtonBox>
-        <UserTransactionBuyUI />
+        {activeButton === 1 && <UserTransactionBuyUI />}
+        {activeButton === 2 && <UserTransactionSellUI />}
       </S.Wrapper>
     </>
   );

@@ -106,6 +106,27 @@ export const USED_TRANSACTIONS_COUNT_BUYING = gql`
   }
 `;
 
+export const USER_TRANSACTIONS_SELLING = gql`
+  query fetchPointTransactionsOfSelling($page: Int) {
+    fetchPointTransactionsOfSelling(page: $page) {
+      _id
+      impUid
+      amount
+      balance
+      createdAt
+      useditem {
+        name
+      }
+    }
+  }
+`;
+
+export const USED_TRANSACTIONS_COUNT_SELLING = gql`
+  query {
+    fetchPointTransactionsCountOfSelling
+  }
+`;
+
 export const USED_ITEM_QUESTIONS = gql`
   query fetchUseditemQuestions($page: Int, $useditemId: ID!) {
     fetchUseditemQuestions(page: $page, useditemId: $useditemId) {
