@@ -35,24 +35,28 @@ export default function UserTransactionAllUI() {
         <div>거래 및 충전 금액</div>
         <div>잔액</div>
       </S.HeaderContents>
-      <S.ListContents>
-        {data?.fetchPointTransactions.map((transaction) => (
-          <li key={transaction._id}>
-            <div>
-              <S.Creation>{getDate(transaction.createdAt)}</S.Creation>
-            </div>
-            <div>
-              <S.Status>{transaction.status}</S.Status>
-            </div>
-            <div>
-              <S.Point>{transaction.amount.toLocaleString()}원</S.Point>
-            </div>
-            <div>
-              <S.MyPoint>{transaction.balance.toLocaleString()}원</S.MyPoint>
-            </div>
-          </li>
-        ))}
-      </S.ListContents>
+      {data?.fetchPointTransactions.length !== 0 ? (
+        <S.ListContents>
+          {data?.fetchPointTransactions.map((transaction) => (
+            <li key={transaction._id}>
+              <div>
+                <S.Creation>{getDate(transaction.createdAt)}</S.Creation>
+              </div>
+              <div>
+                <S.Status>{transaction.status}</S.Status>
+              </div>
+              <div>
+                <S.Point>{transaction.amount.toLocaleString()}원</S.Point>
+              </div>
+              <div>
+                <S.MyPoint>{transaction.balance.toLocaleString()}원</S.MyPoint>
+              </div>
+            </li>
+          ))}
+        </S.ListContents>
+      ) : (
+        <S.ProductNoneBox>거래한 내역이 없습니다.</S.ProductNoneBox>
+      )}
       <S.PageBox>
         <Pagination refetch={refetch} count={countData} />
       </S.PageBox>

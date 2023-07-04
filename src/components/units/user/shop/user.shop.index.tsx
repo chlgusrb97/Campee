@@ -33,41 +33,45 @@ export default function UserShopUI() {
           useWindow={true}
           style={{width: "100%"}}
         >
-          <S.Product>
-            {mySoldData?.fetchUseditemsISold.map(
-              (product) =>
-                product.seller?._id === userData?.fetchUserLoggedIn._id && (
-                  <li key={product._id}>
-                    <S.ProductLeftContents>
-                      <S.ProductImgBox>
-                        {product.images && (
-                          <img
-                            src={`https:storage.googleapis.com/${product.images[0]}`}
-                          />
-                        )}
-                      </S.ProductImgBox>
-                      <S.ProductInfo>
-                        <S.ProductInfoTop>
-                          <S.ProductName>{product.name}</S.ProductName>
-                          <S.ProductPrice>
-                            {product.price?.toLocaleString()}
-                            <p>원</p>
-                          </S.ProductPrice>
-                        </S.ProductInfoTop>
-                        <S.ProductCreation>
-                          {getDate(product.createdAt)}
-                        </S.ProductCreation>
-                      </S.ProductInfo>
-                    </S.ProductLeftContents>
-                    <S.UserProductRightContents>
-                      <p style={{color: product.soldAt ? "#e76161" : "#777"}}>
-                        {product.soldAt ? "판매완료" : "판매중"}
-                      </p>
-                    </S.UserProductRightContents>
-                  </li>
-                )
-            )}
-          </S.Product>
+          {mySoldData?.fetchUseditemsISold.length !== 0 ? (
+            <S.Product>
+              {mySoldData?.fetchUseditemsISold.map(
+                (product) =>
+                  product.seller?._id === userData?.fetchUserLoggedIn._id && (
+                    <li key={product._id}>
+                      <S.ProductLeftContents>
+                        <S.ProductImgBox>
+                          {product.images && (
+                            <img
+                              src={`https:storage.googleapis.com/${product.images[0]}`}
+                            />
+                          )}
+                        </S.ProductImgBox>
+                        <S.ProductInfo>
+                          <S.ProductInfoTop>
+                            <S.ProductName>{product.name}</S.ProductName>
+                            <S.ProductPrice>
+                              {product.price?.toLocaleString()}
+                              <p>원</p>
+                            </S.ProductPrice>
+                          </S.ProductInfoTop>
+                          <S.ProductCreation>
+                            {getDate(product.createdAt)}
+                          </S.ProductCreation>
+                        </S.ProductInfo>
+                      </S.ProductLeftContents>
+                      <S.UserProductRightContents>
+                        <p style={{color: product.soldAt ? "#e76161" : "#777"}}>
+                          {product.soldAt ? "판매완료" : "판매중"}
+                        </p>
+                      </S.UserProductRightContents>
+                    </li>
+                  )
+              )}
+            </S.Product>
+          ) : (
+            <S.ProductNoneBox>등록한 상품이 없습니다.</S.ProductNoneBox>
+          )}
         </InfiniteScroll>
       </S.Wrapper>
     </>

@@ -56,6 +56,7 @@ export const UserImgBox = styled.div`
   height: 100px;
   border-radius: 50px;
   background-color: #fff;
+  overflow: hidden;
 
   > img {
     width: 100%;
@@ -79,7 +80,7 @@ export const UserInfo = styled.div`
 export const UserName = styled.h1`
   font-size: 16px;
   font-family: NanumBold;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 `;
 
 export const UserEmail = styled.p`
@@ -96,7 +97,6 @@ export const ProfileButton = styled.div`
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px 16px;
-    margin-right: 6px;
     color: #666;
     background-color: transparent;
     cursor: pointer;

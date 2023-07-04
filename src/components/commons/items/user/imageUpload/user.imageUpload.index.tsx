@@ -58,7 +58,7 @@ export default function UserImageUpload(props: IUserImageUploadProps) {
   return (
     <S.Wrapper>
       <S.ImageBox>
-        {props.imageUrl !== "" ? (
+        {!!props.imageUrl ? (
           <img src={`https://storage.googleapis.com/${props.imageUrl}`} />
         ) : (
           <S.UserIcon />
