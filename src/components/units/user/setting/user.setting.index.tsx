@@ -2,6 +2,7 @@ import {useState} from "react";
 import UserCommonUI from "../common/user.common.index";
 import * as S from "./user.setting.styles";
 import UserEditProfileUI from "./editProfile/user.setting.editProfile.index";
+import UserEditPasswordUI from "./editPassword/user.setting.editPassword.index";
 
 export default function UserSettingUI() {
   const [activeButton, setActiveButton] = useState(1);
@@ -35,6 +36,7 @@ export default function UserSettingUI() {
           </li>
         </S.TitleButtonBox>
         {activeButton === 1 && <UserEditProfileUI />}
+        {activeButton === 2 && <UserEditPasswordUI />}
       </S.Wrapper>
     </>
   );

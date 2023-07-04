@@ -5,6 +5,7 @@ import {
   BOARDS_REGISTRATION_SCHEMA,
   JOIN_SCHEMA,
   LOGIN_SCHEMA,
+  MYPAGE_PASSWORD_EDIT_SCHEMA,
   MYPAGE_PROFILE_EDIT_SCHEMA,
   PRODUCTS_COMMENT_ANSWER_SCHEMA,
   PRODUCTS_COMMENT_WRITE_SCHEMA,
@@ -18,8 +19,10 @@ import {
   ICreateUseditemInput,
   ICreateUseditemQuestionAnswerInput,
   ICreateUseditemQuestionInput,
+  IMutationResetUserPasswordArgs,
   IUpdateUserInput,
 } from "../../../commons/types/generated/types";
+import {resetUserPasswordSubmitData} from "../customs/hooks/useResetUserPassword";
 
 export const useFormJoin = () => {
   const result = useForm<ICreateUserData>({
@@ -86,6 +89,15 @@ export const useFormBoardsCommentWrite = () => {
 export const useFormMypageProfileEdit = () => {
   const result = useForm<IUpdateUserInput>({
     resolver: yupResolver(MYPAGE_PROFILE_EDIT_SCHEMA),
+    mode: "onChange",
+  });
+
+  return result;
+};
+
+export const useFormMypagePasswordEdit = () => {
+  const result = useForm<resetUserPasswordSubmitData>({
+    resolver: yupResolver(MYPAGE_PASSWORD_EDIT_SCHEMA),
     mode: "onChange",
   });
 

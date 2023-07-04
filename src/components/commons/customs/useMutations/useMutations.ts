@@ -17,6 +17,7 @@ import {
   IMutationLikeBoardArgs,
   IMutationLoginUserArgs,
   IMutationLoginUserExampleArgs,
+  IMutationResetUserPasswordArgs,
   IMutationToggleUseditemPickArgs,
   IMutationUpdateBoardArgs,
   IMutationUpdateBoardCommentArgs,
@@ -43,6 +44,7 @@ import {
   LIKE_BOARD,
   LOGIN_USER,
   LOGOUT_USER,
+  RESET_USER_PASSWORD,
   UPDATE_BOARD,
   UPDATE_BOARD_COMMENT,
   UPDATE_USED_ITEM,
@@ -84,6 +86,15 @@ export const useMutationUpdateUser = () => {
   >(UPDATE_USER);
 
   return [updateUser];
+};
+
+export const useMutationResetUserPassword = () => {
+  const [resetUserPassword] = useMutation<
+    Pick<IMutation, "resetUserPassword">,
+    IMutationResetUserPasswordArgs
+  >(RESET_USER_PASSWORD);
+
+  return [resetUserPassword];
 };
 
 export const useMutationCreateUsedItem = () => {

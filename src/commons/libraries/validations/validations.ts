@@ -71,3 +71,21 @@ export const BOARDS_COMMENT_WRITE_SCHEMA = yup.object({
 export const MYPAGE_PROFILE_EDIT_SCHEMA = yup.object({
   name: yup.string().required("이름을 작성해주세요."),
 });
+
+export const MYPAGE_PASSWORD_EDIT_SCHEMA = yup.object({
+  password: yup
+    .string()
+    .required("영문+숫자 조합 8~16자리를 입력해주세요.")
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
+      "영문+숫자 조합 8~16자리를 입력해주세요."
+    ),
+  passwordCheck: yup
+    .string()
+    .required("영문+숫자 조합 8~16자리를 입력해주세요.")
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
+      "영문+숫자 조합 8~16자리를 입력해주세요."
+    )
+    .oneOf([yup.ref("password")], "비밀번호가 일치하지 않습니다."),
+});

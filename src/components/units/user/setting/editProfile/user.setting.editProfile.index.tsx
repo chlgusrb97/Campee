@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useQueryUser} from "../../../../commons/customs/useQueries.ts/useQueries";
 import InputItem from "../../../../commons/items/input/input.index";
 import LabelItem from "../../../../commons/items/label/label.index";
@@ -71,9 +71,6 @@ export default function UserEditProfileUI() {
             </S.LabelBox>
             <S.InputBox>
               <InputItem
-                height="48px"
-                border="1px solid #ddd"
-                padding="16px"
                 placeHolder="이름을 입력해주세요."
                 register={register("name")}
                 defaultValue={data?.fetchUserLoggedIn.name}
