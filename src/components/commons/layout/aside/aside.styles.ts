@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
     font-family: NanumBold;
     margin-bottom: 16px;
   }
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
 export const Number = styled.p`

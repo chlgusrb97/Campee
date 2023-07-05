@@ -16,13 +16,16 @@ import LoginUI from "../../../units/auth/login/auth.login.index";
 import {useState} from "react";
 import JoinUI from "../../../units/auth/join/auth.join.index";
 import {useRouter} from "next/router";
+import {routes} from "../../../../commons/routes/routes";
 
 export default function LayoutHeader() {
   const router = useRouter();
   const {data} = useQueryUser();
   const {logoutUserSubmit} = useLogoutUser();
   const {showPaymentModal, isPaymentModal} = usePayment();
+  const {pageRouting} = routes();
   const [isAuthModal, setIsAuthModal] = useState(0);
+  const [footerButton, setFooterButton] = useState(0);
 
   const onClickAuthModalOpen = (number: number) => {
     setIsAuthModal(number);
@@ -30,6 +33,11 @@ export default function LayoutHeader() {
 
   const onClickAuthModalCancel = (number: number) => {
     setIsAuthModal(number);
+  };
+
+  const onClickFooterButton = (number: number, path: string) => {
+    setFooterButton(number);
+    pageRouting(path);
   };
 
   return (
@@ -81,13 +89,14 @@ export default function LayoutHeader() {
         <S.HeaderSection02>
           <S.Section02Contents>
             <div>
-              <LinkItem
-                path={MAIN_PATH}
-                name="CAMPEE"
-                fontSize="36px"
-                fontFamily="KanitBold"
-                color="#e76161"
-              />
+              <S.Logo>
+                <LinkItem
+                  path={MAIN_PATH}
+                  name="CAMPEE"
+                  fontFamily="KanitBold"
+                  color="#e76161"
+                />
+              </S.Logo>
               <S.Gnb>
                 <li>
                   <LinkItem
@@ -154,6 +163,49 @@ export default function LayoutHeader() {
           </S.Section02Contents>
         </S.HeaderSection02>
         <LayoutAside />
+        <S.FooterGnb>
+          <li>
+            <S.FooterButton
+              color={footerButton === 0 ? "#e76161" : "#666"}
+              onClick={() => onClickFooterButton(0, MAIN_PATH)}
+            >
+              <S.HomeIcon />
+              <S.FooterText>HOME</S.FooterText>
+            </S.FooterButton>
+          </li>
+          <li>
+            <S.FooterButton
+              color={footerButton === 1 ? "#e76161" : "#666"}
+              onClick={() => onClickFooterButton(1, PRODUCTS_LIST_PATH)}
+            >
+              <S.StoreIcon />
+              <S.FooterText>SHOP</S.FooterText>
+            </S.FooterButton>
+          </li>
+          <li>
+            <S.FooterButton
+              color={footerButton === 2 ? "#e76161" : "#666"}
+              onClick={() => onClickFooterButton(2, BOARDS_LIST_PATH)}
+            >
+              <S.BoardIcon />
+              <S.FooterText>LIFE</S.FooterText>
+            </S.FooterButton>
+          </li>
+          <li>
+            <S.FooterButton
+              color={footerButton === 3 ? "#e76161" : "#666"}
+              onClick={() =>
+                onClickFooterButton(
+                  3,
+                  `${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_SHOP_PATH}`
+                )
+              }
+            >
+              <S.MyPageIcon />
+              <S.FooterText>MY</S.FooterText>
+            </S.FooterButton>
+          </li>
+        </S.FooterGnb>
       </S.Wrapper>
     </>
   );
