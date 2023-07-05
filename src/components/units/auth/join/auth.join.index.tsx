@@ -1,13 +1,14 @@
 import {useCreateUser} from "../../../commons/customs/hooks/useCreateUser";
-import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
-import LabelItem from "../../../commons/items/label/label.index";
-import TitleItem from "../../../commons/items/title/title.index";
 import ValidationItem from "../../../commons/items/validation/validation.index";
 import {useFormJoin} from "../../../commons/useForm/useForm";
 import * as S from "./auth.join.styles";
 
-export default function JoinUI() {
+interface IJoinUIProps {
+  onClickAuthModalCancel: (number: number) => void;
+}
+
+export default function JoinUI(props: IJoinUIProps) {
   const {
     register,
     handleSubmit,
@@ -18,111 +19,96 @@ export default function JoinUI() {
 
   return (
     <>
-      <S.Wrapper onSubmit={handleSubmit(createUserSubmit)}>
-        <span>
-          <TitleItem title="JOIN MEMBER" fontFamily="NanumBold" />
-        </span>
-        <S.InputContents>
-          <li>
-            <span>
-              <LabelItem label="아이디" />
-            </span>
-            <InputItem
-              width="610px"
-              padding="21px 18px"
-              placeHolder="이메일 아이디를 @까지 정확하게 입력해주세요."
-              register={register("email")}
-            />
-          </li>
-          <ValidationItem
-            error={errors.email?.message}
-            height="14px"
-            marginTop="8px"
-            marginLeft="188px"
-            marginBottom="30px"
-          />
-          <li>
-            <span>
-              <LabelItem label="비밀번호" />
-            </span>
-            <InputItem
-              width="610px"
-              padding="21px 18px"
-              placeHolder="영문+숫자 조합 8~16자리를 입력해주세요."
-              type="password"
-              register={register("password")}
-            />
-          </li>
-          <ValidationItem
-            error={errors.password?.message}
-            height="14px"
-            marginTop="8px"
-            marginLeft="188px"
-            marginBottom="30px"
-          />
-          <li>
-            <span>
-              <LabelItem label="비밀번호 확인" />
-            </span>
-            <InputItem
-              width="610px"
-              padding="21px 18px"
-              placeHolder="영문+숫자 조합 8~16자리를 입력해주세요."
-              type="password"
-              register={register("passwordCheck")}
-            />
-          </li>
-          <ValidationItem
-            error={errors.passwordCheck?.message}
-            height="14px"
-            marginTop="8px"
-            marginLeft="188px"
-            marginBottom="30px"
-          />
-          <li>
-            <span>
-              <LabelItem label="이름" />
-            </span>
-            <InputItem
-              width="610px"
-              padding="21px 18px"
-              placeHolder="Ex) 홍길동"
-              register={register("name")}
-            />
-          </li>
-          <ValidationItem
-            error={errors.name?.message}
-            height="14px"
-            marginTop="8px"
-            marginLeft="188px"
-          />
-        </S.InputContents>
-        <S.ButtonContents>
-          <li>
-            <ButtonItem
-              title="취소"
-              width="186px"
-              height="56px"
-              border="1px solid #000"
-              padding="15px 33px"
-              color="#000"
-              backgroundColor="#fff"
-              fontSize="20px"
-              fontFamilly="NanumBold"
-            />
-          </li>
-          <li>
-            <ButtonItem
-              title="확인"
-              width="186px"
-              height="56px"
-              color="#fff"
-              backgroundColor="#000"
-              fontSize="20px"
-              fontFamilly="NanumBold"
-            />
-          </li>
-        </S.ButtonContents>
+      <S.Background onClick={() => props.onClickAuthModalCancel(0)} />
+      <S.Wrapper>
+        <S.Contents
+          onSubmit={handleSubmit(
+            createUserSubmit({
+              onClickAuthModalCancel: props.onClickAuthModalCancel,
+            })
+          )}
+        >
+          <S.CancelButton onClick={() => props.onClickAuthModalCancel(0)} />
+          <S.Logo>CAMPEE</S.Logo>
+          <S.InputList>
+            <li>
+              <InputItem
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="이름"
+                register={register("name")}
+              />
+              <ValidationItem
+                error={errors.name?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
+            </li>
+            <li>
+              <InputItem
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="이메일"
+                register={register("email")}
+              />
+              <ValidationItem
+                error={errors.email?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
+            </li>
+            <li>
+              <InputItem
+                type="password"
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="비밀번호"
+                register={register("password")}
+              />
+              <ValidationItem
+                error={errors.password?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
+            </li>
+            <li>
+              <InputItem
+                type="password"
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="비밀번호 확인"
+                register={register("passwordCheck")}
+              />
+              <ValidationItem
+                error={errors.passwordCheck?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
+            </li>
+          </S.InputList>
+          <S.SubmitButton>회원가입</S.SubmitButton>
+          <S.Join>
+            <p>이미 회원이신가요?</p>
+            <button
+              type="button"
+              onClick={() => props.onClickAuthModalCancel(1)}
+            >
+              로그인
+            </button>
+          </S.Join>
+        </S.Contents>
       </S.Wrapper>
     </>
   );

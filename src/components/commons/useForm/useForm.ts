@@ -19,7 +19,6 @@ import {
   ICreateUseditemInput,
   ICreateUseditemQuestionAnswerInput,
   ICreateUseditemQuestionInput,
-  IMutationResetUserPasswordArgs,
   IUpdateUserInput,
 } from "../../../commons/types/generated/types";
 import {resetUserPasswordSubmitData} from "../customs/hooks/useResetUserPassword";

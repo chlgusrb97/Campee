@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {useRecoilValueLoadable} from "recoil";
 import {restoreAccessTokenLoadble} from "../../../commons/stores/stores";
-import {LOGIN_PATH} from "../../../commons/paths/paths";
+import {MAIN_PATH} from "../../../commons/paths/paths";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ export const useAuth = () => {
       if (newAccessToken === undefined) {
         Modal.error({
           content: "로그인 후 이용 가능합니다.",
-          onOk: () => router.push(LOGIN_PATH),
+          onOk: () => router.push(MAIN_PATH),
         });
       }
     });

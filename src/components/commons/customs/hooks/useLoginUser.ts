@@ -1,7 +1,5 @@
 import {Modal} from "antd";
 import {useMutationLoginUser} from "../useMutations/useMutations";
-import {useRouter} from "next/router";
-import {MAIN_PATH} from "../../../../commons/paths/paths";
 import {useRecoilState} from "recoil";
 import {accessTokenState} from "../../../../commons/stores/stores";
 
@@ -11,7 +9,6 @@ export interface ILoginUserData {
 }
 
 export const useLoginUser = () => {
-  const router = useRouter();
   const [loginUser] = useMutationLoginUser();
   const [, setAccessToken] = useRecoilState(accessTokenState);
 
@@ -35,11 +32,12 @@ export const useLoginUser = () => {
       setAccessToken(accessToken);
 
       Modal.success({
-        content: "회원가입이 완료되었습니다.",
-        onOk: () => router.push(MAIN_PATH),
+        content: "로그인이 완료되었습니다.",
+        onOk: () => window.location.reload(),
       });
     } catch (error) {
-      if (error instanceof Error) Modal.error({content: error.message});
+      if (error instanceof Error)
+        Modal.error({content: "이메일 또는 비밀번호를 잘못 입력하셨습니다."});
     }
   };
 

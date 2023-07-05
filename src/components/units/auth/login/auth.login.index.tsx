@@ -1,13 +1,14 @@
 import {useLoginUser} from "../../../commons/customs/hooks/useLoginUser";
-import ButtonItem from "../../../commons/items/button/button.index";
 import InputItem from "../../../commons/items/input/input.index";
-import LabelItem from "../../../commons/items/label/label.index";
-import TitleItem from "../../../commons/items/title/title.index";
 import ValidationItem from "../../../commons/items/validation/validation.index";
 import {useFormLogin} from "../../../commons/useForm/useForm";
 import * as S from "./auth.login.styles";
 
-export default function LoginUI() {
+interface ILoginUIProps {
+  onClickAuthModalCancel: (number: number) => void;
+}
+
+export default function LoginUI(props: ILoginUIProps) {
   const {
     register,
     handleSubmit,
@@ -18,59 +19,57 @@ export default function LoginUI() {
 
   return (
     <>
-      <S.Wrapper onSubmit={handleSubmit(loginUserSubmit)}>
-        <span>
-          <TitleItem title="LOGIN" fontFamily="NanumBold" />
-        </span>
-        <div>
-          <S.InputContents>
+      <S.Background onClick={() => props.onClickAuthModalCancel(0)} />
+      <S.Wrapper>
+        <S.Contents onSubmit={handleSubmit(loginUserSubmit)}>
+          <S.CancelButton onClick={() => props.onClickAuthModalCancel(0)} />
+          <S.Logo>CAMPEE</S.Logo>
+          <S.InputList>
             <li>
-              <span>
-                <LabelItem label="아이디" />
-              </span>
               <InputItem
-                width="610px"
-                padding="21px 18px"
-                placeHolder="이메일 아이디를 @까지 정확하게 입력해주세요."
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="이메일"
                 register={register("email")}
               />
-            </li>
-            <ValidationItem
-              error={errors.email?.message}
-              height="14px"
-              marginTop="8px"
-              marginLeft="113px"
-              marginBottom="24px"
-            />
-            <li>
-              <span>
-                <LabelItem label="비밀번호" />
-              </span>
-              <InputItem
-                width="610px"
-                padding="21px 18px"
-                placeHolder="영문+숫자 조합 8~16자리를 입력해주세요."
-                type="password"
-                register={register("password")}
+              <ValidationItem
+                error={errors.email?.message}
+                marginTop="8px"
+                marginLeft="16px"
               />
             </li>
-            <ValidationItem
-              error={errors.password?.message}
-              height="14px"
-              marginTop="8px"
-              marginLeft="113px"
-            />
-          </S.InputContents>
-          <ButtonItem
-            title="로그인"
-            width="186px"
-            height="164px"
-            color="#fff"
-            backgroundColor="#000"
-            fontSize="20px"
-            fontFamilly="NanumBold"
-          />
-        </div>
+            <li>
+              <InputItem
+                type="password"
+                width="100%"
+                height="40px"
+                border="1px solid #ddd"
+                borderRadius="4px"
+                padding="16px"
+                placeHolder="비밀번호"
+                register={register("password")}
+              />
+              <ValidationItem
+                error={errors.password?.message}
+                marginTop="8px"
+                marginLeft="16px"
+              />
+            </li>
+          </S.InputList>
+          <S.SubmitButton>로그인</S.SubmitButton>
+          <S.Join>
+            <p>회원이 아니신가요?</p>
+            <button
+              type="button"
+              onClick={() => props.onClickAuthModalCancel(2)}
+            >
+              회원가입
+            </button>
+          </S.Join>
+        </S.Contents>
       </S.Wrapper>
     </>
   );

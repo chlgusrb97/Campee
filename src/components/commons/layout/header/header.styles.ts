@@ -136,3 +136,25 @@ export const Logout = styled.span`
     color: #222;
   }
 `;
+
+export const Login = styled.button`
+  color: #666;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+
+  :hover {
+    color: #222;
+  }
+`;
+
+export const Join = styled.button`
+  color: #666;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+
+  :hover {
+    color: #222;
+  }
+`;

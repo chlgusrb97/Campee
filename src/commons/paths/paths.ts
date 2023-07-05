@@ -15,6 +15,3 @@ export const MYPAGE_SHOP_PATH = "/shop";
 export const MYPAGE_WISHLIST_PATH = "/wishList";
 export const MYPAGE_TRANSACTION_PATH = "/transaction";
 export const MYPAGE_SETTING_PATH = "/setting";
-
-export const LOGIN_PATH = "/login";
-export const JOIN_PATH = "/join";

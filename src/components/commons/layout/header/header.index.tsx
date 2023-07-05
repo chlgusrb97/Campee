@@ -2,8 +2,6 @@ import * as S from "./header.styles";
 import LinkItem from "../../items/link/link.index";
 import {
   BOARDS_LIST_PATH,
-  JOIN_PATH,
-  LOGIN_PATH,
   MAIN_PATH,
   MYPAGE_PATH,
   MYPAGE_SHOP_PATH,
@@ -14,15 +12,35 @@ import PaymentItem from "../../items/payment/payment.index";
 import {usePayment} from "../../customs/hooks/usePayment";
 import LayoutAside from "../aside/aside.index";
 import {useQueryUser} from "../../customs/useQueries.ts/useQueries";
+import LoginUI from "../../../units/auth/login/auth.login.index";
+import {useState} from "react";
+import JoinUI from "../../../units/auth/join/auth.join.index";
+import {useRouter} from "next/router";
 
 export default function LayoutHeader() {
+  const router = useRouter();
   const {data} = useQueryUser();
   const {logoutUserSubmit} = useLogoutUser();
   const {showPaymentModal, isPaymentModal} = usePayment();
+  const [isAuthModal, setIsAuthModal] = useState(0);
+
+  const onClickAuthModalOpen = (number: number) => {
+    setIsAuthModal(number);
+  };
+
+  const onClickAuthModalCancel = (number: number) => {
+    setIsAuthModal(number);
+  };
 
   return (
     <>
       {isPaymentModal && <PaymentItem />}
+      {isAuthModal === 1 && (
+        <LoginUI onClickAuthModalCancel={onClickAuthModalCancel} />
+      )}
+      {isAuthModal === 2 && (
+        <JoinUI onClickAuthModalCancel={onClickAuthModalCancel} />
+      )}
       <S.Wrapper>
         <S.HeaderSection01>
           <S.Section01Contents>
@@ -47,20 +65,14 @@ export default function LayoutHeader() {
             ) : (
               <>
                 <li>
-                  <LinkItem
-                    path={LOGIN_PATH}
-                    name="로그인"
-                    color="#666"
-                    fontSize="12px"
-                  />
+                  <S.Login onClick={() => onClickAuthModalOpen(1)}>
+                    로그인
+                  </S.Login>
                 </li>
                 <li>
-                  <LinkItem
-                    path={JOIN_PATH}
-                    name="회원가입"
-                    color="#666"
-                    fontSize="12px"
-                  />
+                  <S.Login onClick={() => onClickAuthModalOpen(2)}>
+                    회원가입
+                  </S.Login>
                 </li>
               </>
             )}
@@ -81,7 +93,11 @@ export default function LayoutHeader() {
                   <LinkItem
                     path={PRODUCTS_LIST_PATH}
                     name="CAMPEE SHOP"
-                    color="#666"
+                    color={
+                      router.asPath.includes(PRODUCTS_LIST_PATH)
+                        ? "#e76161"
+                        : "#666"
+                    }
                     fontSize="18px"
                     fontFamily="NanumBold"
                     hoverColor="#e76161"
@@ -91,7 +107,11 @@ export default function LayoutHeader() {
                   <LinkItem
                     path={BOARDS_LIST_PATH}
                     name="LIFE"
-                    color="#666"
+                    color={
+                      router.asPath.includes(BOARDS_LIST_PATH)
+                        ? "#e76161"
+                        : "#666"
+                    }
                     fontSize="18px"
                     fontFamily="NanumBold"
                     hoverColor="#e76161"
