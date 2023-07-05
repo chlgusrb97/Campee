@@ -1,7 +1,5 @@
 import {Modal} from "antd";
 import {useMutationCreateUser} from "../useMutations/useMutations";
-import {useRouter} from "next/router";
-import {LOGIN_PATH} from "../../../../commons/paths/paths";
 
 export interface ICreateUserData {
   email: string;
@@ -10,29 +8,34 @@ export interface ICreateUserData {
   name: string;
 }
 
+interface ICreateUserSubmitProps {
+  onClickAuthModalCancel: (number: number) => void;
+}
+
 export const useCreateUser = () => {
-  const router = useRouter();
   const [createUser] = useMutationCreateUser();
 
-  const createUserSubmit = async (data: ICreateUserData): Promise<void> => {
-    try {
-      await createUser({
-        variables: {
-          createUserInput: {
-            email: data.email,
-            password: data.password,
-            name: data.name,
+  const createUserSubmit =
+    (props: ICreateUserSubmitProps) =>
+    async (data: ICreateUserData): Promise<void> => {
+      try {
+        await createUser({
+          variables: {
+            createUserInput: {
+              email: data.email,
+              password: data.password,
+              name: data.name,
+            },
           },
-        },
-      });
-      Modal.success({
-        content: "회원가입이 완료되었습니다.",
-        onOk: () => router.push(LOGIN_PATH),
-      });
-    } catch (error) {
-      if (error instanceof Error) Modal.error({content: error.message});
-    }
-  };
+        });
+        Modal.success({
+          content: "회원가입이 완료되었습니다.",
+          onOk: () => props.onClickAuthModalCancel(0),
+        });
+      } catch (error) {
+        if (error instanceof Error) Modal.error({content: error.message});
+      }
+    };
 
   return {createUserSubmit};
 };
