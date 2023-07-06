@@ -5,6 +5,7 @@ interface IStyleProp {
 }
 
 export const CommentInput = styled.input<IStyleProp>`
+  width: 100%;
   border: ${(props) =>
     props.isFocused ? "1px solid #e76161" : "1px solid #ddd"};
   border-radius: 2px;

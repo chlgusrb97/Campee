@@ -2,7 +2,18 @@ import styled from "@emotion/styled";
 import {FaUserCircle} from "react-icons/fa";
 import {AiFillLike} from "react-icons/ai";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
+`;
 
 export const User = styled.div`
   display: flex;
@@ -164,6 +175,10 @@ export const ButtonBox = styled.ul`
   flex-direction: row;
   justify-content: flex-end;
   margin-top: 40px;
+
+  @media (max-width: 1023px) {
+    justify-content: center;
+  }
 
   > li:last-of-type {
     margin-left: 20px;

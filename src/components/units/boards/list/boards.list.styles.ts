@@ -11,6 +11,14 @@ export const Wrapper = styled.div`
     display: inline-block;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 1023px) {
+      padding: 20px 20px 0;
+    }
+
+    @media (max-width: 767px) {
+      padding: 20px 10px 0;
+    }
   }
 `;
 
@@ -22,9 +30,23 @@ export const BestBoards = styled.ul`
   align-items: center;
   padding-top: 20px;
 
+  @media (max-width: 1023px) {
+    padding: 20px 20px 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px 10px 0;
+    flex-wrap: wrap;
+  }
+
   > li {
     width: 22%;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 48%;
+      margin-bottom: 4%;
+    }
   }
 `;
 
@@ -108,41 +130,62 @@ export const BoardsCount = styled.h3`
   display: inline-block;
   width: 100%;
   padding-bottom: 6px;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.2px;
+  margin-top: 50px;
+
+  @media (max-width: 1023px) {
+    padding: 0 20px 6px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px 6px;
+  }
 `;
 
 export const BoardsList = styled.div`
   width: 100%;
-  border-top: 2px solid #555;
+
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
 `;
 
-export const BoardListTitle = styled.div`
+export const BoardListTitle = styled.ul`
   height: 60px;
+  line-height: 60px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-content: center;
+  border-top: 1px solid #555;
   border-bottom: 1px solid #ddd;
   background-color: #f7f7f7;
 
-  span {
+  > li {
+    width: 25%;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
+    font-family: NanumBold;
+    white-space: nowrap;
 
     :first-of-type {
-      width: 15%;
-      text-align: center;
-      white-space: nowrap;
-      padding: 0 30px;
+      width: 20%;
     }
 
     :nth-of-type(2) {
-      width: 70%;
+      width: 40%;
     }
 
-    :nth-of-type(3),
-    :nth-of-type(4) {
-      width: 15%;
+    :nth-of-type(3) {
+      width: 30%;
+    }
+
+    :last-of-type {
+      width: 10%;
     }
   }
 `;
@@ -159,38 +202,14 @@ export const BoardListContents = styled.ul`
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 
-    p {
+    > p {
+      padding: 0 5px;
+      text-align: center;
       font-size: 14px;
-
-      :first-of-type {
-        padding: 0 30px;
-        width: 15%;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-      }
-
-      :nth-of-type(2) {
-        width: 70%;
-        padding: 0 30px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-      }
-
-      :nth-of-type(3),
-      :nth-of-type(4) {
-        width: 15%;
-        padding: 0 10px;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-      }
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      word-break: break-all;
     }
 
     :hover {
@@ -199,23 +218,51 @@ export const BoardListContents = styled.ul`
   }
 `;
 
+export const Writer = styled.p`
+  width: 20%;
+  font-family: NanumBold;
+`;
+
+export const Title = styled.p`
+  width: 40%;
+`;
+
+export const Creation = styled.p`
+  width: 30%;
+`;
+
+export const Like = styled.p`
+  width: 10%;
+`;
+
 export const SearchBox = styled.div`
-  margin: 70px 0 40px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+
+  @media (max-width: 1023px) {
+    justify-content: flex-start;
+  }
+`;
+
+export const ButtonBox = styled.div`
+  position: absolute;
+  right: 0;
+
+  @media (max-width: 1023px) {
+    right: 20px;
+  }
+
+  @media (max-width: 767px) {
+    right: 10px;
+  }
 `;
 
 export const FooterContents = styled.div`
-  position: relative;
   width: 100%;
   margin-top: 40px;
-
-  > div:first-of-type {
-    width: 100%;
-    padding-top: 7px;
-  }
-
-  > div:not(:first-of-type) {
-    position: absolute;
-    top: 0%;
-    right: 0;
-  }
 `;
