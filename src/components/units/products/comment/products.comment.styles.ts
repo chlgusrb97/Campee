@@ -5,4 +5,8 @@ export const CommentWrapper = styled.div`
   padding: 40px 0;
   margin-top: 40px;
   background-color: #fff;
+
+  @media (max-width: 767px) {
+    padding: 40px 10px;
+  }
 `;

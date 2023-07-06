@@ -14,8 +14,13 @@ export const Wrapper = styled.div`
     padding-bottom: 20px;
   }
 
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
   @media (max-width: 767px) {
     padding: 0 10px;
+    margin-top: 50px;
   }
 `;
 
@@ -30,7 +35,7 @@ export const BestBoards = styled.ul`
   @media (max-width: 767px) {
     gap: 4%;
     justify-content: flex-start;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
   }
 
   > li {

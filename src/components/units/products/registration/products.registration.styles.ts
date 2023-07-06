@@ -4,6 +4,15 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+    margin-top: 40px;
+  }
+
   > span {
     display: inline-block;
     width: 100%;
@@ -47,6 +56,11 @@ export const AddressBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const ButtonBox = styled.ul`
@@ -54,6 +68,10 @@ export const ButtonBox = styled.ul`
   flex-direction: row;
   justify-content: flex-end;
   margin-top: 20px;
+
+  @media (max-width: 1023px) {
+    justify-content: center;
+  }
 
   > li:last-of-type {
     margin-left: 20px;

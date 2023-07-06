@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   border-top: 1px solid #eee;
   background-color: #fff;
 
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
   @media (max-width: 767px) {
     padding: 0 10px;
   }

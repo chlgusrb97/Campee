@@ -25,6 +25,24 @@ export default function ProductsListUI() {
 
   return (
     <>
+      <S.ItemBox>
+        <SearchItem refetch={refetch} placeHolder="상품을 검색하세요." />
+        <S.ButtonBox>
+          <ButtonItem
+            title="등록"
+            width="90px"
+            height="44px"
+            color="#fff"
+            borderRadius="2px"
+            backgroundColor="#e76161"
+            fontSize="16px"
+            fontFamilly="NanumBold"
+            transition="all 0.3s ease-in-out"
+            hoverBackgroundColor="#c64343"
+            onClick={() => pageRouting(PRODUCTS_REGISTRATION_PATH)}
+          />
+        </S.ButtonBox>
+      </S.ItemBox>
       <S.Wrapper>
         <span>
           <TitleItem title="BEST PICK" fontSize="20px" />
@@ -36,24 +54,6 @@ export default function ProductsListUI() {
             </li>
           ))}
         </S.BestProducts>
-        <S.ItemBox>
-          <SearchItem refetch={refetch} placeHolder="상품을 검색하세요." />
-          <S.ButtonBox>
-            <ButtonItem
-              title="등록"
-              width="140px"
-              height="44px"
-              color="#fff"
-              borderRadius="2px"
-              backgroundColor="#e76161"
-              fontSize="18px"
-              fontFamilly="NanumBold"
-              transition="all 0.3s ease-in-out"
-              hoverBackgroundColor="#c64343"
-              onClick={() => pageRouting(PRODUCTS_REGISTRATION_PATH)}
-            />
-          </S.ButtonBox>
-        </S.ItemBox>
         <span>
           <TitleItem title="PRODUCTS" fontSize="20px" />
         </span>

@@ -17,6 +17,8 @@ import {useState} from "react";
 import JoinUI from "../../../units/auth/join/auth.join.index";
 import {useRouter} from "next/router";
 import {routes} from "../../../../commons/routes/routes";
+import {useRecoilState} from "recoil";
+import {FooterButton} from "../../../../commons/stores/stores";
 
 export default function LayoutHeader() {
   const router = useRouter();
@@ -25,7 +27,7 @@ export default function LayoutHeader() {
   const {showPaymentModal, isPaymentModal} = usePayment();
   const {pageRouting} = routes();
   const [isAuthModal, setIsAuthModal] = useState(0);
-  const [footerButton, setFooterButton] = useState(0);
+  const [footerButton, setFooterButton] = useRecoilState(FooterButton);
 
   const onClickAuthModalOpen = (number: number) => {
     setIsAuthModal(number);
@@ -194,11 +196,14 @@ export default function LayoutHeader() {
           <li>
             <S.FooterButton
               color={footerButton === 3 ? "#e76161" : "#666"}
-              onClick={() =>
-                onClickFooterButton(
-                  3,
-                  `${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_SHOP_PATH}`
-                )
+              onClick={
+                data?.fetchUserLoggedIn._id
+                  ? () =>
+                      onClickFooterButton(
+                        3,
+                        `${MYPAGE_PATH}/${data?.fetchUserLoggedIn._id}${MYPAGE_SHOP_PATH}`
+                      )
+                  : () => onClickAuthModalOpen(1)
               }
             >
               <S.MyPageIcon />

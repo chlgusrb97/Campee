@@ -11,6 +11,7 @@ import {
 import LayoutBanner from "./banner/banner.index";
 import LayoutFooter from "./footer/footer.index";
 import LayoutHeader from "./header/header.index";
+import {BodyContents} from "./layout.styles";
 
 const HIDDEN_BANNER = [
   PRODUCTS_LIST_PATH,
@@ -37,15 +38,7 @@ export default function Layout(props: ILayoutProps) {
     <>
       <LayoutHeader />
       {!isHiddenBanner && <LayoutBanner />}
-      <div
-        style={{
-          maxWidth: "1024px",
-          margin: "50px auto 160px",
-          backgroundColor: "#fff",
-        }}
-      >
-        {props.children}
-      </div>
+      <BodyContents>{props.children}</BodyContents>
       <LayoutFooter />
     </>
   );
