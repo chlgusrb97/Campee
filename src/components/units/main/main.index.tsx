@@ -1,17 +1,8 @@
-import {useQuery} from "@apollo/client";
 import ProductItem from "../../commons/items/product/product.index";
 import TitleItem from "../../commons/items/title/title.index";
 import * as S from "./main.styles";
-import {USED_ITEMS} from "../../commons/queries/queries";
-import {
-  IQuery,
-  IQueryFetchUseditemsArgs,
-} from "../../../commons/types/generated/types";
 import {v4 as uuidv4} from "uuid";
-import {
-  BOARDS_DETAIL_PATH,
-  PRODUCTS_DETAIL_PATH,
-} from "../../../commons/paths/paths";
+import {BOARDS_DETAIL_PATH} from "../../../commons/paths/paths";
 import {routes} from "../../../commons/routes/routes";
 import {
   useQueryBoardsBest,

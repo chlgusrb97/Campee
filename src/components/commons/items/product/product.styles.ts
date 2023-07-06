@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import {AiOutlineHeart, AiFillHeart} from "react-icons/ai";
 
 export const Wrapper = styled.div``;
 
@@ -36,6 +35,7 @@ export const ProductFooterBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top: 1px solid #ddd;
   padding: 18px 9px;
 
   > h1 {

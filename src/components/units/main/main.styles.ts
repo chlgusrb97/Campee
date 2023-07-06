@@ -13,6 +13,10 @@ export const Wrapper = styled.div`
     height: 100%;
     padding-bottom: 20px;
   }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
 `;
 
 export const BestBoards = styled.ul`
@@ -23,9 +27,24 @@ export const BestBoards = styled.ul`
   align-items: center;
   margin-bottom: 100px;
 
+  @media (max-width: 767px) {
+    gap: 4%;
+    justify-content: flex-start;
+    margin-bottom: 70px;
+  }
+
   > li {
     width: 22%;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 48%;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
   }
 `;
 
@@ -110,7 +129,6 @@ export const NewArrival = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top: 20px;
   gap: 4%;
 
   > li {
@@ -120,5 +138,9 @@ export const NewArrival = styled.ul`
     border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 48%;
+    }
   }
 `;
