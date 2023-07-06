@@ -19,9 +19,17 @@ export const HeaderContents = styled.div`
     font-size: 14px;
     font-family: NanumBold;
 
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
+
     :not(:nth-of-type(2)) {
-      width: 20%;
+      width: 25%;
       white-space: nowrap;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
     }
   }
 `;
@@ -41,9 +49,17 @@ export const ListContents = styled.ul`
     width: 100%;
     text-align: center;
 
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
+
     :not(:nth-of-type(2)) {
-      width: 20%;
+      width: 25%;
       white-space: nowrap;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
     }
   }
 `;

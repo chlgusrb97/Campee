@@ -24,7 +24,12 @@ export default function UserShopUI() {
       <S.Wrapper>
         <S.Title>나의 상품</S.Title>
         <S.SearchBox>
-          <SearchItem placeHolder="상품을 검색하세요." refetch={refetch} />
+          <SearchItem
+            placeHolder="상품을 검색하세요."
+            refetch={refetch}
+            tabletWidth="100%"
+            mobileWidth="100%"
+          />
         </S.SearchBox>
         <InfiniteScroll
           pageStart={0}

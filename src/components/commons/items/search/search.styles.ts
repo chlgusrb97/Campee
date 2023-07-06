@@ -1,7 +1,14 @@
 import styled from "@emotion/styled";
 import {RiSearchLine} from "react-icons/ri";
 
-export const Search = styled.div`
+interface ISearchStyleProps {
+  tabletWidth?: string;
+  tabletMargin?: string;
+  mobileWidth?: string;
+  mobileMargin?: string;
+}
+
+export const Search = styled.div<ISearchStyleProps>`
   width: 600px;
   display: flex;
   flex-direction: row;
@@ -10,14 +17,14 @@ export const Search = styled.div`
   border-radius: 2px;
   overflow: hidden;
 
-  @media (max-width: 1023px) {
-    width: calc(100% - 140px);
-    margin: 0 20px;
+  @media ((min-width: 767px) and (max-width: 1023px)) {
+    width: ${(props) => props.tabletWidth};
+    margin: ${(props) => props.tabletMargin};
   }
 
   @media (max-width: 767px) {
-    width: calc(100% - 120px);
-    margin: 0 10px;
+    width: ${(props) => props.mobileWidth};
+    margin: ${(props) => props.mobileMargin};
   }
 
   > input {

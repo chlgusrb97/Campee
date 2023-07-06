@@ -19,6 +19,10 @@ export const HeaderContents = styled.div`
     font-size: 14px;
     font-family: NanumBold;
     white-space: nowrap;
+
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -37,6 +41,10 @@ export const ListContents = styled.ul`
   div {
     width: 25%;
     text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
   }
 `;
 

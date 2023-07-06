@@ -32,7 +32,7 @@ export default function UserTransactionAllUI() {
       <S.HeaderContents>
         <div>날짜</div>
         <div>유형</div>
-        <div>거래 및 충전 금액</div>
+        <div>금액</div>
         <div>잔액</div>
       </S.HeaderContents>
       {data?.fetchPointTransactions.length !== 0 ? (
