@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: #fff;
 
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
+
   > span {
     display: inline-block;
     width: 100%;
@@ -21,6 +29,12 @@ export const BestProducts = styled.ul`
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
+  margin-bottom: 40px;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
 
   > li {
     width: 22%;
@@ -28,6 +42,11 @@ export const BestProducts = styled.ul`
     border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 48%;
+      margin-bottom: 4%;
+    }
   }
 `;
 
@@ -42,10 +61,14 @@ export const AllProducts = styled.ul`
   > li {
     width: 22%;
     border: 1px solid #ddd;
-    margin-bottom: 50px;
+    margin-bottom: 4%;
     border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 48%;
+    }
   }
 `;
 
@@ -56,10 +79,22 @@ export const ItemBox = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 70px 0 40px;
+  margin: 40px 0;
+
+  @media (max-width: 1023px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const ButtonBox = styled.div`
   position: absolute;
   right: 0;
+
+  @media (max-width: 1023px) {
+    right: 20px;
+  }
+
+  @media (max-width: 767px) {
+    right: 10px;
+  }
 `;

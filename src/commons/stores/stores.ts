@@ -33,3 +33,8 @@ export const userPicture = atom({
   key: "userPicture",
   default: "",
 });
+
+export const FooterButton = atom({
+  key: "FooterButton",
+  default: 0,
+});

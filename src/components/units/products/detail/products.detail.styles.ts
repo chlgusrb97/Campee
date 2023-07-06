@@ -7,17 +7,30 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fff;
+
+  @media ((min-width: 768px) and ( max-width: 1023px)) {
+    padding: 0 20px;
+  }
 `;
 
 export const ProductInfo = styled.div`
   display: flex;
   flex-direction: row;
   height: 440px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const ProductInfoLeftContents = styled.div`
   width: 440px;
   margin-right: 40px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const ProductInfoRightContents = styled.div`
@@ -26,6 +39,11 @@ export const ProductInfoRightContents = styled.div`
   justify-content: space-between;
   width: calc(100% - 480px);
 
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 10px;
+  }
+
   > div {
     :first-of-type {
       display: flex;
@@ -33,6 +51,10 @@ export const ProductInfoRightContents = styled.div`
       justify-content: space-between;
       border-bottom: 1px solid #ddd;
       padding-bottom: 16px;
+
+      @media (max-width: 767px) {
+        padding: 24px 10px 12px;
+      }
     }
 
     :nth-of-type(2) {
@@ -98,15 +120,27 @@ export const EditDeleteButtons = styled.div`
     font-size: 14px;
     font-family: NanumBold;
     margin-left: 2px;
+
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
   }
 `;
 
 export const EditIcon = styled(RiEditBoxLine)`
   font-size: 24px;
+
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
 
 export const DeleteIcon = styled(RiChatDeleteLine)`
   font-size: 24px;
+
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
 
 export const ProductName = styled.h1`
@@ -133,7 +167,6 @@ export const ProductPrice = styled.div`
 export const ProductRemarks = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-bottom: 14px;
 
   > h4 {
@@ -141,6 +174,7 @@ export const ProductRemarks = styled.div`
     font-size: 14px;
     margin-right: 20px;
     font-family: NanumRegular;
+    white-space: nowrap;
   }
 
   > p {
@@ -152,7 +186,6 @@ export const ProductRemarks = styled.div`
 export const ProductTags = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-bottom: 14px;
 
   > h4 {
@@ -160,6 +193,7 @@ export const ProductTags = styled.div`
     font-size: 14px;
     margin-right: 20px;
     font-family: NanumRegular;
+    white-space: nowrap;
   }
 
   > p {
@@ -241,6 +275,11 @@ export const ProductContentns = styled.div`
   margin-top: 100px;
   padding: 40px 0;
   border-top: 1px solid #ddd;
+
+  @media (max-width: 767px) {
+    margin-top: 40px;
+    margin: 40px 10px 0;
+  }
 
   > span {
     display: inline-block;

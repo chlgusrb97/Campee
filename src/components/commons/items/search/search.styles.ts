@@ -8,8 +8,17 @@ export const Search = styled.div`
   align-items: center;
   border: 2px solid #e76161;
   border-radius: 2px;
-
   overflow: hidden;
+
+  @media (max-width: 1023px) {
+    width: calc(100% - 140px);
+    margin: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    width: calc(100% - 120px);
+    margin: 0 10px;
+  }
 
   > input {
     width: calc(100% - 40px);

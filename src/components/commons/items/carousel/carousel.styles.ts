@@ -25,3 +25,22 @@ export const CarouselWrapper = styled(Carousel)`
     }
   }
 `;
+
+export const ImgBox = styled.div`
+  width: 100%;
+  height: 440px;
+  line-height: 440px;
+  border-radius: 8px;
+  overflow: hidden;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (max-width: 767px) {
+    border-radius: 0;
+  }
+`;

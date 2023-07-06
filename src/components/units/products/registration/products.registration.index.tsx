@@ -12,6 +12,11 @@ import ImageUploadItem from "../../../commons/items/imageUpload/imageUpload.inde
 import {useUpdateUsedItem} from "../../../commons/customs/hooks/useUpdateUsedItem";
 import AddressItem from "../../../commons/items/address/address.index";
 import {IQuery} from "../../../../commons/types/generated/types";
+import {routes} from "../../../../commons/routes/routes";
+import {
+  PRODUCTS_DETAIL_PATH,
+  PRODUCTS_LIST_PATH,
+} from "../../../../commons/paths/paths";
 
 interface IProductsRegistrationUIProps {
   isEdit: boolean;
@@ -31,6 +36,7 @@ export default function ProductsRegistrationUI(
 
   const {createUsedItemSubmit, fileList, setFileList} = useCreateUsedItem();
   const {createUpdateItemSubmit} = useUpdateUsedItem();
+  const {pageRouting} = routes();
 
   useEffect(() => {
     if (props.isEdit && props.data) {
@@ -214,6 +220,14 @@ export default function ProductsRegistrationUI(
               fontSize="20px"
               fontFamilly="NanumBold"
               type="button"
+              onClick={
+                props.isEdit
+                  ? () =>
+                      pageRouting(
+                        `${PRODUCTS_DETAIL_PATH}/${props.data?.fetchUseditem._id}`
+                      )
+                  : () => pageRouting(PRODUCTS_LIST_PATH)
+              }
             />
           </li>
           <li>

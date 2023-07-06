@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 
 export const Contents = styled.form`
   position: relative;
-  width: 375px;
+  width: 330px;
   display: flex;
   flex-direction: column;
   align-items: center;
