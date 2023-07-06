@@ -16,7 +16,6 @@ import {
   IMutationDeleteUseditemQuestionArgs,
   IMutationLikeBoardArgs,
   IMutationLoginUserArgs,
-  IMutationLoginUserExampleArgs,
   IMutationResetUserPasswordArgs,
   IMutationToggleUseditemPickArgs,
   IMutationUpdateBoardArgs,
@@ -66,8 +65,8 @@ export const useMutationCreateUser = () => {
 
 export const useMutationLoginUser = () => {
   const [loginUser] = useMutation<
-    Pick<IMutation, "loginUserExample">,
-    IMutationLoginUserExampleArgs
+    Pick<IMutation, "loginUser">,
+    IMutationLoginUserArgs
   >(LOGIN_USER);
 
   return [loginUser];

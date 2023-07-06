@@ -21,7 +21,7 @@ export const useLoginUser = () => {
         },
       });
 
-      const accessToken = result.data?.loginUserExample.accessToken;
+      const accessToken = result.data?.loginUser.accessToken;
 
       if (!accessToken) {
         Modal.error({
