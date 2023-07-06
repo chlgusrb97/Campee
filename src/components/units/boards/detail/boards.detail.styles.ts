@@ -6,12 +6,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 1023px) {
+  @media ((min-width: 768px) and (max-width: 1023px)) {
     padding: 0 20px;
-  }
-
-  @media (max-width: 767px) {
-    padding: 0 10px;
   }
 `;
 
@@ -21,6 +17,10 @@ export const User = styled.div`
   align-items: center;
   padding: 24px 0;
   border-bottom: 1px solid #ddd;
+
+  @media (max-width: 767px) {
+    margin: 0 10px;
+  }
 
   > div {
     :first-of-type {
@@ -127,6 +127,10 @@ export const LikeIcon = styled(AiFillLike)`
 
 export const Contents = styled.div`
   padding: 40px 0;
+
+  @media (max-width: 767px) {
+    margin: 0 10px;
+  }
 
   > div:first-of-type {
     font-size: 16px;
