@@ -6,6 +6,10 @@ export const CommentWrapper = styled.div`
   margin-top: 40px;
   background-color: #fff;
 
+  @media (max-width: 767px) {
+    margin: 40px 10px;
+  }
+
   > span {
     display: inline-block;
     padding-bottom: 20px;
