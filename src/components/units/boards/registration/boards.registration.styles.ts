@@ -4,6 +4,15 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
 
+  @media ((min-width: 768px) and ( max-width: 1023px)) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+    margin-top: 40px;
+  }
+
   > span {
     display: inline-block;
     width: 100%;
@@ -22,6 +31,10 @@ export const Contents = styled.ul`
 
     :nth-of-type(2) {
       align-items: stretch;
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+      }
     }
 
     :not(:last-of-type) {
@@ -57,6 +70,11 @@ export const PasswordBox = styled.div`
   flex-direction: column;
   margin-left: 12px;
 
+  @media (max-width: 767px) {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
   > span {
     margin-bottom: 15px;
   }
@@ -74,6 +92,10 @@ export const ButtonBox = styled.ul`
   justify-content: flex-end;
   margin-top: 20px;
 
+  @media (max-width: 1023px) {
+    justify-content: center;
+  }
+
   > li:last-of-type {
     margin-left: 20px;
   }
@@ -84,11 +106,9 @@ export const AddressBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
 
-export const MapBox = styled.div`
-  width: 300px;
-  height: 250px;
-  margin-right: 26px;
-  background-color: #f7f7f7;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;

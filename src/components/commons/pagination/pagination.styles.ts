@@ -32,6 +32,11 @@ export const PageNavigation = styled.div`
     color: #ddd;
     background-color: #fff;
     transition: all 0.3s ease-in-out;
+
+    @media (max-width: 767px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
@@ -46,6 +51,10 @@ export const PageNumber = styled.span`
 
   :hover {
     color: #000;
+  }
+
+  @media (max-width: 767px) {
+    margin: 0 3px;
   }
 `;
 
@@ -63,6 +72,10 @@ export const LeftArrow = styled.div<ILeftArrowButtonProps>`
   > button:last-of-type {
     margin-right: 14px;
     margin-left: 5px;
+
+    @media (max-width: 767px) {
+      margin-right: 7px;
+    }
   }
 `;
 
@@ -88,6 +101,10 @@ export const RightArrow = styled.div<IRightArrowButtonProps>`
   > button:first-of-type {
     margin-right: 5px;
     margin-left: 14px;
+
+    @media (max-width: 767px) {
+      margin-left: 7px;
+    }
   }
 `;
 

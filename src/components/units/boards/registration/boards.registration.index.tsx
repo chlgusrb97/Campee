@@ -12,6 +12,11 @@ import {useCreateBoard} from "../../../commons/customs/hooks/useCreateBoard";
 import {IQuery} from "../../../../commons/types/generated/types";
 import {useEffect} from "react";
 import {useUpdateBoard} from "../../../commons/customs/hooks/useUpdateBoard";
+import {routes} from "../../../../commons/routes/routes";
+import {
+  BOARDS_DETAIL_PATH,
+  BOARDS_LIST_PATH,
+} from "../../../../commons/paths/paths";
 
 interface IBoardsRegistrationUIProps {
   isEdit: boolean;
@@ -31,6 +36,7 @@ export default function BoardsRegistrationUI(
 
   const {createBoardSubmit, fileList, setFileList} = useCreateBoard();
   const {updateBoardSubmit} = useUpdateBoard();
+  const {pageRouting} = routes();
 
   useEffect(() => {
     if (props.isEdit && props.data) {
@@ -199,6 +205,14 @@ export default function BoardsRegistrationUI(
               fontSize="20px"
               fontFamilly="NanumBold"
               type="button"
+              onClick={
+                props.isEdit
+                  ? () =>
+                      pageRouting(
+                        `${BOARDS_DETAIL_PATH}/${props.data?.fetchBoard._id}`
+                      )
+                  : () => pageRouting(BOARDS_LIST_PATH)
+              }
             />
           </li>
           <li>

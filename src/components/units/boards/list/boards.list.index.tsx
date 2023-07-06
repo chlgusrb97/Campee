@@ -31,6 +31,24 @@ export default function BoardsListUI() {
 
   return (
     <S.Wrapper>
+      <S.SearchBox>
+        <SearchItem refetch={refetch} placeHolder="게시글을 검색하세요." />
+        <S.ButtonBox>
+          <ButtonItem
+            title="등록"
+            width="90px"
+            height="44px"
+            color="#fff"
+            borderRadius="2px"
+            backgroundColor="#e76161"
+            fontSize="18px"
+            fontFamilly="NanumBold"
+            transition="all 0.3s ease-in-out"
+            hoverBackgroundColor="#c64343"
+            onClick={() => pageRouting(BOARDS_REGISTRATION_PATH)}
+          />
+        </S.ButtonBox>
+      </S.SearchBox>
       <span>
         <TitleItem title="BEST LIFE" fontSize="20px" />
       </span>
@@ -65,16 +83,13 @@ export default function BoardsListUI() {
           </li>
         ))}
       </S.BestBoards>
-      <S.SearchBox>
-        <SearchItem refetch={refetch} placeHolder="게시글을 검색하세요." />
-      </S.SearchBox>
       <S.BoardsCount>총 {formattedBoardsCount}건</S.BoardsCount>
       <S.BoardsList>
         <S.BoardListTitle>
-          <span>작성자</span>
-          <span>제목</span>
-          <span>등록일</span>
-          <span>추천수</span>
+          <li>작성자</li>
+          <li>제목</li>
+          <li>등록일</li>
+          <li>추천</li>
         </S.BoardListTitle>
         <S.BoardListContents>
           {data?.fetchBoards.map((board) => (
@@ -82,8 +97,8 @@ export default function BoardsListUI() {
               key={board._id}
               onClick={() => pageRouting(`${BOARDS_DETAIL_PATH}/${board._id}`)}
             >
-              <p>{board.writer}</p>
-              <p>
+              <S.Writer>{board.writer}</S.Writer>
+              <S.Title>
                 {board.title
                   .replaceAll(keyWord, `${SECRETCODE}${keyWord}${SECRETCODE}`)
                   .split(`${SECRETCODE}`)
@@ -97,32 +112,15 @@ export default function BoardsListUI() {
                       {searchBoard}
                     </span>
                   ))}
-              </p>
-              <p>{getDate(board.createdAt)}</p>
-              <p>{board.likeCount}</p>
+              </S.Title>
+              <S.Creation>{getDate(board.createdAt)}</S.Creation>
+              <S.Like>{board.likeCount}</S.Like>
             </li>
           ))}
         </S.BoardListContents>
       </S.BoardsList>
       <S.FooterContents>
-        <div>
-          <Pagination count={countData?.fetchBoardsCount} refetch={refetch} />
-        </div>
-        <div>
-          <ButtonItem
-            title="등록"
-            width="140px"
-            height="44px"
-            color="#fff"
-            borderRadius="2px"
-            backgroundColor="#e76161"
-            fontSize="18px"
-            fontFamilly="NanumBold"
-            transition="all 0.3s ease-in-out"
-            hoverBackgroundColor="#c64343"
-            onClick={() => pageRouting(BOARDS_REGISTRATION_PATH)}
-          />
-        </div>
+        <Pagination count={countData?.fetchBoardsCount} refetch={refetch} />
       </S.FooterContents>
     </S.Wrapper>
   );
