@@ -17,5 +17,9 @@ export const Wrapper = styled.div`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    @media (max-width: 767px) {
+      font-size: 38px;
+    }
   }
 `;

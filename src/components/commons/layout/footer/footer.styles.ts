@@ -5,6 +5,10 @@ import {FcGoogle} from "react-icons/fc";
 export const Wrapper = styled.div`
   border-top: 1px solid #eee;
   background-color: #fff;
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
 `;
 
 export const FooterContents = styled.div`
