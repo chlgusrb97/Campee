@@ -26,7 +26,14 @@ export default function ProductsListUI() {
   return (
     <>
       <S.ItemBox>
-        <SearchItem refetch={refetch} placeHolder="상품을 검색하세요." />
+        <SearchItem
+          refetch={refetch}
+          tabletWidth="calc(100% - 140px)"
+          tabletMargin="0 20px"
+          mobileWidth="calc(100% - 120px)"
+          mobileMargin="0 10px"
+          placeHolder="상품을 검색하세요."
+        />
         <S.ButtonBox>
           <ButtonItem
             title="등록"

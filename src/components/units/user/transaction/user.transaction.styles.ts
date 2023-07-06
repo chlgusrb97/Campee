@@ -8,6 +8,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 50px;
+
+  @media (max-width: 1023px) {
+    padding: 50px 20px 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 50px 10px 0;
+  }
 `;
 
 export const TitleButtonBox = styled.ul`

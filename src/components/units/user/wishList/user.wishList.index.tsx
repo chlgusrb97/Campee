@@ -22,7 +22,12 @@ export default function UserWishListUI() {
       <S.Wrapper>
         <S.Title>위시리스트</S.Title>
         <S.SearchBox>
-          <SearchItem placeHolder="상품을 검색하세요." refetch={refetch} />
+          <SearchItem
+            refetch={refetch}
+            tabletWidth="100%"
+            mobileWidth="100%"
+            placeHolder="상품을 검색하세요."
+          />
         </S.SearchBox>
         <InfiniteScroll
           pageStart={0}

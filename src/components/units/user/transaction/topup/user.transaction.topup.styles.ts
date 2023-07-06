@@ -14,14 +14,17 @@ export const HeaderContents = styled.div`
   background-color: #f7f7f7;
 
   > div {
-    width: 100%;
     text-align: center;
     font-size: 14px;
     font-family: NanumBold;
+    width: 25%;
 
-    :not(:nth-of-type(2)) {
-      width: 20%;
-      white-space: nowrap;
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
+
+    :first-of-type {
+      width: 50%;
     }
   }
 `;
@@ -38,12 +41,15 @@ export const ListContents = styled.ul`
   }
 
   div {
-    width: 100%;
     text-align: center;
+    width: 25%;
 
-    :not(:nth-of-type(2)) {
-      width: 20%;
-      white-space: nowrap;
+    @media (max-width: 767px) {
+      font-size: 14px;
+    }
+
+    :first-of-type {
+      width: 50%;
     }
   }
 `;
@@ -54,6 +60,7 @@ export const Creation = styled.p`
 `;
 
 export const TopupId = styled.p`
+  width: 100%;
   color: #666;
   white-space: nowrap;
 `;

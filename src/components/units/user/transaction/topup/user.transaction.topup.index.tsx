@@ -13,7 +13,6 @@ export default function UserTransactionTopupUI() {
   return (
     <S.Wrapper>
       <S.HeaderContents>
-        <div>충전일자</div>
         <div>결제 ID</div>
         <div>충전금액</div>
         <div>잔액</div>
@@ -22,9 +21,6 @@ export default function UserTransactionTopupUI() {
         <S.ListContents>
           {data?.fetchPointTransactionsOfLoading.map((topup) => (
             <li key={topup._id}>
-              <div>
-                <S.Creation>{getDate(topup.createdAt)}</S.Creation>
-              </div>
               <div>
                 <S.TopupId>{topup.impUid}</S.TopupId>
               </div>

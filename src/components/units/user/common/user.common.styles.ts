@@ -5,6 +5,15 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1023px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 10px;
+    margin-top: 50px;
+  }
 `;
 
 export const MyPageHeader = styled.ul`
@@ -40,12 +49,23 @@ export const Profile = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 24px;
+
+  @media (max-width: 767px) {
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0;
+  }
 `;
 
 export const ProfileLeftContents = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
+
+  @media (max-width: 767px) {
+    padding: 24px;
+  }
 `;
 
 export const UserImgBox = styled.div`
@@ -101,6 +121,10 @@ export const ProfileButton = styled.div`
     background-color: transparent;
     cursor: pointer;
 
+    :not(:last-of-type) {
+      margin-right: 4px;
+    }
+
     :hover {
       background-color: #fafafa;
     }
@@ -115,6 +139,14 @@ export const ProfileRightContents = styled.div`
   height: 100%;
   border-left: 1px solid #ddd;
   padding-left: 20px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    border-top: 1px solid #ddd;
+    border-left: none;
+    padding-left: 0;
+    padding: 24px;
+  }
 
   ::after {
     content: "";

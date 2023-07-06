@@ -30,6 +30,10 @@ type RefetchFunction =
 interface ISearchItemProps {
   refetch: RefetchFunction;
   placeHolder: string;
+  tabletWidth?: string;
+  tabletMargin?: string;
+  mobileWidth?: string;
+  mobileMargin?: string;
 }
 
 export default function SearchItem(props: ISearchItemProps) {
@@ -38,7 +42,12 @@ export default function SearchItem(props: ISearchItemProps) {
   });
 
   return (
-    <Search>
+    <Search
+      tabletWidth={props.tabletWidth}
+      tabletMargin={props.tabletMargin}
+      mobileWidth={props.mobileWidth}
+      mobileMargin={props.mobileMargin}
+    >
       <input placeholder={props.placeHolder} onChange={onChangeSearchEvent} />
       <button type="button">
         <SearchIcon />
