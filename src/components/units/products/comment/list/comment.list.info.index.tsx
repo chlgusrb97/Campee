@@ -3,7 +3,10 @@ import {getDate} from "../../../../../commons/libraries/utils";
 import {IUseditemQuestion} from "../../../../../commons/types/generated/types";
 import {useDeleteUsedItemQuestion} from "../../../../commons/customs/hooks/useDeleteUsedItemQuestion";
 import * as S from "./comment.list.styles";
-import {useQueryUser} from "../../../../commons/customs/useQueries.ts/useQueries";
+import {
+  useQueryUsedItemAnswers,
+  useQueryUser,
+} from "../../../../commons/customs/useQueries.ts/useQueries";
 import CommentButtonItem from "../../../../commons/items/comment/button/comment.button.index";
 import ProductsCommentWriteUI from "../write/comment.write.index";
 import CommentAnswerUI from "../answer/comment.answer.index";
@@ -18,6 +21,7 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
   const [isAnswer, setIsAnswer] = useState(false);
 
   const {data} = useQueryUser();
+  const {data: answerData} = useQueryUsedItemAnswers(props.question._id);
   const {onClickDeleteQuestion} = useDeleteUsedItemQuestion();
 
   const showModal = () => {
@@ -102,12 +106,15 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
               </ul>
             </S.CommentInfo>
           </div>
-          <CommentAnswerUI
-            question={props.question}
-            isAnswer={isAnswer}
-            setIsAnswer={setIsAnswer}
-            onClickAnswerCancel={onClickAnswerCancel}
-          />
+          {answerData?.fetchUseditemQuestionAnswers.length !== 0 && (
+            <CommentAnswerUI
+              question={props.question}
+              answerData={answerData}
+              isAnswer={isAnswer}
+              setIsAnswer={setIsAnswer}
+              onClickAnswerCancel={onClickAnswerCancel}
+            />
+          )}
         </S.CommentListWrapper>
       )}
     </>
