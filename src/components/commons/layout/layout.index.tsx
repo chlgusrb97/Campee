@@ -13,14 +13,6 @@ import LayoutFooter from "./footer/footer.index";
 import LayoutHeader from "./header/header.index";
 import {BodyContents} from "./layout.styles";
 
-const HIDDEN_BANNER = [
-  PRODUCTS_LIST_PATH,
-  PRODUCTS_REGISTRATION_PATH,
-  BOARDS_LIST_PATH,
-  BOARDS_REGISTRATION_PATH,
-  BOARDS_DETAIL_PATH,
-];
-
 interface ILayoutProps {
   children: JSX.Element;
 }
@@ -29,9 +21,8 @@ export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
   const isHiddenBanner =
-    HIDDEN_BANNER.includes(router.asPath) ||
-    router.asPath.includes(PRODUCTS_DETAIL_PATH) ||
-    router.asPath.includes(BOARDS_DETAIL_PATH) ||
+    router.asPath.includes(PRODUCTS_LIST_PATH) ||
+    router.asPath.includes(BOARDS_LIST_PATH) ||
     router.asPath.includes(MYPAGE_PATH);
 
   return (
