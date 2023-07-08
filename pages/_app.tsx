@@ -10,6 +10,7 @@ export default function App({Component}: AppProps) {
     <RecoilRoot>
       <ApolloSetting>
         <>
+          <link rel="icon" href="/favicon.ico" sizes="20px" />
           <Global styles={globalStyles} />
           <Layout>
             <Component />
