@@ -19,7 +19,7 @@ export default function KakaoMapRegistration(
       const longitude = position.coords.longitude;
 
       const script = document.createElement("script"); // <script></script>
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_API_KAKAOMAP_KEY}&autoload=false&libraries=services`;
+      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=8b7ecef42e8550f67a7a39d8d6dd2db1&autoload=false&libraries=services`;
 
       document.head.appendChild(script);
 
