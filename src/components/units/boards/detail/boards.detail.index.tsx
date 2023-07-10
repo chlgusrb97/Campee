@@ -26,6 +26,8 @@ export default function BoardsDetailUI() {
   const {onClickDeleteBoard} = useDeleteBoard();
   const {pageRouting} = routes();
 
+  console.log(data);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSafeHtml(DOMPurify.sanitize(String(data?.fetchBoard.contents)));
@@ -81,7 +83,7 @@ export default function BoardsDetailUI() {
             />
           </S.Youtube>
         )}
-        {data?.fetchBoard.boardAddress && (
+        {data?.fetchBoard.boardAddress?.address && (
           <S.Address>
             <TitleItem title="주소" fontSize="20px" />
             <S.MapBox>
