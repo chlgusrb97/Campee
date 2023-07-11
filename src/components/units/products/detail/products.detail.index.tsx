@@ -32,8 +32,6 @@ export default function ProductsDetailUI() {
       setSafeHtml(DOMPurify.sanitize(String(data?.fetchUseditem.contents)));
     }
   }, [data?.fetchUseditem.contents]);
-
-  console.log(data?.fetchUseditem.useditemAddress?.address);
   return (
     <>
       <S.Wrapper>

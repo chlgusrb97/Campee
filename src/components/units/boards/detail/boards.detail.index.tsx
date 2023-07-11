@@ -26,8 +26,6 @@ export default function BoardsDetailUI() {
   const {onClickDeleteBoard} = useDeleteBoard();
   const {pageRouting} = routes();
 
-  console.log(data);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSafeHtml(DOMPurify.sanitize(String(data?.fetchBoard.contents)));
