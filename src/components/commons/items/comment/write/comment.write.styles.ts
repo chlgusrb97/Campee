@@ -5,7 +5,7 @@ interface IStyleProps {
 }
 
 export const CommentWriteBox = styled.div<IStyleProps>`
-  width: 100%;
+  width: calc(100% - 42px);
   display: flex;
   flex-direction: row;
   align-items: flex-start;

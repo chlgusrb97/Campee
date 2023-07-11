@@ -5,6 +5,7 @@ import {useFormProductsCommentWrite} from "../../../../commons/useForm/useForm";
 import * as S from "./comment.write.styles";
 import {IUseditemQuestion} from "../../../../../commons/types/generated/types";
 import {useUpdateUsedItemQuestion} from "../../../../commons/customs/hooks/useUpdateUsedItemQuestion";
+import {useQueryUser} from "../../../../commons/customs/useQueries.ts/useQueries";
 
 interface IProductsCommentWriteUIProps {
   isCommentEdit?: boolean;
@@ -18,6 +19,7 @@ export default function ProductsCommentWriteUI(
   const {register, setValue, handleSubmit} = useFormProductsCommentWrite();
   const {createQuestionSubmit} = useCreateUsedItemQuestion();
   const {updateQuestionSubmit} = useUpdateUsedItemQuestion();
+  const {data} = useQueryUser();
 
   return (
     <S.CommentWriteWrapper
@@ -31,7 +33,13 @@ export default function ProductsCommentWriteUI(
       )}
     >
       <S.UserIconBox>
-        <S.UserIcon />
+        {data?.fetchUserLoggedIn.picture ? (
+          <img
+            src={`https://storage.googleapis.com/${data.fetchUserLoggedIn.picture}`}
+          />
+        ) : (
+          <S.UserIcon />
+        )}
       </S.UserIconBox>
       <CommentWrite
         defaultValue={props.question?.contents ?? ""}

@@ -14,6 +14,14 @@ export const UserIconBox = styled.div`
   margin-right: 12px;
   border-radius: 50%;
   background-color: #fff;
+  overflow: hidden;
+
+  > img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const UserIcon = styled(FaUserCircle)`

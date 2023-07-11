@@ -51,6 +51,7 @@ export const USED_ITEM = gql`
       seller {
         _id
         name
+        picture
       }
       pickedCount
     }
@@ -170,6 +171,7 @@ export const USED_ITEM_QUESTIONS = gql`
       user {
         _id
         name
+        picture
       }
       createdAt
     }
@@ -188,6 +190,7 @@ export const USED_ITEM_ANSWERS = gql`
       user {
         _id
         name
+        picture
       }
     }
   }

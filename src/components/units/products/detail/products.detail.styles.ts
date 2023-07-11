@@ -79,6 +79,14 @@ export const UserImageBox = styled.div`
   margin-right: 12px;
   border-radius: 50%;
   background-color: #fff;
+  overflow: hidden;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const UserIcon = styled(FaUserCircle)`

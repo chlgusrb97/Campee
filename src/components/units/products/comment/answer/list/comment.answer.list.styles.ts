@@ -19,6 +19,14 @@ export const UserIconBox = styled.div`
   margin-right: 12px;
   border-radius: 50%;
   background-color: #fff;
+  overflow: hidden;
+
+  > img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const UserIcon = styled(FaUserCircle)`
@@ -29,6 +37,7 @@ export const UserIcon = styled(FaUserCircle)`
 `;
 
 export const CommentInfo = styled.div`
+  width: calc(100% - 42px);
   display: flex;
   flex-direction: column;
 
@@ -41,6 +50,9 @@ export const CommentInfo = styled.div`
   > p {
     margin: 12px 0;
     font-size: 16px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    line-height: 26px;
   }
 
   > ul {

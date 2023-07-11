@@ -63,7 +63,13 @@ export default function CommentAnswerListUI(props: ICommentAnswerListUIProps) {
       ) : (
         <S.AnswerBox>
           <S.UserIconBox>
-            <S.UserIcon />
+            {props.answer.user.picture ? (
+              <img
+                src={`https://storage.googleapis.com/${props.answer.user.picture}`}
+              />
+            ) : (
+              <S.UserIcon />
+            )}
           </S.UserIconBox>
           <S.CommentInfo>
             <h1>{props.answer.user.name}</h1>

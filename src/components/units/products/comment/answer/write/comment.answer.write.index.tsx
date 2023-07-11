@@ -39,7 +39,13 @@ export default function CommentAnswerWriteUI(
       )}
     >
       <S.UserIconBox>
-        <S.UserIcon />
+        {props.answer?.user.picture ? (
+          <img
+            src={`https://storage.googleapis.com/${props.answer.user.picture}`}
+          />
+        ) : (
+          <S.UserIcon />
+        )}
       </S.UserIconBox>
       <CommentWrite
         defaultValue={props.answer ? props.answer.contents : ""}

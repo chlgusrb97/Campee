@@ -62,9 +62,15 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
         />
       ) : (
         <S.CommentListWrapper>
-          <div>
+          <S.CommentListBox>
             <S.UserIconBox>
-              <S.UserIcon />
+              {props.question.user.picture ? (
+                <img
+                  src={`https://storage.googleapis.com/${props.question.user.picture}`}
+                />
+              ) : (
+                <S.UserIcon />
+              )}
             </S.UserIconBox>
             <S.CommentInfo>
               <h1>{props.question.user.name}</h1>
@@ -105,16 +111,14 @@ export default function CommentListInfoUI(props: ICommentListInfoUIProps) {
                 )}
               </ul>
             </S.CommentInfo>
-          </div>
-          {answerData?.fetchUseditemQuestionAnswers.length !== 0 && (
-            <CommentAnswerUI
-              question={props.question}
-              answerData={answerData}
-              isAnswer={isAnswer}
-              setIsAnswer={setIsAnswer}
-              onClickAnswerCancel={onClickAnswerCancel}
-            />
-          )}
+          </S.CommentListBox>
+          <CommentAnswerUI
+            question={props.question}
+            answerData={answerData}
+            isAnswer={isAnswer}
+            setIsAnswer={setIsAnswer}
+            onClickAnswerCancel={onClickAnswerCancel}
+          />
         </S.CommentListWrapper>
       )}
     </>

@@ -1,11 +1,16 @@
 import InfiniteScroll from "react-infinite-scroller";
 import {onLoadMoreUsedItemQuestions} from "../../../../commons/customs/onLoadMore/onLoadMoreUsedItems";
 import CommentListInfoUI from "./comment.list.info.index";
-import {useQueryUsedItemQuestions} from "../../../../commons/customs/useQueries.ts/useQueries";
 import {v4 as uuidv4} from "uuid";
+import {IQuery} from "../../../../../commons/types/generated/types";
 
-export default function ProductsCommentListUI() {
-  const {data} = useQueryUsedItemQuestions();
+interface IProductsCommentListUIProps {
+  data: Pick<IQuery, "fetchUseditemQuestions"> | undefined;
+}
+
+export default function ProductsCommentListUI(
+  props: IProductsCommentListUIProps
+) {
   const {onLoadMore} = onLoadMoreUsedItemQuestions();
 
   return (
@@ -16,8 +21,8 @@ export default function ProductsCommentListUI() {
         hasMore={true}
         useWindow={true}
       >
-        {data?.fetchUseditemQuestions ? (
-          data.fetchUseditemQuestions.map((question) => (
+        {props.data?.fetchUseditemQuestions ? (
+          props.data.fetchUseditemQuestions.map((question) => (
             <CommentListInfoUI key={uuidv4()} question={question} />
           ))
         ) : (

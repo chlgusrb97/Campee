@@ -44,7 +44,13 @@ export default function ProductsDetailUI() {
             <div>
               <S.User>
                 <S.UserImageBox>
-                  <S.UserIcon />
+                  {data?.fetchUseditem.seller?.picture ? (
+                    <img
+                      src={`https://storage.googleapis.com/${data.fetchUseditem.seller.picture}`}
+                    />
+                  ) : (
+                    <S.UserIcon />
+                  )}
                 </S.UserImageBox>
                 <S.UserName>{data?.fetchUseditem.seller?.name}</S.UserName>
               </S.User>

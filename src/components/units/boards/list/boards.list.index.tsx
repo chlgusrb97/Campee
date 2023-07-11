@@ -80,7 +80,7 @@ export default function BoardsListUI() {
                 <S.FooterUserImgBox>
                   <S.UserIcon />
                 </S.FooterUserImgBox>
-                <S.FooterUserName>홍길동</S.FooterUserName>
+                <S.FooterUserName>{bestBoard.writer}</S.FooterUserName>
               </S.FooterUser>
               <S.FooterEntry>
                 <p>{getDate(bestBoard.createdAt)}</p>
