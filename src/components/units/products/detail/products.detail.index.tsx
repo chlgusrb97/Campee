@@ -33,6 +33,7 @@ export default function ProductsDetailUI() {
     }
   }, [data?.fetchUseditem.contents]);
 
+  console.log(data?.fetchUseditem.useditemAddress?.address);
   return (
     <>
       <S.Wrapper>
@@ -119,15 +120,17 @@ export default function ProductsDetailUI() {
               __html: safeHtml,
             }}
           />
-          <S.ProductContentsAddress>
-            <TitleItem title="거래 지역" fontSize="20px" />
-            <S.MapBox>
-              <KakaoMapFetch
-                address={data?.fetchUseditem.useditemAddress?.address}
-              />
-            </S.MapBox>
-            <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
-          </S.ProductContentsAddress>
+          {data?.fetchUseditem.useditemAddress?.address && (
+            <S.ProductContentsAddress>
+              <TitleItem title="거래 지역" fontSize="20px" />
+              <S.MapBox>
+                <KakaoMapFetch
+                  address={data?.fetchUseditem.useditemAddress?.address}
+                />
+              </S.MapBox>
+              <p>{`${data?.fetchUseditem.useditemAddress?.address} ${data?.fetchUseditem.useditemAddress?.addressDetail}`}</p>
+            </S.ProductContentsAddress>
+          )}
         </S.ProductContentns>
         <ProductsCommentUI />
       </S.Wrapper>
