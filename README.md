@@ -1,38 +1,110 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⛺️ CAMPEE
 
-## Getting Started
+## 🔗 주소
 
-First, run the development server:
+<br>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<https://campee.store>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
+<br>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🔖 기획 의도
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+캠핑을 이전부터 관심을 가졌었고 최근 취미로 두고 관심을 가지는 사람이 많은 것을 바탕으로 키워드를 캠핑으로 선택하였습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Campee**는 Camp, Exciting, Enjoy를 혼합하여 이름을 정하였고, 각종 커뮤니티와 중고거래 사이트가 많아지고 있지만 온전히 캠핑만을 위한 정보를 원하는 사용자들에게 커뮤니티, 중고거래를 동시에 제공할 수 있는 서비스를 만들어 보고 싶어 개발하게 된 웹 반응형 서비스입니다.
 
-## Learn More
+<br>
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+## ⭐️ 기술 스택
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+|    기술    |  버전   | 선정 이유                                                                                                                                                                                                                                                                                            |
+| :--------: | :-----: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   React    | 17.0.2  | React는 컴포넌트 단위로 구성할 수 있어 가독성이 매우 높고 간단하여 쉬운 유지 보수, 간편한 UI 수정 및 재사용성이 용이합니다. <br>또한 렌더링 시 Virtual DOM을 활용함으로써 실제 DOM과 비교하여 변경된 부분만 렌더링해주며 리소스를 최소화할 수 있기에 선택하였습니다.                                 |
+|  Next.js   | 12.1.0  | Next.js는 서버 사이드 렌더링을 지원하여 사용자에게 초기 로딩속도를 제공하며, 검색 엔진 최적화를 향상시킵니다. <br> 기본적인 파일 기반 라우팅을 제공하여 개발자가 페이지 간의 이동을 쉽게 구성할 수 있습니다. 이러한 라우팅 방식으로 인해 코드 구조를 간소화하고 유지 관리에 용이하여 선택하였습니다. |
+| TypeScript |  5.0.4  | TypeScript는 변수, 함수, 객체 등에게 명시적인 타입을 명시하여 컴파일중에 발생하는 타입 오류를 발견해주고 실시간으로 직관적인 타입 에러를 보여주어 사전에 에러를 방지를 할 수 있기에 안정적인 코드 작성을 위해 선택하였습니다.                                                                        |
+|  GraphQL   | 16.6.0  | GraphQL은 클라이언트에서 서버측으로 불필요한 데이터는 제외하여 원하는 데이터만 받아올 수 있고 한번의 요청으로 여러 API의 정보를 가져올 수 있어 Overfetching과 Underfetching 방지를 할 수 있어 선택하였습니다.                                                                                        |
+|   Recoil   |  0.7.7  | 특정 페이지에서만 요구되는 데이터가 아닌 로그인시 반환되는 accessToken과 같이 전역적으로 상태 관리가 필요한 데이터 관리와 React의 상태 관리 방식과 비슷하여 접근성이 용이하여 선택하였습니다.                                                                                                        |
+|  Emotion   | 11.10.6 | 고유한 클래스명을 부여하여 클래스명에 대한 매핑을 효율적으로 처리하며, props로 인한 동적 스타일링이 가능하여 선택하였습니다.                                                                                                                                                                         |
 
-## Deploy on Vercel
+<br>
+<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚙️ 주요 기능
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br>
+
+### 로그인 / 회원가입 / 결제
+
+<br>
+
+#### - 로그인
+
+![로그인](https://github.com/chlgusrb97/Campee/assets/119344662/bc68148d-d9fe-44e6-b2c9-2312c5ba88de)
+
+<br>
+
+#### - 회원가입
+
+![회원가입](https://github.com/chlgusrb97/Campee/assets/119344662/7df36023-8e17-40dd-a41a-f042e8e19720)
+
+<br>
+
+#### -결제
+
+![결제](https://github.com/chlgusrb97/Campee/assets/119344662/3814cf1f-b39c-482c-a94a-70276f92a933)
+
+<br>
+<br>
+
+### 커뮤니티
+
+<br>
+
+#### - 게시글 리스트
+
+![게시글리스트](https://github.com/chlgusrb97/Campee/assets/119344662/0ab92398-5538-40df-99d9-a27f8aefa521)
+
+- 페이지네이션 기능으로 데이터를 분기하여 사용자에게 정보를 전달합니다.
+
+<br>
+
+#### - 게시글 작성
+
+![게시글등록](https://github.com/chlgusrb97/Campee/assets/119344662/5aa84c48-19bf-44cb-9f1a-ce0c23dc859b)
+
+<br>
+
+#### - 게시글 상세
+
+![게시글디테일](https://github.com/chlgusrb97/Campee/assets/119344662/f76564a4-62eb-4ee1-86eb-f811951bd7b9)
+
+<br>
+<br>
+
+### 중고거래
+
+<br>
+
+#### - 상품 등록
+
+![상품등록](https://github.com/chlgusrb97/Campee/assets/119344662/95210416-fa79-4643-b43f-644ae9f42095)
+
+#### - 상품 상세
+
+![상품디테일](https://github.com/chlgusrb97/Campee/assets/119344662/c82a06df-21ef-4f07-bae5-7c3ce5c9b47b)
+
+<br>
+<br>
+
+### 마이페이지
+
+<br>
+
+![마이페이지](https://github.com/chlgusrb97/Campee/assets/119344662/6588d52d-de61-461c-b201-52cf103ba19d)
