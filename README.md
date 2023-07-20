@@ -13,7 +13,7 @@
 
 <br>
 
-캠핑을 이전부터 관심을 가졌었고 최근 취미로 두고 관심을 가지는 사람이 많은 것을 바탕으로 키워드를 캠핑으로 선택하였습니다.
+최근 취미로 두고 관심을 가지는 사람이 많은 것을 바탕으로 키워드를 캠핑으로 선택하였습니다.
 
 **Campee**는 Camp, Exciting, Enjoy를 혼합하여 이름을 정하였고, 각종 커뮤니티와 중고거래 사이트가 많아지고 있지만 온전히 캠핑만을 위한 정보를 원하는 사용자들에게 커뮤니티, 중고거래를 동시에 제공할 수 있는 서비스를 만들어 보고 싶어 개발하게 된 웹 반응형 서비스입니다.
 
@@ -40,71 +40,63 @@
 
 <br>
 
-### 로그인 / 회원가입 / 결제
-
-<br>
-
-#### - 로그인
-
-![로그인](https://github.com/chlgusrb97/Campee/assets/119344662/bc68148d-d9fe-44e6-b2c9-2312c5ba88de)
-
-<br>
-
-#### - 회원가입
+### 회원가입 / 로그인
 
 ![회원가입](https://github.com/chlgusrb97/Campee/assets/119344662/7df36023-8e17-40dd-a41a-f042e8e19720)
+![로그인](https://github.com/chlgusrb97/Campee/assets/119344662/bc68148d-d9fe-44e6-b2c9-2312c5ba88de)
+
+- 로그인 시 반환되는 accessToken으로 회원인 사용자만 이용할 수 있도록 마이페이지와 상품에 관련된 페이지는 권한분기 처리가 되어있습니다.
+
+- yup을 이용한 유효성 검증을 합니다.
 
 <br>
 
-#### -결제
+### 결제 (충전 / 구매)
 
 ![결제](https://github.com/chlgusrb97/Campee/assets/119344662/3814cf1f-b39c-482c-a94a-70276f92a933)
 
-<br>
+![상품구매](https://github.com/chlgusrb97/Campee/assets/119344662/b7ffd172-727c-4307-83ca-e07242ccfb8b)
+
+- 아임포트 API를 이용한 카카오 금액 충전 기능으로 상품을 구매할 수 있습니다.
+
 <br>
 
-### 커뮤니티
+### 커뮤니티 / 중고거래
 
 <br>
 
-#### - 게시글 리스트
+#### - 게시글 리스트 (Pagination)
 
 ![게시글리스트](https://github.com/chlgusrb97/Campee/assets/119344662/0ab92398-5538-40df-99d9-a27f8aefa521)
 
-- 페이지네이션 기능으로 데이터를 분기하여 사용자에게 정보를 전달합니다.
+#### - 상품 리스트 (Infinite scrolling)
+
+![상품리스트-min](https://github.com/chlgusrb97/Campee/assets/119344662/6a447a62-a976-4b32-905f-d6a715da4808)
+
+- 검색을 통해 특정 키워드와 관련된 정보를 볼 수 있습니다.
 
 <br>
 
-#### - 게시글 작성
-
-![게시글등록](https://github.com/chlgusrb97/Campee/assets/119344662/5aa84c48-19bf-44cb-9f1a-ce0c23dc859b)
-
-<br>
-
-#### - 게시글 상세
-
-![게시글디테일](https://github.com/chlgusrb97/Campee/assets/119344662/f76564a4-62eb-4ee1-86eb-f811951bd7b9)
-
-<br>
-<br>
-
-### 중고거래
-
-<br>
-
-#### - 상품 등록
+#### - 등록 / 수정
 
 ![상품등록](https://github.com/chlgusrb97/Campee/assets/119344662/95210416-fa79-4643-b43f-644ae9f42095)
 
-#### - 상품 상세
-
-![상품디테일](https://github.com/chlgusrb97/Campee/assets/119344662/c82a06df-21ef-4f07-bae5-7c3ce5c9b47b)
+- Ant Design의 Upload 컴포넌트를 활용한 첨부파일 업로드 기능과 React-Quill로 웹 에디터를 적용하였습니다.
+- 주소 검색 기능을 사용할 수 있으며, 선택한 주소를 카카오 맵에 위치를 표시하는 기능도 함께 제공됩니다.
 
 <br>
+
+#### - 상세페이지
+
+![상품디테일](https://github.com/chlgusrb97/Campee/assets/119344662/b01be7fe-dd81-4f65-9dfb-742dc6e25d87)
+
+- 해당 게시글 수정 페이지 라우팅과 삭제 가능합니다.
+- 댓글 및 답글 작성이 가능하며 작성자에 따른 수정, 삭제 분기처리가 되어있습니다.
+
 <br>
 
 ### 마이페이지
 
-<br>
-
 ![마이페이지](https://github.com/chlgusrb97/Campee/assets/119344662/6588d52d-de61-461c-b201-52cf103ba19d)
+
+- ㅇㅇㅇㅇ
