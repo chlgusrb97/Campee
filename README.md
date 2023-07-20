@@ -4,7 +4,7 @@
 
 <br>
 
-[https://campee.store](https://campee.store){: target="\_blank"}
+<a href="https://campee.store" target="_blank">https://campee.store</a>
 
 <br>
 <br>
